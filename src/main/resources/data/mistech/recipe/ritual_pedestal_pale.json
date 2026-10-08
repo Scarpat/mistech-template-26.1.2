@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SGS",
+    " L ",
+    "BBB"
+  ],
+  "key": {
+    "S": "minecraft:polished_blackstone_slab",
+    "G": "minecraft:gold_ingot",
+    "L": "minecraft:pale_oak_log",
+    "B": "minecraft:polished_blackstone_bricks"
+  },
+  "result": {
+    "id": "mistech:ritual_pedestal",
+    "count": 2,
+    "components": {
+      "minecraft:block_state": {
+        "pale": "true"
+      }
+    }
+  }
+}

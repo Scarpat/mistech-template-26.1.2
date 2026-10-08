@@ -1,0 +1,18 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:recovery_compass",
+  "ingredients": [
+    "minecraft:echo_shard",
+    "mistech:space_rune",
+    "minecraft:sculk",
+    "minecraft:ender_eye"
+  ],
+  "essence": 2,
+  "duration": 300,
+  "condition": "none",
+  "min_tier": 1,
+  "result": {
+    "id": "mistech:echo_compass"
+  },
+  "effect": "shadow"
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mistech:block/astrology_table"
+    },
+    "facing=east": {
+      "model": "mistech:block/astrology_table",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mistech:block/astrology_table",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mistech:block/astrology_table",
+      "y": 270
+    }
+  }
+}

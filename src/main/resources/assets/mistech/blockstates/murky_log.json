@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "mistech:block/murky_log_x"
+    },
+    "axis=y": {
+      "model": "mistech:block/murky_log_y"
+    },
+    "axis=z": {
+      "model": "mistech:block/murky_log_z"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "decorations",
+  "pattern": [
+    "S",
+    "G"
+  ],
+  "key": {
+    "S": "#minecraft:wooden_slabs",
+    "G": "minecraft:glass"
+  },
+  "result": {
+    "id": "mistech:glass_jar",
+    "count": 1
+  }
+}

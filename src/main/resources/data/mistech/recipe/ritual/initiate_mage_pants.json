@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:hemp_mage_pants",
+  "ingredients": [
+    "minecraft:gold_ingot",
+    "minecraft:gold_ingot",
+    "minecraft:lapis_lazuli",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "none",
+  "min_tier": 1,
+  "result": {
+    "id": "mistech:initiate_mage_pants"
+  },
+  "copy_components": true,
+  "effect": "arcane"
+}

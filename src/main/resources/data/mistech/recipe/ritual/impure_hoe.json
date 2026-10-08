@@ -1,0 +1,18 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:diamond_hoe",
+  "ingredients": [
+    "mistech:impure_magic_shard",
+    "mistech:water_rune",
+    "mistech:time_rune",
+    "mistech:belladonna_seeds"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "none",
+  "result": {
+    "id": "mistech:impure_hoe"
+  },
+  "copy_components": true,
+  "effect": "nature"
+}

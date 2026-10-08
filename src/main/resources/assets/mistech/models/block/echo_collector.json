@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "minecraft:block/sculk_catalyst_top",
+    "bottom": "minecraft:block/polished_deepslate",
+    "side": "mistech:block/echo_collector_side",
+    "particle": "mistech:block/echo_collector_side"
+  }
+}

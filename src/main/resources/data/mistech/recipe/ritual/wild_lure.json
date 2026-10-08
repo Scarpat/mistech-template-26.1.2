@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:rotten_flesh",
+  "ingredients": [
+    "mistech:darkness_rune",
+    "minecraft:spider_eye",
+    "minecraft:bone",
+    "minecraft:gunpowder",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "night",
+  "min_tier": 2,
+  "action": "lure",
+  "effect": "blood"
+}

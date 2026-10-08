@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mistech:corrupted_crown",
+      "required": false
+    },
+    {
+      "id": "mistech:purified_crown",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " B ",
+    "CAC",
+    "C C"
+  ],
+  "key": {
+    "B": "minecraft:amethyst_block",
+    "C": "minecraft:amethyst_shard",
+    "A": "mistech:impure_magic_shard"
+  },
+  "result": {
+    "id": "mistech:collector_statue",
+    "count": 1
+  }
+}

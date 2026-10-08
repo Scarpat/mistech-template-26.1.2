@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "ingredient": "#c:raw_materials/mithril",
+  "result": {
+    "id": "mistech:mithril_ingot"
+  },
+  "experience": 1.0,
+  "cookingtime": 100
+}

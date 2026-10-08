@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=east,lit=false,magic=false": {
+      "model": "mistech:block/incense_holder"
+    },
+    "facing=east,lit=false,magic=true": {
+      "model": "mistech:block/incense_holder"
+    },
+    "facing=east,lit=true,magic=false": {
+      "model": "mistech:block/incense_holder_lit"
+    },
+    "facing=east,lit=true,magic=true": {
+      "model": "mistech:block/incense_holder_magic_lit"
+    },
+    "facing=south,lit=false,magic=false": {
+      "model": "mistech:block/incense_holder",
+      "y": 90
+    },
+    "facing=south,lit=false,magic=true": {
+      "model": "mistech:block/incense_holder",
+      "y": 90
+    },
+    "facing=south,lit=true,magic=false": {
+      "model": "mistech:block/incense_holder_lit",
+      "y": 90
+    },
+    "facing=south,lit=true,magic=true": {
+      "model": "mistech:block/incense_holder_magic_lit",
+      "y": 90
+    },
+    "facing=west,lit=false,magic=false": {
+      "model": "mistech:block/incense_holder",
+      "y": 180
+    },
+    "facing=west,lit=false,magic=true": {
+      "model": "mistech:block/incense_holder",
+      "y": 180
+    },
+    "facing=west,lit=true,magic=false": {
+      "model": "mistech:block/incense_holder_lit",
+      "y": 180
+    },
+    "facing=west,lit=true,magic=true": {
+      "model": "mistech:block/incense_holder_magic_lit",
+      "y": 180
+    },
+    "facing=north,lit=false,magic=false": {
+      "model": "mistech:block/incense_holder",
+      "y": 270
+    },
+    "facing=north,lit=false,magic=true": {
+      "model": "mistech:block/incense_holder",
+      "y": 270
+    },
+    "facing=north,lit=true,magic=false": {
+      "model": "mistech:block/incense_holder_lit",
+      "y": 270
+    },
+    "facing=north,lit=true,magic=true": {
+      "model": "mistech:block/incense_holder_magic_lit",
+      "y": 270
+    }
+  }
+}

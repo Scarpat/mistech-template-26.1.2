@@ -1,0 +1,8 @@
+{
+  "parent": "mistech:block/arcane_node",
+  "textures": {
+    "particle": "minecraft:block/amethyst_block",
+    "base": "minecraft:block/purple_terracotta",
+    "crystal": "minecraft:block/amethyst_block"
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "mistech:block/glass_jar",
+    "glass": "mistech:block/glass_jar",
+    "lid": "minecraft:block/oak_planks"
+  },
+  "elements": [
+    {
+      "from": [
+        3,
+        0,
+        3
+      ],
+      "to": [
+        13,
+        11,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            5,
+            13,
+            16
+          ],
+          "texture": "#glass"
+        },
+        "south": {
+          "uv": [
+            3,
+            5,
+            13,
+            16
+          ],
+          "texture": "#glass"
+        },
+        "west": {
+          "uv": [
+            3,
+            5,
+            13,
+            16
+          ],
+          "texture": "#glass"
+        },
+        "east": {
+          "uv": [
+            3,
+            5,
+            13,
+            16
+          ],
+          "texture": "#glass"
+        },
+        "down": {
+          "uv": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "texture": "#glass",
+          "cullface": "down"
+        },
+        "up": {
+          "uv": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "texture": "#glass"
+        }
+      }
+    },
+    {
+      "from": [
+        3.5,
+        11,
+        3.5
+      ],
+      "to": [
+        12.5,
+        13,
+        12.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3.5,
+            3,
+            12.5,
+            5
+          ],
+          "texture": "#lid"
+        },
+        "south": {
+          "uv": [
+            3.5,
+            3,
+            12.5,
+            5
+          ],
+          "texture": "#lid"
+        },
+        "west": {
+          "uv": [
+            3.5,
+            3,
+            12.5,
+            5
+          ],
+          "texture": "#lid"
+        },
+        "east": {
+          "uv": [
+            3.5,
+            3,
+            12.5,
+            5
+          ],
+          "texture": "#lid"
+        },
+        "down": {
+          "uv": [
+            3.5,
+            3.5,
+            12.5,
+            12.5
+          ],
+          "texture": "#lid"
+        },
+        "up": {
+          "uv": [
+            3.5,
+            3.5,
+            12.5,
+            12.5
+          ],
+          "texture": "#lid"
+        }
+      }
+    },
+    {
+      "from": [
+        6.5,
+        13,
+        6.5
+      ],
+      "to": [
+        9.5,
+        13.6,
+        9.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6.5,
+            2.4000000000000004,
+            9.5,
+            3
+          ],
+          "texture": "#lid"
+        },
+        "south": {
+          "uv": [
+            6.5,
+            2.4000000000000004,
+            9.5,
+            3
+          ],
+          "texture": "#lid"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            2.4000000000000004,
+            9.5,
+            3
+          ],
+          "texture": "#lid"
+        },
+        "east": {
+          "uv": [
+            6.5,
+            2.4000000000000004,
+            9.5,
+            3
+          ],
+          "texture": "#lid"
+        },
+        "down": {
+          "uv": [
+            6.5,
+            6.5,
+            9.5,
+            9.5
+          ],
+          "texture": "#lid"
+        },
+        "up": {
+          "uv": [
+            6.5,
+            6.5,
+            9.5,
+            9.5
+          ],
+          "texture": "#lid"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "mistech:block/chalk_mark",
+        "y": 0
+      },
+      {
+        "model": "mistech:block/chalk_mark",
+        "y": 90
+      },
+      {
+        "model": "mistech:block/chalk_mark",
+        "y": 180
+      },
+      {
+        "model": "mistech:block/chalk_mark",
+        "y": 270
+      }
+    ]
+  }
+}

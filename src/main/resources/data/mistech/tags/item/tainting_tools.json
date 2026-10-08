@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:impure_pickaxe",
+    "mistech:impure_axe",
+    "mistech:impure_hoe",
+    "mistech:ritual_dagger",
+    "mistech:infernal_pickaxe",
+    "mistech:infernal_axe",
+    "mistech:infernal_hoe",
+    "mistech:infernal_dagger"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " I ",
+    "IFI",
+    " I "
+  ],
+  "key": {
+    "I": "mistech:ice_rune",
+    "F": "minecraft:furnace"
+  },
+  "result": {
+    "id": "mistech:condenser",
+    "count": 1
+  }
+}

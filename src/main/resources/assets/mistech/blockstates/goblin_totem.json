@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,solved=false": {
+      "model": "mistech:block/goblin_totem"
+    },
+    "facing=east,solved=false": {
+      "model": "mistech:block/goblin_totem",
+      "y": 90
+    },
+    "facing=south,solved=false": {
+      "model": "mistech:block/goblin_totem",
+      "y": 180
+    },
+    "facing=west,solved=false": {
+      "model": "mistech:block/goblin_totem",
+      "y": 270
+    },
+    "facing=north,solved=true": {
+      "model": "mistech:block/goblin_totem_solved"
+    },
+    "facing=east,solved=true": {
+      "model": "mistech:block/goblin_totem_solved",
+      "y": 90
+    },
+    "facing=south,solved=true": {
+      "model": "mistech:block/goblin_totem_solved",
+      "y": 180
+    },
+    "facing=west,solved=true": {
+      "model": "mistech:block/goblin_totem_solved",
+      "y": 270
+    }
+  }
+}

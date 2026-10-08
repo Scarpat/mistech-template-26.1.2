@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "filled=false,running=false": {
+      "model": "mistech:block/impure_altar_t2"
+    },
+    "filled=false,running=true": {
+      "model": "mistech:block/impure_altar_running_t2"
+    },
+    "filled=true,running=false": {
+      "model": "mistech:block/impure_altar_filled_t2"
+    },
+    "filled=true,running=true": {
+      "model": "mistech:block/impure_altar_filled_running_t2"
+    }
+  }
+}

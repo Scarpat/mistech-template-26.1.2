@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=north,keys=0": {
+      "model": "mistech:block/bone_lock_0"
+    },
+    "facing=east,keys=0": {
+      "model": "mistech:block/bone_lock_0",
+      "y": 90
+    },
+    "facing=south,keys=0": {
+      "model": "mistech:block/bone_lock_0",
+      "y": 180
+    },
+    "facing=west,keys=0": {
+      "model": "mistech:block/bone_lock_0",
+      "y": 270
+    },
+    "facing=north,keys=1": {
+      "model": "mistech:block/bone_lock_1"
+    },
+    "facing=east,keys=1": {
+      "model": "mistech:block/bone_lock_1",
+      "y": 90
+    },
+    "facing=south,keys=1": {
+      "model": "mistech:block/bone_lock_1",
+      "y": 180
+    },
+    "facing=west,keys=1": {
+      "model": "mistech:block/bone_lock_1",
+      "y": 270
+    },
+    "facing=north,keys=2": {
+      "model": "mistech:block/bone_lock_2"
+    },
+    "facing=east,keys=2": {
+      "model": "mistech:block/bone_lock_2",
+      "y": 90
+    },
+    "facing=south,keys=2": {
+      "model": "mistech:block/bone_lock_2",
+      "y": 180
+    },
+    "facing=west,keys=2": {
+      "model": "mistech:block/bone_lock_2",
+      "y": 270
+    },
+    "facing=north,keys=3": {
+      "model": "mistech:block/bone_lock_3"
+    },
+    "facing=east,keys=3": {
+      "model": "mistech:block/bone_lock_3",
+      "y": 90
+    },
+    "facing=south,keys=3": {
+      "model": "mistech:block/bone_lock_3",
+      "y": 180
+    },
+    "facing=west,keys=3": {
+      "model": "mistech:block/bone_lock_3",
+      "y": 270
+    }
+  }
+}

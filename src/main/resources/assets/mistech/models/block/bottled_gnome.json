@@ -1,0 +1,1281 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "mistech:block/glass_jar",
+    "glass": "mistech:block/glass_jar",
+    "lid": "minecraft:block/oak_planks",
+    "gnome": "mistech:block/gnome_model"
+  },
+  "elements": [
+    {
+      "name": "gnome_head",
+      "from": [
+        6.64,
+        0.88,
+        6.56
+      ],
+      "to": [
+        9.36,
+        4.28,
+        9.28
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            1.0,
+            2.75,
+            2.0,
+            4.0
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            2.75,
+            4.0,
+            4.0
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            2.75,
+            3.0,
+            4.0
+          ],
+          "texture": "#gnome"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            2.75,
+            1.0,
+            4.0
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            1.0,
+            1.75,
+            2.0,
+            2.75
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            2.0,
+            1.75,
+            3.0,
+            2.75
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "name": "gnome_beard",
+      "from": [
+        6.64,
+        0.2,
+        5.88
+      ],
+      "to": [
+        9.36,
+        2.24,
+        7.24
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3.0,
+            6.75,
+            4.0,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            4.5,
+            6.75,
+            5.5,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            4.0,
+            6.75,
+            4.5,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "east": {
+          "uv": [
+            2.5,
+            6.75,
+            3.0,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            3.0,
+            6.25,
+            4.0,
+            6.75
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            4.0,
+            6.25,
+            5.0,
+            6.75
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "name": "gnome_nose",
+      "from": [
+        7.32,
+        1.56,
+        5.2
+      ],
+      "to": [
+        8.68,
+        2.92,
+        7.24
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7.25,
+            7.0,
+            7.75,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            8.5,
+            7.0,
+            9.0,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            7.75,
+            7.0,
+            8.5,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "east": {
+          "uv": [
+            6.5,
+            7.0,
+            7.25,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            7.25,
+            6.25,
+            7.75,
+            7.0
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            7.75,
+            6.25,
+            8.25,
+            7.0
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "name": "gnome_foot_r",
+      "from": [
+        8.68,
+        0.2,
+        5.88
+      ],
+      "to": [
+        10.04,
+        1.56,
+        8.6
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5.0,
+            2.75,
+            5.5,
+            3.25
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            6.5,
+            2.75,
+            7.0,
+            3.25
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            5.5,
+            2.75,
+            6.5,
+            3.25
+          ],
+          "texture": "#gnome"
+        },
+        "east": {
+          "uv": [
+            4.0,
+            2.75,
+            5.0,
+            3.25
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            5.0,
+            1.75,
+            5.5,
+            2.75
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            5.5,
+            1.75,
+            6.0,
+            2.75
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "name": "gnome_foot_l",
+      "from": [
+        5.96,
+        0.2,
+        5.88
+      ],
+      "to": [
+        7.32,
+        1.56,
+        8.6
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5.0,
+            4.25,
+            5.5,
+            4.75
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            6.5,
+            4.25,
+            7.0,
+            4.75
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            5.5,
+            4.25,
+            6.5,
+            4.75
+          ],
+          "texture": "#gnome"
+        },
+        "east": {
+          "uv": [
+            4.0,
+            4.25,
+            5.0,
+            4.75
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            5.0,
+            3.25,
+            5.5,
+            4.25
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            5.5,
+            3.25,
+            6.0,
+            4.25
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "name": "gnome_hand_r",
+      "from": [
+        9.36,
+        1.56,
+        7.24
+      ],
+      "to": [
+        10.72,
+        2.92,
+        8.6
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7.5,
+            3.0,
+            8.0,
+            3.5
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            8.5,
+            3.0,
+            9.0,
+            3.5
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            8.0,
+            3.0,
+            8.5,
+            3.5
+          ],
+          "texture": "#gnome"
+        },
+        "east": {
+          "uv": [
+            7.0,
+            3.0,
+            7.5,
+            3.5
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            7.5,
+            2.5,
+            8.0,
+            3.0
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            8.0,
+            2.5,
+            8.5,
+            3.0
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "name": "gnome_hand_l",
+      "from": [
+        5.28,
+        1.56,
+        7.24
+      ],
+      "to": [
+        6.64,
+        2.92,
+        8.6
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7.5,
+            4.0,
+            8.0,
+            4.5
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            8.5,
+            4.0,
+            9.0,
+            4.5
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            8.0,
+            4.0,
+            8.5,
+            4.5
+          ],
+          "texture": "#gnome"
+        },
+        "east": {
+          "uv": [
+            7.0,
+            4.0,
+            7.5,
+            4.5
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            7.5,
+            3.5,
+            8.0,
+            4.0
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            8.0,
+            3.5,
+            8.5,
+            4.0
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "name": "gnome_brim",
+      "from": [
+        5.96,
+        3.6,
+        5.88
+      ],
+      "to": [
+        10.04,
+        4.28,
+        9.96
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            1.5,
+            1.5,
+            3.0,
+            1.75
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            4.5,
+            1.5,
+            6.0,
+            1.75
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            3.0,
+            1.5,
+            4.5,
+            1.75
+          ],
+          "texture": "#gnome"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            1.5,
+            1.5,
+            1.75
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            1.5,
+            0.0,
+            3.0,
+            1.5
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            4.5,
+            1.5
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "name": "gnome_hat1",
+      "from": [
+        6.64,
+        4.28,
+        6.56
+      ],
+      "to": [
+        9.36,
+        5.64,
+        9.28
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            1.0,
+            5.0,
+            2.0,
+            5.75
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            3.0,
+            5.0,
+            4.0,
+            5.75
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            5.0,
+            3.0,
+            5.75
+          ],
+          "texture": "#gnome"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            5.0,
+            1.0,
+            5.75
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            1.0,
+            4.0,
+            2.0,
+            5.0
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            2.0,
+            4.0,
+            3.0,
+            5.0
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "name": "gnome_hat2",
+      "from": [
+        6.98,
+        5.64,
+        6.9
+      ],
+      "to": [
+        9.02,
+        7.0,
+        8.94
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6.5,
+            0.5,
+            7.5,
+            1.25
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            8.0,
+            0.5,
+            9.0,
+            1.25
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            7.5,
+            0.5,
+            8.0,
+            1.25
+          ],
+          "texture": "#gnome"
+        },
+        "east": {
+          "uv": [
+            6.0,
+            0.5,
+            6.5,
+            1.25
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            6.5,
+            0.0,
+            7.5,
+            0.5
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            7.5,
+            0.0,
+            8.5,
+            0.5
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "name": "gnome_hat3",
+      "from": [
+        7.32,
+        7.0,
+        7.58
+      ],
+      "to": [
+        8.68,
+        8.02,
+        9.28
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0.75,
+            6.5,
+            1.25,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            2.0,
+            6.5,
+            2.5,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            1.25,
+            6.5,
+            2.0,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "east": {
+          "uv": [
+            0.0,
+            6.5,
+            0.75,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            0.75,
+            5.75,
+            1.25,
+            6.5
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            1.25,
+            5.75,
+            1.75,
+            6.5
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "name": "gnome_hat4",
+      "from": [
+        7.32,
+        7.0,
+        9.28
+      ],
+      "to": [
+        8.68,
+        8.36,
+        10.64
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7.5,
+            1.75,
+            8.0,
+            2.5
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            8.5,
+            1.75,
+            9.0,
+            2.5
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            8.0,
+            1.75,
+            8.5,
+            2.5
+          ],
+          "texture": "#gnome"
+        },
+        "east": {
+          "uv": [
+            7.0,
+            1.75,
+            7.5,
+            2.5
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            7.5,
+            1.25,
+            8.0,
+            1.75
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            8.0,
+            1.25,
+            8.5,
+            1.75
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "name": "gnome_tip",
+      "from": [
+        7.49,
+        5.98,
+        10.3
+      ],
+      "to": [
+        8.51,
+        7.34,
+        11.32
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            7.25,
+            4.75,
+            7.75,
+            5.25
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            8.0,
+            4.75,
+            8.5,
+            5.25
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            7.75,
+            4.75,
+            8.0,
+            5.25
+          ],
+          "texture": "#gnome"
+        },
+        "east": {
+          "uv": [
+            7.0,
+            4.75,
+            7.25,
+            5.25
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            7.25,
+            4.5,
+            7.75,
+            4.75
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            7.75,
+            4.5,
+            8.25,
+            4.75
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "name": "gnome_staff",
+      "from": [
+        10.72,
+        0.88,
+        8.26
+      ],
+      "to": [
+        11.4,
+        8.36,
+        8.94
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            5.75,
+            6.5,
+            6.0,
+            9.25
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            6.25,
+            6.5,
+            6.5,
+            9.25
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            6.0,
+            6.5,
+            6.25,
+            9.25
+          ],
+          "texture": "#gnome"
+        },
+        "east": {
+          "uv": [
+            5.5,
+            6.5,
+            5.75,
+            9.25
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            5.75,
+            6.25,
+            6.0,
+            6.5
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            6.0,
+            6.25,
+            6.25,
+            6.5
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "name": "gnome_orb",
+      "from": [
+        10.04,
+        7.68,
+        7.58
+      ],
+      "to": [
+        12.08,
+        9.72,
+        9.62
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            4.75,
+            5.5,
+            5.5,
+            6.25
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            6.25,
+            5.5,
+            7.0,
+            6.25
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            5.5,
+            5.5,
+            6.25,
+            6.25
+          ],
+          "texture": "#gnome"
+        },
+        "east": {
+          "uv": [
+            4.0,
+            5.5,
+            4.75,
+            6.25
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            4.75,
+            4.75,
+            5.5,
+            5.5
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        },
+        "down": {
+          "uv": [
+            5.5,
+            4.75,
+            6.25,
+            5.5
+          ],
+          "texture": "#gnome",
+          "rotation": 180
+        }
+      }
+    },
+    {
+      "from": [
+        3,
+        0,
+        3
+      ],
+      "to": [
+        13,
+        11,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            5,
+            13,
+            16
+          ],
+          "texture": "#glass"
+        },
+        "south": {
+          "uv": [
+            3,
+            5,
+            13,
+            16
+          ],
+          "texture": "#glass"
+        },
+        "west": {
+          "uv": [
+            3,
+            5,
+            13,
+            16
+          ],
+          "texture": "#glass"
+        },
+        "east": {
+          "uv": [
+            3,
+            5,
+            13,
+            16
+          ],
+          "texture": "#glass"
+        },
+        "down": {
+          "uv": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "texture": "#glass",
+          "cullface": "down"
+        },
+        "up": {
+          "uv": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "texture": "#glass"
+        }
+      }
+    },
+    {
+      "from": [
+        3.5,
+        11,
+        3.5
+      ],
+      "to": [
+        12.5,
+        13,
+        12.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3.5,
+            3,
+            12.5,
+            5
+          ],
+          "texture": "#lid"
+        },
+        "south": {
+          "uv": [
+            3.5,
+            3,
+            12.5,
+            5
+          ],
+          "texture": "#lid"
+        },
+        "west": {
+          "uv": [
+            3.5,
+            3,
+            12.5,
+            5
+          ],
+          "texture": "#lid"
+        },
+        "east": {
+          "uv": [
+            3.5,
+            3,
+            12.5,
+            5
+          ],
+          "texture": "#lid"
+        },
+        "down": {
+          "uv": [
+            3.5,
+            3.5,
+            12.5,
+            12.5
+          ],
+          "texture": "#lid"
+        },
+        "up": {
+          "uv": [
+            3.5,
+            3.5,
+            12.5,
+            12.5
+          ],
+          "texture": "#lid"
+        }
+      }
+    },
+    {
+      "from": [
+        6.5,
+        13,
+        6.5
+      ],
+      "to": [
+        9.5,
+        13.6,
+        9.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6.5,
+            2.4000000000000004,
+            9.5,
+            3
+          ],
+          "texture": "#lid"
+        },
+        "south": {
+          "uv": [
+            6.5,
+            2.4000000000000004,
+            9.5,
+            3
+          ],
+          "texture": "#lid"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            2.4000000000000004,
+            9.5,
+            3
+          ],
+          "texture": "#lid"
+        },
+        "east": {
+          "uv": [
+            6.5,
+            2.4000000000000004,
+            9.5,
+            3
+          ],
+          "texture": "#lid"
+        },
+        "down": {
+          "uv": [
+            6.5,
+            6.5,
+            9.5,
+            9.5
+          ],
+          "texture": "#lid"
+        },
+        "up": {
+          "uv": [
+            6.5,
+            6.5,
+            9.5,
+            9.5
+          ],
+          "texture": "#lid"
+        }
+      }
+    }
+  ]
+}

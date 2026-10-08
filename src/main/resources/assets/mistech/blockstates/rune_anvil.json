@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "mistech:block/rune_anvil",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "mistech:block/rune_anvil",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "mistech:block/rune_anvil"
+    },
+    "facing=west": {
+      "model": "mistech:block/rune_anvil",
+      "y": 90
+    }
+  }
+}

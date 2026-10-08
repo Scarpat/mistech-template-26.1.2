@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:impure_hoe",
+    "mistech:mithril_hoe",
+    "mistech:pure_hoe",
+    "mistech:adamantine_hoe",
+    "mistech:orichalcum_hoe",
+    "mistech:pure_orichalcum_hoe",
+    "mistech:infernal_hoe"
+  ]
+}

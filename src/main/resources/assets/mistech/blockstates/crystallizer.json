@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "filled=false": {
+      "model": "mistech:block/crystallizer"
+    },
+    "filled=true": {
+      "model": "mistech:block/crystallizer_filled"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_right_open",
+  "textures": {
+    "bottom": "mistech:block/murky_door_bottom",
+    "top": "mistech:block/murky_door_top"
+  }
+}

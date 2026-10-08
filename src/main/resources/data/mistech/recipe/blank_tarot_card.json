@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:paper",
+    "minecraft:paper",
+    "minecraft:amethyst_shard",
+    "minecraft:gold_nugget"
+  ],
+  "result": {
+    "id": "mistech:blank_tarot_card",
+    "count": 2
+  }
+}

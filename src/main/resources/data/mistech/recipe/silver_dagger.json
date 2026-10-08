@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "  M",
+    " F ",
+    "S  "
+  ],
+  "key": {
+    "M": "mistech:mithril_ingot",
+    "F": "mistech:werewolf_fang",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "mistech:silver_dagger"
+  }
+}

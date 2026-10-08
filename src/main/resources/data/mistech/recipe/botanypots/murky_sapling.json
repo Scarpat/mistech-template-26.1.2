@@ -1,0 +1,16 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "botanypots"
+    }
+  ],
+  "type": "botanypots:block_derived_crop",
+  "block": "mistech:murky_sapling",
+  "drops": [
+    {
+      "type": "botanypots:loot_table",
+      "table_id": "mistech:botanypots/murky_tree"
+    }
+  ]
+}

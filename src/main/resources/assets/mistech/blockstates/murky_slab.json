@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "mistech:block/murky_slab"
+    },
+    "type=double": {
+      "model": "mistech:block/murky_planks"
+    },
+    "type=top": {
+      "model": "mistech:block/murky_slab_top"
+    }
+  }
+}

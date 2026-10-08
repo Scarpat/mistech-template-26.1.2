@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "tools",
+  "pattern": [
+    " G ",
+    "GEG",
+    " M "
+  ],
+  "key": {
+    "G": "minecraft:glass_pane",
+    "E": "minecraft:ender_eye",
+    "M": "mistech:mithril_ingot"
+  },
+  "result": {
+    "id": "mistech:archive_mirror",
+    "count": 1
+  }
+}

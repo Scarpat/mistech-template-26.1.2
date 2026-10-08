@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:netherite_pickaxe",
+  "ingredients": [
+    "mistech:mithril_ingot",
+    "mistech:mithril_ingot",
+    "mistech:impure_magic_block",
+    "mistech:arcane_rune"
+  ],
+  "essence": 4,
+  "duration": 400,
+  "condition": "none",
+  "min_tier": 1,
+  "result": {
+    "id": "mistech:mithril_pickaxe"
+  },
+  "copy_components": true,
+  "effect": "forge"
+}

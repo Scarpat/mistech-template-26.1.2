@@ -1,0 +1,258 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:block_state",
+    "block_state_property": "pale",
+    "cases": [
+      {
+        "when": "true",
+        "model": {
+          "type": "minecraft:select",
+          "property": "minecraft:block_state",
+          "block_state_property": "color",
+          "cases": [
+            {
+              "when": "white",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_white_pale"
+              }
+            },
+            {
+              "when": "orange",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_orange_pale"
+              }
+            },
+            {
+              "when": "magenta",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_magenta_pale"
+              }
+            },
+            {
+              "when": "light_blue",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_light_blue_pale"
+              }
+            },
+            {
+              "when": "yellow",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_yellow_pale"
+              }
+            },
+            {
+              "when": "lime",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_lime_pale"
+              }
+            },
+            {
+              "when": "pink",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_pink_pale"
+              }
+            },
+            {
+              "when": "gray",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_gray_pale"
+              }
+            },
+            {
+              "when": "light_gray",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_light_gray_pale"
+              }
+            },
+            {
+              "when": "cyan",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_cyan_pale"
+              }
+            },
+            {
+              "when": "purple",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_purple_pale"
+              }
+            },
+            {
+              "when": "blue",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_blue_pale"
+              }
+            },
+            {
+              "when": "brown",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_brown_pale"
+              }
+            },
+            {
+              "when": "green",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_green_pale"
+              }
+            },
+            {
+              "when": "red",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_red_pale"
+              }
+            },
+            {
+              "when": "black",
+              "model": {
+                "type": "minecraft:model",
+                "model": "mistech:block/writing_table_black_pale"
+              }
+            }
+          ],
+          "fallback": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_white_pale"
+          }
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:select",
+      "property": "minecraft:block_state",
+      "block_state_property": "color",
+      "cases": [
+        {
+          "when": "white",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_white"
+          }
+        },
+        {
+          "when": "orange",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_orange"
+          }
+        },
+        {
+          "when": "magenta",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_magenta"
+          }
+        },
+        {
+          "when": "light_blue",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_light_blue"
+          }
+        },
+        {
+          "when": "yellow",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_yellow"
+          }
+        },
+        {
+          "when": "lime",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_lime"
+          }
+        },
+        {
+          "when": "pink",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_pink"
+          }
+        },
+        {
+          "when": "gray",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_gray"
+          }
+        },
+        {
+          "when": "light_gray",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_light_gray"
+          }
+        },
+        {
+          "when": "cyan",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_cyan"
+          }
+        },
+        {
+          "when": "purple",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_purple"
+          }
+        },
+        {
+          "when": "blue",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_blue"
+          }
+        },
+        {
+          "when": "brown",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_brown"
+          }
+        },
+        {
+          "when": "green",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_green"
+          }
+        },
+        {
+          "when": "red",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_red"
+          }
+        },
+        {
+          "when": "black",
+          "model": {
+            "type": "minecraft:model",
+            "model": "mistech:block/writing_table_black"
+          }
+        }
+      ],
+      "fallback": {
+        "type": "minecraft:model",
+        "model": "mistech:block/writing_table_white"
+      }
+    }
+  }
+}

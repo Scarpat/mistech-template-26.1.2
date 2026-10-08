@@ -1,0 +1,16 @@
+{
+  "type": "mistech:ritual",
+  "sanctuary": true,
+  "catalyst": "minecraft:emerald",
+  "ingredients": [
+    "mistech:coarse_salt",
+    "minecraft:bread",
+    "mistech:purified_essence_bottle",
+    "mistech:light_rune"
+  ],
+  "essence": 3,
+  "duration": 400,
+  "condition": "day",
+  "action": "village_blessing",
+  "effect": "luck"
+}

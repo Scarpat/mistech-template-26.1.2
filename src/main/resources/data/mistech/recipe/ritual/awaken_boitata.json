@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:blaze_rod",
+  "ingredients": [
+    "mistech:fire_rune",
+    "mistech:fire_rune",
+    "mistech:magma_rune",
+    "mistech:lunar_blood",
+    "mistech:lunar_blood",
+    "minecraft:magma_block",
+    "mistech:murky_log",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 8,
+  "duration": 700,
+  "condition": "blood_moon",
+  "min_tier": 3,
+  "action": "awaken_boitata",
+  "effect": "fire"
+}

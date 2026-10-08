@@ -1,0 +1,16 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:lodestone",
+  "ingredients": [
+    "mistech:space_rune",
+    "mistech:time_rune",
+    "mistech:time_rune",
+    "minecraft:obsidian",
+    "minecraft:ender_pearl"
+  ],
+  "essence": 4,
+  "duration": 400,
+  "min_tier": 2,
+  "action": "vigil",
+  "effect": "astral"
+}

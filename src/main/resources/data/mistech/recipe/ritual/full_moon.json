@@ -1,0 +1,15 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:clock",
+  "ingredients": [
+    "mistech:time_rune",
+    "mistech:light_rune",
+    "mistech:darkness_rune",
+    "minecraft:ender_eye"
+  ],
+  "essence": 5,
+  "duration": 600,
+  "condition": "night",
+  "action": "full_moon",
+  "effect": "astral"
+}

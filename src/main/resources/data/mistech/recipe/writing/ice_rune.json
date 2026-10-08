@@ -1,0 +1,13 @@
+{
+  "type": "mistech:writing",
+  "ingredients": [
+    "minecraft:ice",
+    "minecraft:packed_ice",
+    "minecraft:blue_ice"
+  ],
+  "chalk_damage": 5,
+  "result": {
+    "id": "mistech:ice_rune",
+    "count": 1
+  }
+}

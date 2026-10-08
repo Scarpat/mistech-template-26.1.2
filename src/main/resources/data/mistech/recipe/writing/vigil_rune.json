@@ -1,0 +1,14 @@
+{
+  "type": "mistech:writing",
+  "ingredients": [
+    "minecraft:pale_moss_block",
+    "minecraft:open_eyeblossom",
+    "minecraft:resin_clump",
+    "mistech:darkness_rune"
+  ],
+  "chalk_damage": 15,
+  "result": {
+    "id": "mistech:vigil_rune",
+    "count": 1
+  }
+}

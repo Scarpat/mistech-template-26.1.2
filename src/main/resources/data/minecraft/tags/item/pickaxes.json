@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:impure_pickaxe",
+    "mistech:mithril_pickaxe",
+    "mistech:pure_pickaxe",
+    "mistech:adamantine_pickaxe",
+    "mistech:orichalcum_pickaxe",
+    "mistech:pure_orichalcum_pickaxe",
+    "mistech:infernal_pickaxe",
+    "mistech:volcanic_hammer"
+  ]
+}

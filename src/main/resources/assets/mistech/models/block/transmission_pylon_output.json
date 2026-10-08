@@ -1,0 +1,6 @@
+{
+  "parent": "mistech:block/transmission_pylon",
+  "textures": {
+    "crystal": "minecraft:block/gold_block"
+  }
+}

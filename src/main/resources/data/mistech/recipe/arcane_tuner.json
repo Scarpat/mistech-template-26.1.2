@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "tools",
+  "pattern": [
+    " M ",
+    " SM",
+    "R  "
+  ],
+  "key": {
+    "M": "mistech:mithril_ingot",
+    "S": "mistech:energy_rune",
+    "R": "minecraft:stick"
+  },
+  "result": {
+    "id": "mistech:arcane_tuner",
+    "count": 1
+  }
+}

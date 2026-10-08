@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "level=0,lit=false": {
+      "model": "mistech:block/essence_extractor"
+    },
+    "level=0,lit=true": {
+      "model": "mistech:block/essence_extractor_on"
+    },
+    "level=1,lit=false": {
+      "model": "mistech:block/essence_extractor_level1"
+    },
+    "level=1,lit=true": {
+      "model": "mistech:block/essence_extractor_level1_on"
+    },
+    "level=2,lit=false": {
+      "model": "mistech:block/essence_extractor_level2"
+    },
+    "level=2,lit=true": {
+      "model": "mistech:block/essence_extractor_level2_on"
+    },
+    "level=3,lit=false": {
+      "model": "mistech:block/essence_extractor_level3"
+    },
+    "level=3,lit=true": {
+      "model": "mistech:block/essence_extractor_level3_on"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:hemp_mage_hood",
+    "mistech:hemp_mage_robe",
+    "mistech:hemp_mage_pants",
+    "mistech:hemp_mage_shoes",
+    "mistech:initiate_mage_hood",
+    "mistech:initiate_mage_robe",
+    "mistech:initiate_mage_pants",
+    "mistech:initiate_mage_shoes",
+    "mistech:adept_mage_hood",
+    "mistech:adept_mage_robe",
+    "mistech:adept_mage_pants",
+    "mistech:adept_mage_shoes",
+    "mistech:archmage_mage_hood",
+    "mistech:archmage_mage_robe",
+    "mistech:archmage_mage_pants",
+    "mistech:archmage_mage_shoes"
+  ]
+}

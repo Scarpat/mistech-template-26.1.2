@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " FF",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "F": "minecraft:wither_rose",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "mistech:wither_rose_incense",
+    "count": 1
+  }
+}

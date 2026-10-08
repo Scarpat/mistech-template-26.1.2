@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "#c:ores/mithril",
+  "result": {
+    "id": "mistech:mithril_ingot"
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}

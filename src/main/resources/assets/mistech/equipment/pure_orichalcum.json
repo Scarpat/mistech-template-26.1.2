@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mistech:pure_orichalcum"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "mistech:pure_orichalcum"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mistech:pure_orichalcum"
+      }
+    ]
+  }
+}

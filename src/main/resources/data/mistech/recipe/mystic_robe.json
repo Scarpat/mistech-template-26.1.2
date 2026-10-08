@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "W W",
+    "WFW",
+    "WIW"
+  ],
+  "key": {
+    "W": "#minecraft:wool",
+    "F": "mistech:impure_magic_shard",
+    "I": "mistech:ice_rune"
+  },
+  "result": {
+    "id": "mistech:mystic_robe"
+  }
+}

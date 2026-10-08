@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SAS",
+    " B ",
+    "BBB"
+  ],
+  "key": {
+    "S": "minecraft:polished_blackstone_slab",
+    "A": "minecraft:amethyst_shard",
+    "B": "minecraft:polished_blackstone"
+  },
+  "result": {
+    "id": "mistech:magic_compressor",
+    "count": 1
+  }
+}

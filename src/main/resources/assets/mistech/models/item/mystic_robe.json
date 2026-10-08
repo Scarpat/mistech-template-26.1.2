@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mistech:item/mystic_robe",
+    "layer1": "mistech:item/mystic_robe_overlay"
+  }
+}

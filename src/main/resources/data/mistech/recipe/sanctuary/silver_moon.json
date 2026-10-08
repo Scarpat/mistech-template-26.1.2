@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ritual",
+  "sanctuary": true,
+  "catalyst": "mistech:pure_magic_shard",
+  "ingredients": [
+    "mistech:light_rune",
+    "mistech:light_rune",
+    "mistech:coarse_salt",
+    "mistech:purified_essence_bottle",
+    "mistech:mithril_ingot"
+  ],
+  "essence": 5,
+  "duration": 500,
+  "condition": "full_moon",
+  "action": "silver_moon",
+  "effect": "moon"
+}

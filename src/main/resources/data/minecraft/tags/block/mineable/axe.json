@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:incense_holder",
+    "mistech:writing_table",
+    "mistech:astrology_table",
+    "mistech:spatial_barrel",
+    "mistech:runic_tank",
+    "mistech:rune_confector",
+    "mistech:runic_harvester",
+    "mistech:runic_planter",
+    "mistech:runic_note_block",
+    "mistech:archive_terminal",
+    "mistech:tarot_table",
+    "mistech:magic_loom"
+  ]
+}

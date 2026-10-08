@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SX",
+    "XS"
+  ],
+  "key": {
+    "S": "mistech:pure_magic_shard",
+    "X": "mistech:coarse_salt"
+  },
+  "result": {
+    "id": "mistech:pure_magic_block",
+    "count": 1
+  }
+}

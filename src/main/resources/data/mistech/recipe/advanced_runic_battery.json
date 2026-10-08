@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "BIB",
+    "IVI",
+    "BIB"
+  ],
+  "key": {
+    "B": "mistech:runic_battery",
+    "I": "mistech:impure_magic_shard",
+    "V": "mistech:void_rune"
+  },
+  "result": {
+    "id": "mistech:advanced_runic_battery",
+    "count": 1
+  }
+}

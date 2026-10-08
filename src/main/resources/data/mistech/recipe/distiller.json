@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GBG",
+    "MCM",
+    "KEK"
+  ],
+  "key": {
+    "G": "minecraft:glass",
+    "B": "minecraft:brewing_stand",
+    "M": "mistech:mithril_ingot",
+    "C": "minecraft:cauldron",
+    "K": "minecraft:copper_block",
+    "E": "mistech:energy_rune"
+  },
+  "result": {
+    "id": "mistech:distiller",
+    "count": 1
+  }
+}

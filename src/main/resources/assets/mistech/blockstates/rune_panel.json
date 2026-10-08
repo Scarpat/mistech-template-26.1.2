@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=north,lit=false,solved=false": {
+      "model": "mistech:block/rune_panel"
+    },
+    "facing=east,lit=false,solved=false": {
+      "model": "mistech:block/rune_panel",
+      "y": 90
+    },
+    "facing=south,lit=false,solved=false": {
+      "model": "mistech:block/rune_panel",
+      "y": 180
+    },
+    "facing=west,lit=false,solved=false": {
+      "model": "mistech:block/rune_panel",
+      "y": 270
+    },
+    "facing=north,lit=false,solved=true": {
+      "model": "mistech:block/rune_panel"
+    },
+    "facing=east,lit=false,solved=true": {
+      "model": "mistech:block/rune_panel",
+      "y": 90
+    },
+    "facing=south,lit=false,solved=true": {
+      "model": "mistech:block/rune_panel",
+      "y": 180
+    },
+    "facing=west,lit=false,solved=true": {
+      "model": "mistech:block/rune_panel",
+      "y": 270
+    },
+    "facing=north,lit=true,solved=false": {
+      "model": "mistech:block/rune_panel_on"
+    },
+    "facing=east,lit=true,solved=false": {
+      "model": "mistech:block/rune_panel_on",
+      "y": 90
+    },
+    "facing=south,lit=true,solved=false": {
+      "model": "mistech:block/rune_panel_on",
+      "y": 180
+    },
+    "facing=west,lit=true,solved=false": {
+      "model": "mistech:block/rune_panel_on",
+      "y": 270
+    },
+    "facing=north,lit=true,solved=true": {
+      "model": "mistech:block/rune_panel_on"
+    },
+    "facing=east,lit=true,solved=true": {
+      "model": "mistech:block/rune_panel_on",
+      "y": 90
+    },
+    "facing=south,lit=true,solved=true": {
+      "model": "mistech:block/rune_panel_on",
+      "y": 180
+    },
+    "facing=west,lit=true,solved=true": {
+      "model": "mistech:block/rune_panel_on",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:adept_mage_shoes",
+  "ingredients": [
+    "mistech:magic_cloth",
+    "mistech:magic_cloth",
+    "mistech:star_fragment",
+    "mistech:arcane_rune",
+    "mistech:space_rune",
+    "mistech:time_rune"
+  ],
+  "essence": 6,
+  "duration": 600,
+  "condition": "night",
+  "min_tier": 3,
+  "result": {
+    "id": "mistech:archmage_mage_shoes"
+  },
+  "copy_components": true,
+  "effect": "astral"
+}

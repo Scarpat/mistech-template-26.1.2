@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:amulet_blank",
+  "ingredients": [
+    "mistech:time_rune",
+    "mistech:time_rune",
+    "minecraft:clock",
+    "minecraft:sand",
+    "minecraft:glass",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 4,
+  "duration": 400,
+  "condition": "none",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:pocket_hourglass"
+  },
+  "effect": "astral"
+}

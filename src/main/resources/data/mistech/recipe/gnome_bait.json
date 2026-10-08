@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mistech:yellow_mushroom",
+    "mistech:dried_tobacco_leaf",
+    "mistech:dried_hemp_leaf"
+  ],
+  "result": {
+    "id": "mistech:gnome_bait",
+    "count": 1
+  }
+}

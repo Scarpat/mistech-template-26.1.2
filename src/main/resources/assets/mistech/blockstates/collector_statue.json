@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mistech:block/collector_statue"
+    },
+    "facing=east": {
+      "model": "mistech:block/collector_statue",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mistech:block/collector_statue",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mistech:block/collector_statue",
+      "y": 270
+    }
+  }
+}

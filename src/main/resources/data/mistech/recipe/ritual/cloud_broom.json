@@ -1,0 +1,22 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:broom",
+  "ingredients": [
+    "mistech:cloud_rune",
+    "mistech:cloud_rune",
+    "mistech:air_rune",
+    "mistech:air_rune",
+    "minecraft:phantom_membrane",
+    "minecraft:phantom_membrane",
+    "mistech:orichalcum_block",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 6,
+  "duration": 600,
+  "condition": "none",
+  "min_tier": 3,
+  "result": {
+    "id": "mistech:cloud_broom"
+  },
+  "effect": "mist"
+}

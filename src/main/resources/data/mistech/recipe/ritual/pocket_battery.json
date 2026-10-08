@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:advanced_runic_battery",
+  "ingredients": [
+    "mistech:energy_rune",
+    "mistech:energy_rune",
+    "mistech:arcane_rune",
+    "mistech:arcane_rune"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "none",
+  "result": {
+    "id": "mistech:pocket_battery"
+  },
+  "copy_components": true,
+  "min_tier": 1,
+  "effect": "storm"
+}

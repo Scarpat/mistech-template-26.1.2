@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ritual",
+  "sanctuary": true,
+  "catalyst": "minecraft:water_bucket",
+  "ingredients": [
+    "mistech:water_rune",
+    "mistech:water_rune",
+    "mistech:coarse_salt",
+    "mistech:rue_leaf",
+    "mistech:purified_essence_bottle"
+  ],
+  "essence": 3,
+  "duration": 400,
+  "condition": "rain",
+  "action": "blessed_rain",
+  "effect": "mist"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "OEO",
+    "OWO",
+    "LOD"
+  ],
+  "key": {
+    "O": "minecraft:obsidian",
+    "E": "minecraft:ender_eye",
+    "W": "mistech:water_rune",
+    "L": "mistech:light_rune",
+    "D": "mistech:darkness_rune"
+  },
+  "result": {
+    "id": "mistech:essence_extractor",
+    "count": 1
+  }
+}

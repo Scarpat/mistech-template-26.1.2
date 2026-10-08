@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mistech:dried_hemp_leaf",
+    "minecraft:paper"
+  ],
+  "result": {
+    "id": "mistech:joint",
+    "count": 1
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "mistech:block/spatial_anchor_lower"
+    },
+    "half=upper": {
+      "model": "mistech:block/spatial_anchor_upper"
+    }
+  }
+}

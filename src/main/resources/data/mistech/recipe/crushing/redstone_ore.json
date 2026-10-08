@@ -1,0 +1,9 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "#c:ores/redstone",
+  "result": {
+    "id": "minecraft:redstone",
+    "count": 8
+  },
+  "rune_bonus": true
+}

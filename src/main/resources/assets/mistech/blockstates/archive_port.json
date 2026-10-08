@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "mistech:block/archive_port"
+    },
+    "facing=down": {
+      "model": "mistech:block/archive_port",
+      "x": 180
+    },
+    "facing=north": {
+      "model": "mistech:block/archive_port",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "mistech:block/archive_port",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mistech:block/archive_port",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east": {
+      "model": "mistech:block/archive_port",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

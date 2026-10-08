@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:murky_bow",
+    "mistech:mithril_bow",
+    "mistech:adamantine_bow",
+    "mistech:orichalcum_bow",
+    "mistech:pure_orichalcum_bow"
+  ]
+}

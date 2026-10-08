@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "tools",
+  "pattern": [
+    "  A",
+    " C ",
+    "S  "
+  ],
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "C": "minecraft:clay_ball",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "mistech:golem_wand",
+    "count": 1
+  }
+}

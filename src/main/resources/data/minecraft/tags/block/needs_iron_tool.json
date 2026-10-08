@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:impure_magic_block",
+    "mistech:mithril_ore",
+    "mistech:deepslate_mithril_ore",
+    "mistech:mithril_obelisk",
+    "mistech:pure_magic_block",
+    "mistech:sanctuary_font",
+    "mistech:rune_anvil",
+    "mistech:mithril_block",
+    "mistech:spatial_anchor"
+  ]
+}

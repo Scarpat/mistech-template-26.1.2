@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "particle": "mistech:block/purified_dreamcatcher",
+    "tex": "mistech:block/purified_dreamcatcher"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        15.4
+      ],
+      "to": [
+        16,
+        16,
+        15.4
+      ],
+      "shade": false,
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#tex"
+        },
+        "south": {
+          "uv": [
+            16,
+            0,
+            0,
+            16
+          ],
+          "texture": "#tex"
+        }
+      }
+    }
+  ]
+}

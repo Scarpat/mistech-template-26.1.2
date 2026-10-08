@@ -1,0 +1,147 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "mistech:block/incense_holder_board",
+    "board": "mistech:block/incense_holder_board",
+    "collar": "minecraft:block/dark_oak_planks"
+  },
+  "elements": [
+    {
+      "from": [
+        1,
+        0,
+        6
+      ],
+      "to": [
+        15,
+        1.5,
+        10
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            1,
+            14.5,
+            15,
+            16
+          ],
+          "texture": "#board"
+        },
+        "south": {
+          "uv": [
+            1,
+            14.5,
+            15,
+            16
+          ],
+          "texture": "#board"
+        },
+        "west": {
+          "uv": [
+            6,
+            14.5,
+            10,
+            16
+          ],
+          "texture": "#board"
+        },
+        "east": {
+          "uv": [
+            6,
+            14.5,
+            10,
+            16
+          ],
+          "texture": "#board"
+        },
+        "down": {
+          "uv": [
+            1,
+            6,
+            15,
+            10
+          ],
+          "texture": "#board",
+          "cullface": "down"
+        },
+        "up": {
+          "uv": [
+            1,
+            6,
+            15,
+            10
+          ],
+          "texture": "#board"
+        }
+      }
+    },
+    {
+      "from": [
+        2,
+        1.5,
+        7
+      ],
+      "to": [
+        4,
+        2.5,
+        9
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            12,
+            13.5,
+            14,
+            14.5
+          ],
+          "texture": "#collar"
+        },
+        "south": {
+          "uv": [
+            2,
+            13.5,
+            4,
+            14.5
+          ],
+          "texture": "#collar"
+        },
+        "west": {
+          "uv": [
+            7,
+            13.5,
+            9,
+            14.5
+          ],
+          "texture": "#collar"
+        },
+        "east": {
+          "uv": [
+            7,
+            13.5,
+            9,
+            14.5
+          ],
+          "texture": "#collar"
+        },
+        "down": {
+          "uv": [
+            2,
+            7,
+            4,
+            9
+          ],
+          "texture": "#collar"
+        },
+        "up": {
+          "uv": [
+            2,
+            7,
+            4,
+            9
+          ],
+          "texture": "#collar"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "fed=false": {
+      "model": "mistech:block/bottled_gnome"
+    },
+    "fed=true": {
+      "model": "mistech:block/bottled_gnome"
+    }
+  }
+}

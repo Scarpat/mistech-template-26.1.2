@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  F",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "F": "mistech:fairy_dust",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "mistech:fairy_incense",
+    "count": 1
+  }
+}

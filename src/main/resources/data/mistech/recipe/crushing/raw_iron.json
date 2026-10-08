@@ -1,0 +1,10 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "#c:raw_materials/iron",
+  "result": {
+    "id": "mistech:iron_dust",
+    "count": 1
+  },
+  "bonus_chance": 0.35,
+  "rune_bonus": true
+}

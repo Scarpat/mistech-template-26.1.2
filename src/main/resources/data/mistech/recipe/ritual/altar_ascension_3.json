@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:astral_heart",
+  "ingredients": [
+    "mistech:awakened_heart",
+    "mistech:impure_magic_block",
+    "mistech:impure_magic_block",
+    "mistech:light_rune",
+    "mistech:darkness_rune",
+    "mistech:space_rune",
+    "mistech:time_rune",
+    "mistech:void_rune"
+  ],
+  "essence": 8,
+  "duration": 900,
+  "condition": "full_moon",
+  "min_tier": 2,
+  "action": "ascend_altar_3",
+  "effect": "ascension"
+}

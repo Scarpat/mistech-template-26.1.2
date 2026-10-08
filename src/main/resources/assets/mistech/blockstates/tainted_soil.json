@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "strength=0": {
+      "model": "mistech:block/tainted_soil"
+    },
+    "strength=1": {
+      "model": "mistech:block/tainted_soil"
+    },
+    "strength=2": {
+      "model": "mistech:block/tainted_soil"
+    },
+    "strength=3": {
+      "model": "mistech:block/tainted_soil"
+    }
+  }
+}

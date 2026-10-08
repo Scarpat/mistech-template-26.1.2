@@ -1,0 +1,4127 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "mistech:block/gnome_bicycle_parts",
+    "parts": "mistech:block/gnome_bicycle_parts",
+    "gnome": "mistech:block/gnome_model",
+    "wheel": "mistech:block/gnome_bicycle_wheel_spin",
+    "plank": "minecraft:block/spruce_planks",
+    "dynamo": "minecraft:block/copper_block",
+    "parts_p0": "mistech:block/gnome_bicycle_parts_phase0",
+    "gnome_p0": "mistech:block/gnome_model_phase0",
+    "parts_p1": "mistech:block/gnome_bicycle_parts_phase1",
+    "gnome_p1": "mistech:block/gnome_model_phase1",
+    "parts_p2": "mistech:block/gnome_bicycle_parts_phase2",
+    "gnome_p2": "mistech:block/gnome_model_phase2",
+    "parts_p3": "mistech:block/gnome_bicycle_parts_phase3",
+    "gnome_p3": "mistech:block/gnome_model_phase3"
+  },
+  "elements": [
+    {
+      "from": [
+        1,
+        0,
+        4
+      ],
+      "to": [
+        15,
+        1,
+        12
+      ],
+      "faces": {
+        "north": {
+          "texture": "#plank"
+        },
+        "south": {
+          "texture": "#plank"
+        },
+        "east": {
+          "texture": "#plank"
+        },
+        "west": {
+          "texture": "#plank"
+        },
+        "up": {
+          "texture": "#plank"
+        },
+        "down": {
+          "texture": "#plank"
+        }
+      },
+      "name": "base"
+    },
+    {
+      "from": [
+        2,
+        1,
+        4.5
+      ],
+      "to": [
+        14,
+        1.5,
+        5.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#plank"
+        },
+        "south": {
+          "texture": "#plank"
+        },
+        "east": {
+          "texture": "#plank"
+        },
+        "west": {
+          "texture": "#plank"
+        },
+        "up": {
+          "texture": "#plank"
+        },
+        "down": {
+          "texture": "#plank"
+        }
+      },
+      "name": "base_rail_n"
+    },
+    {
+      "from": [
+        2,
+        1,
+        10.5
+      ],
+      "to": [
+        14,
+        1.5,
+        11.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#plank"
+        },
+        "south": {
+          "texture": "#plank"
+        },
+        "east": {
+          "texture": "#plank"
+        },
+        "west": {
+          "texture": "#plank"
+        },
+        "up": {
+          "texture": "#plank"
+        },
+        "down": {
+          "texture": "#plank"
+        }
+      },
+      "name": "base_rail_s"
+    },
+    {
+      "from": [
+        0.5,
+        1,
+        9
+      ],
+      "to": [
+        3.5,
+        4,
+        12
+      ],
+      "faces": {
+        "north": {
+          "texture": "#dynamo"
+        },
+        "south": {
+          "texture": "#dynamo"
+        },
+        "east": {
+          "texture": "#dynamo"
+        },
+        "west": {
+          "texture": "#dynamo"
+        },
+        "up": {
+          "texture": "#dynamo"
+        },
+        "down": {
+          "texture": "#dynamo"
+        }
+      },
+      "name": "dynamo"
+    },
+    {
+      "from": [
+        1.5,
+        4,
+        10
+      ],
+      "to": [
+        2.5,
+        5,
+        11
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        }
+      },
+      "name": "dynamo_cap"
+    },
+    {
+      "from": [
+        2.5,
+        1.5,
+        8.5
+      ],
+      "to": [
+        3.5,
+        2.5,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        }
+      },
+      "name": "dynamo_roller"
+    },
+    {
+      "from": [
+        1,
+        1,
+        8
+      ],
+      "to": [
+        8,
+        8,
+        8
+      ],
+      "faces": {
+        "north": {
+          "texture": "#wheel",
+          "uv": [
+            0,
+            0,
+            7,
+            7
+          ]
+        },
+        "south": {
+          "texture": "#wheel",
+          "uv": [
+            0,
+            0,
+            7,
+            7
+          ]
+        }
+      },
+      "name": "rear_wheel"
+    },
+    {
+      "from": [
+        9,
+        1,
+        8
+      ],
+      "to": [
+        16,
+        8,
+        8
+      ],
+      "faces": {
+        "north": {
+          "texture": "#wheel",
+          "uv": [
+            0,
+            0,
+            7,
+            7
+          ]
+        },
+        "south": {
+          "texture": "#wheel",
+          "uv": [
+            0,
+            0,
+            7,
+            7
+          ]
+        }
+      },
+      "name": "front_wheel"
+    },
+    {
+      "from": [
+        4,
+        4,
+        7
+      ],
+      "to": [
+        5,
+        5,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        }
+      },
+      "name": "rear_hub"
+    },
+    {
+      "from": [
+        12,
+        4,
+        7
+      ],
+      "to": [
+        13,
+        5,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        }
+      },
+      "name": "front_hub"
+    },
+    {
+      "from": [
+        4,
+        1,
+        6
+      ],
+      "to": [
+        5,
+        5,
+        7
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            12,
+            16,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            12,
+            16,
+            16
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            12,
+            16,
+            16
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            12,
+            16,
+            16
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            12,
+            16,
+            16
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            12,
+            16,
+            16
+          ]
+        }
+      },
+      "name": "stand_n"
+    },
+    {
+      "from": [
+        4,
+        1,
+        9
+      ],
+      "to": [
+        5,
+        5,
+        10
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            12,
+            16,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            12,
+            16,
+            16
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            12,
+            16,
+            16
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            12,
+            16,
+            16
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            12,
+            16,
+            16
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            12,
+            16,
+            16
+          ]
+        }
+      },
+      "name": "stand_s"
+    },
+    {
+      "from": [
+        4.5,
+        4,
+        7.5
+      ],
+      "to": [
+        8,
+        5,
+        8.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            8,
+            8,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            8,
+            8,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            8,
+            8,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            8,
+            8,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            8,
+            8,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            8,
+            8,
+            12
+          ]
+        }
+      },
+      "name": "chain_stay"
+    },
+    {
+      "from": [
+        6.5,
+        4,
+        7.5
+      ],
+      "to": [
+        7.5,
+        9,
+        8.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        }
+      },
+      "name": "seat_tube"
+    },
+    {
+      "from": [
+        7,
+        7.5,
+        7.5
+      ],
+      "to": [
+        12,
+        8.5,
+        8.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        }
+      },
+      "name": "top_tube"
+    },
+    {
+      "from": [
+        11.5,
+        4,
+        6.5
+      ],
+      "to": [
+        12.5,
+        9,
+        7.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        }
+      },
+      "name": "fork_n"
+    },
+    {
+      "from": [
+        11.5,
+        4,
+        8.5
+      ],
+      "to": [
+        12.5,
+        9,
+        9.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        }
+      },
+      "name": "fork_s"
+    },
+    {
+      "from": [
+        11.5,
+        8.5,
+        7
+      ],
+      "to": [
+        12.5,
+        11,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            0,
+            8,
+            4,
+            12
+          ]
+        }
+      },
+      "name": "head_tube"
+    },
+    {
+      "from": [
+        11.5,
+        11,
+        4.5
+      ],
+      "to": [
+        12.5,
+        12,
+        11.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        }
+      },
+      "name": "handlebar"
+    },
+    {
+      "from": [
+        11.25,
+        10.75,
+        3.5
+      ],
+      "to": [
+        12.75,
+        12.25,
+        5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        }
+      },
+      "name": "grip_n"
+    },
+    {
+      "from": [
+        11.25,
+        10.75,
+        11
+      ],
+      "to": [
+        12.75,
+        12.25,
+        12.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        }
+      },
+      "name": "grip_s"
+    },
+    {
+      "from": [
+        13,
+        9,
+        7.25
+      ],
+      "to": [
+        14,
+        10.5,
+        8.75
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            12,
+            8,
+            16
+          ]
+        }
+      },
+      "name": "bell"
+    },
+    {
+      "from": [
+        6.5,
+        3,
+        7
+      ],
+      "to": [
+        8.5,
+        5,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            8,
+            8,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            8,
+            8,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            8,
+            8,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            8,
+            8,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            8,
+            8,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            4,
+            8,
+            8,
+            12
+          ]
+        }
+      },
+      "name": "crank"
+    },
+    {
+      "from": [
+        5,
+        9,
+        6.5
+      ],
+      "to": [
+        8.5,
+        10,
+        9.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            4,
+            16,
+            8
+          ]
+        },
+        "south": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            4,
+            16,
+            8
+          ]
+        },
+        "east": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            4,
+            16,
+            8
+          ]
+        },
+        "west": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            4,
+            16,
+            8
+          ]
+        },
+        "up": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            4,
+            16,
+            8
+          ]
+        },
+        "down": {
+          "texture": "#parts",
+          "uv": [
+            12,
+            4,
+            16,
+            8
+          ]
+        }
+      },
+      "name": "seat"
+    },
+    {
+      "name": "gnome_head",
+      "from": [
+        3.5,
+        10.0,
+        6.0
+      ],
+      "to": [
+        7.5,
+        15.0,
+        10.0
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            1.0,
+            2.75,
+            2.0,
+            4.0
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            3.0,
+            2.75,
+            4.0,
+            4.0
+          ],
+          "texture": "#gnome"
+        },
+        "north": {
+          "uv": [
+            2.0,
+            2.75,
+            3.0,
+            4.0
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            0.0,
+            2.75,
+            1.0,
+            4.0
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            1.0,
+            1.75,
+            2.0,
+            2.75
+          ],
+          "texture": "#gnome",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            2.0,
+            1.75,
+            3.0,
+            2.75
+          ],
+          "texture": "#gnome",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "name": "gnome_beard",
+      "from": [
+        6.5,
+        9.0,
+        6.0
+      ],
+      "to": [
+        8.5,
+        12.0,
+        10.0
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            3.0,
+            6.75,
+            4.0,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            4.5,
+            6.75,
+            5.5,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "north": {
+          "uv": [
+            4.0,
+            6.75,
+            4.5,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            2.5,
+            6.75,
+            3.0,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            3.0,
+            6.25,
+            4.0,
+            6.75
+          ],
+          "texture": "#gnome",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            4.0,
+            6.25,
+            5.0,
+            6.75
+          ],
+          "texture": "#gnome",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "name": "gnome_nose",
+      "from": [
+        6.5,
+        11.0,
+        7.0
+      ],
+      "to": [
+        9.5,
+        13.0,
+        9.0
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            7.25,
+            7.0,
+            7.75,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            8.5,
+            7.0,
+            9.0,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "north": {
+          "uv": [
+            7.75,
+            7.0,
+            8.5,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            6.5,
+            7.0,
+            7.25,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            7.25,
+            6.25,
+            7.75,
+            7.0
+          ],
+          "texture": "#gnome",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            7.75,
+            6.25,
+            8.25,
+            7.0
+          ],
+          "texture": "#gnome",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "name": "gnome_hand_r",
+      "from": [
+        10.5,
+        11.75,
+        10
+      ],
+      "to": [
+        12.5,
+        13.75,
+        12
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            7.5,
+            3.0,
+            8.0,
+            3.5
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            8.5,
+            3.0,
+            9.0,
+            3.5
+          ],
+          "texture": "#gnome"
+        },
+        "north": {
+          "uv": [
+            8.0,
+            3.0,
+            8.5,
+            3.5
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            7.0,
+            3.0,
+            7.5,
+            3.5
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            7.5,
+            2.5,
+            8.0,
+            3.0
+          ],
+          "texture": "#gnome",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            8.0,
+            2.5,
+            8.5,
+            3.0
+          ],
+          "texture": "#gnome",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "name": "gnome_hand_l",
+      "from": [
+        10.5,
+        11.75,
+        4
+      ],
+      "to": [
+        12.5,
+        13.75,
+        6
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            7.5,
+            4.0,
+            8.0,
+            4.5
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            8.5,
+            4.0,
+            9.0,
+            4.5
+          ],
+          "texture": "#gnome"
+        },
+        "north": {
+          "uv": [
+            8.0,
+            4.0,
+            8.5,
+            4.5
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            7.0,
+            4.0,
+            7.5,
+            4.5
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            7.5,
+            3.5,
+            8.0,
+            4.0
+          ],
+          "texture": "#gnome",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            8.0,
+            3.5,
+            8.5,
+            4.0
+          ],
+          "texture": "#gnome",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "name": "gnome_brim",
+      "from": [
+        2.5,
+        14.0,
+        5.0
+      ],
+      "to": [
+        8.5,
+        15.0,
+        11.0
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            1.5,
+            1.5,
+            3.0,
+            1.75
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            4.5,
+            1.5,
+            6.0,
+            1.75
+          ],
+          "texture": "#gnome"
+        },
+        "north": {
+          "uv": [
+            3.0,
+            1.5,
+            4.5,
+            1.75
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            0.0,
+            1.5,
+            1.5,
+            1.75
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            1.5,
+            0.0,
+            3.0,
+            1.5
+          ],
+          "texture": "#gnome",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            3.0,
+            0.0,
+            4.5,
+            1.5
+          ],
+          "texture": "#gnome",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "name": "gnome_hat1",
+      "from": [
+        3.5,
+        15.0,
+        6.0
+      ],
+      "to": [
+        7.5,
+        17.0,
+        10.0
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            1.0,
+            5.0,
+            2.0,
+            5.75
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            3.0,
+            5.0,
+            4.0,
+            5.75
+          ],
+          "texture": "#gnome"
+        },
+        "north": {
+          "uv": [
+            2.0,
+            5.0,
+            3.0,
+            5.75
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            0.0,
+            5.0,
+            1.0,
+            5.75
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            1.0,
+            4.0,
+            2.0,
+            5.0
+          ],
+          "texture": "#gnome",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            2.0,
+            4.0,
+            3.0,
+            5.0
+          ],
+          "texture": "#gnome",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "name": "gnome_hat2",
+      "from": [
+        4.0,
+        17.0,
+        6.5
+      ],
+      "to": [
+        7.0,
+        19.0,
+        9.5
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            6.5,
+            0.5,
+            7.5,
+            1.25
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            8.0,
+            0.5,
+            9.0,
+            1.25
+          ],
+          "texture": "#gnome"
+        },
+        "north": {
+          "uv": [
+            7.5,
+            0.5,
+            8.0,
+            1.25
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            6.0,
+            0.5,
+            6.5,
+            1.25
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            6.5,
+            0.0,
+            7.5,
+            0.5
+          ],
+          "texture": "#gnome",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            7.5,
+            0.0,
+            8.5,
+            0.5
+          ],
+          "texture": "#gnome",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "name": "gnome_hat3",
+      "from": [
+        3.5,
+        19.0,
+        7.0
+      ],
+      "to": [
+        6.0,
+        20.5,
+        9.0
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            0.75,
+            6.5,
+            1.25,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            2.0,
+            6.5,
+            2.5,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "north": {
+          "uv": [
+            1.25,
+            6.5,
+            2.0,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            0.0,
+            6.5,
+            0.75,
+            7.5
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            0.75,
+            5.75,
+            1.25,
+            6.5
+          ],
+          "texture": "#gnome",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            1.25,
+            5.75,
+            1.75,
+            6.5
+          ],
+          "texture": "#gnome",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "name": "gnome_hat4",
+      "from": [
+        1.5,
+        19.0,
+        7.0
+      ],
+      "to": [
+        3.5,
+        21.0,
+        9.0
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            7.5,
+            1.75,
+            8.0,
+            2.5
+          ],
+          "texture": "#gnome"
+        },
+        "west": {
+          "uv": [
+            8.5,
+            1.75,
+            9.0,
+            2.5
+          ],
+          "texture": "#gnome"
+        },
+        "north": {
+          "uv": [
+            8.0,
+            1.75,
+            8.5,
+            2.5
+          ],
+          "texture": "#gnome"
+        },
+        "south": {
+          "uv": [
+            7.0,
+            1.75,
+            7.5,
+            2.5
+          ],
+          "texture": "#gnome"
+        },
+        "up": {
+          "uv": [
+            7.5,
+            1.25,
+            8.0,
+            1.75
+          ],
+          "texture": "#gnome",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            8.0,
+            1.25,
+            8.5,
+            1.75
+          ],
+          "texture": "#gnome",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "from": [
+        6.5,
+        1.0,
+        9.5
+      ],
+      "to": [
+        8.5,
+        2.0,
+        11
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p0",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p0",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p0",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p0",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p0",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p0",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        }
+      },
+      "name": "pedal_s_p0"
+    },
+    {
+      "from": [
+        7.0,
+        1.0,
+        9
+      ],
+      "to": [
+        8.0,
+        4.5,
+        9.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p0",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p0",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p0",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p0",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p0",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p0",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        }
+      },
+      "name": "arm_s_p0"
+    },
+    {
+      "name": "foot_s_p0",
+      "from": [
+        6.0,
+        2.0,
+        9.5
+      ],
+      "to": [
+        10.0,
+        4.0,
+        11.5
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            5.0,
+            2.75,
+            5.5,
+            3.25
+          ],
+          "texture": "#gnome_p0"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            2.75,
+            7.0,
+            3.25
+          ],
+          "texture": "#gnome_p0"
+        },
+        "north": {
+          "uv": [
+            5.5,
+            2.75,
+            6.5,
+            3.25
+          ],
+          "texture": "#gnome_p0"
+        },
+        "south": {
+          "uv": [
+            4.0,
+            2.75,
+            5.0,
+            3.25
+          ],
+          "texture": "#gnome_p0"
+        },
+        "up": {
+          "uv": [
+            5.0,
+            1.75,
+            5.5,
+            2.75
+          ],
+          "texture": "#gnome_p0",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            5.5,
+            1.75,
+            6.0,
+            2.75
+          ],
+          "texture": "#gnome_p0",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "from": [
+        6.5,
+        6.0,
+        5
+      ],
+      "to": [
+        8.5,
+        7.0,
+        6.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p0",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p0",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p0",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p0",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p0",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p0",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        }
+      },
+      "name": "pedal_n_p0"
+    },
+    {
+      "from": [
+        7.0,
+        3.5,
+        6.5
+      ],
+      "to": [
+        8.0,
+        7.0,
+        7
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p0",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p0",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p0",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p0",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p0",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p0",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        }
+      },
+      "name": "arm_n_p0"
+    },
+    {
+      "name": "foot_n_p0",
+      "from": [
+        6.0,
+        7.0,
+        4.5
+      ],
+      "to": [
+        10.0,
+        9.0,
+        6.5
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            5.0,
+            4.25,
+            5.5,
+            4.75
+          ],
+          "texture": "#gnome_p0"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            4.25,
+            7.0,
+            4.75
+          ],
+          "texture": "#gnome_p0"
+        },
+        "north": {
+          "uv": [
+            5.5,
+            4.25,
+            6.5,
+            4.75
+          ],
+          "texture": "#gnome_p0"
+        },
+        "south": {
+          "uv": [
+            4.0,
+            4.25,
+            5.0,
+            4.75
+          ],
+          "texture": "#gnome_p0"
+        },
+        "up": {
+          "uv": [
+            5.0,
+            3.25,
+            5.5,
+            4.25
+          ],
+          "texture": "#gnome_p0",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            5.5,
+            3.25,
+            6.0,
+            4.25
+          ],
+          "texture": "#gnome_p0",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "name": "tip_p0",
+      "from": [
+        0.5,
+        17.5,
+        7.25
+      ],
+      "to": [
+        2.0,
+        19.5,
+        8.75
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            7.25,
+            4.75,
+            7.75,
+            5.25
+          ],
+          "texture": "#gnome_p0"
+        },
+        "west": {
+          "uv": [
+            8.0,
+            4.75,
+            8.5,
+            5.25
+          ],
+          "texture": "#gnome_p0"
+        },
+        "north": {
+          "uv": [
+            7.75,
+            4.75,
+            8.0,
+            5.25
+          ],
+          "texture": "#gnome_p0"
+        },
+        "south": {
+          "uv": [
+            7.0,
+            4.75,
+            7.25,
+            5.25
+          ],
+          "texture": "#gnome_p0"
+        },
+        "up": {
+          "uv": [
+            7.25,
+            4.5,
+            7.75,
+            4.75
+          ],
+          "texture": "#gnome_p0",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            7.75,
+            4.5,
+            8.25,
+            4.75
+          ],
+          "texture": "#gnome_p0",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "from": [
+        9.0,
+        3.5,
+        9.5
+      ],
+      "to": [
+        11.0,
+        4.5,
+        11
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p1",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p1",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p1",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p1",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p1",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p1",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        }
+      },
+      "name": "pedal_s_p1"
+    },
+    {
+      "from": [
+        7.0,
+        3.5,
+        9
+      ],
+      "to": [
+        10.5,
+        4.5,
+        9.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p1",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p1",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p1",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p1",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p1",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p1",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        }
+      },
+      "name": "arm_s_p1"
+    },
+    {
+      "name": "foot_s_p1",
+      "from": [
+        8.5,
+        4.5,
+        9.5
+      ],
+      "to": [
+        12.5,
+        6.5,
+        11.5
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            5.0,
+            2.75,
+            5.5,
+            3.25
+          ],
+          "texture": "#gnome_p1"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            2.75,
+            7.0,
+            3.25
+          ],
+          "texture": "#gnome_p1"
+        },
+        "north": {
+          "uv": [
+            5.5,
+            2.75,
+            6.5,
+            3.25
+          ],
+          "texture": "#gnome_p1"
+        },
+        "south": {
+          "uv": [
+            4.0,
+            2.75,
+            5.0,
+            3.25
+          ],
+          "texture": "#gnome_p1"
+        },
+        "up": {
+          "uv": [
+            5.0,
+            1.75,
+            5.5,
+            2.75
+          ],
+          "texture": "#gnome_p1",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            5.5,
+            1.75,
+            6.0,
+            2.75
+          ],
+          "texture": "#gnome_p1",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "from": [
+        4.0,
+        3.5,
+        5
+      ],
+      "to": [
+        6.0,
+        4.5,
+        6.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p1",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p1",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p1",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p1",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p1",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p1",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        }
+      },
+      "name": "pedal_n_p1"
+    },
+    {
+      "from": [
+        4.5,
+        3.5,
+        6.5
+      ],
+      "to": [
+        8.0,
+        4.5,
+        7
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p1",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p1",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p1",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p1",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p1",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p1",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        }
+      },
+      "name": "arm_n_p1"
+    },
+    {
+      "name": "foot_n_p1",
+      "from": [
+        3.5,
+        4.5,
+        4.5
+      ],
+      "to": [
+        7.5,
+        6.5,
+        6.5
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            5.0,
+            4.25,
+            5.5,
+            4.75
+          ],
+          "texture": "#gnome_p1"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            4.25,
+            7.0,
+            4.75
+          ],
+          "texture": "#gnome_p1"
+        },
+        "north": {
+          "uv": [
+            5.5,
+            4.25,
+            6.5,
+            4.75
+          ],
+          "texture": "#gnome_p1"
+        },
+        "south": {
+          "uv": [
+            4.0,
+            4.25,
+            5.0,
+            4.75
+          ],
+          "texture": "#gnome_p1"
+        },
+        "up": {
+          "uv": [
+            5.0,
+            3.25,
+            5.5,
+            4.25
+          ],
+          "texture": "#gnome_p1",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            5.5,
+            3.25,
+            6.0,
+            4.25
+          ],
+          "texture": "#gnome_p1",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "name": "tip_p1",
+      "from": [
+        0.5,
+        17.0,
+        7.25
+      ],
+      "to": [
+        2.0,
+        19.0,
+        8.75
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            7.25,
+            4.75,
+            7.75,
+            5.25
+          ],
+          "texture": "#gnome_p1"
+        },
+        "west": {
+          "uv": [
+            8.0,
+            4.75,
+            8.5,
+            5.25
+          ],
+          "texture": "#gnome_p1"
+        },
+        "north": {
+          "uv": [
+            7.75,
+            4.75,
+            8.0,
+            5.25
+          ],
+          "texture": "#gnome_p1"
+        },
+        "south": {
+          "uv": [
+            7.0,
+            4.75,
+            7.25,
+            5.25
+          ],
+          "texture": "#gnome_p1"
+        },
+        "up": {
+          "uv": [
+            7.25,
+            4.5,
+            7.75,
+            4.75
+          ],
+          "texture": "#gnome_p1",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            7.75,
+            4.5,
+            8.25,
+            4.75
+          ],
+          "texture": "#gnome_p1",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "from": [
+        6.5,
+        6.0,
+        9.5
+      ],
+      "to": [
+        8.5,
+        7.0,
+        11
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p2",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p2",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p2",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p2",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p2",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p2",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        }
+      },
+      "name": "pedal_s_p2"
+    },
+    {
+      "from": [
+        7.0,
+        3.5,
+        9
+      ],
+      "to": [
+        8.0,
+        7.0,
+        9.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p2",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p2",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p2",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p2",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p2",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p2",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        }
+      },
+      "name": "arm_s_p2"
+    },
+    {
+      "name": "foot_s_p2",
+      "from": [
+        6.0,
+        7.0,
+        9.5
+      ],
+      "to": [
+        10.0,
+        9.0,
+        11.5
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            5.0,
+            2.75,
+            5.5,
+            3.25
+          ],
+          "texture": "#gnome_p2"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            2.75,
+            7.0,
+            3.25
+          ],
+          "texture": "#gnome_p2"
+        },
+        "north": {
+          "uv": [
+            5.5,
+            2.75,
+            6.5,
+            3.25
+          ],
+          "texture": "#gnome_p2"
+        },
+        "south": {
+          "uv": [
+            4.0,
+            2.75,
+            5.0,
+            3.25
+          ],
+          "texture": "#gnome_p2"
+        },
+        "up": {
+          "uv": [
+            5.0,
+            1.75,
+            5.5,
+            2.75
+          ],
+          "texture": "#gnome_p2",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            5.5,
+            1.75,
+            6.0,
+            2.75
+          ],
+          "texture": "#gnome_p2",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "from": [
+        6.5,
+        1.0,
+        5
+      ],
+      "to": [
+        8.5,
+        2.0,
+        6.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p2",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p2",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p2",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p2",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p2",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p2",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        }
+      },
+      "name": "pedal_n_p2"
+    },
+    {
+      "from": [
+        7.0,
+        1.0,
+        6.5
+      ],
+      "to": [
+        8.0,
+        4.5,
+        7
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p2",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p2",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p2",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p2",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p2",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p2",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        }
+      },
+      "name": "arm_n_p2"
+    },
+    {
+      "name": "foot_n_p2",
+      "from": [
+        6.0,
+        2.0,
+        4.5
+      ],
+      "to": [
+        10.0,
+        4.0,
+        6.5
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            5.0,
+            4.25,
+            5.5,
+            4.75
+          ],
+          "texture": "#gnome_p2"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            4.25,
+            7.0,
+            4.75
+          ],
+          "texture": "#gnome_p2"
+        },
+        "north": {
+          "uv": [
+            5.5,
+            4.25,
+            6.5,
+            4.75
+          ],
+          "texture": "#gnome_p2"
+        },
+        "south": {
+          "uv": [
+            4.0,
+            4.25,
+            5.0,
+            4.75
+          ],
+          "texture": "#gnome_p2"
+        },
+        "up": {
+          "uv": [
+            5.0,
+            3.25,
+            5.5,
+            4.25
+          ],
+          "texture": "#gnome_p2",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            5.5,
+            3.25,
+            6.0,
+            4.25
+          ],
+          "texture": "#gnome_p2",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "name": "tip_p2",
+      "from": [
+        0.5,
+        17.5,
+        7.25
+      ],
+      "to": [
+        2.0,
+        19.5,
+        8.75
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            7.25,
+            4.75,
+            7.75,
+            5.25
+          ],
+          "texture": "#gnome_p2"
+        },
+        "west": {
+          "uv": [
+            8.0,
+            4.75,
+            8.5,
+            5.25
+          ],
+          "texture": "#gnome_p2"
+        },
+        "north": {
+          "uv": [
+            7.75,
+            4.75,
+            8.0,
+            5.25
+          ],
+          "texture": "#gnome_p2"
+        },
+        "south": {
+          "uv": [
+            7.0,
+            4.75,
+            7.25,
+            5.25
+          ],
+          "texture": "#gnome_p2"
+        },
+        "up": {
+          "uv": [
+            7.25,
+            4.5,
+            7.75,
+            4.75
+          ],
+          "texture": "#gnome_p2",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            7.75,
+            4.5,
+            8.25,
+            4.75
+          ],
+          "texture": "#gnome_p2",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "from": [
+        4.0,
+        3.5,
+        9.5
+      ],
+      "to": [
+        6.0,
+        4.5,
+        11
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p3",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p3",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p3",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p3",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p3",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p3",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        }
+      },
+      "name": "pedal_s_p3"
+    },
+    {
+      "from": [
+        4.5,
+        3.5,
+        9
+      ],
+      "to": [
+        8.0,
+        4.5,
+        9.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p3",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p3",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p3",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p3",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p3",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p3",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        }
+      },
+      "name": "arm_s_p3"
+    },
+    {
+      "name": "foot_s_p3",
+      "from": [
+        3.5,
+        4.5,
+        9.5
+      ],
+      "to": [
+        7.5,
+        6.5,
+        11.5
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            5.0,
+            2.75,
+            5.5,
+            3.25
+          ],
+          "texture": "#gnome_p3"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            2.75,
+            7.0,
+            3.25
+          ],
+          "texture": "#gnome_p3"
+        },
+        "north": {
+          "uv": [
+            5.5,
+            2.75,
+            6.5,
+            3.25
+          ],
+          "texture": "#gnome_p3"
+        },
+        "south": {
+          "uv": [
+            4.0,
+            2.75,
+            5.0,
+            3.25
+          ],
+          "texture": "#gnome_p3"
+        },
+        "up": {
+          "uv": [
+            5.0,
+            1.75,
+            5.5,
+            2.75
+          ],
+          "texture": "#gnome_p3",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            5.5,
+            1.75,
+            6.0,
+            2.75
+          ],
+          "texture": "#gnome_p3",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "from": [
+        9.0,
+        3.5,
+        5
+      ],
+      "to": [
+        11.0,
+        4.5,
+        6.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p3",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p3",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p3",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p3",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p3",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p3",
+          "uv": [
+            8,
+            8,
+            12,
+            12
+          ]
+        }
+      },
+      "name": "pedal_n_p3"
+    },
+    {
+      "from": [
+        7.0,
+        3.5,
+        6.5
+      ],
+      "to": [
+        10.5,
+        4.5,
+        7
+      ],
+      "faces": {
+        "north": {
+          "texture": "#parts_p3",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#parts_p3",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#parts_p3",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#parts_p3",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#parts_p3",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        },
+        "down": {
+          "texture": "#parts_p3",
+          "uv": [
+            12,
+            8,
+            16,
+            12
+          ]
+        }
+      },
+      "name": "arm_n_p3"
+    },
+    {
+      "name": "foot_n_p3",
+      "from": [
+        8.5,
+        4.5,
+        4.5
+      ],
+      "to": [
+        12.5,
+        6.5,
+        6.5
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            5.0,
+            4.25,
+            5.5,
+            4.75
+          ],
+          "texture": "#gnome_p3"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            4.25,
+            7.0,
+            4.75
+          ],
+          "texture": "#gnome_p3"
+        },
+        "north": {
+          "uv": [
+            5.5,
+            4.25,
+            6.5,
+            4.75
+          ],
+          "texture": "#gnome_p3"
+        },
+        "south": {
+          "uv": [
+            4.0,
+            4.25,
+            5.0,
+            4.75
+          ],
+          "texture": "#gnome_p3"
+        },
+        "up": {
+          "uv": [
+            5.0,
+            3.25,
+            5.5,
+            4.25
+          ],
+          "texture": "#gnome_p3",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            5.5,
+            3.25,
+            6.0,
+            4.25
+          ],
+          "texture": "#gnome_p3",
+          "rotation": 270
+        }
+      }
+    },
+    {
+      "name": "tip_p3",
+      "from": [
+        0.5,
+        17.0,
+        7.25
+      ],
+      "to": [
+        2.0,
+        19.0,
+        8.75
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            7.25,
+            4.75,
+            7.75,
+            5.25
+          ],
+          "texture": "#gnome_p3"
+        },
+        "west": {
+          "uv": [
+            8.0,
+            4.75,
+            8.5,
+            5.25
+          ],
+          "texture": "#gnome_p3"
+        },
+        "north": {
+          "uv": [
+            7.75,
+            4.75,
+            8.0,
+            5.25
+          ],
+          "texture": "#gnome_p3"
+        },
+        "south": {
+          "uv": [
+            7.0,
+            4.75,
+            7.25,
+            5.25
+          ],
+          "texture": "#gnome_p3"
+        },
+        "up": {
+          "uv": [
+            7.25,
+            4.5,
+            7.75,
+            4.75
+          ],
+          "texture": "#gnome_p3",
+          "rotation": 90
+        },
+        "down": {
+          "uv": [
+            7.75,
+            4.5,
+            8.25,
+            4.75
+          ],
+          "texture": "#gnome_p3",
+          "rotation": 270
+        }
+      }
+    }
+  ]
+}

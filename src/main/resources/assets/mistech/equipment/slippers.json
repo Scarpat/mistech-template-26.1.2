@@ -1,0 +1,15 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mistech:slippers",
+        "dyeable": {
+          "color_when_undyed": 13214424
+        }
+      },
+      {
+        "texture": "mistech:slippers_overlay"
+      }
+    ]
+  }
+}

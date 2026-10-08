@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "ASA",
+    "CMC",
+    "BBB"
+  ],
+  "key": {
+    "A": "mistech:adamantine_ingot",
+    "S": "mistech:space_rune",
+    "C": "minecraft:copper_ingot",
+    "M": "mistech:impure_magic_block",
+    "B": "minecraft:polished_blackstone"
+  },
+  "result": {
+    "id": "mistech:transmission_pylon",
+    "count": 1
+  }
+}

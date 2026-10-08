@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "HEH",
+    "PBP",
+    "CRC"
+  ],
+  "key": {
+    "H": "minecraft:iron_hoe",
+    "E": "mistech:earth_rune",
+    "P": "mistech:murky_planks",
+    "B": "minecraft:chest",
+    "C": "minecraft:copper_ingot",
+    "R": "mistech:energy_rune"
+  },
+  "result": {
+    "id": "mistech:runic_harvester",
+    "count": 1
+  }
+}

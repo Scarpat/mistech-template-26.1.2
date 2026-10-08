@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mistech:adamantine"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "mistech:adamantine"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mistech:adamantine"
+      }
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:tainted_residue",
+    "mistech:impure_magic_block",
+    "mistech:impure_heart",
+    "mistech:impure_essence_bucket"
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "crate": "minecraft:block/composter_side",
+    "ctop": "minecraft:block/composter_bottom",
+    "ho": "minecraft:block/hopper_outside",
+    "seeds": "minecraft:block/composter_compost",
+    "copper": "minecraft:block/cut_copper",
+    "bulb": "minecraft:block/copper_bulb",
+    "particle": "minecraft:block/composter_side"
+  },
+  "elements": [
+    {
+      "from": [
+        1,
+        0,
+        1
+      ],
+      "to": [
+        15,
+        8,
+        15
+      ],
+      "faces": {
+        "north": {
+          "texture": "#crate"
+        },
+        "south": {
+          "texture": "#crate"
+        },
+        "east": {
+          "texture": "#crate"
+        },
+        "west": {
+          "texture": "#crate"
+        },
+        "up": {
+          "texture": "#ctop"
+        },
+        "down": {
+          "texture": "#ctop"
+        }
+      },
+      "name": "bin"
+    },
+    {
+      "from": [
+        2,
+        8,
+        2
+      ],
+      "to": [
+        14,
+        10,
+        14
+      ],
+      "faces": {
+        "north": {
+          "texture": "#ho"
+        },
+        "south": {
+          "texture": "#ho"
+        },
+        "east": {
+          "texture": "#ho"
+        },
+        "west": {
+          "texture": "#ho"
+        },
+        "up": {
+          "texture": "#ho"
+        },
+        "down": {
+          "texture": "#ho"
+        }
+      },
+      "name": "hopper_low"
+    },
+    {
+      "from": [
+        1,
+        10,
+        1
+      ],
+      "to": [
+        15,
+        14,
+        15
+      ],
+      "faces": {
+        "north": {
+          "texture": "#ho"
+        },
+        "south": {
+          "texture": "#ho"
+        },
+        "east": {
+          "texture": "#ho"
+        },
+        "west": {
+          "texture": "#ho"
+        },
+        "up": {
+          "texture": "#seeds"
+        },
+        "down": {
+          "texture": "#ho"
+        }
+      },
+      "name": "hopper_high"
+    },
+    {
+      "from": [
+        6,
+        1,
+        -2
+      ],
+      "to": [
+        10,
+        4,
+        1
+      ],
+      "faces": {
+        "north": {
+          "texture": "#copper"
+        },
+        "south": {
+          "texture": "#copper"
+        },
+        "east": {
+          "texture": "#copper"
+        },
+        "west": {
+          "texture": "#copper"
+        },
+        "up": {
+          "texture": "#copper"
+        },
+        "down": {
+          "texture": "#copper"
+        }
+      },
+      "name": "spout"
+    },
+    {
+      "from": [
+        6.5,
+        0,
+        -2.5
+      ],
+      "to": [
+        9.5,
+        1,
+        -1
+      ],
+      "faces": {
+        "north": {
+          "texture": "#copper"
+        },
+        "south": {
+          "texture": "#copper"
+        },
+        "east": {
+          "texture": "#copper"
+        },
+        "west": {
+          "texture": "#copper"
+        },
+        "up": {
+          "texture": "#copper"
+        },
+        "down": {
+          "texture": "#copper"
+        }
+      },
+      "name": "spout_tip"
+    },
+    {
+      "from": [
+        10.5,
+        14,
+        10.5
+      ],
+      "to": [
+        14.5,
+        18,
+        14.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#bulb",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#bulb",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "east": {
+          "texture": "#bulb",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "west": {
+          "texture": "#bulb",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "up": {
+          "texture": "#bulb",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "down": {
+          "texture": "#bulb",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        }
+      },
+      "name": "bulb"
+    }
+  ]
+}

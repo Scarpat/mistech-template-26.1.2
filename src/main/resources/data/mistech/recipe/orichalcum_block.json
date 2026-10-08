@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": "#c:ingots/orichalcum"
+  },
+  "result": {
+    "id": "mistech:orichalcum_block",
+    "count": 1
+  }
+}

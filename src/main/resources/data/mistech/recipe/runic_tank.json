@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PGP",
+    "PSP",
+    "PWP"
+  ],
+  "key": {
+    "P": "#minecraft:planks",
+    "G": "#c:glass_blocks",
+    "S": "mistech:space_rune",
+    "W": "mistech:water_rune"
+  },
+  "result": {
+    "id": "mistech:runic_tank",
+    "count": 1
+  }
+}

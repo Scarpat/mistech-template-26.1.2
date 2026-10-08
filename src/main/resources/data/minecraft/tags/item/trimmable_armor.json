@@ -1,0 +1,21 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:mithril_helmet",
+    "mistech:mithril_chestplate",
+    "mistech:mithril_leggings",
+    "mistech:mithril_boots",
+    "mistech:adamantine_helmet",
+    "mistech:orichalcum_helmet",
+    "mistech:pure_orichalcum_helmet",
+    "mistech:adamantine_chestplate",
+    "mistech:orichalcum_chestplate",
+    "mistech:pure_orichalcum_chestplate",
+    "mistech:adamantine_leggings",
+    "mistech:orichalcum_leggings",
+    "mistech:pure_orichalcum_leggings",
+    "mistech:adamantine_boots",
+    "mistech:orichalcum_boots",
+    "mistech:pure_orichalcum_boots"
+  ]
+}

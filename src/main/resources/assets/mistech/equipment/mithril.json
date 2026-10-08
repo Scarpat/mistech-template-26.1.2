@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mistech:mithril"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "mistech:mithril"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mistech:mithril"
+      }
+    ]
+  }
+}

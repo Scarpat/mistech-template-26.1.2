@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mistech:coffee_cherry"
+  ],
+  "result": {
+    "id": "mistech:coffee_seeds",
+    "count": 3
+  }
+}

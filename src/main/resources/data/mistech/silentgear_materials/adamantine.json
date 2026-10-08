@@ -1,0 +1,98 @@
+{
+  "type": "silentgear:simple",
+  "parent": "silentgear:empty",
+  "crafting": {
+    "can_salvage": true,
+    "categories": [
+      "metal",
+      "endgame"
+    ],
+    "gear_type_blacklist": [],
+    "ingredient": "#c:ingots/adamantine",
+    "part_substitutes": {}
+  },
+  "display": {
+    "color": "#FFE8576A",
+    "equippable": {
+      "always_use_tint": true,
+      "asset_id": "silentgear:generic_shiny",
+      "compound_asset_id": "silentgear:generic_shiny",
+      "equip_sound": "minecraft:item.armor.equip_netherite"
+    },
+    "main_texture_type": "HIGH_CONTRAST",
+    "name": {
+      "translate": "material.mistech.adamantine"
+    },
+    "name_prefix": ""
+  },
+  "properties": {
+    "silentgear:main": {
+      "armor": 22.0,
+      "armor/boots": 3,
+      "armor/chestplate": 9,
+      "armor/helmet": 3,
+      "armor/leggings": 7,
+      "armor_durability": 55.0,
+      "armor_toughness": 18.0,
+      "attack_damage": 6.0,
+      "attack_speed": 0.0,
+      "charging_value": 1.1,
+      "draw_speed": 0.0,
+      "durability": 3200.0,
+      "enchantment_value": 22.0,
+      "harvest_speed": 12.0,
+      "harvest_tier": {
+        "incorrect_blocks_for_tool": "minecraft:incorrect_for_netherite_tool",
+        "level_hint": "4",
+        "name": "netherite"
+      },
+      "knockback_resistance": 0.0,
+      "magic_armor": 14.0,
+      "magic_damage": 7.0,
+      "projectile_accuracy": 1.2,
+      "projectile_speed": 1.1,
+      "ranged_damage": 3.5,
+      "rarity": 100.0,
+      "traits": [
+        {
+          "conditions": [],
+          "level": 3,
+          "trait": "silentgear:hard"
+        },
+        {
+          "conditions": [],
+          "level": 3,
+          "trait": "silentgear:sturdy"
+        },
+        {
+          "conditions": [],
+          "level": 1,
+          "trait": "silentgear:adamant"
+        }
+      ]
+    },
+    "silentgear:rod": {
+      "durability": {
+        "operation": "MULTIPLY_TOTAL",
+        "value": 0.1
+      },
+      "magic_damage": {
+        "operation": "MULTIPLY_TOTAL",
+        "value": 0.15
+      },
+      "rarity": 100.0,
+      "traits": [
+        {
+          "conditions": [],
+          "level": 2,
+          "trait": "silentgear:sturdy"
+        },
+        {
+          "conditions": [],
+          "level": 1,
+          "trait": "silentgear:hard"
+        }
+      ]
+    }
+  }
+}

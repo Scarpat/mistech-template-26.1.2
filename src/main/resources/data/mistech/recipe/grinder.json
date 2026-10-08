@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "tools",
+  "pattern": [
+    "S",
+    "B"
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "B": "minecraft:cobblestone_slab"
+  },
+  "result": {
+    "id": "mistech:grinder",
+    "count": 1
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ritual",
+  "sanctuary": true,
+  "catalyst": "minecraft:blue_ice",
+  "ingredients": [
+    "mistech:ice_rune",
+    "mistech:ice_rune",
+    "mistech:light_rune",
+    "mistech:pure_magic_shard",
+    "minecraft:glowstone_dust"
+  ],
+  "essence": 4,
+  "duration": 400,
+  "condition": "cold_night",
+  "action": "aurora",
+  "effect": "moon"
+}

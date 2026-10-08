@@ -1,0 +1,15 @@
+{
+  "type": "mistech:gnome_realm",
+  "generator": {
+    "type": "minecraft:noise",
+    "settings": "mistech:gnome_realm",
+    "biome_source": {
+      "type": "mistech:gnome_realm",
+      "meadow": "mistech:gnome_meadow",
+      "wastes": "mistech:murky_wastes",
+      "depths": "mistech:gnome_depths",
+      "radius": 112,
+      "depths_y": 48
+    }
+  }
+}

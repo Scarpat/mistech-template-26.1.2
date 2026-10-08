@@ -1,0 +1,21 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:sculk_shrieker",
+  "ingredients": [
+    "minecraft:echo_shard",
+    "minecraft:white_wool",
+    "mistech:darkness_rune",
+    "mistech:time_rune",
+    "minecraft:sculk",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 5,
+  "duration": 500,
+  "condition": "none",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:silence_seal",
+    "count": 2
+  },
+  "effect": "shadow"
+}

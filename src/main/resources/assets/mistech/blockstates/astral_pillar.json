@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "part=bottom": {
+      "model": "mistech:block/astral_pillar_bottom"
+    },
+    "part=middle": {
+      "model": "mistech:block/astral_pillar_middle"
+    },
+    "part=top": {
+      "model": "mistech:block/astral_pillar_top"
+    }
+  }
+}

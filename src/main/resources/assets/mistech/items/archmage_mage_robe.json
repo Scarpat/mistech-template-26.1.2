@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "mistech:item/archmage_mage_robe",
+    "tints": [
+      {
+        "type": "minecraft:dye",
+        "default": -14017464
+      }
+    ]
+  }
+}

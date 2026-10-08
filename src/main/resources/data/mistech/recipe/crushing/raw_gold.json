@@ -1,0 +1,10 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "#c:raw_materials/gold",
+  "result": {
+    "id": "mistech:gold_dust",
+    "count": 1
+  },
+  "bonus_chance": 0.35,
+  "rune_bonus": true
+}

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:incense_ash",
+    "mistech:ash_block",
+    "mistech:magic_residue"
+  ]
+}

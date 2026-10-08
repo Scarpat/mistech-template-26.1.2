@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "EVE",
+    "DRD",
+    "DDD"
+  ],
+  "key": {
+    "E": "minecraft:echo_shard",
+    "V": "minecraft:sculk_sensor",
+    "D": "minecraft:polished_deepslate",
+    "R": "mistech:darkness_rune"
+  },
+  "result": {
+    "id": "mistech:echo_collector",
+    "count": 1
+  }
+}

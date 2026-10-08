@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mistech:wind_boots"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "mistech:wind_boots"
+      }
+    ]
+  }
+}

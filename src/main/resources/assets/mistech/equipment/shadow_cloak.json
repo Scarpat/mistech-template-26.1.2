@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mistech:shadow_cloak"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "mistech:shadow_cloak"
+      }
+    ]
+  }
+}

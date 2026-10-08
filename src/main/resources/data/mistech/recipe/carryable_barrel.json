@@ -1,0 +1,8 @@
+{
+  "type": "mistech:backpack",
+  "core": "mistech:spatial_barrel",
+  "strap": "mistech:hemp_fiber",
+  "result": {
+    "id": "mistech:carryable_barrel"
+  }
+}

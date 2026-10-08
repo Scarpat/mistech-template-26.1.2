@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "mistech:block/magic_loom_bottom",
+    "front": "mistech:block/magic_loom_front",
+    "side": "mistech:block/magic_loom_side",
+    "top": "mistech:block/magic_loom_top"
+  }
+}

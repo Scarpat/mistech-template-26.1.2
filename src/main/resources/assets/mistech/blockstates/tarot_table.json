@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mistech:block/tarot_table"
+    },
+    "facing=east": {
+      "model": "mistech:block/tarot_table",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mistech:block/tarot_table",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mistech:block/tarot_table",
+      "y": 270
+    }
+  }
+}

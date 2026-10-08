@@ -1,0 +1,18 @@
+{
+  "type": "mistech:ritual",
+  "sanctuary": true,
+  "catalyst": "minecraft:golden_apple",
+  "ingredients": [
+    "mistech:mithril_ingot",
+    "mistech:mithril_ingot",
+    "mistech:rue_leaf",
+    "mistech:rue_leaf",
+    "mistech:purified_essence_bottle",
+    "mistech:light_rune"
+  ],
+  "essence": 4,
+  "duration": 400,
+  "condition": "day",
+  "action": "cure_lycanthropy",
+  "effect": "moon"
+}

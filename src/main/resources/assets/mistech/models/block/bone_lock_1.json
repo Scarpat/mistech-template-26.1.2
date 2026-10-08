@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "mistech:block/bone_lock_side",
+    "front": "mistech:block/bone_lock_front_1",
+    "side": "mistech:block/bone_lock_side"
+  }
+}

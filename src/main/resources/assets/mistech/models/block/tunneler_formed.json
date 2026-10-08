@@ -1,0 +1,688 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "copper": "minecraft:block/cut_copper",
+    "tiles": "minecraft:block/deepslate_tiles",
+    "vein": "mistech:block/miner_vein",
+    "deep": "minecraft:block/polished_deepslate",
+    "drill": "mistech:block/tunneler_drill",
+    "gem": "minecraft:block/amethyst_block",
+    "rune": "mistech:block/miner_rune",
+    "particle": "minecraft:block/deepslate_tiles"
+  },
+  "elements": [
+    {
+      "from": [
+        1,
+        0,
+        1
+      ],
+      "to": [
+        15,
+        2,
+        15
+      ],
+      "faces": {
+        "north": {
+          "texture": "#copper"
+        },
+        "south": {
+          "texture": "#copper"
+        },
+        "east": {
+          "texture": "#copper"
+        },
+        "west": {
+          "texture": "#copper"
+        },
+        "up": {
+          "texture": "#copper"
+        },
+        "down": {
+          "texture": "#copper"
+        }
+      },
+      "name": "sapata"
+    },
+    {
+      "from": [
+        2,
+        2,
+        2
+      ],
+      "to": [
+        14,
+        10,
+        14
+      ],
+      "faces": {
+        "north": {
+          "texture": "#tiles"
+        },
+        "east": {
+          "texture": "#tiles"
+        },
+        "west": {
+          "texture": "#tiles"
+        },
+        "south": {
+          "texture": "#tiles"
+        }
+      },
+      "name": "carcaca"
+    },
+    {
+      "from": [
+        2,
+        2,
+        2
+      ],
+      "to": [
+        14,
+        10,
+        14
+      ],
+      "faces": {
+        "up": {
+          "texture": "#deep"
+        },
+        "down": {
+          "texture": "#deep"
+        }
+      },
+      "name": "carcaca_tampa"
+    },
+    {
+      "from": [
+        1,
+        10,
+        1
+      ],
+      "to": [
+        15,
+        11,
+        2
+      ],
+      "faces": {
+        "north": {
+          "texture": "#copper"
+        },
+        "south": {
+          "texture": "#copper"
+        },
+        "east": {
+          "texture": "#copper"
+        },
+        "west": {
+          "texture": "#copper"
+        },
+        "up": {
+          "texture": "#copper"
+        },
+        "down": {
+          "texture": "#copper"
+        }
+      },
+      "name": "friso"
+    },
+    {
+      "from": [
+        1,
+        10,
+        14
+      ],
+      "to": [
+        15,
+        11,
+        15
+      ],
+      "faces": {
+        "north": {
+          "texture": "#copper"
+        },
+        "south": {
+          "texture": "#copper"
+        },
+        "east": {
+          "texture": "#copper"
+        },
+        "west": {
+          "texture": "#copper"
+        },
+        "up": {
+          "texture": "#copper"
+        },
+        "down": {
+          "texture": "#copper"
+        }
+      },
+      "name": "friso"
+    },
+    {
+      "from": [
+        1,
+        10,
+        2
+      ],
+      "to": [
+        2,
+        11,
+        14
+      ],
+      "faces": {
+        "north": {
+          "texture": "#copper"
+        },
+        "south": {
+          "texture": "#copper"
+        },
+        "east": {
+          "texture": "#copper"
+        },
+        "west": {
+          "texture": "#copper"
+        },
+        "up": {
+          "texture": "#copper"
+        },
+        "down": {
+          "texture": "#copper"
+        }
+      },
+      "name": "friso"
+    },
+    {
+      "from": [
+        14,
+        10,
+        2
+      ],
+      "to": [
+        15,
+        11,
+        14
+      ],
+      "faces": {
+        "north": {
+          "texture": "#copper"
+        },
+        "south": {
+          "texture": "#copper"
+        },
+        "east": {
+          "texture": "#copper"
+        },
+        "west": {
+          "texture": "#copper"
+        },
+        "up": {
+          "texture": "#copper"
+        },
+        "down": {
+          "texture": "#copper"
+        }
+      },
+      "name": "friso"
+    },
+    {
+      "from": [
+        4,
+        2,
+        1.9
+      ],
+      "to": [
+        12,
+        10,
+        1.9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#rune",
+          "uv": [
+            4,
+            4,
+            12,
+            12
+          ]
+        }
+      },
+      "name": "runa",
+      "light_emission": 12
+    },
+    {
+      "from": [
+        1.9,
+        2,
+        4
+      ],
+      "to": [
+        1.9,
+        10,
+        12
+      ],
+      "faces": {
+        "west": {
+          "texture": "#rune",
+          "uv": [
+            4,
+            4,
+            12,
+            12
+          ]
+        }
+      },
+      "name": "runa",
+      "light_emission": 12
+    },
+    {
+      "from": [
+        14.1,
+        2,
+        4
+      ],
+      "to": [
+        14.1,
+        10,
+        12
+      ],
+      "faces": {
+        "east": {
+          "texture": "#rune",
+          "uv": [
+            4,
+            4,
+            12,
+            12
+          ]
+        }
+      },
+      "name": "runa",
+      "light_emission": 12
+    },
+    {
+      "from": [
+        4,
+        10,
+        4
+      ],
+      "to": [
+        12,
+        12,
+        12
+      ],
+      "faces": {
+        "north": {
+          "texture": "#deep"
+        },
+        "south": {
+          "texture": "#deep"
+        },
+        "east": {
+          "texture": "#deep"
+        },
+        "west": {
+          "texture": "#deep"
+        },
+        "up": {
+          "texture": "#deep"
+        }
+      },
+      "name": "engrenagem"
+    },
+    {
+      "from": [
+        3,
+        10.5,
+        7
+      ],
+      "to": [
+        13,
+        11.5,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#copper"
+        },
+        "south": {
+          "texture": "#copper"
+        },
+        "east": {
+          "texture": "#copper"
+        },
+        "west": {
+          "texture": "#copper"
+        },
+        "up": {
+          "texture": "#copper"
+        },
+        "down": {
+          "texture": "#copper"
+        }
+      },
+      "name": "dente"
+    },
+    {
+      "from": [
+        7,
+        10.5,
+        3
+      ],
+      "to": [
+        9,
+        11.5,
+        13
+      ],
+      "faces": {
+        "north": {
+          "texture": "#copper"
+        },
+        "south": {
+          "texture": "#copper"
+        },
+        "east": {
+          "texture": "#copper"
+        },
+        "west": {
+          "texture": "#copper"
+        },
+        "up": {
+          "texture": "#copper"
+        },
+        "down": {
+          "texture": "#copper"
+        }
+      },
+      "name": "dente"
+    },
+    {
+      "from": [
+        4,
+        -2,
+        4
+      ],
+      "to": [
+        12,
+        0,
+        12
+      ],
+      "faces": {
+        "north": {
+          "texture": "#drill"
+        },
+        "south": {
+          "texture": "#drill"
+        },
+        "east": {
+          "texture": "#drill"
+        },
+        "west": {
+          "texture": "#drill"
+        },
+        "down": {
+          "texture": "#drill"
+        }
+      },
+      "name": "broca"
+    },
+    {
+      "from": [
+        5,
+        -4,
+        5
+      ],
+      "to": [
+        11,
+        -2,
+        11
+      ],
+      "faces": {
+        "north": {
+          "texture": "#drill"
+        },
+        "south": {
+          "texture": "#drill"
+        },
+        "east": {
+          "texture": "#drill"
+        },
+        "west": {
+          "texture": "#drill"
+        },
+        "down": {
+          "texture": "#drill"
+        }
+      },
+      "name": "broca"
+    },
+    {
+      "from": [
+        6,
+        -6,
+        6
+      ],
+      "to": [
+        10,
+        -4,
+        10
+      ],
+      "faces": {
+        "north": {
+          "texture": "#drill"
+        },
+        "south": {
+          "texture": "#drill"
+        },
+        "east": {
+          "texture": "#drill"
+        },
+        "west": {
+          "texture": "#drill"
+        },
+        "down": {
+          "texture": "#drill"
+        }
+      },
+      "name": "broca"
+    },
+    {
+      "from": [
+        7,
+        -8,
+        7
+      ],
+      "to": [
+        9,
+        -6,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#drill"
+        },
+        "south": {
+          "texture": "#drill"
+        },
+        "east": {
+          "texture": "#drill"
+        },
+        "west": {
+          "texture": "#drill"
+        },
+        "down": {
+          "texture": "#drill"
+        }
+      },
+      "name": "broca"
+    },
+    {
+      "from": [
+        6,
+        3,
+        14
+      ],
+      "to": [
+        10,
+        7,
+        18
+      ],
+      "faces": {
+        "north": {
+          "texture": "#copper"
+        },
+        "east": {
+          "texture": "#copper"
+        },
+        "west": {
+          "texture": "#copper"
+        },
+        "up": {
+          "texture": "#copper"
+        },
+        "down": {
+          "texture": "#copper"
+        }
+      },
+      "name": "conduto"
+    },
+    {
+      "from": [
+        5,
+        2,
+        13
+      ],
+      "to": [
+        11,
+        8,
+        14
+      ],
+      "faces": {
+        "north": {
+          "texture": "#deep"
+        },
+        "south": {
+          "texture": "#deep"
+        },
+        "east": {
+          "texture": "#deep"
+        },
+        "west": {
+          "texture": "#deep"
+        },
+        "up": {
+          "texture": "#deep"
+        },
+        "down": {
+          "texture": "#deep"
+        }
+      },
+      "name": "flange"
+    },
+    {
+      "from": [
+        6,
+        12,
+        8
+      ],
+      "to": [
+        10,
+        15,
+        12
+      ],
+      "faces": {
+        "north": {
+          "texture": "#gem"
+        },
+        "south": {
+          "texture": "#gem"
+        },
+        "east": {
+          "texture": "#gem"
+        },
+        "west": {
+          "texture": "#gem"
+        },
+        "up": {
+          "texture": "#gem"
+        },
+        "down": {
+          "texture": "#gem"
+        }
+      },
+      "name": "junta"
+    },
+    {
+      "from": [
+        6.5,
+        11.5,
+        10
+      ],
+      "to": [
+        9.5,
+        14.5,
+        26
+      ],
+      "faces": {
+        "east": {
+          "texture": "#copper"
+        },
+        "west": {
+          "texture": "#copper"
+        },
+        "up": {
+          "texture": "#copper"
+        },
+        "down": {
+          "texture": "#copper"
+        },
+        "south": {
+          "texture": "#copper"
+        }
+      },
+      "rotation": {
+        "origin": [
+          8,
+          13,
+          10
+        ],
+        "axis": "x",
+        "angle": -52
+      },
+      "name": "braco"
+    },
+    {
+      "from": [
+        7.25,
+        12.25,
+        10
+      ],
+      "to": [
+        8.75,
+        15.0,
+        26
+      ],
+      "faces": {
+        "east": {
+          "texture": "#vein"
+        },
+        "west": {
+          "texture": "#vein"
+        },
+        "up": {
+          "texture": "#vein"
+        }
+      },
+      "rotation": {
+        "origin": [
+          8,
+          13,
+          10
+        ],
+        "axis": "x",
+        "angle": -52
+      },
+      "name": "veio",
+      "light_emission": 12
+    }
+  ]
+}

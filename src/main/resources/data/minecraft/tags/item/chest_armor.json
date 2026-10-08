@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:mystic_robe",
+    "mistech:mithril_chestplate",
+    "mistech:adamantine_chestplate",
+    "mistech:orichalcum_chestplate",
+    "mistech:pure_orichalcum_chestplate",
+    "mistech:shadow_cloak",
+    "mistech:hemp_mage_robe",
+    "mistech:initiate_mage_robe",
+    "mistech:adept_mage_robe",
+    "mistech:archmage_mage_robe"
+  ]
+}

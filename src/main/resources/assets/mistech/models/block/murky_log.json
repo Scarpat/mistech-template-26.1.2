@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "mistech:block/murky_log_top",
+    "side": "mistech:block/murky_log"
+  }
+}

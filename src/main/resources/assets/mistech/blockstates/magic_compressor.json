@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "filled=false": {
+      "model": "mistech:block/magic_compressor"
+    },
+    "filled=true": {
+      "model": "mistech:block/magic_compressor_filled"
+    }
+  }
+}

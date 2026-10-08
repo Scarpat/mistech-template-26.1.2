@@ -1,0 +1,9 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "#c:ores/coal",
+  "result": {
+    "id": "minecraft:coal",
+    "count": 2
+  },
+  "rune_bonus": true
+}

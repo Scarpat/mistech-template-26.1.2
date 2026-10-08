@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " A ",
+    "MSM",
+    " B "
+  ],
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "M": "mistech:mithril_ingot",
+    "S": "mistech:space_rune",
+    "B": "minecraft:polished_blackstone"
+  },
+  "result": {
+    "id": "mistech:archive_relay",
+    "count": 1
+  }
+}

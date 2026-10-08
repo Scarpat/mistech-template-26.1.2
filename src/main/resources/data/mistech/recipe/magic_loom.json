@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ARA",
+    "FLF",
+    "CCC"
+  ],
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "R": "mistech:energy_rune",
+    "F": "mistech:hemp_fiber",
+    "L": "minecraft:loom",
+    "C": "minecraft:copper_ingot"
+  },
+  "result": {
+    "id": "mistech:magic_loom"
+  }
+}

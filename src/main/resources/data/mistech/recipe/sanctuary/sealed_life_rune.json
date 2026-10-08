@@ -1,0 +1,23 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:life_rune",
+  "ingredients": [
+    "mistech:pure_magic_shard",
+    "mistech:mithril_ingot",
+    "mistech:purified_essence_bottle",
+    "mistech:coarse_salt"
+  ],
+  "essence": 2,
+  "duration": 300,
+  "condition": "none",
+  "result": {
+    "id": "mistech:life_rune",
+    "components": {
+      "mistech:sealed": true,
+      "minecraft:unbreakable": {}
+    }
+  },
+  "effect": "mist",
+  "sanctuary": true,
+  "copy_components": true
+}

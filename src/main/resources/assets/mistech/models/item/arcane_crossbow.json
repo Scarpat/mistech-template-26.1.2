@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/crossbow",
+  "textures": {
+    "layer0": "mistech:item/arcane_crossbow_standby"
+  }
+}

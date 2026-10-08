@@ -1,0 +1,8 @@
+{
+  "parent": "mistech:block/clay_statue",
+  "textures": {
+    "particle": "minecraft:block/terracotta",
+    "clay": "minecraft:block/terracotta",
+    "base": "minecraft:block/polished_blackstone"
+  }
+}

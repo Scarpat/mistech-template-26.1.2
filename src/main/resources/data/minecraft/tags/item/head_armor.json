@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:gnome_hat",
+    "mistech:mithril_helmet",
+    "mistech:adamantine_helmet",
+    "mistech:orichalcum_helmet",
+    "mistech:pure_orichalcum_helmet",
+    "mistech:tide_mask",
+    "mistech:beacon_crown",
+    "mistech:fool_cap",
+    "mistech:hemp_mage_hood",
+    "mistech:initiate_mage_hood",
+    "mistech:adept_mage_hood",
+    "mistech:archmage_mage_hood"
+  ]
+}

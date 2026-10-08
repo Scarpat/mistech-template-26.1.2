@@ -1,0 +1,16 @@
+{
+  "type": "mistech:ritual",
+  "sanctuary": true,
+  "catalyst": "mistech:coarse_salt",
+  "ingredients": [
+    "mistech:rue_leaf",
+    "mistech:rue_leaf",
+    "mistech:light_rune",
+    "mistech:purified_essence_bottle"
+  ],
+  "essence": 2,
+  "duration": 300,
+  "condition": "day",
+  "action": "exorcism",
+  "effect": "light"
+}

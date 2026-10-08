@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:comfy_pants",
+    "mistech:mithril_leggings",
+    "mistech:adamantine_leggings",
+    "mistech:orichalcum_leggings",
+    "mistech:pure_orichalcum_leggings",
+    "mistech:hemp_mage_pants",
+    "mistech:initiate_mage_pants",
+    "mistech:adept_mage_pants",
+    "mistech:archmage_mage_pants"
+  ]
+}

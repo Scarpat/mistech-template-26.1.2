@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mistech:writing_table",
+          "functions": [
+            {
+              "function": "minecraft:copy_state",
+              "block": "mistech:writing_table",
+              "properties": [
+                "color",
+                "pale"
+              ]
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "mistech:blocks/writing_table"
+}

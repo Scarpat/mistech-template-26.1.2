@@ -1,0 +1,68 @@
+{
+  "attributes": {
+    "minecraft:visual/sky_color": "#2b2c31",
+    "minecraft:visual/fog_color": "#34322f",
+    "minecraft:visual/water_fog_color": "#1f242b",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:white_ash"
+        },
+        "probability": 0.035
+      }
+    ],
+    "minecraft:audio/background_music": {},
+    "minecraft:audio/music_volume": 0.0,
+    "minecraft:audio/ambient_sounds": {
+      "mood": {
+        "block_search_extent": 8,
+        "offset": 2.0,
+        "sound": "minecraft:ambient.cave",
+        "tick_delay": 1200
+      }
+    },
+    "minecraft:visual/fog_start_distance": 0.0,
+    "minecraft:visual/fog_end_distance": 42.0,
+    "minecraft:visual/cloud_color": "#cc3a3a3e"
+  },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground"
+  ],
+  "downfall": 0.5,
+  "effects": {
+    "water_color": "#2f363d",
+    "grass_color": "#8a8e84",
+    "foliage_color": "#6f7266",
+    "dry_foliage_color": "#6f7266"
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "mistech:wastes_murky_trees",
+      "mistech:yellow_mushroom_patch"
+    ],
+    []
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.5
+}

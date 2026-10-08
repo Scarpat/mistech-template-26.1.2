@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "P  ",
+    "THF",
+    "SSS"
+  ],
+  "key": {
+    "P": "minecraft:paper",
+    "T": "mistech:dried_tobacco_leaf",
+    "H": "mistech:dried_hemp_leaf",
+    "F": "mistech:impure_magic_shard",
+    "S": "minecraft:cobblestone_slab"
+  },
+  "result": {
+    "id": "mistech:rune_roller",
+    "count": 1
+  }
+}

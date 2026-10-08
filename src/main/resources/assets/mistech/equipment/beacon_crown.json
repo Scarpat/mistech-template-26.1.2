@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mistech:beacon_crown"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "mistech:beacon_crown"
+      }
+    ]
+  }
+}

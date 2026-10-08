@@ -1,0 +1,21 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:crossbow",
+  "ingredients": [
+    "mistech:energy_rune",
+    "mistech:space_rune",
+    "mistech:adamantine_ingot",
+    "mistech:adamantine_ingot",
+    "mistech:bottled_lightning",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 5,
+  "duration": 500,
+  "condition": "none",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:arcane_crossbow"
+  },
+  "copy_components": true,
+  "effect": "arcane"
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "decorations",
+  "pattern": [
+    "F",
+    "S",
+    "I"
+  ],
+  "key": {
+    "F": "mistech:fire_rune",
+    "S": "minecraft:cobblestone_slab",
+    "I": "mistech:ice_rune"
+  },
+  "result": {
+    "id": "mistech:runic_ashtray",
+    "count": 1
+  }
+}

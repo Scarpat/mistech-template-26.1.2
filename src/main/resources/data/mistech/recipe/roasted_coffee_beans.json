@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": "mistech:coffee_seeds",
+  "result": {
+    "id": "mistech:roasted_coffee_beans"
+  }
+}

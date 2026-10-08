@@ -1,0 +1,18 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:impure_heart",
+  "ingredients": [
+    "mistech:luck_rune",
+    "mistech:arcane_rune",
+    "mistech:mithril_ingot",
+    "minecraft:ender_eye"
+  ],
+  "essence": 6,
+  "duration": 500,
+  "condition": "thunder",
+  "min_tier": 1,
+  "result": {
+    "id": "mistech:awakened_heart"
+  },
+  "effect": "storm"
+}

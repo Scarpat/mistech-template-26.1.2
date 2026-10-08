@@ -1,0 +1,9 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "#c:ores/lapis",
+  "result": {
+    "id": "minecraft:lapis_lazuli",
+    "count": 8
+  },
+  "rune_bonus": true
+}

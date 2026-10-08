@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mistech:item/mage_pants_base",
+    "layer1": "mistech:item/mage_adept_pants_trim"
+  }
+}

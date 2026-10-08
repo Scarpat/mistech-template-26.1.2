@@ -1,0 +1,33 @@
+{
+  "values": [
+    "mistech:mithril_sword",
+    "mistech:mithril_axe",
+    "mistech:mithril_spear",
+    "mistech:mithril_pickaxe",
+    "mistech:mithril_shovel",
+    "mistech:mithril_hoe",
+    "mistech:adamantine_sword",
+    "mistech:orichalcum_sword",
+    "mistech:pure_orichalcum_sword",
+    "mistech:adamantine_axe",
+    "mistech:orichalcum_axe",
+    "mistech:pure_orichalcum_axe",
+    "mistech:adamantine_spear",
+    "mistech:orichalcum_spear",
+    "mistech:pure_orichalcum_spear",
+    "mistech:adamantine_pickaxe",
+    "mistech:orichalcum_pickaxe",
+    "mistech:pure_orichalcum_pickaxe",
+    "mistech:adamantine_shovel",
+    "mistech:orichalcum_shovel",
+    "mistech:pure_orichalcum_shovel",
+    "mistech:adamantine_hoe",
+    "mistech:orichalcum_hoe",
+    "mistech:pure_orichalcum_hoe",
+    "mistech:silver_dagger",
+    "mistech:mithril_bow",
+    "mistech:adamantine_bow",
+    "mistech:orichalcum_bow",
+    "mistech:pure_orichalcum_bow"
+  ]
+}

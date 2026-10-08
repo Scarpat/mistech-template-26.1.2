@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:mithril_hoe",
+  "ingredients": [
+    "mistech:adamantine_ingot",
+    "mistech:adamantine_ingot",
+    "mistech:impure_magic_block",
+    "mistech:earth_rune",
+    "mistech:arcane_rune"
+  ],
+  "essence": 5,
+  "duration": 500,
+  "condition": "none",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:adamantine_hoe"
+  },
+  "copy_components": true,
+  "effect": "forge"
+}

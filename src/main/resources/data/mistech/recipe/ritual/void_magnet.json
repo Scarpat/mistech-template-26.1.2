@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:amulet_blank",
+  "ingredients": [
+    "mistech:void_rune",
+    "mistech:space_rune",
+    "minecraft:lodestone",
+    "minecraft:ender_pearl",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 4,
+  "duration": 400,
+  "condition": "none",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:void_magnet"
+  },
+  "effect": "arcane"
+}

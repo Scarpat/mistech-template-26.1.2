@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "FWA",
+    "W W",
+    "W W"
+  ],
+  "key": {
+    "W": "#minecraft:wool",
+    "F": "mistech:impure_magic_shard",
+    "A": "mistech:air_rune"
+  },
+  "result": {
+    "id": "mistech:comfy_pants"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mistech:ash_block"
+  ],
+  "result": {
+    "id": "mistech:incense_ash",
+    "count": 4
+  }
+}

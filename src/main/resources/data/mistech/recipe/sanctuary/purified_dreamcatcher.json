@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ritual",
+  "sanctuary": true,
+  "catalyst": "mistech:dreamcatcher",
+  "ingredients": [
+    "mistech:pure_magic_shard",
+    "mistech:coarse_salt",
+    "mistech:rue_leaf",
+    "mistech:purified_essence_bottle"
+  ],
+  "essence": 2,
+  "duration": 300,
+  "result": {
+    "id": "mistech:purified_dreamcatcher"
+  },
+  "effect": "light"
+}

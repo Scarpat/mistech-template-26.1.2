@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "BRB",
+    "MCM",
+    "BKB"
+  ],
+  "key": {
+    "B": "minecraft:polished_blackstone_bricks",
+    "R": "mistech:magma_rune",
+    "M": "mistech:mithril_ingot",
+    "C": "mistech:blaze_generator",
+    "K": "minecraft:cauldron"
+  },
+  "result": {
+    "id": "mistech:igneous_boiler",
+    "count": 1
+  }
+}

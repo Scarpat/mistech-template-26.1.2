@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=north,gnome=false,lit=false": {
+      "model": "mistech:block/gnome_bicycle"
+    },
+    "facing=north,gnome=false,lit=true": {
+      "model": "mistech:block/gnome_bicycle"
+    },
+    "facing=north,gnome=true,lit=false": {
+      "model": "mistech:block/gnome_bicycle_gnome"
+    },
+    "facing=north,gnome=true,lit=true": {
+      "model": "mistech:block/gnome_bicycle_gnome_on"
+    },
+    "facing=east,gnome=false,lit=false": {
+      "model": "mistech:block/gnome_bicycle",
+      "y": 90
+    },
+    "facing=east,gnome=false,lit=true": {
+      "model": "mistech:block/gnome_bicycle",
+      "y": 90
+    },
+    "facing=east,gnome=true,lit=false": {
+      "model": "mistech:block/gnome_bicycle_gnome",
+      "y": 90
+    },
+    "facing=east,gnome=true,lit=true": {
+      "model": "mistech:block/gnome_bicycle_gnome_on",
+      "y": 90
+    },
+    "facing=south,gnome=false,lit=false": {
+      "model": "mistech:block/gnome_bicycle",
+      "y": 180
+    },
+    "facing=south,gnome=false,lit=true": {
+      "model": "mistech:block/gnome_bicycle",
+      "y": 180
+    },
+    "facing=south,gnome=true,lit=false": {
+      "model": "mistech:block/gnome_bicycle_gnome",
+      "y": 180
+    },
+    "facing=south,gnome=true,lit=true": {
+      "model": "mistech:block/gnome_bicycle_gnome_on",
+      "y": 180
+    },
+    "facing=west,gnome=false,lit=false": {
+      "model": "mistech:block/gnome_bicycle",
+      "y": 270
+    },
+    "facing=west,gnome=false,lit=true": {
+      "model": "mistech:block/gnome_bicycle",
+      "y": 270
+    },
+    "facing=west,gnome=true,lit=false": {
+      "model": "mistech:block/gnome_bicycle_gnome",
+      "y": 270
+    },
+    "facing=west,gnome=true,lit=true": {
+      "model": "mistech:block/gnome_bicycle_gnome_on",
+      "y": 270
+    }
+  }
+}

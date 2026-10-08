@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#c:raw_materials/mithril",
+    "#c:raw_materials/adamantine",
+    "#c:raw_materials/orichalcum"
+  ]
+}

@@ -1,0 +1,484 @@
+{
+  "variants": {
+    "color=white,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_white"
+    },
+    "color=white,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_white_pale"
+    },
+    "color=white,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_white",
+      "y": 90
+    },
+    "color=white,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_white_pale",
+      "y": 90
+    },
+    "color=white,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_white",
+      "y": 180
+    },
+    "color=white,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_white_pale",
+      "y": 180
+    },
+    "color=white,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_white",
+      "y": 270
+    },
+    "color=white,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_white_pale",
+      "y": 270
+    },
+    "color=orange,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_orange"
+    },
+    "color=orange,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_orange_pale"
+    },
+    "color=orange,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_orange",
+      "y": 90
+    },
+    "color=orange,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_orange_pale",
+      "y": 90
+    },
+    "color=orange,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_orange",
+      "y": 180
+    },
+    "color=orange,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_orange_pale",
+      "y": 180
+    },
+    "color=orange,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_orange",
+      "y": 270
+    },
+    "color=orange,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_orange_pale",
+      "y": 270
+    },
+    "color=magenta,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_magenta"
+    },
+    "color=magenta,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_magenta_pale"
+    },
+    "color=magenta,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_magenta",
+      "y": 90
+    },
+    "color=magenta,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_magenta_pale",
+      "y": 90
+    },
+    "color=magenta,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_magenta",
+      "y": 180
+    },
+    "color=magenta,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_magenta_pale",
+      "y": 180
+    },
+    "color=magenta,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_magenta",
+      "y": 270
+    },
+    "color=magenta,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_magenta_pale",
+      "y": 270
+    },
+    "color=light_blue,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_light_blue"
+    },
+    "color=light_blue,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_light_blue_pale"
+    },
+    "color=light_blue,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_light_blue",
+      "y": 90
+    },
+    "color=light_blue,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_light_blue_pale",
+      "y": 90
+    },
+    "color=light_blue,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_light_blue",
+      "y": 180
+    },
+    "color=light_blue,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_light_blue_pale",
+      "y": 180
+    },
+    "color=light_blue,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_light_blue",
+      "y": 270
+    },
+    "color=light_blue,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_light_blue_pale",
+      "y": 270
+    },
+    "color=yellow,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_yellow"
+    },
+    "color=yellow,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_yellow_pale"
+    },
+    "color=yellow,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_yellow",
+      "y": 90
+    },
+    "color=yellow,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_yellow_pale",
+      "y": 90
+    },
+    "color=yellow,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_yellow",
+      "y": 180
+    },
+    "color=yellow,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_yellow_pale",
+      "y": 180
+    },
+    "color=yellow,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_yellow",
+      "y": 270
+    },
+    "color=yellow,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_yellow_pale",
+      "y": 270
+    },
+    "color=lime,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_lime"
+    },
+    "color=lime,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_lime_pale"
+    },
+    "color=lime,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_lime",
+      "y": 90
+    },
+    "color=lime,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_lime_pale",
+      "y": 90
+    },
+    "color=lime,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_lime",
+      "y": 180
+    },
+    "color=lime,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_lime_pale",
+      "y": 180
+    },
+    "color=lime,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_lime",
+      "y": 270
+    },
+    "color=lime,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_lime_pale",
+      "y": 270
+    },
+    "color=pink,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_pink"
+    },
+    "color=pink,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_pink_pale"
+    },
+    "color=pink,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_pink",
+      "y": 90
+    },
+    "color=pink,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_pink_pale",
+      "y": 90
+    },
+    "color=pink,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_pink",
+      "y": 180
+    },
+    "color=pink,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_pink_pale",
+      "y": 180
+    },
+    "color=pink,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_pink",
+      "y": 270
+    },
+    "color=pink,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_pink_pale",
+      "y": 270
+    },
+    "color=gray,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_gray"
+    },
+    "color=gray,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_gray_pale"
+    },
+    "color=gray,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_gray",
+      "y": 90
+    },
+    "color=gray,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_gray_pale",
+      "y": 90
+    },
+    "color=gray,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_gray",
+      "y": 180
+    },
+    "color=gray,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_gray_pale",
+      "y": 180
+    },
+    "color=gray,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_gray",
+      "y": 270
+    },
+    "color=gray,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_gray_pale",
+      "y": 270
+    },
+    "color=light_gray,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_light_gray"
+    },
+    "color=light_gray,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_light_gray_pale"
+    },
+    "color=light_gray,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_light_gray",
+      "y": 90
+    },
+    "color=light_gray,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_light_gray_pale",
+      "y": 90
+    },
+    "color=light_gray,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_light_gray",
+      "y": 180
+    },
+    "color=light_gray,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_light_gray_pale",
+      "y": 180
+    },
+    "color=light_gray,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_light_gray",
+      "y": 270
+    },
+    "color=light_gray,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_light_gray_pale",
+      "y": 270
+    },
+    "color=cyan,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_cyan"
+    },
+    "color=cyan,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_cyan_pale"
+    },
+    "color=cyan,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_cyan",
+      "y": 90
+    },
+    "color=cyan,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_cyan_pale",
+      "y": 90
+    },
+    "color=cyan,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_cyan",
+      "y": 180
+    },
+    "color=cyan,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_cyan_pale",
+      "y": 180
+    },
+    "color=cyan,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_cyan",
+      "y": 270
+    },
+    "color=cyan,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_cyan_pale",
+      "y": 270
+    },
+    "color=purple,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_purple"
+    },
+    "color=purple,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_purple_pale"
+    },
+    "color=purple,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_purple",
+      "y": 90
+    },
+    "color=purple,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_purple_pale",
+      "y": 90
+    },
+    "color=purple,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_purple",
+      "y": 180
+    },
+    "color=purple,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_purple_pale",
+      "y": 180
+    },
+    "color=purple,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_purple",
+      "y": 270
+    },
+    "color=purple,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_purple_pale",
+      "y": 270
+    },
+    "color=blue,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_blue"
+    },
+    "color=blue,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_blue_pale"
+    },
+    "color=blue,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_blue",
+      "y": 90
+    },
+    "color=blue,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_blue_pale",
+      "y": 90
+    },
+    "color=blue,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_blue",
+      "y": 180
+    },
+    "color=blue,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_blue_pale",
+      "y": 180
+    },
+    "color=blue,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_blue",
+      "y": 270
+    },
+    "color=blue,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_blue_pale",
+      "y": 270
+    },
+    "color=brown,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_brown"
+    },
+    "color=brown,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_brown_pale"
+    },
+    "color=brown,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_brown",
+      "y": 90
+    },
+    "color=brown,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_brown_pale",
+      "y": 90
+    },
+    "color=brown,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_brown",
+      "y": 180
+    },
+    "color=brown,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_brown_pale",
+      "y": 180
+    },
+    "color=brown,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_brown",
+      "y": 270
+    },
+    "color=brown,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_brown_pale",
+      "y": 270
+    },
+    "color=green,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_green"
+    },
+    "color=green,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_green_pale"
+    },
+    "color=green,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_green",
+      "y": 90
+    },
+    "color=green,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_green_pale",
+      "y": 90
+    },
+    "color=green,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_green",
+      "y": 180
+    },
+    "color=green,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_green_pale",
+      "y": 180
+    },
+    "color=green,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_green",
+      "y": 270
+    },
+    "color=green,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_green_pale",
+      "y": 270
+    },
+    "color=red,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_red"
+    },
+    "color=red,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_red_pale"
+    },
+    "color=red,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_red",
+      "y": 90
+    },
+    "color=red,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_red_pale",
+      "y": 90
+    },
+    "color=red,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_red",
+      "y": 180
+    },
+    "color=red,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_red_pale",
+      "y": 180
+    },
+    "color=red,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_red",
+      "y": 270
+    },
+    "color=red,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_red_pale",
+      "y": 270
+    },
+    "color=black,facing=north,pale=false": {
+      "model": "mistech:block/writing_table_black"
+    },
+    "color=black,facing=north,pale=true": {
+      "model": "mistech:block/writing_table_black_pale"
+    },
+    "color=black,facing=east,pale=false": {
+      "model": "mistech:block/writing_table_black",
+      "y": 90
+    },
+    "color=black,facing=east,pale=true": {
+      "model": "mistech:block/writing_table_black_pale",
+      "y": 90
+    },
+    "color=black,facing=south,pale=false": {
+      "model": "mistech:block/writing_table_black",
+      "y": 180
+    },
+    "color=black,facing=south,pale=true": {
+      "model": "mistech:block/writing_table_black_pale",
+      "y": 180
+    },
+    "color=black,facing=west,pale=false": {
+      "model": "mistech:block/writing_table_black",
+      "y": 270
+    },
+    "color=black,facing=west,pale=true": {
+      "model": "mistech:block/writing_table_black_pale",
+      "y": 270
+    }
+  }
+}

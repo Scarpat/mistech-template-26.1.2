@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mistech:ritual_pedestal",
+          "functions": [
+            {
+              "function": "minecraft:copy_state",
+              "block": "mistech:ritual_pedestal",
+              "properties": [
+                "pale"
+              ]
+            }
+          ]
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "mistech:blocks/ritual_pedestal"
+}

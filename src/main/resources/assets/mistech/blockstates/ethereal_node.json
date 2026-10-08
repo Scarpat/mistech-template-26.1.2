@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "mistech:block/ethereal_node"
+    },
+    "facing=down": {
+      "model": "mistech:block/ethereal_node",
+      "x": 180
+    },
+    "facing=north": {
+      "model": "mistech:block/ethereal_node",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "mistech:block/ethereal_node",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mistech:block/ethereal_node",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east": {
+      "model": "mistech:block/ethereal_node",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

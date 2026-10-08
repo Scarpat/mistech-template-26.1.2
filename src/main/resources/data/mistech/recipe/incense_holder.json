@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "decorations",
+  "pattern": [
+    "S",
+    "W"
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "W": "#minecraft:wooden_slabs"
+  },
+  "result": {
+    "id": "mistech:incense_holder",
+    "count": 1
+  }
+}

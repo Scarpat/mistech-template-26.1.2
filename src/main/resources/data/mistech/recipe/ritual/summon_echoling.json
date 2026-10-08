@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:calibrated_sculk_sensor",
+  "ingredients": [
+    "minecraft:echo_shard",
+    "minecraft:sculk",
+    "mistech:darkness_rune",
+    "mistech:air_rune",
+    "minecraft:experience_bottle"
+  ],
+  "essence": 4,
+  "duration": 300,
+  "condition": "none",
+  "min_tier": 2,
+  "action": "summon_echoling",
+  "effect": "shadow"
+}

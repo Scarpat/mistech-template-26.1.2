@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "mode=relay": {
+      "model": "mistech:block/transmission_pylon"
+    },
+    "mode=input": {
+      "model": "mistech:block/transmission_pylon_input"
+    },
+    "mode=output": {
+      "model": "mistech:block/transmission_pylon_output"
+    }
+  }
+}

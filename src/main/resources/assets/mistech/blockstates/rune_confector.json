@@ -1,0 +1,106 @@
+{
+ "variants": {
+  "facing=north,mirrored=false,part=table": {
+   "model": "mistech:block/rune_confector"
+  },
+  "facing=north,mirrored=true,part=table": {
+   "model": "mistech:block/rune_confector_mirrored"
+  },
+  "facing=north,mirrored=false,part=barrel": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=north,mirrored=true,part=barrel": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=north,mirrored=false,part=table_tank": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=north,mirrored=true,part=table_tank": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=north,mirrored=false,part=barrel_tank": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=north,mirrored=true,part=barrel_tank": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=east,mirrored=false,part=table": {
+   "model": "mistech:block/rune_confector",
+   "y": 90
+  },
+  "facing=east,mirrored=true,part=table": {
+   "model": "mistech:block/rune_confector_mirrored",
+   "y": 90
+  },
+  "facing=east,mirrored=false,part=barrel": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=east,mirrored=true,part=barrel": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=east,mirrored=false,part=table_tank": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=east,mirrored=true,part=table_tank": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=east,mirrored=false,part=barrel_tank": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=east,mirrored=true,part=barrel_tank": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=south,mirrored=false,part=table": {
+   "model": "mistech:block/rune_confector",
+   "y": 180
+  },
+  "facing=south,mirrored=true,part=table": {
+   "model": "mistech:block/rune_confector_mirrored",
+   "y": 180
+  },
+  "facing=south,mirrored=false,part=barrel": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=south,mirrored=true,part=barrel": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=south,mirrored=false,part=table_tank": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=south,mirrored=true,part=table_tank": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=south,mirrored=false,part=barrel_tank": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=south,mirrored=true,part=barrel_tank": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=west,mirrored=false,part=table": {
+   "model": "mistech:block/rune_confector",
+   "y": 270
+  },
+  "facing=west,mirrored=true,part=table": {
+   "model": "mistech:block/rune_confector_mirrored",
+   "y": 270
+  },
+  "facing=west,mirrored=false,part=barrel": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=west,mirrored=true,part=barrel": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=west,mirrored=false,part=table_tank": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=west,mirrored=true,part=table_tank": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=west,mirrored=false,part=barrel_tank": {
+   "model": "mistech:block/rune_confector_part"
+  },
+  "facing=west,mirrored=true,part=barrel_tank": {
+   "model": "mistech:block/rune_confector_part"
+  }
+ }
+}

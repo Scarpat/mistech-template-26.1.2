@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    " A ",
+    "ISI",
+    " E "
+  ],
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "I": "minecraft:iron_ingot",
+    "S": "mistech:space_rune",
+    "E": "mistech:energy_rune"
+  },
+  "result": {
+    "id": "mistech:arcane_receiver",
+    "count": 1
+  }
+}

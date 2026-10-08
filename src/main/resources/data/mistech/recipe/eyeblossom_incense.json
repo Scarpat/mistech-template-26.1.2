@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " RF",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "R": "minecraft:resin_clump",
+    "F": "minecraft:open_eyeblossom",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "mistech:eyeblossom_incense",
+    "count": 1
+  }
+}

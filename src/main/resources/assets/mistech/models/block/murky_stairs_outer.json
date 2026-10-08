@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "mistech:block/murky_planks",
+    "side": "mistech:block/murky_planks",
+    "top": "mistech:block/murky_planks"
+  }
+}

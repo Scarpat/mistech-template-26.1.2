@@ -1,0 +1,14 @@
+{
+  "type": "mistech:writing",
+  "ingredients": [
+    "minecraft:redstone",
+    "minecraft:redstone",
+    "minecraft:redstone",
+    "minecraft:copper_ingot"
+  ],
+  "chalk_damage": 5,
+  "result": {
+    "id": "mistech:energy_rune",
+    "count": 1
+  }
+}

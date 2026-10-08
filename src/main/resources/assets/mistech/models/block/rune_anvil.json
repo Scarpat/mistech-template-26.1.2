@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/template_anvil",
+  "textures": {
+    "particle": "mistech:block/rune_anvil",
+    "body": "mistech:block/rune_anvil",
+    "top": "mistech:block/rune_anvil_top"
+  }
+}

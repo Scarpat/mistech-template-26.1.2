@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:ender_pearl",
+  "ingredients": [
+    "mistech:space_rune",
+    "mistech:impure_magic_shard",
+    "mistech:impure_magic_shard",
+    "mistech:mithril_ingot"
+  ],
+  "essence": 5,
+  "duration": 400,
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:translocation_orb"
+  },
+  "effect": "astral"
+}

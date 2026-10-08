@@ -1,0 +1,14 @@
+{
+  "type": "mistech:writing",
+  "ingredients": [
+    "minecraft:ender_pearl",
+    "minecraft:ender_pearl",
+    "minecraft:ender_pearl",
+    "minecraft:ender_pearl"
+  ],
+  "chalk_damage": 10,
+  "result": {
+    "id": "mistech:space_rune",
+    "count": 1
+  }
+}

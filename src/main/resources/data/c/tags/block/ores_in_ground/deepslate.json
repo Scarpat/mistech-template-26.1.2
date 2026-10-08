@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:deepslate_mithril_ore",
+    "mistech:deepslate_adamantine_ore",
+    "mistech:deepslate_orichalcum_ore"
+  ]
+}

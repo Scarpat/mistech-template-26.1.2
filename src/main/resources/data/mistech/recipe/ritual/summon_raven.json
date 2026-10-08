@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:feather",
+  "ingredients": [
+    "minecraft:black_dye",
+    "mistech:space_rune",
+    "mistech:darkness_rune",
+    "minecraft:ender_eye",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "night",
+  "min_tier": 2,
+  "action": "summon_raven",
+  "effect": "shadow"
+}

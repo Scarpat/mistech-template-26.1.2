@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mistech:item/wither_rose_incense_lit"
+  }
+}

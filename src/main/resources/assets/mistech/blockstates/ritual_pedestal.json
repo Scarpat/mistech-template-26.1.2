@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "pale=false": {
+      "model": "mistech:block/ritual_pedestal"
+    },
+    "pale=true": {
+      "model": "mistech:block/ritual_pedestal_pale"
+    }
+  }
+}

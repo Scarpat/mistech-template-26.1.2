@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "guide_stone",
+  "ingredients": [
+    "minecraft:amethyst_shard",
+    "mistech:impure_magic_shard",
+    "minecraft:emerald",
+    "minecraft:lime_dye"
+  ],
+  "result": {
+    "id": "mistech:guide_stone",
+    "components": {
+      "minecraft:dyed_color": 8439583
+    }
+  }
+}

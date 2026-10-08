@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "bottom": "mistech:block/spatial_barrel_bottom",
+    "side": "mistech:block/spatial_barrel_side",
+    "top": "mistech:block/spatial_barrel_top"
+  }
+}

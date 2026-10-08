@@ -1,0 +1,14 @@
+{
+  "type": "mistech:writing",
+  "ingredients": [
+    "minecraft:black_dye",
+    "minecraft:black_dye",
+    "minecraft:obsidian",
+    "minecraft:obsidian"
+  ],
+  "chalk_damage": 10,
+  "result": {
+    "id": "mistech:darkness_rune",
+    "count": 1
+  }
+}

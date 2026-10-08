@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:mithril_sword",
+  "ingredients": [
+    "mistech:energy_rune",
+    "mistech:energy_rune",
+    "mistech:bottled_lightning",
+    "minecraft:lightning_rod"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "none",
+  "min_tier": 1,
+  "result": {
+    "id": "mistech:storm_gauntlet"
+  },
+  "effect": "storm",
+  "copy_components": true
+}

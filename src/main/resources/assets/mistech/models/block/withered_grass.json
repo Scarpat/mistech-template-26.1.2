@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "mistech:block/withered_grass_top",
+    "side": "mistech:block/withered_grass_side",
+    "bottom": "minecraft:block/dirt",
+    "particle": "minecraft:block/dirt"
+  }
+}

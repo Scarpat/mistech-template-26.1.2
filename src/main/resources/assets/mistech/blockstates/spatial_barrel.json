@@ -1,0 +1,92 @@
+{
+  "variants": {
+    "facing=down,open=false,formed=false": {
+      "model": "mistech:block/spatial_barrel",
+      "x": 180
+    },
+    "facing=down,open=false,formed=true": {
+      "model": "mistech:block/spatial_barrel_formed"
+    },
+    "facing=down,open=true,formed=false": {
+      "model": "mistech:block/spatial_barrel_open",
+      "x": 180
+    },
+    "facing=down,open=true,formed=true": {
+      "model": "mistech:block/spatial_barrel_formed"
+    },
+    "facing=up,open=false,formed=false": {
+      "model": "mistech:block/spatial_barrel"
+    },
+    "facing=up,open=false,formed=true": {
+      "model": "mistech:block/spatial_barrel_formed"
+    },
+    "facing=up,open=true,formed=false": {
+      "model": "mistech:block/spatial_barrel_open"
+    },
+    "facing=up,open=true,formed=true": {
+      "model": "mistech:block/spatial_barrel_formed"
+    },
+    "facing=north,open=false,formed=false": {
+      "model": "mistech:block/spatial_barrel",
+      "x": 90
+    },
+    "facing=north,open=false,formed=true": {
+      "model": "mistech:block/spatial_barrel_formed"
+    },
+    "facing=north,open=true,formed=false": {
+      "model": "mistech:block/spatial_barrel_open",
+      "x": 90
+    },
+    "facing=north,open=true,formed=true": {
+      "model": "mistech:block/spatial_barrel_formed"
+    },
+    "facing=south,open=false,formed=false": {
+      "model": "mistech:block/spatial_barrel",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,open=false,formed=true": {
+      "model": "mistech:block/spatial_barrel_formed"
+    },
+    "facing=south,open=true,formed=false": {
+      "model": "mistech:block/spatial_barrel_open",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,open=true,formed=true": {
+      "model": "mistech:block/spatial_barrel_formed"
+    },
+    "facing=west,open=false,formed=false": {
+      "model": "mistech:block/spatial_barrel",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,open=false,formed=true": {
+      "model": "mistech:block/spatial_barrel_formed"
+    },
+    "facing=west,open=true,formed=false": {
+      "model": "mistech:block/spatial_barrel_open",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,open=true,formed=true": {
+      "model": "mistech:block/spatial_barrel_formed"
+    },
+    "facing=east,open=false,formed=false": {
+      "model": "mistech:block/spatial_barrel",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,open=false,formed=true": {
+      "model": "mistech:block/spatial_barrel_formed"
+    },
+    "facing=east,open=true,formed=false": {
+      "model": "mistech:block/spatial_barrel_open",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,open=true,formed=true": {
+      "model": "mistech:block/spatial_barrel_formed"
+    }
+  }
+}

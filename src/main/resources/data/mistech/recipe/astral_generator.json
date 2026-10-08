@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GGG",
+    "LSL",
+    "ORO"
+  ],
+  "key": {
+    "G": "#c:glass_blocks",
+    "L": "minecraft:lapis_block",
+    "S": "mistech:impure_magic_shard",
+    "O": "minecraft:gold_ingot",
+    "R": "mistech:light_rune"
+  },
+  "result": {
+    "id": "mistech:astral_generator",
+    "count": 1
+  }
+}

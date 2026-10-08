@@ -1,0 +1,33 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mistech:veil_ring",
+      "required": false
+    },
+    {
+      "id": "mistech:ember_ring",
+      "required": false
+    },
+    {
+      "id": "mistech:breeze_ring",
+      "required": false
+    },
+    {
+      "id": "mistech:stone_ring",
+      "required": false
+    },
+    {
+      "id": "mistech:tide_ring",
+      "required": false
+    },
+    {
+      "id": "mistech:frost_ring",
+      "required": false
+    },
+    {
+      "id": "mistech:spatial_ring",
+      "required": false
+    }
+  ]
+}

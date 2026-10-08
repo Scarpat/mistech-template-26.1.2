@@ -1,0 +1,106 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "lapis": "minecraft:block/lapis_block",
+    "gold": "minecraft:block/gold_block",
+    "particle": "minecraft:block/lapis_block"
+  },
+  "elements": [
+    {
+      "from": [
+        3,
+        0,
+        3
+      ],
+      "to": [
+        13,
+        7,
+        13
+      ],
+      "faces": {
+        "north": {
+          "texture": "#lapis"
+        },
+        "south": {
+          "texture": "#lapis"
+        },
+        "east": {
+          "texture": "#lapis"
+        },
+        "west": {
+          "texture": "#lapis"
+        },
+        "up": {
+          "texture": "#lapis"
+        },
+        "down": {
+          "texture": "#lapis"
+        }
+      }
+    },
+    {
+      "from": [
+        3.5,
+        7,
+        3.5
+      ],
+      "to": [
+        12.5,
+        8,
+        12.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#gold"
+        },
+        "south": {
+          "texture": "#gold"
+        },
+        "east": {
+          "texture": "#gold"
+        },
+        "west": {
+          "texture": "#gold"
+        },
+        "up": {
+          "texture": "#gold"
+        },
+        "down": {
+          "texture": "#gold"
+        }
+      }
+    },
+    {
+      "from": [
+        4,
+        8,
+        4
+      ],
+      "to": [
+        12,
+        16,
+        12
+      ],
+      "faces": {
+        "north": {
+          "texture": "#lapis"
+        },
+        "south": {
+          "texture": "#lapis"
+        },
+        "east": {
+          "texture": "#lapis"
+        },
+        "west": {
+          "texture": "#lapis"
+        },
+        "up": {
+          "texture": "#lapis"
+        },
+        "down": {
+          "texture": "#lapis"
+        }
+      }
+    }
+  ]
+}

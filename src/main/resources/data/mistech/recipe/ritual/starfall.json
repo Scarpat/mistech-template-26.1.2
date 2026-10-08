@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:ender_eye",
+  "ingredients": [
+    "mistech:space_rune",
+    "mistech:light_rune",
+    "mistech:time_rune",
+    "mistech:fire_rune",
+    "minecraft:glowstone_dust",
+    "minecraft:amethyst_shard",
+    "mistech:orichalcum_ingot"
+  ],
+  "essence": 6,
+  "duration": 600,
+  "condition": "clear_night",
+  "min_tier": 3,
+  "action": "starfall",
+  "effect": "stars"
+}

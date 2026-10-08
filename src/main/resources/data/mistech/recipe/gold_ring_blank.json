@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " N ",
+    "NAN",
+    " N "
+  ],
+  "key": {
+    "N": "minecraft:gold_nugget",
+    "A": "minecraft:amethyst_shard"
+  },
+  "result": {
+    "id": "mistech:gold_ring_blank",
+    "count": 1
+  }
+}

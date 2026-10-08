@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mistech:item/mage_hood_base",
+    "layer1": "mistech:item/mage_hemp_hood_trim"
+  }
+}

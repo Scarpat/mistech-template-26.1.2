@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "C C",
+    "C C"
+  ],
+  "key": {
+    "C": "mistech:magic_cloth"
+  },
+  "result": {
+    "id": "mistech:hemp_mage_shoes"
+  }
+}

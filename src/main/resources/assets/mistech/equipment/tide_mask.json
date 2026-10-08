@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mistech:tide_mask"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "mistech:tide_mask"
+      }
+    ]
+  }
+}

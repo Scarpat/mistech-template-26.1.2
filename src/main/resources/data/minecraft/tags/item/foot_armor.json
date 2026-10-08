@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:slippers",
+    "mistech:mithril_boots",
+    "mistech:adamantine_boots",
+    "mistech:orichalcum_boots",
+    "mistech:pure_orichalcum_boots",
+    "mistech:wind_boots",
+    "mistech:frost_skates",
+    "mistech:hemp_mage_shoes",
+    "mistech:initiate_mage_shoes",
+    "mistech:adept_mage_shoes",
+    "mistech:archmage_mage_shoes"
+  ]
+}

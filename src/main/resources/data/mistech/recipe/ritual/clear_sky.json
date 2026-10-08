@@ -1,0 +1,15 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:sunflower",
+  "ingredients": [
+    "mistech:fire_rune",
+    "mistech:fire_rune",
+    "mistech:light_rune",
+    "mistech:light_rune"
+  ],
+  "essence": 1,
+  "duration": 200,
+  "condition": "rain",
+  "action": "clear_sky",
+  "effect": "light"
+}

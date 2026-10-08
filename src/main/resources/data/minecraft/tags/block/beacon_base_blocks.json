@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:impure_magic_block",
+    "mistech:pure_magic_block",
+    "mistech:mithril_block",
+    "mistech:adamantine_block",
+    "mistech:orichalcum_block"
+  ]
+}

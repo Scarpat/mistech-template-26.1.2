@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "mistech:block/goblin_totem_top",
+    "front": "mistech:block/goblin_totem_front_solved",
+    "side": "mistech:block/goblin_totem_side"
+  }
+}

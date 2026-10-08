@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mistech:item/mage_robe_base",
+    "layer1": "mistech:item/mage_hemp_robe_trim"
+  }
+}

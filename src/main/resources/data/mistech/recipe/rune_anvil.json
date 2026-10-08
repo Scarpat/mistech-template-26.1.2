@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ARA",
+    "SNS",
+    "BBB"
+  ],
+  "key": {
+    "A": "mistech:adamantine_ingot",
+    "R": "mistech:arcane_rune",
+    "S": "mistech:impure_magic_shard",
+    "N": "minecraft:anvil",
+    "B": "minecraft:polished_blackstone"
+  },
+  "result": {
+    "id": "mistech:rune_anvil",
+    "count": 1
+  }
+}

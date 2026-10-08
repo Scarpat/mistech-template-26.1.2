@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CBC",
+    "QWQ",
+    "MCM"
+  ],
+  "key": {
+    "C": "minecraft:calcite",
+    "B": "mistech:pure_magic_block",
+    "Q": "minecraft:quartz_block",
+    "W": "minecraft:cauldron",
+    "M": "mistech:mithril_ingot"
+  },
+  "result": {
+    "id": "mistech:sanctuary_font",
+    "count": 1
+  }
+}

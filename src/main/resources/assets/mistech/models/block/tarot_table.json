@@ -1,0 +1,12 @@
+{
+  "parent": "mistech:block/writing_table_base",
+  "textures": {
+    "particle": "minecraft:block/dark_oak_planks",
+    "top": "minecraft:block/dark_oak_planks",
+    "leg": "minecraft:block/dark_oak_planks",
+    "cloth": "mistech:block/tarot_cloth",
+    "paper": "mistech:block/tarot_spread",
+    "chalk": "minecraft:block/gold_block",
+    "amethyst": "minecraft:block/amethyst_block"
+  }
+}

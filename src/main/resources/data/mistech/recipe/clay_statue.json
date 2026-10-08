@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " B ",
+    "CAC",
+    "C C"
+  ],
+  "key": {
+    "B": "minecraft:clay",
+    "C": "minecraft:clay_ball",
+    "A": "minecraft:amethyst_shard"
+  },
+  "result": {
+    "id": "mistech:clay_statue",
+    "count": 1
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:adamantine_helmet",
+  "ingredients": [
+    "mistech:water_rune",
+    "mistech:water_rune",
+    "minecraft:nautilus_shell",
+    "minecraft:heart_of_the_sea",
+    "minecraft:prismarine_crystals",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 4,
+  "duration": 400,
+  "condition": "none",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:tide_mask"
+  },
+  "effect": "mist",
+  "copy_components": true
+}

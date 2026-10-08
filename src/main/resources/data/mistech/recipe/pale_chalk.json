@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mistech:ash_chalk",
+    "minecraft:pale_moss_block",
+    "minecraft:bone_meal"
+  ],
+  "result": {
+    "id": "mistech:pale_chalk",
+    "count": 1
+  }
+}

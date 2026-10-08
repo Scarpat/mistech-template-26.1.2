@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "sanctuary": true,
+  "catalyst": "mistech:impure_pickaxe",
+  "ingredients": [
+    "mistech:pure_magic_shard",
+    "mistech:pure_magic_shard",
+    "mistech:purified_essence_bottle",
+    "mistech:mithril_ingot"
+  ],
+  "essence": 3,
+  "duration": 400,
+  "condition": "none",
+  "effect": "forge",
+  "result": {
+    "id": "mistech:pure_pickaxe"
+  },
+  "copy_components": true
+}

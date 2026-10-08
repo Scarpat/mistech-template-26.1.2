@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "MSM",
+    "CBC",
+    "MSM"
+  ],
+  "key": {
+    "M": "mistech:mithril_ingot",
+    "S": "mistech:space_rune",
+    "C": "minecraft:amethyst_shard",
+    "B": "mistech:spatial_barrel"
+  },
+  "result": {
+    "id": "mistech:archive_core",
+    "count": 1
+  }
+}

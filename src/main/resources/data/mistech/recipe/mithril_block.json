@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": "#c:ingots/mithril"
+  },
+  "result": {
+    "id": "mistech:mithril_block",
+    "count": 1
+  }
+}

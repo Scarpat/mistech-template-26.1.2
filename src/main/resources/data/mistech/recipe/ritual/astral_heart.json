@@ -1,0 +1,22 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:impure_heart",
+  "ingredients": [
+    "mistech:adamantine_ingot",
+    "mistech:adamantine_ingot",
+    "mistech:orichalcum_ingot",
+    "mistech:orichalcum_ingot",
+    "mistech:luck_rune",
+    "mistech:void_rune",
+    "mistech:arcane_rune",
+    "minecraft:nether_star"
+  ],
+  "essence": 8,
+  "duration": 700,
+  "condition": "new_moon",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:astral_heart"
+  },
+  "effect": "astral"
+}

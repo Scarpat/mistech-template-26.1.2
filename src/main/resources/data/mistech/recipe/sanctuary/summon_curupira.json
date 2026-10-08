@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ritual",
+  "sanctuary": true,
+  "catalyst": "minecraft:oak_sapling",
+  "ingredients": [
+    "mistech:pure_magic_shard",
+    "mistech:rue_leaf",
+    "mistech:earth_rune",
+    "mistech:purified_essence_bottle",
+    "mistech:dried_tobacco_leaf"
+  ],
+  "essence": 3,
+  "duration": 400,
+  "condition": "day",
+  "action": "summon_curupira",
+  "effect": "nature"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "RFR",
+    "BGB",
+    "BEB"
+  ],
+  "key": {
+    "R": "minecraft:blaze_rod",
+    "F": "mistech:fire_rune",
+    "B": "minecraft:polished_blackstone_bricks",
+    "G": "mistech:runic_furnace",
+    "E": "mistech:energy_rune"
+  },
+  "result": {
+    "id": "mistech:blaze_generator",
+    "count": 1
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SRS",
+    "S S",
+    "SFS"
+  ],
+  "key": {
+    "S": "#minecraft:wooden_slabs",
+    "R": "mistech:space_rune",
+    "F": "mistech:impure_magic_shard"
+  },
+  "result": {
+    "id": "mistech:spatial_barrel",
+    "count": 1
+  }
+}

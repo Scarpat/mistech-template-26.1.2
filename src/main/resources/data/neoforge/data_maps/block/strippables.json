@@ -1,0 +1,10 @@
+{
+  "values": {
+    "mistech:murky_log": {
+      "stripped_block": "mistech:stripped_murky_log"
+    },
+    "mistech:murky_wood": {
+      "stripped_block": "mistech:stripped_murky_wood"
+    }
+  }
+}

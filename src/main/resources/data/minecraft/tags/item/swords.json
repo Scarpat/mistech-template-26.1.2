@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:ritual_dagger",
+    "mistech:troll_club",
+    "mistech:mithril_sword",
+    "mistech:adamantine_sword",
+    "mistech:orichalcum_sword",
+    "mistech:pure_orichalcum_sword",
+    "mistech:infernal_dagger",
+    "mistech:storm_gauntlet",
+    "mistech:silver_dagger"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GLG",
+    "OAO",
+    "DED"
+  ],
+  "key": {
+    "G": "minecraft:glass",
+    "L": "mistech:light_rune",
+    "O": "mistech:orichalcum_ingot",
+    "A": "mistech:astral_generator",
+    "D": "minecraft:lapis_block",
+    "E": "mistech:energy_rune"
+  },
+  "result": {
+    "id": "mistech:stellar_observatory",
+    "count": 1
+  }
+}

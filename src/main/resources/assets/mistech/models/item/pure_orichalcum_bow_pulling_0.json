@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/bow",
+  "textures": {
+    "layer0": "mistech:item/pure_orichalcum_bow_pulling_0"
+  }
+}

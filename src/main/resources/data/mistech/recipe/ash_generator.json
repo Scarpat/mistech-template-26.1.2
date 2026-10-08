@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CFC",
+    "BUB",
+    "CRC"
+  ],
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "F": "mistech:fire_rune",
+    "B": "mistech:ash_block",
+    "U": "minecraft:furnace",
+    "R": "mistech:energy_rune"
+  },
+  "result": {
+    "id": "mistech:ash_generator",
+    "count": 1
+  }
+}

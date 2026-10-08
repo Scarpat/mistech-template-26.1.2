@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    " W ",
+    "WFW",
+    "WAW"
+  ],
+  "key": {
+    "W": "#minecraft:wool",
+    "F": "mistech:impure_magic_shard",
+    "A": "mistech:air_rune"
+  },
+  "result": {
+    "id": "mistech:gnome_hat"
+  }
+}

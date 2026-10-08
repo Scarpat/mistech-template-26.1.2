@@ -1,0 +1,22 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:trident",
+  "ingredients": [
+    "mistech:water_rune",
+    "mistech:water_rune",
+    "mistech:air_rune",
+    "mistech:air_rune",
+    "mistech:orichalcum_block",
+    "minecraft:heart_of_the_sea",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 6,
+  "duration": 600,
+  "condition": "rain",
+  "min_tier": 3,
+  "result": {
+    "id": "mistech:tide_spear"
+  },
+  "effect": "mist",
+  "copy_components": true
+}

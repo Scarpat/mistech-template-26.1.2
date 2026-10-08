@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    " L ",
+    "IEI",
+    "CSC"
+  ],
+  "key": {
+    "L": "minecraft:leather",
+    "I": "minecraft:iron_ingot",
+    "E": "mistech:energy_rune",
+    "C": "minecraft:copper_ingot",
+    "S": "minecraft:smooth_stone_slab"
+  },
+  "result": {
+    "id": "mistech:gnome_bicycle",
+    "count": 1
+  }
+}

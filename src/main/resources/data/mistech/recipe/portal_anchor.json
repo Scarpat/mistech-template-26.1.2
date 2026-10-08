@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " S ",
+    "CLC",
+    "CCC"
+  ],
+  "key": {
+    "S": "mistech:space_rune",
+    "C": "minecraft:crying_obsidian",
+    "L": "minecraft:lodestone"
+  },
+  "result": {
+    "id": "mistech:portal_anchor",
+    "count": 1
+  }
+}

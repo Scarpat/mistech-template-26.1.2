@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:fermented_spider_eye",
+  "ingredients": [
+    "mistech:darkness_rune",
+    "mistech:time_rune",
+    "mistech:fire_rune",
+    "mistech:impure_magic_shard",
+    "mistech:impure_magic_shard",
+    "minecraft:bone",
+    "minecraft:rotten_flesh",
+    "minecraft:redstone_block"
+  ],
+  "essence": 6,
+  "duration": 600,
+  "condition": "full_moon",
+  "min_tier": 3,
+  "action": "blood_moon",
+  "effect": "blood"
+}

@@ -1,0 +1,16 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:warped_fungus",
+  "ingredients": [
+    "minecraft:saddle",
+    "minecraft:string",
+    "mistech:soul_rune",
+    "mistech:fire_rune"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "nether",
+  "min_tier": 1,
+  "action": "summon_runic_strider",
+  "effect": "fire"
+}

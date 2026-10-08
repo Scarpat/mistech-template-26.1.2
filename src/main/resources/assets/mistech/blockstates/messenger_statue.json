@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mistech:block/messenger_statue"
+    },
+    "facing=east": {
+      "model": "mistech:block/messenger_statue",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mistech:block/messenger_statue",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mistech:block/messenger_statue",
+      "y": 270
+    }
+  }
+}

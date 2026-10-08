@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mistech:frost_skates"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "mistech:frost_skates"
+      }
+    ]
+  }
+}

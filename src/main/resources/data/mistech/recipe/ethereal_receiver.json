@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    " E ",
+    "ORO",
+    " V "
+  ],
+  "key": {
+    "E": "minecraft:ender_eye",
+    "O": "mistech:orichalcum_ingot",
+    "R": "mistech:arcane_receiver",
+    "V": "mistech:void_rune"
+  },
+  "result": {
+    "id": "mistech:ethereal_receiver",
+    "count": 1
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "model": {
+    "type": "minecraft:select",
+    "property": "minecraft:block_state",
+    "block_state_property": "pale",
+    "cases": [
+      {
+        "when": "true",
+        "model": {
+          "type": "minecraft:model",
+          "model": "mistech:block/ritual_pedestal_pale"
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "mistech:block/ritual_pedestal"
+    }
+  }
+}

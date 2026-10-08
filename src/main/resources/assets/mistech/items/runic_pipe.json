@@ -1,0 +1,37 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "property": "minecraft:has_component",
+    "component": "mistech:incense_lit",
+    "on_true": {
+      "type": "minecraft:model",
+      "model": "mistech:item/runic_pipe_lit",
+      "tints": [
+        {
+          "type": "minecraft:constant",
+          "value": -1
+        },
+        {
+          "type": "minecraft:custom_model_data",
+          "index": 0,
+          "default": 13157584
+        }
+      ]
+    },
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "mistech:item/runic_pipe",
+      "tints": [
+        {
+          "type": "minecraft:constant",
+          "value": -1
+        },
+        {
+          "type": "minecraft:custom_model_data",
+          "index": 0,
+          "default": 13157584
+        }
+      ]
+    }
+  }
+}

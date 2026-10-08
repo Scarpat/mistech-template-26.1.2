@@ -1,0 +1,22 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:creaking_heart",
+  "ingredients": [
+    "mistech:impure_heart",
+    "minecraft:pale_oak_log",
+    "minecraft:resin_clump",
+    "minecraft:open_eyeblossom",
+    "mistech:darkness_rune",
+    "mistech:vigil_rune",
+    "minecraft:pale_moss_block",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 6,
+  "duration": 600,
+  "condition": "pale_garden",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:pale_heart"
+  },
+  "effect": "shadow"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:saddle",
+  "ingredients": [
+    "mistech:boitata_scale",
+    "mistech:boitata_scale",
+    "mistech:werewolf_fang",
+    "mistech:lunar_blood",
+    "mistech:fire_rune",
+    "mistech:fire_rune",
+    "mistech:mithril_ingot",
+    "mistech:void_rune"
+  ],
+  "essence": 6,
+  "duration": 600,
+  "condition": "friday_night",
+  "min_tier": 3,
+  "action": "summon_headless_mule",
+  "effect": "fire"
+}

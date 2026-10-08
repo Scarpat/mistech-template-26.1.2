@@ -1,0 +1,21 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:adamantine_pickaxe",
+  "ingredients": [
+    "mistech:orichalcum_ingot",
+    "mistech:orichalcum_ingot",
+    "mistech:star_fragment",
+    "mistech:impure_magic_block",
+    "mistech:space_rune",
+    "mistech:time_rune"
+  ],
+  "essence": 6,
+  "duration": 600,
+  "condition": "night",
+  "min_tier": 3,
+  "result": {
+    "id": "mistech:orichalcum_pickaxe"
+  },
+  "copy_components": true,
+  "effect": "astral"
+}

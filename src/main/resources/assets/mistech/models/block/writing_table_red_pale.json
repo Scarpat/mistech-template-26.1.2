@@ -1,0 +1,6 @@
+{
+  "parent": "mistech:block/writing_table_base_pale",
+  "textures": {
+    "cloth": "minecraft:block/red_wool"
+  }
+}

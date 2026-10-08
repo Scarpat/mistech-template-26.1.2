@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:mithril_spear",
+    "mistech:adamantine_spear",
+    "mistech:orichalcum_spear",
+    "mistech:pure_orichalcum_spear"
+  ]
+}

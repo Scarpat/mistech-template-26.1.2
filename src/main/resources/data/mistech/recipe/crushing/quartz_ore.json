@@ -1,0 +1,9 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "#c:ores/quartz",
+  "result": {
+    "id": "minecraft:quartz",
+    "count": 2
+  },
+  "rune_bonus": true
+}

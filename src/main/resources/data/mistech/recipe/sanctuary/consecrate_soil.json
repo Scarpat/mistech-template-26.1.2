@@ -1,0 +1,16 @@
+{
+  "type": "mistech:ritual",
+  "sanctuary": true,
+  "catalyst": "mistech:coarse_salt",
+  "ingredients": [
+    "mistech:purified_essence_bottle",
+    "mistech:purified_essence_bottle",
+    "mistech:rue_leaf",
+    "mistech:earth_rune"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "none",
+  "effect": "nature",
+  "action": "consecrate_soil"
+}

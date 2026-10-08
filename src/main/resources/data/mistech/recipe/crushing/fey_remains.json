@@ -1,0 +1,10 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "mistech:fey_remains",
+  "result": {
+    "id": "mistech:fairy_dust",
+    "count": 1
+  },
+  "bonus_chance": 0.3,
+  "rune_bonus": true
+}

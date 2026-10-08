@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " S ",
+    " N ",
+    " A "
+  ],
+  "key": {
+    "S": "minecraft:string",
+    "N": "minecraft:gold_nugget",
+    "A": "minecraft:amethyst_shard"
+  },
+  "result": {
+    "id": "mistech:dowsing_pendulum",
+    "count": 1
+  }
+}

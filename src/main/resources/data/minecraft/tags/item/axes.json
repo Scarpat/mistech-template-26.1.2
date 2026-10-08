@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:impure_axe",
+    "mistech:mithril_axe",
+    "mistech:pure_axe",
+    "mistech:adamantine_axe",
+    "mistech:orichalcum_axe",
+    "mistech:pure_orichalcum_axe",
+    "mistech:infernal_axe"
+  ]
+}

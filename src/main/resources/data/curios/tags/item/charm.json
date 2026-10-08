@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mistech:void_magnet",
+      "required": false
+    },
+    {
+      "id": "mistech:pocket_hourglass",
+      "required": false
+    }
+  ]
+}

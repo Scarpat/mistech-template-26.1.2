@@ -1,0 +1,15 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:feather",
+  "ingredients": [
+    "mistech:air_rune",
+    "mistech:darkness_rune",
+    "minecraft:book",
+    "minecraft:rabbit"
+  ],
+  "essence": 2,
+  "duration": 300,
+  "condition": "night",
+  "action": "summon_owl",
+  "effect": "shadow"
+}

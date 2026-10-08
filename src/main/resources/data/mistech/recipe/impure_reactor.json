@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "AIA",
+    "MHM",
+    "AEA"
+  ],
+  "key": {
+    "A": "mistech:adamantine_ingot",
+    "I": "mistech:impure_magic_block",
+    "M": "mistech:mithril_ingot",
+    "H": "mistech:impure_heart",
+    "E": "mistech:energy_rune"
+  },
+  "result": {
+    "id": "mistech:impure_reactor",
+    "count": 1
+  }
+}

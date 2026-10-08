@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    " E ",
+    "ONO",
+    " V "
+  ],
+  "key": {
+    "E": "minecraft:ender_eye",
+    "O": "mistech:orichalcum_ingot",
+    "N": "mistech:arcane_node",
+    "V": "mistech:void_rune"
+  },
+  "result": {
+    "id": "mistech:ethereal_node",
+    "count": 1
+  }
+}

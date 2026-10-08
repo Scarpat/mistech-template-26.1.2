@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:mithril_bow",
+  "ingredients": [
+    "mistech:adamantine_ingot",
+    "mistech:adamantine_ingot",
+    "mistech:impure_magic_block",
+    "mistech:air_rune",
+    "mistech:arcane_rune"
+  ],
+  "essence": 5,
+  "duration": 500,
+  "condition": "none",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:adamantine_bow"
+  },
+  "copy_components": true,
+  "effect": "forge"
+}

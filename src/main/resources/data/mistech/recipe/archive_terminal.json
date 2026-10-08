@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " E ",
+    "SWS",
+    "LLL"
+  ],
+  "key": {
+    "E": "minecraft:ender_eye",
+    "S": "mistech:space_rune",
+    "W": "minecraft:crafting_table",
+    "L": "minecraft:dark_oak_log"
+  },
+  "result": {
+    "id": "mistech:archive_terminal",
+    "count": 1
+  }
+}

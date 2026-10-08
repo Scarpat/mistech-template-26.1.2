@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:crying_obsidian",
+  "ingredients": [
+    "mistech:darkness_rune",
+    "mistech:darkness_rune",
+    "mistech:light_rune",
+    "mistech:time_rune",
+    "mistech:void_rune",
+    "mistech:impure_magic_shard",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 6,
+  "duration": 600,
+  "condition": "new_moon_day",
+  "min_tier": 3,
+  "action": "eclipse",
+  "effect": "eclipse"
+}

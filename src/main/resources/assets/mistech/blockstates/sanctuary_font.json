@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "filled=false,running=false": {
+      "model": "mistech:block/sanctuary_font"
+    },
+    "filled=false,running=true": {
+      "model": "mistech:block/sanctuary_font_running"
+    },
+    "filled=true,running=false": {
+      "model": "mistech:block/sanctuary_font_filled"
+    },
+    "filled=true,running=true": {
+      "model": "mistech:block/sanctuary_font_filled_running"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:mithril_ingot",
+    "mistech:adamantine_ingot",
+    "mistech:orichalcum_ingot"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:pipe",
+  "ingredients": [
+    "minecraft:gold_ingot",
+    "minecraft:gold_ingot",
+    "minecraft:gold_ingot",
+    "minecraft:gold_ingot",
+    "mistech:impure_magic_shard",
+    "mistech:impure_magic_shard",
+    "mistech:gnome_staff",
+    "minecraft:amethyst_shard"
+  ],
+  "essence": 4,
+  "duration": 400,
+  "condition": "none",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:runic_pipe"
+  },
+  "copy_components": true,
+  "effect": "arcane"
+}

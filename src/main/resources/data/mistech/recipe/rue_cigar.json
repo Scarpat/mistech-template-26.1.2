@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mistech:rue_leaf",
+    "mistech:rue_leaf",
+    "minecraft:paper"
+  ],
+  "result": {
+    "id": "mistech:rue_cigar",
+    "count": 1
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:blaze_powder",
+    "minecraft:golden_apple",
+    "minecraft:rabbit_foot",
+    "minecraft:nautilus_shell",
+    "minecraft:blaze_rod",
+    "minecraft:emerald",
+    "minecraft:iron_block",
+    "minecraft:fermented_spider_eye",
+    "minecraft:ender_pearl",
+    "minecraft:diamond",
+    "minecraft:glow_ink_sac",
+    "minecraft:tropical_fish"
+  ]
+}

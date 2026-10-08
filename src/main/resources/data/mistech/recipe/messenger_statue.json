@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " B ",
+    "CAC",
+    "C C"
+  ],
+  "key": {
+    "B": "mistech:mithril_block",
+    "C": "mistech:mithril_ingot",
+    "A": "minecraft:amethyst_shard"
+  },
+  "result": {
+    "id": "mistech:messenger_statue",
+    "count": 1
+  }
+}

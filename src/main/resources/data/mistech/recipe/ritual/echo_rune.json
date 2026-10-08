@@ -1,0 +1,18 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:air_rune",
+  "ingredients": [
+    "minecraft:echo_shard",
+    "minecraft:echo_shard",
+    "minecraft:note_block",
+    "mistech:darkness_rune"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "none",
+  "min_tier": 1,
+  "result": {
+    "id": "mistech:echo_rune"
+  },
+  "effect": "shadow"
+}

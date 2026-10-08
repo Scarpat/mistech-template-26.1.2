@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:impure_pickaxe",
+  "ingredients": [
+    "minecraft:netherite_ingot",
+    "mistech:magma_rune",
+    "mistech:crying_shard",
+    "minecraft:ancient_debris"
+  ],
+  "essence": 5,
+  "duration": 500,
+  "condition": "none",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:infernal_pickaxe"
+  },
+  "copy_components": true,
+  "effect": "fire"
+}

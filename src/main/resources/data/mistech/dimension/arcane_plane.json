@@ -1,0 +1,12 @@
+{
+  "type": "mistech:arcane_plane",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "mistech:arcane_plane",
+      "layers": [],
+      "lakes": false,
+      "features": false
+    }
+  }
+}

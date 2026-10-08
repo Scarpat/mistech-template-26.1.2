@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "tools",
+  "ingredients": [
+    "minecraft:flint",
+    "#c:ores/orichalcum"
+  ],
+  "result": {
+    "id": "mistech:orichalcum_flint_and_steel",
+    "count": 1
+  }
+}

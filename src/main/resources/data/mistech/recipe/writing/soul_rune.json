@@ -1,0 +1,14 @@
+{
+  "type": "mistech:writing",
+  "ingredients": [
+    "minecraft:soul_sand",
+    "minecraft:soul_soil",
+    "minecraft:ghast_tear",
+    "mistech:fire_rune"
+  ],
+  "chalk_damage": 15,
+  "result": {
+    "id": "mistech:soul_rune",
+    "count": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "mistech:item/guide_stone",
+    "tints": [
+      {
+        "type": "minecraft:dye",
+        "default": 10182614
+      }
+    ]
+  }
+}

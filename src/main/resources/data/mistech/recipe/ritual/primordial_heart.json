@@ -1,0 +1,22 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:impure_heart",
+  "ingredients": [
+    "mistech:sculk_heart",
+    "mistech:pale_heart",
+    "mistech:infernal_heart",
+    "mistech:awakened_heart",
+    "mistech:light_rune",
+    "mistech:darkness_rune",
+    "mistech:void_rune",
+    "mistech:echo_rune"
+  ],
+  "essence": 8,
+  "duration": 1200,
+  "condition": "full_moon",
+  "min_tier": 3,
+  "result": {
+    "id": "mistech:primordial_heart"
+  },
+  "effect": "ascension"
+}

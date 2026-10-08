@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mistech:dried_tobacco_leaf",
+    "minecraft:paper"
+  ],
+  "result": {
+    "id": "mistech:cigar",
+    "count": 1
+  }
+}

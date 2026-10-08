@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "mistech:block/murky_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "mistech:block/murky_wood"
+    },
+    "axis=z": {
+      "model": "mistech:block/murky_wood",
+      "x": 90
+    }
+  }
+}

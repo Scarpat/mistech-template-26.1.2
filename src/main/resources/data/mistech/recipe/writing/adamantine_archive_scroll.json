@@ -1,0 +1,13 @@
+{
+  "type": "mistech:writing",
+  "ingredients": [
+    "mistech:space_rune",
+    "mistech:adamantine_ingot",
+    "mistech:adamantine_ingot"
+  ],
+  "chalk_damage": 20,
+  "result": {
+    "id": "mistech:adamantine_archive_scroll",
+    "count": 1
+  }
+}

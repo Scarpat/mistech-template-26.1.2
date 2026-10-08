@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SGS",
+    " L ",
+    "BBB"
+  ],
+  "key": {
+    "S": "minecraft:polished_blackstone_slab",
+    "G": "minecraft:gold_ingot",
+    "L": "mistech:murky_log",
+    "B": "minecraft:polished_blackstone_bricks"
+  },
+  "result": {
+    "id": "mistech:ritual_pedestal",
+    "count": 2
+  }
+}

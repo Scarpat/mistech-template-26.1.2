@@ -1,0 +1,15 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:cod",
+  "ingredients": [
+    "mistech:darkness_rune",
+    "minecraft:black_dye",
+    "minecraft:string",
+    "minecraft:spider_eye"
+  ],
+  "essence": 2,
+  "duration": 300,
+  "condition": "none",
+  "action": "summon_black_cat",
+  "effect": "shadow"
+}

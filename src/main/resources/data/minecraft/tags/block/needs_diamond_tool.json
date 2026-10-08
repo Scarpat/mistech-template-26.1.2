@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:deepslate_adamantine_ore",
+    "mistech:deepslate_orichalcum_ore",
+    "mistech:orichalcum_brazier",
+    "mistech:portal_anchor",
+    "mistech:adamantine_block",
+    "mistech:orichalcum_block"
+  ]
+}

@@ -1,0 +1,271 @@
+{
+ "parent": "minecraft:block/block",
+ "textures": {
+  "particle": "minecraft:block/cobblestone",
+  "stone": "minecraft:block/cobblestone",
+  "mat": "mistech:block/rune_roller_mat",
+  "sheet": "mistech:block/rune_roller_sheet",
+  "roller": "minecraft:block/stripped_spruce_log",
+  "dark": "minecraft:block/dark_oak_planks",
+  "residue": "mistech:block/magic_residue_flakes",
+  "cigar": "mistech:block/magic_incense_stick"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    0
+   ],
+   "to": [
+    16,
+    8,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#stone"
+    },
+    "south": {
+     "texture": "#stone"
+    },
+    "east": {
+     "texture": "#stone"
+    },
+    "west": {
+     "texture": "#stone"
+    },
+    "up": {
+     "texture": "#stone"
+    },
+    "down": {
+     "texture": "#stone"
+    }
+   }
+  },
+  {
+   "from": [
+    1,
+    8,
+    1
+   ],
+   "to": [
+    15,
+    8.5,
+    15
+   ],
+   "faces": {
+    "north": {
+     "texture": "#mat"
+    },
+    "south": {
+     "texture": "#mat"
+    },
+    "east": {
+     "texture": "#mat"
+    },
+    "west": {
+     "texture": "#mat"
+    },
+    "up": {
+     "texture": "#mat"
+    },
+    "down": {
+     "texture": "#mat"
+    }
+   }
+  },
+  {
+   "from": [
+    4,
+    8.5,
+    3
+   ],
+   "to": [
+    10,
+    8.6,
+    9
+   ],
+   "faces": {
+    "north": {
+     "texture": "#sheet"
+    },
+    "south": {
+     "texture": "#sheet"
+    },
+    "east": {
+     "texture": "#sheet"
+    },
+    "west": {
+     "texture": "#sheet"
+    },
+    "up": {
+     "texture": "#sheet"
+    },
+    "down": {
+     "texture": "#sheet"
+    }
+   }
+  },
+  {
+   "from": [
+    3,
+    8.5,
+    10.5
+   ],
+   "to": [
+    13,
+    10.5,
+    12.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#roller"
+    },
+    "south": {
+     "texture": "#roller"
+    },
+    "east": {
+     "texture": "#roller"
+    },
+    "west": {
+     "texture": "#roller"
+    },
+    "up": {
+     "texture": "#roller"
+    },
+    "down": {
+     "texture": "#roller"
+    }
+   }
+  },
+  {
+   "from": [
+    1.5,
+    9,
+    11
+   ],
+   "to": [
+    3,
+    10,
+    12
+   ],
+   "faces": {
+    "north": {
+     "texture": "#dark"
+    },
+    "south": {
+     "texture": "#dark"
+    },
+    "east": {
+     "texture": "#dark"
+    },
+    "west": {
+     "texture": "#dark"
+    },
+    "up": {
+     "texture": "#dark"
+    },
+    "down": {
+     "texture": "#dark"
+    }
+   }
+  },
+  {
+   "from": [
+    13,
+    9,
+    11
+   ],
+   "to": [
+    14.5,
+    10,
+    12
+   ],
+   "faces": {
+    "north": {
+     "texture": "#dark"
+    },
+    "south": {
+     "texture": "#dark"
+    },
+    "east": {
+     "texture": "#dark"
+    },
+    "west": {
+     "texture": "#dark"
+    },
+    "up": {
+     "texture": "#dark"
+    },
+    "down": {
+     "texture": "#dark"
+    }
+   }
+  },
+  {
+   "from": [
+    10.5,
+    8.5,
+    3.5
+   ],
+   "to": [
+    13.5,
+    10,
+    6.5
+   ],
+   "faces": {
+    "north": {
+     "texture": "#dark"
+    },
+    "south": {
+     "texture": "#dark"
+    },
+    "east": {
+     "texture": "#dark"
+    },
+    "west": {
+     "texture": "#dark"
+    },
+    "up": {
+     "texture": "#residue"
+    },
+    "down": {
+     "texture": "#dark"
+    }
+   }
+  },
+  {
+   "from": [
+    4.5,
+    8.6,
+    9.2
+   ],
+   "to": [
+    10,
+    9.4,
+    10
+   ],
+   "faces": {
+    "north": {
+     "texture": "#cigar"
+    },
+    "south": {
+     "texture": "#cigar"
+    },
+    "east": {
+     "texture": "#cigar"
+    },
+    "west": {
+     "texture": "#cigar"
+    },
+    "up": {
+     "texture": "#cigar"
+    },
+    "down": {
+     "texture": "#cigar"
+    }
+   }
+  }
+ ]
+}

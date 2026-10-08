@@ -1,0 +1,88 @@
+{
+  "type": "silentgear:simple",
+  "parent": "silentgear:empty",
+  "crafting": {
+    "can_salvage": true,
+    "categories": [
+      "metal",
+      "endgame"
+    ],
+    "gear_type_blacklist": [],
+    "ingredient": "#c:ingots/mithril",
+    "part_substitutes": {}
+  },
+  "display": {
+    "color": "#FF7FD8FF",
+    "equippable": {
+      "always_use_tint": true,
+      "asset_id": "silentgear:generic_shiny",
+      "compound_asset_id": "silentgear:generic_shiny",
+      "equip_sound": "minecraft:item.armor.equip_netherite"
+    },
+    "main_texture_type": "HIGH_CONTRAST",
+    "name": {
+      "translate": "material.mistech.mithril"
+    },
+    "name_prefix": ""
+  },
+  "properties": {
+    "silentgear:main": {
+      "armor": 20.0,
+      "armor/boots": 3,
+      "armor/chestplate": 8,
+      "armor/helmet": 3,
+      "armor/leggings": 6,
+      "armor_durability": 40.0,
+      "armor_toughness": 14.0,
+      "attack_damage": 5.0,
+      "attack_speed": 0.0,
+      "charging_value": 1.2,
+      "draw_speed": 0.0,
+      "durability": 2031.0,
+      "enchantment_value": 20.0,
+      "harvest_speed": 11.0,
+      "harvest_tier": {
+        "incorrect_blocks_for_tool": "minecraft:incorrect_for_netherite_tool",
+        "level_hint": "4",
+        "name": "netherite"
+      },
+      "knockback_resistance": 0.0,
+      "magic_armor": 12.0,
+      "magic_damage": 6.0,
+      "projectile_accuracy": 1.2,
+      "projectile_speed": 1.1,
+      "ranged_damage": 3.0,
+      "rarity": 90.0,
+      "traits": [
+        {
+          "conditions": [],
+          "level": 3,
+          "trait": "silentgear:light"
+        },
+        {
+          "conditions": [],
+          "level": 2,
+          "trait": "silentgear:malleable"
+        }
+      ]
+    },
+    "silentgear:rod": {
+      "durability": {
+        "operation": "MULTIPLY_TOTAL",
+        "value": 0.1
+      },
+      "magic_damage": {
+        "operation": "MULTIPLY_TOTAL",
+        "value": 0.15
+      },
+      "rarity": 90.0,
+      "traits": [
+        {
+          "conditions": [],
+          "level": 2,
+          "trait": "silentgear:light"
+        }
+      ]
+    }
+  }
+}

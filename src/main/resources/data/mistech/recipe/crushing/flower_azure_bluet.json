@@ -1,0 +1,8 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "minecraft:azure_bluet",
+  "result": {
+    "id": "minecraft:light_gray_dye",
+    "count": 2
+  }
+}

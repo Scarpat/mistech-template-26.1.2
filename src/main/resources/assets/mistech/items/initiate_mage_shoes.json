@@ -1,0 +1,12 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "mistech:item/initiate_mage_shoes",
+    "tints": [
+      {
+        "type": "minecraft:dye",
+        "default": -13742180
+      }
+    ]
+  }
+}

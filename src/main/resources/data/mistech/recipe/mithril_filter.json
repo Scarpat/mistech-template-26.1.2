@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PWP",
+    "WMW",
+    "PWP"
+  ],
+  "key": {
+    "P": "minecraft:paper",
+    "W": "minecraft:white_wool",
+    "M": "mistech:mithril_ingot"
+  },
+  "result": {
+    "id": "mistech:mithril_filter",
+    "count": 1
+  }
+}

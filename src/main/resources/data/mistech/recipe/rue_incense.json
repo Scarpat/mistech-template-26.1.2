@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  F",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "F": "mistech:rue_leaf",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "mistech:rue_incense",
+    "count": 1
+  }
+}

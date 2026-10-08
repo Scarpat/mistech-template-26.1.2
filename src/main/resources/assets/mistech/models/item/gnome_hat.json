@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mistech:item/gnome_hat",
+    "layer1": "mistech:item/gnome_hat_overlay"
+  }
+}

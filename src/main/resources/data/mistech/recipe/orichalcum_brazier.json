@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "PSP",
+    "PFP",
+    " O "
+  ],
+  "key": {
+    "P": "minecraft:polished_blackstone",
+    "S": "mistech:impure_magic_shard",
+    "F": "mistech:fire_rune",
+    "O": "mistech:orichalcum_ingot"
+  },
+  "result": {
+    "id": "mistech:orichalcum_brazier",
+    "count": 1
+  }
+}

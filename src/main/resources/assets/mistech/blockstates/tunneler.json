@@ -1,0 +1,92 @@
+{
+  "variants": {
+    "facing=north,formed=false,triggered=false": {
+      "model": "mistech:block/tunneler"
+    },
+    "facing=north,formed=true,triggered=false": {
+      "model": "mistech:block/tunneler_formed"
+    },
+    "facing=north,formed=false,triggered=true": {
+      "model": "mistech:block/tunneler_on"
+    },
+    "facing=north,formed=true,triggered=true": {
+      "model": "mistech:block/tunneler_formed_on"
+    },
+    "facing=south,formed=false,triggered=false": {
+      "model": "mistech:block/tunneler",
+      "y": 180
+    },
+    "facing=south,formed=true,triggered=false": {
+      "model": "mistech:block/tunneler_formed",
+      "y": 180
+    },
+    "facing=south,formed=false,triggered=true": {
+      "model": "mistech:block/tunneler_on",
+      "y": 180
+    },
+    "facing=south,formed=true,triggered=true": {
+      "model": "mistech:block/tunneler_formed_on",
+      "y": 180
+    },
+    "facing=east,formed=false,triggered=false": {
+      "model": "mistech:block/tunneler",
+      "y": 90
+    },
+    "facing=east,formed=true,triggered=false": {
+      "model": "mistech:block/tunneler_formed",
+      "y": 90
+    },
+    "facing=east,formed=false,triggered=true": {
+      "model": "mistech:block/tunneler_on",
+      "y": 90
+    },
+    "facing=east,formed=true,triggered=true": {
+      "model": "mistech:block/tunneler_formed_on",
+      "y": 90
+    },
+    "facing=west,formed=false,triggered=false": {
+      "model": "mistech:block/tunneler",
+      "y": 270
+    },
+    "facing=west,formed=true,triggered=false": {
+      "model": "mistech:block/tunneler_formed",
+      "y": 270
+    },
+    "facing=west,formed=false,triggered=true": {
+      "model": "mistech:block/tunneler_on",
+      "y": 270
+    },
+    "facing=west,formed=true,triggered=true": {
+      "model": "mistech:block/tunneler_formed_on",
+      "y": 270
+    },
+    "facing=up,formed=false,triggered=false": {
+      "model": "mistech:block/tunneler",
+      "x": 270
+    },
+    "facing=up,formed=true,triggered=false": {
+      "model": "mistech:block/tunneler_formed"
+    },
+    "facing=up,formed=false,triggered=true": {
+      "model": "mistech:block/tunneler_on",
+      "x": 270
+    },
+    "facing=up,formed=true,triggered=true": {
+      "model": "mistech:block/tunneler_formed_on"
+    },
+    "facing=down,formed=false,triggered=false": {
+      "model": "mistech:block/tunneler",
+      "x": 90
+    },
+    "facing=down,formed=true,triggered=false": {
+      "model": "mistech:block/tunneler_formed"
+    },
+    "facing=down,formed=false,triggered=true": {
+      "model": "mistech:block/tunneler_on",
+      "x": 90
+    },
+    "facing=down,formed=true,triggered=true": {
+      "model": "mistech:block/tunneler_formed_on"
+    }
+  }
+}

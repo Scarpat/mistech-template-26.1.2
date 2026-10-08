@@ -1,0 +1,8 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "#minecraft:wool",
+  "result": {
+    "id": "minecraft:string",
+    "count": 4
+  }
+}

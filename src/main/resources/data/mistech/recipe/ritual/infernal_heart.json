@@ -1,0 +1,22 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:nether_star",
+  "ingredients": [
+    "mistech:impure_heart",
+    "minecraft:wither_skeleton_skull",
+    "minecraft:wither_skeleton_skull",
+    "minecraft:netherite_ingot",
+    "mistech:magma_rune",
+    "mistech:soul_rune",
+    "minecraft:ghast_tear",
+    "mistech:crying_shard"
+  ],
+  "essence": 8,
+  "duration": 800,
+  "condition": "nether",
+  "min_tier": 3,
+  "result": {
+    "id": "mistech:infernal_heart"
+  },
+  "effect": "fire"
+}

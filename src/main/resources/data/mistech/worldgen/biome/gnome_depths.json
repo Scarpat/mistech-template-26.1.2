@@ -1,0 +1,71 @@
+{
+  "attributes": {
+    "minecraft:visual/fog_color": "#3a2f45",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:crimson_spore"
+        },
+        "probability": 0.002
+      }
+    ]
+  },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground"
+  ],
+  "downfall": 0.5,
+  "effects": {
+    "water_color": "#3f76e4"
+  },
+  "features": [
+    [],
+    [
+      "minecraft:lake_lava_underground"
+    ],
+    [
+      "minecraft:amethyst_geode",
+      "minecraft:large_dripstone"
+    ],
+    [],
+    [],
+    [],
+    [
+      "mistech:realm_ore_coal",
+      "mistech:realm_ore_iron",
+      "mistech:realm_ore_copper",
+      "mistech:realm_ore_gold",
+      "mistech:realm_ore_redstone",
+      "mistech:realm_ore_lapis",
+      "mistech:realm_ore_diamond",
+      "mistech:realm_ore_emerald",
+      "mistech:realm_ore_mithril",
+      "mistech:realm_ore_adamantine",
+      "mistech:realm_ore_orichalcum"
+    ],
+    [
+      "minecraft:dripstone_cluster"
+    ],
+    [
+      "minecraft:spring_water",
+      "minecraft:spring_lava"
+    ],
+    [
+      "minecraft:glow_lichen"
+    ],
+    []
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.7
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "QLQ",
+    " C ",
+    "CCC"
+  ],
+  "key": {
+    "Q": "minecraft:smooth_quartz_slab",
+    "L": "mistech:light_rune",
+    "C": "minecraft:calcite"
+  },
+  "result": {
+    "id": "mistech:crystallizer",
+    "count": 1
+  }
+}

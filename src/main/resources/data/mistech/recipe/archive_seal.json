@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mistech:space_rune",
+    "minecraft:honeycomb",
+    "minecraft:paper"
+  ],
+  "result": {
+    "id": "mistech:archive_seal",
+    "count": 2
+  }
+}

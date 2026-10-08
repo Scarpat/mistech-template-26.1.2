@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mistech:item/comfy_pants",
+    "layer1": "mistech:item/comfy_pants_overlay"
+  }
+}

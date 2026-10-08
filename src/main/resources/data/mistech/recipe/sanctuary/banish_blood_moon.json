@@ -1,0 +1,18 @@
+{
+  "type": "mistech:ritual",
+  "sanctuary": true,
+  "catalyst": "mistech:pure_magic_shard",
+  "ingredients": [
+    "mistech:lunar_blood",
+    "mistech:light_rune",
+    "mistech:coarse_salt",
+    "mistech:purified_essence_bottle",
+    "mistech:mithril_ingot",
+    "mistech:rue_leaf"
+  ],
+  "essence": 6,
+  "duration": 400,
+  "condition": "blood_moon",
+  "action": "banish_blood_moon",
+  "effect": "moon"
+}

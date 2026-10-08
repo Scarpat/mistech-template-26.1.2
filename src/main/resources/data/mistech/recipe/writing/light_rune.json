@@ -1,0 +1,13 @@
+{
+  "type": "mistech:writing",
+  "ingredients": [
+    "minecraft:glowstone_dust",
+    "minecraft:glowstone_dust",
+    "minecraft:torch"
+  ],
+  "chalk_damage": 10,
+  "result": {
+    "id": "mistech:light_rune",
+    "count": 1
+  }
+}

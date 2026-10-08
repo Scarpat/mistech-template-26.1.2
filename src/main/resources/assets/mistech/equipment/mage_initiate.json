@@ -1,0 +1,26 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mistech:mage_robe_base",
+        "dyeable": {
+          "color_when_undyed": -13742180
+        }
+      },
+      {
+        "texture": "mistech:mage_initiate_trim"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mistech:mage_pants_base",
+        "dyeable": {
+          "color_when_undyed": -13742180
+        }
+      },
+      {
+        "texture": "mistech:mage_initiate_trim"
+      }
+    ]
+  }
+}

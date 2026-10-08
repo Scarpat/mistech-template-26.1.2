@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "decorations",
+  "pattern": [
+    "S",
+    "T",
+    "R"
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "T": "minecraft:string",
+    "R": "mistech:magic_residue"
+  },
+  "result": {
+    "id": "mistech:dreamcatcher",
+    "count": 1
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:adamantine_pickaxe",
+  "ingredients": [
+    "mistech:magma_rune",
+    "mistech:magma_rune",
+    "mistech:fire_rune",
+    "mistech:fire_rune",
+    "minecraft:magma_block",
+    "mistech:adamantine_block",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 5,
+  "duration": 500,
+  "condition": "none",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:volcanic_hammer"
+  },
+  "effect": "fire",
+  "copy_components": true
+}

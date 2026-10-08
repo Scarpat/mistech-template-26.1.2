@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "mistech:block/rue_stage0"
+    },
+    "age=1": {
+      "model": "mistech:block/rue_stage0"
+    },
+    "age=2": {
+      "model": "mistech:block/rue_stage1"
+    },
+    "age=3": {
+      "model": "mistech:block/rue_stage1"
+    },
+    "age=4": {
+      "model": "mistech:block/rue_stage2"
+    },
+    "age=5": {
+      "model": "mistech:block/rue_stage2"
+    },
+    "age=6": {
+      "model": "mistech:block/rue_stage2"
+    },
+    "age=7": {
+      "model": "mistech:block/rue_stage3"
+    }
+  }
+}

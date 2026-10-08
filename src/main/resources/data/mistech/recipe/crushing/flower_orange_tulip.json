@@ -1,0 +1,8 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "minecraft:orange_tulip",
+  "result": {
+    "id": "minecraft:orange_dye",
+    "count": 2
+  }
+}

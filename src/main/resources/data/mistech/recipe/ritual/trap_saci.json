@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:glass_jar",
+  "ingredients": [
+    "minecraft:red_wool",
+    "mistech:pipe",
+    "mistech:air_rune",
+    "mistech:air_rune",
+    "mistech:dried_tobacco_leaf"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "thunder",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:saci_jar"
+  },
+  "effect": "storm"
+}

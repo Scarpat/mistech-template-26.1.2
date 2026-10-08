@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "tools",
+  "ingredients": [
+    "mistech:dowsing_pendulum",
+    "minecraft:compass",
+    "mistech:fairy_dust"
+  ],
+  "result": {
+    "id": "mistech:seeking_pendulum"
+  }
+}

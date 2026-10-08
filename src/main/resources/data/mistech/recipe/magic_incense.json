@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  F",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "F": "mistech:impure_magic_shard",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "mistech:magic_incense",
+    "count": 1
+  }
+}

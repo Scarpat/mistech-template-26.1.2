@@ -1,0 +1,24 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:wind_boots",
+  "ingredients": [
+    "mistech:cloud_rune",
+    "mistech:cloud_rune",
+    "minecraft:feather",
+    "minecraft:feather",
+    "minecraft:phantom_membrane",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 4,
+  "duration": 400,
+  "condition": "none",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:wind_boots",
+    "components": {
+      "mistech:cloud_step": true
+    }
+  },
+  "effect": "mist",
+  "copy_components": true
+}

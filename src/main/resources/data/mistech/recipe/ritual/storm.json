@@ -1,0 +1,15 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:bottled_lightning",
+  "ingredients": [
+    "mistech:water_rune",
+    "mistech:water_rune",
+    "mistech:energy_rune",
+    "mistech:energy_rune"
+  ],
+  "essence": 2,
+  "duration": 200,
+  "condition": "none",
+  "action": "storm",
+  "effect": "storm"
+}

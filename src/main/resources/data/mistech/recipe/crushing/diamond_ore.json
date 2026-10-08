@@ -1,0 +1,9 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "#c:ores/diamond",
+  "result": {
+    "id": "minecraft:diamond",
+    "count": 2
+  },
+  "rune_bonus": true
+}

@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mistech:astral_pillar"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        },
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "mistech:astral_pillar",
+          "properties": {
+            "part": "bottom"
+          }
+        }
+      ]
+    }
+  ],
+  "random_sequence": "mistech:blocks/astral_pillar"
+}

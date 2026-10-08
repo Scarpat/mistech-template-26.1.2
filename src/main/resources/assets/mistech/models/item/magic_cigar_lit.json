@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "mistech:item/magic_cigar_lit",
+    "layer1": "mistech:item/magic_cigar_band"
+  }
+}

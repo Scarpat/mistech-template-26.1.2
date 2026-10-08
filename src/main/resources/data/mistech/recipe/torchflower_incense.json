@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " FF",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "F": "minecraft:torchflower",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "mistech:torchflower_incense",
+    "count": 1
+  }
+}

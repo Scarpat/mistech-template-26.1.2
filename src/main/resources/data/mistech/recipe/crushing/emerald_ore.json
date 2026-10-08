@@ -1,0 +1,9 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "#c:ores/emerald",
+  "result": {
+    "id": "minecraft:emerald",
+    "count": 2
+  },
+  "rune_bonus": true
+}

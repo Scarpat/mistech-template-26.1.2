@@ -1,0 +1,15 @@
+{
+  "layers": {
+    "humanoid_leggings": [
+      {
+        "texture": "mistech:comfy_pants",
+        "dyeable": {
+          "color_when_undyed": 7114704
+        }
+      },
+      {
+        "texture": "mistech:comfy_pants_overlay"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mistech:clay_statue"
+        }
+      ]
+    }
+  ],
+  "random_sequence": "mistech:entities/clay_golem"
+}

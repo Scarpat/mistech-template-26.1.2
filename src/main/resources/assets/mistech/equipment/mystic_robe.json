@@ -1,0 +1,15 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mistech:mystic_robe",
+        "dyeable": {
+          "color_when_undyed": 4926072
+        }
+      },
+      {
+        "texture": "mistech:mystic_robe_overlay"
+      }
+    ]
+  }
+}

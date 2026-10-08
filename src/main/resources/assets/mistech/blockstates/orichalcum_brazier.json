@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=false": {
+      "model": "mistech:block/orichalcum_brazier"
+    },
+    "lit=true": {
+      "model": "mistech:block/orichalcum_brazier_lit"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "fullness=0": {
+      "model": "mistech:block/echo_collector"
+    },
+    "fullness=1": {
+      "model": "mistech:block/echo_collector_on"
+    },
+    "fullness=2": {
+      "model": "mistech:block/echo_collector_on"
+    },
+    "fullness=3": {
+      "model": "mistech:block/echo_collector_on"
+    },
+    "fullness=4": {
+      "model": "mistech:block/echo_collector_on"
+    }
+  }
+}

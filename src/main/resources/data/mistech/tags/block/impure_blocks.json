@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:impure_essence",
+    "mistech:impure_magic_block",
+    "mistech:tainted_soil",
+    "mistech:impure_altar",
+    "mistech:impure_altar_2",
+    "mistech:impure_altar_3",
+    "mistech:impure_chalk_mark",
+    "mistech:essence_extractor",
+    "mistech:magic_compressor"
+  ]
+}

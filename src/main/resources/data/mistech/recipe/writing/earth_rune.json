@@ -1,0 +1,13 @@
+{
+  "type": "mistech:writing",
+  "ingredients": [
+    "minecraft:dirt",
+    "minecraft:gravel",
+    "minecraft:cobblestone"
+  ],
+  "chalk_damage": 5,
+  "result": {
+    "id": "mistech:earth_rune",
+    "count": 1
+  }
+}

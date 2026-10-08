@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  S",
+    " T ",
+    "H  "
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "T": "minecraft:string",
+    "H": "minecraft:hay_block"
+  },
+  "result": {
+    "id": "mistech:broom",
+    "count": 1
+  }
+}

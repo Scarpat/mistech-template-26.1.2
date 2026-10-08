@@ -1,0 +1,23 @@
+{
+  "type": "mistech:ritual",
+  "sanctuary": true,
+  "catalyst": "mistech:fire_rune",
+  "ingredients": [
+    "mistech:pure_magic_shard",
+    "mistech:mithril_ingot",
+    "mistech:purified_essence_bottle",
+    "mistech:coarse_salt"
+  ],
+  "essence": 2,
+  "duration": 300,
+  "condition": "none",
+  "effect": "arcane",
+  "result": {
+    "id": "mistech:fire_rune",
+    "components": {
+      "mistech:sealed": true,
+      "minecraft:unbreakable": {}
+    }
+  },
+  "copy_components": true
+}

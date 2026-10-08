@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:crafting_dye",
+  "category": "misc",
+  "dye": "#minecraft:dyes",
+  "group": "dyed_armor",
+  "target": "mistech:comfy_pants",
+  "result": {
+    "id": "mistech:comfy_pants"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:iron_sword",
+  "ingredients": [
+    "mistech:impure_magic_shard",
+    "mistech:darkness_rune",
+    "minecraft:bone",
+    "minecraft:spider_eye"
+  ],
+  "essence": 2,
+  "duration": 240,
+  "condition": "none",
+  "result": {
+    "id": "mistech:ritual_dagger"
+  },
+  "copy_components": true,
+  "effect": "shadow"
+}

@@ -1,0 +1,22 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:natal_chart",
+  "ingredients": [
+    "#mistech:zodiac_tokens",
+    "mistech:time_rune",
+    "mistech:air_rune",
+    "minecraft:amethyst_block",
+    "mistech:impure_magic_shard",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 6,
+  "duration": 600,
+  "condition": "dawn",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:natal_chart"
+  },
+  "copy_components": true,
+  "action": "realign_rising",
+  "effect": "astral"
+}

@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:corrupted_crown",
+  "ingredients": [
+    "mistech:pure_magic_shard",
+    "mistech:pure_magic_shard",
+    "mistech:purified_essence_bottle",
+    "mistech:light_rune",
+    "mistech:coarse_salt",
+    "minecraft:gold_block"
+  ],
+  "essence": 4,
+  "duration": 600,
+  "condition": "day",
+  "result": {
+    "id": "mistech:purified_crown"
+  },
+  "effect": "light",
+  "sanctuary": true
+}

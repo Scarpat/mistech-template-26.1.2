@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "orichalcum_ingot",
+  "ingredients": [
+    "mistech:orichalcum_block"
+  ],
+  "result": {
+    "id": "mistech:orichalcum_ingot",
+    "count": 9
+  }
+}

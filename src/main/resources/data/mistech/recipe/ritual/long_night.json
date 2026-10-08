@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:clock",
+  "ingredients": [
+    "mistech:darkness_rune",
+    "mistech:darkness_rune",
+    "mistech:time_rune",
+    "minecraft:ender_eye",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 4,
+  "duration": 400,
+  "condition": "night",
+  "min_tier": 2,
+  "action": "long_night",
+  "effect": "shadow"
+}

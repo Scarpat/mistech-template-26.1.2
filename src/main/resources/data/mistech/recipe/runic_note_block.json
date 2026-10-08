@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "redstone",
+  "ingredients": [
+    "minecraft:note_block",
+    "minecraft:echo_shard",
+    "minecraft:amethyst_shard",
+    "mistech:space_rune"
+  ],
+  "result": {
+    "id": "mistech:runic_note_block",
+    "count": 1
+  }
+}

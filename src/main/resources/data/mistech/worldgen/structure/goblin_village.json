@@ -1,0 +1,9 @@
+{
+  "type": "mistech:goblin_village",
+  "biomes": [
+    "mistech:murky_wastes"
+  ],
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "terrain_adaptation": "none"
+}

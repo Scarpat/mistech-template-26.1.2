@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  F",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "F": "#minecraft:small_flowers",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "mistech:incense",
+    "count": 1
+  }
+}

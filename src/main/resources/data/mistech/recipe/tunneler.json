@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CEC",
+    "IPI",
+    "CRC"
+  ],
+  "key": {
+    "C": "minecraft:cobbled_deepslate",
+    "E": "mistech:earth_rune",
+    "I": "minecraft:copper_ingot",
+    "P": "minecraft:iron_pickaxe",
+    "R": "minecraft:redstone"
+  },
+  "result": {
+    "id": "mistech:tunneler",
+    "count": 1
+  }
+}

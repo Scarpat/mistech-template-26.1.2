@@ -1,0 +1,14 @@
+{
+  "type": "mistech:writing",
+  "ingredients": [
+    "minecraft:feather",
+    "minecraft:feather",
+    "minecraft:feather",
+    "minecraft:feather"
+  ],
+  "chalk_damage": 5,
+  "result": {
+    "id": "mistech:air_rune",
+    "count": 1
+  }
+}

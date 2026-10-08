@@ -1,0 +1,21 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:enchanted_book",
+  "ingredients": [
+    "mistech:impure_magic_shard",
+    "mistech:impure_magic_shard",
+    "mistech:arcane_rune",
+    "mistech:time_rune",
+    "minecraft:lapis_block",
+    "minecraft:experience_bottle"
+  ],
+  "essence": 5,
+  "duration": 500,
+  "min_tier": 2,
+  "result": {
+    "id": "minecraft:enchanted_book"
+  },
+  "copy_components": true,
+  "action": "impure_bond",
+  "effect": "arcane"
+}

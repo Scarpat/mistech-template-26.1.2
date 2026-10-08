@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "#c:ingots/mithril",
+    "#c:ingots/adamantine",
+    "#c:ingots/orichalcum"
+  ]
+}

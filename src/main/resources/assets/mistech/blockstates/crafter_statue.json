@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mistech:block/crafter_statue"
+    },
+    "facing=east": {
+      "model": "mistech:block/crafter_statue",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mistech:block/crafter_statue",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mistech:block/crafter_statue",
+      "y": 270
+    }
+  }
+}

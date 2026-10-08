@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "sanctuary": true,
+  "catalyst": "mistech:orichalcum_leggings",
+  "ingredients": [
+    "mistech:pure_magic_shard",
+    "mistech:pure_magic_shard",
+    "mistech:purified_essence_bottle",
+    "mistech:light_rune"
+  ],
+  "essence": 5,
+  "duration": 600,
+  "condition": "day",
+  "effect": "light",
+  "result": {
+    "id": "mistech:pure_orichalcum_leggings"
+  },
+  "copy_components": true
+}

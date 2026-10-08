@@ -1,0 +1,13 @@
+{
+  "type": "mistech:writing",
+  "ingredients": [
+    "minecraft:gunpowder",
+    "#minecraft:coals",
+    "minecraft:flint"
+  ],
+  "chalk_damage": 5,
+  "result": {
+    "id": "mistech:fire_rune",
+    "count": 1
+  }
+}

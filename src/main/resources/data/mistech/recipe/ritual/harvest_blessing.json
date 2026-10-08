@@ -1,0 +1,15 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:belladonna_seeds",
+  "ingredients": [
+    "mistech:time_rune",
+    "mistech:earth_rune",
+    "mistech:water_rune",
+    "minecraft:bone_meal"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "day",
+  "action": "harvest_blessing",
+  "effect": "nature"
+}

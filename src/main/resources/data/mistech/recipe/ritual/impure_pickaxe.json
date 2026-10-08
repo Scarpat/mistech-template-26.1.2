@@ -1,0 +1,18 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:diamond_pickaxe",
+  "ingredients": [
+    "mistech:impure_magic_shard",
+    "mistech:impure_magic_shard",
+    "mistech:earth_rune",
+    "mistech:fire_rune"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "none",
+  "result": {
+    "id": "mistech:impure_pickaxe"
+  },
+  "copy_components": true,
+  "effect": "fire"
+}

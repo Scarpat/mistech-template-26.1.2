@@ -1,0 +1,14 @@
+{
+  "type": "mistech:writing",
+  "ingredients": [
+    "mistech:amulet_blank",
+    "mistech:light_rune",
+    "minecraft:lapis_block",
+    "minecraft:gold_ingot"
+  ],
+  "chalk_damage": 10,
+  "result": {
+    "id": "mistech:constellation_amulet",
+    "count": 1
+  }
+}

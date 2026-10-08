@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:time_rune",
+  "ingredients": [
+    "mistech:water_rune",
+    "mistech:earth_rune",
+    "minecraft:golden_apple",
+    "#minecraft:saplings",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 4,
+  "duration": 400,
+  "condition": "day",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:life_rune"
+  },
+  "effect": "nature"
+}

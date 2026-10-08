@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    " M ",
+    "MAM",
+    "PPP"
+  ],
+  "key": {
+    "M": "mistech:mithril_ingot",
+    "A": "minecraft:amethyst_block",
+    "P": "minecraft:polished_blackstone_bricks"
+  },
+  "result": {
+    "id": "mistech:mithril_obelisk",
+    "count": 1
+  }
+}

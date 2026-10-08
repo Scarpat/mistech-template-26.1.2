@@ -1,0 +1,22 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:impure_heart",
+  "ingredients": [
+    "mistech:space_rune",
+    "mistech:void_rune",
+    "mistech:arcane_rune",
+    "mistech:orichalcum_block",
+    "mistech:orichalcum_block",
+    "mistech:advanced_runic_battery",
+    "minecraft:ender_eye",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 8,
+  "duration": 800,
+  "condition": "full_moon",
+  "min_tier": 3,
+  "result": {
+    "id": "mistech:ethereal_nexus"
+  },
+  "effect": "astral"
+}

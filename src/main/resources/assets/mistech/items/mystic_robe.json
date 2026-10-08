@@ -1,0 +1,16 @@
+{
+  "model": {
+    "type": "minecraft:model",
+    "model": "mistech:item/mystic_robe",
+    "tints": [
+      {
+        "type": "minecraft:dye",
+        "default": -11851144
+      },
+      {
+        "type": "minecraft:constant",
+        "value": -1
+      }
+    ]
+  }
+}

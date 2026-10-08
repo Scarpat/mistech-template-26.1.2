@@ -1,0 +1,174 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "magic": "mistech:block/impure_magic_block",
+    "gold": "minecraft:block/gold_block",
+    "particle": "mistech:block/impure_magic_block"
+  },
+  "elements": [
+    {
+      "from": [
+        4.5,
+        0,
+        4.5
+      ],
+      "to": [
+        11.5,
+        1,
+        11.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#gold"
+        },
+        "south": {
+          "texture": "#gold"
+        },
+        "east": {
+          "texture": "#gold"
+        },
+        "west": {
+          "texture": "#gold"
+        },
+        "up": {
+          "texture": "#gold"
+        },
+        "down": {
+          "texture": "#gold"
+        }
+      }
+    },
+    {
+      "from": [
+        5,
+        1,
+        5
+      ],
+      "to": [
+        11,
+        6,
+        11
+      ],
+      "faces": {
+        "north": {
+          "texture": "#magic"
+        },
+        "south": {
+          "texture": "#magic"
+        },
+        "east": {
+          "texture": "#magic"
+        },
+        "west": {
+          "texture": "#magic"
+        },
+        "up": {
+          "texture": "#magic"
+        },
+        "down": {
+          "texture": "#magic"
+        }
+      },
+      "light_emission": 8
+    },
+    {
+      "from": [
+        6,
+        6,
+        6
+      ],
+      "to": [
+        10,
+        11,
+        10
+      ],
+      "faces": {
+        "north": {
+          "texture": "#magic"
+        },
+        "south": {
+          "texture": "#magic"
+        },
+        "east": {
+          "texture": "#magic"
+        },
+        "west": {
+          "texture": "#magic"
+        },
+        "up": {
+          "texture": "#magic"
+        },
+        "down": {
+          "texture": "#magic"
+        }
+      },
+      "light_emission": 10
+    },
+    {
+      "from": [
+        7,
+        11,
+        7
+      ],
+      "to": [
+        9,
+        15,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#magic"
+        },
+        "south": {
+          "texture": "#magic"
+        },
+        "east": {
+          "texture": "#magic"
+        },
+        "west": {
+          "texture": "#magic"
+        },
+        "up": {
+          "texture": "#magic"
+        },
+        "down": {
+          "texture": "#magic"
+        }
+      },
+      "light_emission": 12
+    },
+    {
+      "from": [
+        7.5,
+        15,
+        7.5
+      ],
+      "to": [
+        8.5,
+        16,
+        8.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#gold"
+        },
+        "south": {
+          "texture": "#gold"
+        },
+        "east": {
+          "texture": "#gold"
+        },
+        "west": {
+          "texture": "#gold"
+        },
+        "up": {
+          "texture": "#gold"
+        },
+        "down": {
+          "texture": "#gold"
+        }
+      },
+      "light_emission": 15
+    }
+  ]
+}

@@ -1,0 +1,375 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "minecraft:block/smooth_stone",
+    "stone": "minecraft:block/smooth_stone",
+    "salt": "mistech:block/salt_crust",
+    "water": "mistech:block/salt_water"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        1,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#stone"
+        },
+        "south": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#stone"
+        },
+        "east": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#stone"
+        },
+        "west": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#stone"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#stone"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ],
+          "texture": "#stone",
+          "cullface": "down"
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        1,
+        0
+      ],
+      "to": [
+        16,
+        4,
+        1
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            12,
+            16,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "south": {
+          "uv": [
+            0,
+            12,
+            16,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "east": {
+          "uv": [
+            0,
+            12,
+            1,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "west": {
+          "uv": [
+            0,
+            12,
+            1,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            16,
+            1
+          ],
+          "texture": "#stone"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            16,
+            1
+          ],
+          "texture": "#stone"
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        1,
+        15
+      ],
+      "to": [
+        16,
+        4,
+        16
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            12,
+            16,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "south": {
+          "uv": [
+            0,
+            12,
+            16,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "east": {
+          "uv": [
+            15,
+            12,
+            16,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "west": {
+          "uv": [
+            15,
+            12,
+            16,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "up": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#stone"
+        },
+        "down": {
+          "uv": [
+            0,
+            15,
+            16,
+            16
+          ],
+          "texture": "#stone"
+        }
+      }
+    },
+    {
+      "from": [
+        0,
+        1,
+        1
+      ],
+      "to": [
+        1,
+        4,
+        15
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            12,
+            1,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "south": {
+          "uv": [
+            0,
+            12,
+            1,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "east": {
+          "uv": [
+            1,
+            12,
+            15,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "west": {
+          "uv": [
+            1,
+            12,
+            15,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "up": {
+          "uv": [
+            0,
+            1,
+            1,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "down": {
+          "uv": [
+            0,
+            1,
+            1,
+            15
+          ],
+          "texture": "#stone"
+        }
+      }
+    },
+    {
+      "from": [
+        15,
+        1,
+        1
+      ],
+      "to": [
+        16,
+        4,
+        15
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            15,
+            12,
+            16,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "south": {
+          "uv": [
+            15,
+            12,
+            16,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "east": {
+          "uv": [
+            1,
+            12,
+            15,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "west": {
+          "uv": [
+            1,
+            12,
+            15,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "up": {
+          "uv": [
+            15,
+            1,
+            16,
+            15
+          ],
+          "texture": "#stone"
+        },
+        "down": {
+          "uv": [
+            15,
+            1,
+            16,
+            15
+          ],
+          "texture": "#stone"
+        }
+      }
+    },
+    {
+      "from": [
+        1,
+        1.0,
+        1
+      ],
+      "to": [
+        15,
+        1.7,
+        15
+      ],
+      "faces": {
+        "up": {
+          "uv": [
+            1,
+            1,
+            15,
+            15
+          ],
+          "texture": "#water"
+        }
+      }
+    }
+  ]
+}

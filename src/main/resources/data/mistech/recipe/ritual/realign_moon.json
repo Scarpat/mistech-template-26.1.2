@@ -1,0 +1,22 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:natal_chart",
+  "ingredients": [
+    "#mistech:zodiac_tokens",
+    "mistech:darkness_rune",
+    "mistech:water_rune",
+    "minecraft:glowstone",
+    "mistech:impure_magic_shard",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 6,
+  "duration": 600,
+  "condition": "full_moon",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:natal_chart"
+  },
+  "copy_components": true,
+  "action": "realign_moon",
+  "effect": "astral"
+}

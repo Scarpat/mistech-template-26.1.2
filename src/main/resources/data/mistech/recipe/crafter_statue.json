@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " B ",
+    "CAC",
+    "C C"
+  ],
+  "key": {
+    "B": "minecraft:polished_blackstone",
+    "C": "minecraft:polished_blackstone_bricks",
+    "A": "minecraft:crafting_table"
+  },
+  "result": {
+    "id": "mistech:crafter_statue",
+    "count": 1
+  }
+}

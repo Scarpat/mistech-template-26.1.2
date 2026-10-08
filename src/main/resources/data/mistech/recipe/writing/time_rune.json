@@ -1,0 +1,14 @@
+{
+  "type": "mistech:writing",
+  "ingredients": [
+    "minecraft:clock",
+    "minecraft:clock",
+    "#minecraft:eggs",
+    "minecraft:amethyst_shard"
+  ],
+  "chalk_damage": 10,
+  "result": {
+    "id": "mistech:time_rune",
+    "count": 1
+  }
+}

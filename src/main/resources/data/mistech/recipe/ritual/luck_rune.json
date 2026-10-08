@@ -1,0 +1,18 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:time_rune",
+  "ingredients": [
+    "mistech:fairy_dust",
+    "mistech:fairy_dust",
+    "minecraft:emerald",
+    "minecraft:emerald"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "none",
+  "min_tier": 1,
+  "result": {
+    "id": "mistech:luck_rune"
+  },
+  "effect": "luck"
+}

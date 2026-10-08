@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CRC",
+    "RLR",
+    "CRC"
+  ],
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "R": "mistech:magic_residue",
+    "L": "mistech:bottled_lightning"
+  },
+  "result": {
+    "id": "mistech:runic_battery",
+    "count": 1
+  }
+}

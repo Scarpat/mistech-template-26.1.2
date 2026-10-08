@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "N N",
+    "N N",
+    "GSG"
+  ],
+  "key": {
+    "N": "minecraft:gold_nugget",
+    "G": "minecraft:gold_ingot",
+    "S": "mistech:impure_magic_shard"
+  },
+  "result": {
+    "id": "mistech:amulet_blank",
+    "count": 1
+  }
+}

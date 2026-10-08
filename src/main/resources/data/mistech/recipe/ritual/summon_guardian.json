@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:sculk_catalyst",
+  "ingredients": [
+    "mistech:impure_heart",
+    "minecraft:echo_shard",
+    "minecraft:echo_shard",
+    "minecraft:sculk_shrieker",
+    "mistech:echo_rune",
+    "mistech:darkness_rune",
+    "minecraft:disc_fragment_5",
+    "minecraft:sculk_sensor"
+  ],
+  "essence": 8,
+  "duration": 800,
+  "condition": "deep_dark",
+  "min_tier": 3,
+  "action": "summon_guardian",
+  "effect": "eclipse"
+}

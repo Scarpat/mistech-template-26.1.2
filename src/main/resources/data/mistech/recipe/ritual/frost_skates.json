@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:mithril_boots",
+  "ingredients": [
+    "mistech:ice_rune",
+    "mistech:ice_rune",
+    "minecraft:blue_ice",
+    "minecraft:packed_ice"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "none",
+  "min_tier": 1,
+  "result": {
+    "id": "mistech:frost_skates"
+  },
+  "effect": "mist",
+  "copy_components": true
+}

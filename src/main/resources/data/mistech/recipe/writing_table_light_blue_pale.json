@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "mistech:writing_table",
+  "pattern": [
+    "ACG",
+    "SSS",
+    "T T"
+  ],
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "C": "minecraft:light_blue_carpet",
+    "G": "mistech:ash_chalk",
+    "S": "minecraft:pale_oak_slab",
+    "T": "minecraft:stick"
+  },
+  "result": {
+    "id": "mistech:writing_table",
+    "count": 1,
+    "components": {
+      "minecraft:block_state": {
+        "color": "light_blue",
+        "pale": "true"
+      }
+    }
+  }
+}

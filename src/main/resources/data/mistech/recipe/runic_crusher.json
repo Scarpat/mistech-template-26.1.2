@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "IEI",
+    "CGC",
+    "IRI"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "E": "mistech:earth_rune",
+    "C": "minecraft:cobblestone",
+    "G": "minecraft:grindstone",
+    "R": "mistech:energy_rune"
+  },
+  "result": {
+    "id": "mistech:runic_crusher",
+    "count": 1
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:energy_rune",
+  "ingredients": [
+    "mistech:fairy_dust",
+    "mistech:fairy_dust",
+    "mistech:impure_magic_shard",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "none",
+  "min_tier": 1,
+  "result": {
+    "id": "mistech:arcane_rune"
+  },
+  "effect": "arcane"
+}

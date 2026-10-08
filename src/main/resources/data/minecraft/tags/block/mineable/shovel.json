@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "mistech:ash_block",
+    "mistech:clay_statue",
+    "mistech:withered_grass",
+    "mistech:tainted_soil"
+  ]
+}

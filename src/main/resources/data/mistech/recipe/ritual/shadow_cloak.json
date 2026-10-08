@@ -1,0 +1,22 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:orichalcum_chestplate",
+  "ingredients": [
+    "mistech:darkness_rune",
+    "mistech:darkness_rune",
+    "mistech:void_rune",
+    "minecraft:phantom_membrane",
+    "minecraft:phantom_membrane",
+    "minecraft:echo_shard",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 6,
+  "duration": 600,
+  "condition": "night",
+  "min_tier": 3,
+  "result": {
+    "id": "mistech:shadow_cloak"
+  },
+  "effect": "shadow",
+  "copy_components": true
+}

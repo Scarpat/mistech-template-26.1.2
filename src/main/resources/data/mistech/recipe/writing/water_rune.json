@@ -1,0 +1,20 @@
+{
+  "type": "mistech:writing",
+  "ingredients": [
+    {
+      "neoforge:ingredient_type": "neoforge:components",
+      "items": "minecraft:potion",
+      "components": {
+        "minecraft:potion_contents": {
+          "potion": "minecraft:water"
+        }
+      }
+    },
+    "#minecraft:fishes"
+  ],
+  "chalk_damage": 5,
+  "result": {
+    "id": "mistech:water_rune",
+    "count": 1
+  }
+}

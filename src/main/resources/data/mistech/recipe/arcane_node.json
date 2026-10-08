@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    " M ",
+    "CSC",
+    " E "
+  ],
+  "key": {
+    "M": "minecraft:emerald",
+    "C": "minecraft:copper_ingot",
+    "S": "mistech:space_rune",
+    "E": "mistech:energy_rune"
+  },
+  "result": {
+    "id": "mistech:arcane_node",
+    "count": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "minecraft:dandelion",
+  "result": {
+    "id": "minecraft:yellow_dye",
+    "count": 2
+  }
+}

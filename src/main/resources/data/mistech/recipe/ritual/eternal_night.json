@@ -1,0 +1,18 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:clock",
+  "ingredients": [
+    "mistech:lunar_blood",
+    "mistech:lunar_blood",
+    "mistech:time_rune",
+    "mistech:time_rune",
+    "mistech:darkness_rune",
+    "mistech:void_rune"
+  ],
+  "essence": 8,
+  "duration": 600,
+  "condition": "blood_moon",
+  "min_tier": 3,
+  "action": "eternal_night",
+  "effect": "blood"
+}

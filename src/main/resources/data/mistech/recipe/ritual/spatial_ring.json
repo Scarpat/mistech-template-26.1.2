@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:gold_ring_blank",
+  "ingredients": [
+    "mistech:space_rune",
+    "mistech:space_rune",
+    "minecraft:ender_eye",
+    "minecraft:ender_pearl",
+    "mistech:mithril_ingot",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 4,
+  "duration": 400,
+  "condition": "none",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:spatial_ring"
+  },
+  "effect": "arcane"
+}

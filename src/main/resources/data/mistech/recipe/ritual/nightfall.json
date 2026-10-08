@@ -1,0 +1,14 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:clock",
+  "ingredients": [
+    "mistech:time_rune",
+    "mistech:darkness_rune",
+    "minecraft:amethyst_shard"
+  ],
+  "essence": 3,
+  "duration": 240,
+  "condition": "none",
+  "action": "nightfall",
+  "effect": "shadow"
+}

@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:pipe",
+  "ingredients": [
+    "mistech:vapor_rune",
+    "mistech:air_rune",
+    "minecraft:phantom_membrane",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 4,
+  "duration": 300,
+  "condition": "night",
+  "result": {
+    "id": "mistech:mist_pipe"
+  },
+  "effect": "mist"
+}

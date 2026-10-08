@@ -1,0 +1,15 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:magic_incense",
+  "ingredients": [
+    "mistech:light_rune",
+    "mistech:ash_block",
+    "mistech:darkness_rune",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 4,
+  "duration": 400,
+  "condition": "none",
+  "action": "protection_seal",
+  "effect": "light"
+}

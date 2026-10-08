@@ -1,0 +1,8 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "minecraft:bone",
+  "result": {
+    "id": "minecraft:bone_meal",
+    "count": 6
+  }
+}

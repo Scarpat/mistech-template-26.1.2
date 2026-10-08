@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:impure_magic_block",
+  "ingredients": [
+    "mistech:impure_magic_shard",
+    "mistech:impure_magic_shard",
+    "minecraft:ender_eye",
+    "mistech:space_rune"
+  ],
+  "essence": 8,
+  "duration": 600,
+  "condition": "full_moon",
+  "result": {
+    "id": "mistech:impure_heart"
+  },
+  "effect": "impure"
+}

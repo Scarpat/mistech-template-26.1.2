@@ -1,0 +1,16 @@
+{
+  "type": "mistech:ritual",
+  "sanctuary": true,
+  "catalyst": "minecraft:sunflower",
+  "ingredients": [
+    "mistech:light_rune",
+    "mistech:light_rune",
+    "mistech:time_rune",
+    "mistech:pure_magic_shard"
+  ],
+  "essence": 4,
+  "duration": 400,
+  "condition": "day",
+  "action": "solstice",
+  "effect": "light"
+}

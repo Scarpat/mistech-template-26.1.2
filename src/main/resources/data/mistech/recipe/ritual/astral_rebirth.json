@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:natal_chart",
+  "ingredients": [
+    "minecraft:nether_star",
+    "mistech:impure_heart",
+    "mistech:time_rune",
+    "mistech:space_rune",
+    "mistech:light_rune",
+    "mistech:darkness_rune",
+    "mistech:impure_magic_shard",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 8,
+  "duration": 800,
+  "condition": "full_moon",
+  "min_tier": 3,
+  "action": "astral_rebirth",
+  "effect": "astral"
+}

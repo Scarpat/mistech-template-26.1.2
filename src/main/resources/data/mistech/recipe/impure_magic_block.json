@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "FR",
+    "RF"
+  ],
+  "key": {
+    "F": "mistech:impure_magic_shard",
+    "R": "mistech:magic_residue"
+  },
+  "result": {
+    "id": "mistech:impure_magic_block",
+    "count": 1
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:gold_ingot",
+  "ingredients": [
+    "minecraft:gold_block",
+    "mistech:soul_rune",
+    "minecraft:leather",
+    "minecraft:gold_nugget"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "nether",
+  "min_tier": 1,
+  "action": "piglin_pact",
+  "effect": "fire"
+}

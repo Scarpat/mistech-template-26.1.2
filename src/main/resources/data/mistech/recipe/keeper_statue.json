@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " B ",
+    "CAC",
+    "C C"
+  ],
+  "key": {
+    "B": "mistech:orichalcum_block",
+    "C": "mistech:orichalcum_ingot",
+    "A": "minecraft:ender_eye"
+  },
+  "result": {
+    "id": "mistech:keeper_statue",
+    "count": 1
+  }
+}

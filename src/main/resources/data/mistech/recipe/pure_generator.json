@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "MPM",
+    "KEK",
+    "QQQ"
+  ],
+  "key": {
+    "M": "mistech:mithril_ingot",
+    "P": "mistech:pure_magic_shard",
+    "K": "minecraft:copper_block",
+    "E": "mistech:energy_rune",
+    "Q": "minecraft:quartz_block"
+  },
+  "result": {
+    "id": "mistech:pure_generator",
+    "count": 1
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 73514291,
+    "separation": 10,
+    "spacing": 24
+  },
+  "structures": [
+    {
+      "structure": "mistech:goblin_village",
+      "weight": 1
+    }
+  ]
+}

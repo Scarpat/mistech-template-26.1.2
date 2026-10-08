@@ -1,0 +1,22 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:vapor_rune",
+  "ingredients": [
+    "mistech:air_rune",
+    "mistech:air_rune",
+    "mistech:vapor_rune",
+    "minecraft:wind_charge",
+    "minecraft:wind_charge",
+    "minecraft:white_wool",
+    "minecraft:white_wool",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 4,
+  "duration": 400,
+  "condition": "rain",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:cloud_rune"
+  },
+  "effect": "mist"
+}

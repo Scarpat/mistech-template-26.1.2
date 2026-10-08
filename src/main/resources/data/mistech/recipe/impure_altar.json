@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SMS",
+    "OCO",
+    "LLL"
+  ],
+  "key": {
+    "S": "mistech:murky_slab",
+    "M": "mistech:impure_magic_block",
+    "O": "minecraft:obsidian",
+    "C": "minecraft:cauldron",
+    "L": "mistech:murky_log"
+  },
+  "result": {
+    "id": "mistech:impure_altar",
+    "count": 1
+  }
+}

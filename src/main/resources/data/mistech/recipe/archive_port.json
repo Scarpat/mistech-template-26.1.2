@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " H ",
+    "MSM"
+  ],
+  "key": {
+    "H": "minecraft:hopper",
+    "M": "mistech:mithril_ingot",
+    "S": "mistech:space_rune"
+  },
+  "result": {
+    "id": "mistech:archive_port",
+    "count": 1
+  }
+}

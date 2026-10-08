@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "mistech:block/runic_note_block",
+    "top": "mistech:block/runic_note_block_top",
+    "bottom": "minecraft:block/polished_deepslate"
+  }
+}

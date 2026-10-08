@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mistech:item/guide_stone_gem",
+    "layer1": "mistech:item/guide_stone_shine"
+  }
+}

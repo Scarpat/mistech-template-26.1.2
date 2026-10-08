@@ -1,0 +1,25 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "mistech:constellation_amulet",
+      "required": false
+    },
+    {
+      "id": "mistech:gnome_amulet",
+      "required": false
+    },
+    {
+      "id": "mistech:essence_amulet",
+      "required": false
+    },
+    {
+      "id": "mistech:arcane_pendant",
+      "required": false
+    },
+    {
+      "id": "mistech:priestess_veil",
+      "required": false
+    }
+  ]
+}

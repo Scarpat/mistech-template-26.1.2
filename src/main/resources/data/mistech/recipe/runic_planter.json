@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SWS",
+    "PDP",
+    "CRC"
+  ],
+  "key": {
+    "S": "minecraft:wheat_seeds",
+    "W": "mistech:water_rune",
+    "P": "mistech:murky_planks",
+    "D": "minecraft:dispenser",
+    "C": "minecraft:copper_ingot",
+    "R": "mistech:energy_rune"
+  },
+  "result": {
+    "id": "mistech:runic_planter",
+    "count": 1
+  }
+}

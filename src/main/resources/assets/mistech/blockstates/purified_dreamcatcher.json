@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mistech:block/purified_dreamcatcher"
+    },
+    "facing=east": {
+      "model": "mistech:block/purified_dreamcatcher",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mistech:block/purified_dreamcatcher",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mistech:block/purified_dreamcatcher",
+      "y": 270
+    }
+  }
+}
