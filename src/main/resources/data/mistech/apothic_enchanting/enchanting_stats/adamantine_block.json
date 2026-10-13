@@ -1,0 +1,9 @@
+{
+  "blocks": "mistech:adamantine_block",
+  "stats": {
+    "maxEterna": 65.0,
+    "eterna": 3.5,
+    "quanta": 2.5,
+    "arcana": 2.5
+  }
+}

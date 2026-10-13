@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "PAP",
+    "PRP",
+    "PPP"
+  ],
+  "key": {
+    "P": "minecraft:polished_blackstone",
+    "A": "minecraft:amethyst_shard",
+    "R": "mistech:air_rune"
+  },
+  "result": {
+    "id": "mistech:runic_elevator",
+    "count": 2
+  }
+}

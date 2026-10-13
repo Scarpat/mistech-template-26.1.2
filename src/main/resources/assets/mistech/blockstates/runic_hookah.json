@@ -1,0 +1,73 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "mistech:block/runic_hookah"
+      }
+    },
+    {
+      "when": {
+        "base": "1"
+      },
+      "apply": {
+        "model": "mistech:block/runic_hookah_liquid_water"
+      }
+    },
+    {
+      "when": {
+        "base": "2"
+      },
+      "apply": {
+        "model": "mistech:block/runic_hookah_liquid_impure"
+      }
+    },
+    {
+      "when": {
+        "base": "3"
+      },
+      "apply": {
+        "model": "mistech:block/runic_hookah_liquid_pure"
+      }
+    },
+    {
+      "when": {
+        "leaf": "1"
+      },
+      "apply": {
+        "model": "mistech:block/runic_hookah_leaf_tobacco"
+      }
+    },
+    {
+      "when": {
+        "leaf": "2"
+      },
+      "apply": {
+        "model": "mistech:block/runic_hookah_leaf_hemp"
+      }
+    },
+    {
+      "when": {
+        "leaf": "3"
+      },
+      "apply": {
+        "model": "mistech:block/runic_hookah_leaf_rue"
+      }
+    },
+    {
+      "when": {
+        "lit": "true"
+      },
+      "apply": {
+        "model": "mistech:block/runic_hookah_ember"
+      }
+    },
+    {
+      "when": {
+        "rune": "1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20"
+      },
+      "apply": {
+        "model": "mistech:block/runic_hookah_rune"
+      }
+    }
+  ]
+}

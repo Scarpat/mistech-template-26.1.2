@@ -1,0 +1,8 @@
+{
+  "blocks": "mistech:orichalcum_block",
+  "stats": {
+    "maxEterna": 80.0,
+    "eterna": 5.0,
+    "arcana": 5.0
+  }
+}

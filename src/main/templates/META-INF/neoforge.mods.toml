@@ -101,3 +101,27 @@ config="${mod_id}.mixins.json"
     versionRange="${silentgear_version_range}"
     ordering="NONE"
     side="BOTH"
+
+# Apotheosis: gemas do Mistech (Impura, Purificada, Astral, Gnômica) em data/mistech/apotheosis/gems
+[[dependencies.${mod_id}]]
+    modId="apotheosis"
+    type="optional"
+    versionRange="${apotheosis_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+# Apothic Enchanting: blocos de magia e de metal do Mistech como "estantes" (data/mistech/apothic_enchanting/enchanting_stats)
+[[dependencies.${mod_id}]]
+    modId="apothic_enchanting"
+    type="optional"
+    versionRange="${apothic_enchanting_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+# Productive Metalworks: fundir/moldar Mithril, Adamantina e Oricalco; Essências Impura/Purificada como combustível
+[[dependencies.${mod_id}]]
+    modId="productivemetalworks"
+    type="optional"
+    versionRange="${productivemetalworks_version_range}"
+    ordering="NONE"
+    side="BOTH"

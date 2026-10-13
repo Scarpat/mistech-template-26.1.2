@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "SSS",
+    "S S"
+  ],
+  "key": {
+    "S": "mistech:boitata_scale"
+  },
+  "result": {
+    "id": "mistech:boitata_helmet"
+  }
+}

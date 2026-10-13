@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "S S",
+    "SES",
+    "SSS"
+  ],
+  "key": {
+    "S": "mistech:boitata_scale",
+    "E": "mistech:boitata_eye"
+  },
+  "result": {
+    "id": "mistech:boitata_chestplate"
+  }
+}

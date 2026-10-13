@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:greater_arcane_infuser",
+  "ingredients": [
+    "mistech:star_fragment",
+    "mistech:star_fragment",
+    "mistech:purified_essence_bottle",
+    "mistech:time_rune",
+    "mistech:space_rune",
+    "minecraft:echo_shard"
+  ],
+  "essence": 8,
+  "duration": 600,
+  "condition": "night",
+  "min_tier": 3,
+  "result": {
+    "id": "mistech:astral_arcane_infuser"
+  },
+  "effect": "astral"
+}

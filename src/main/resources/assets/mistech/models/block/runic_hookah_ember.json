@@ -1,0 +1,76 @@
+{
+  "textures": {
+    "particle": "mistech:block/runic_hookah_ember_lit",
+    "ember": "mistech:block/runic_hookah_ember_lit"
+  },
+  "elements": [
+    {
+      "from": [
+        6.6,
+        14.3,
+        6.6
+      ],
+      "to": [
+        9.4,
+        15,
+        9.4
+      ],
+      "faces": {
+        "north": {
+          "texture": "#ember",
+          "uv": [
+            0,
+            0,
+            3,
+            3
+          ]
+        },
+        "south": {
+          "texture": "#ember",
+          "uv": [
+            0,
+            0,
+            3,
+            3
+          ]
+        },
+        "east": {
+          "texture": "#ember",
+          "uv": [
+            0,
+            0,
+            3,
+            3
+          ]
+        },
+        "west": {
+          "texture": "#ember",
+          "uv": [
+            0,
+            0,
+            3,
+            3
+          ]
+        },
+        "up": {
+          "texture": "#ember",
+          "uv": [
+            0,
+            0,
+            3,
+            3
+          ]
+        },
+        "down": {
+          "texture": "#ember",
+          "uv": [
+            0,
+            0,
+            3,
+            3
+          ]
+        }
+      }
+    }
+  ]
+}

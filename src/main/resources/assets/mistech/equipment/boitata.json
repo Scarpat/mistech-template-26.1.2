@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mistech:boitata"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mistech:boitata"
+      }
+    ]
+  }
+}

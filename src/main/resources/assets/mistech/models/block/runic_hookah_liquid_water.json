@@ -1,0 +1,82 @@
+{
+  "textures": {
+    "particle": "mistech:block/runic_hookah_water",
+    "liquid": "mistech:block/runic_hookah_water"
+  },
+  "elements": [
+    {
+      "from": [
+        5.5,
+        0.6,
+        5.5
+      ],
+      "to": [
+        10.5,
+        4.5,
+        10.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#liquid",
+          "uv": [
+            3,
+            3,
+            8,
+            7
+          ],
+          "tintindex": 1
+        },
+        "south": {
+          "texture": "#liquid",
+          "uv": [
+            3,
+            3,
+            8,
+            7
+          ],
+          "tintindex": 1
+        },
+        "east": {
+          "texture": "#liquid",
+          "uv": [
+            3,
+            3,
+            8,
+            7
+          ],
+          "tintindex": 1
+        },
+        "west": {
+          "texture": "#liquid",
+          "uv": [
+            3,
+            3,
+            8,
+            7
+          ],
+          "tintindex": 1
+        },
+        "up": {
+          "texture": "#liquid",
+          "uv": [
+            3,
+            3,
+            8,
+            7
+          ],
+          "tintindex": 1
+        },
+        "down": {
+          "texture": "#liquid",
+          "uv": [
+            3,
+            3,
+            8,
+            7
+          ],
+          "tintindex": 1
+        }
+      }
+    }
+  ]
+}

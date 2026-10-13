@@ -1,0 +1,76 @@
+{
+  "textures": {
+    "particle": "mistech:block/impure_essence_still",
+    "liquid": "mistech:block/impure_essence_still"
+  },
+  "elements": [
+    {
+      "from": [
+        5.5,
+        0.6,
+        5.5
+      ],
+      "to": [
+        10.5,
+        4.5,
+        10.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#liquid",
+          "uv": [
+            3,
+            3,
+            8,
+            7
+          ]
+        },
+        "south": {
+          "texture": "#liquid",
+          "uv": [
+            3,
+            3,
+            8,
+            7
+          ]
+        },
+        "east": {
+          "texture": "#liquid",
+          "uv": [
+            3,
+            3,
+            8,
+            7
+          ]
+        },
+        "west": {
+          "texture": "#liquid",
+          "uv": [
+            3,
+            3,
+            8,
+            7
+          ]
+        },
+        "up": {
+          "texture": "#liquid",
+          "uv": [
+            3,
+            3,
+            8,
+            7
+          ]
+        },
+        "down": {
+          "texture": "#liquid",
+          "uv": [
+            3,
+            3,
+            8,
+            7
+          ]
+        }
+      }
+    }
+  ]
+}

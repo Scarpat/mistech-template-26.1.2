@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CGC",
+    "CKC",
+    "BFB"
+  ],
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "G": "minecraft:glass_pane",
+    "K": "mistech:kettle",
+    "B": "minecraft:copper_block",
+    "F": "minecraft:furnace"
+  },
+  "result": {
+    "id": "mistech:cane_still"
+  }
+}

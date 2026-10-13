@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mistech:cachaca",
+    "mistech:rue_leaf",
+    "mistech:rue_leaf"
+  ],
+  "result": {
+    "id": "mistech:rue_cachaca"
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "textures": {
+    "particle": "mistech:block/runic_hookah_rune",
+    "rune": "mistech:block/runic_hookah_rune"
+  },
+  "elements": [
+    {
+      "from": [
+        6.75,
+        11.5,
+        4.7
+      ],
+      "to": [
+        9.25,
+        14,
+        5.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#rune",
+          "uv": [
+            4,
+            2,
+            12,
+            14
+          ],
+          "tintindex": 0
+        },
+        "south": {
+          "texture": "#rune",
+          "uv": [
+            4,
+            2,
+            12,
+            14
+          ],
+          "tintindex": 0
+        },
+        "east": {
+          "texture": "#rune",
+          "uv": [
+            4,
+            2,
+            12,
+            14
+          ],
+          "tintindex": 0
+        },
+        "west": {
+          "texture": "#rune",
+          "uv": [
+            4,
+            2,
+            12,
+            14
+          ],
+          "tintindex": 0
+        },
+        "up": {
+          "texture": "#rune",
+          "uv": [
+            4,
+            2,
+            12,
+            14
+          ],
+          "tintindex": 0
+        },
+        "down": {
+          "texture": "#rune",
+          "uv": [
+            4,
+            2,
+            12,
+            14
+          ],
+          "tintindex": 0
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "mistech:block/fermentation_barrel_top",
+    "side": "mistech:block/fermentation_barrel_side",
+    "bottom": "mistech:block/fermentation_barrel_bottom"
+  }
+}

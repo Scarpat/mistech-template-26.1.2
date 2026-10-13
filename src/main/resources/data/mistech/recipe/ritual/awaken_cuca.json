@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:cauldron",
+  "ingredients": [
+    "mistech:matinta_feather",
+    "mistech:matinta_feather",
+    "mistech:darkness_rune",
+    "mistech:lunar_blood",
+    "minecraft:spider_eye",
+    "minecraft:fermented_spider_eye",
+    "mistech:dried_tobacco_leaf",
+    "mistech:impure_magic_shard"
+  ],
+  "essence": 8,
+  "duration": 600,
+  "condition": "night",
+  "min_tier": 3,
+  "action": "awaken_cuca",
+  "effect": "shadow"
+}

@@ -55,6 +55,9 @@ public final class FolkloreRituals {
                 }
             }
             default -> {
+                if (com.mistech.mistechmod.lore.LoreRituals.handles(action)) {
+                    return com.mistech.mistechmod.lore.LoreRituals.check(action, level, pos, player);
+                }
                 return com.mistech.mistechmod.beyond.BeyondRituals.check(action, level, pos, player);
             }
         }
@@ -117,6 +120,9 @@ public final class FolkloreRituals {
                 }
             }
             default -> {
+                if (com.mistech.mistechmod.lore.LoreRituals.handles(action)) {
+                    return com.mistech.mistechmod.lore.LoreRituals.run(action, level, pos, player);
+                }
                 return com.mistech.mistechmod.beyond.BeyondRituals.run(action, level, pos, player);
             }
         }

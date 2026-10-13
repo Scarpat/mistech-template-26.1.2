@@ -57,6 +57,12 @@
     "mistech:impure_reactor",
     "mistech:stellar_observatory",
     "mistech:igneous_boiler",
-    "mistech:experience_generator"
+    "mistech:experience_generator",
+    "mistech:runic_elevator",
+    "mistech:cane_still",
+    "mistech:arcane_infuser",
+    "mistech:greater_arcane_infuser",
+    "mistech:astral_arcane_infuser",
+    "mistech:cuca_cauldron"
   ]
 }

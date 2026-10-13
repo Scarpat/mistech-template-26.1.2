@@ -1,0 +1,10 @@
+{
+  "type": "mistech:lore_lair",
+  "lair": "cuca",
+  "biomes": [
+    "mistech:ancestral_forest"
+  ],
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "terrain_adaptation": "none"
+}

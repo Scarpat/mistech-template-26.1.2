@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "fill=0": {
+      "model": "mistech:block/cuca_cauldron"
+    },
+    "fill=1": {
+      "model": "mistech:block/cuca_cauldron_level1"
+    },
+    "fill=2": {
+      "model": "mistech:block/cuca_cauldron_level2"
+    },
+    "fill=3": {
+      "model": "mistech:block/cuca_cauldron_level3"
+    }
+  }
+}

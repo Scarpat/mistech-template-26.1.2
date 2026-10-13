@@ -145,6 +145,20 @@ public class SaciEntity extends FolkFamiliar {
 
     @Override
     protected @Nullable InteractionResult interactSpecial(Player player, InteractionHand hand, ItemStack held) {
+        if (held.getItem() instanceof com.mistech.mistechmod.drink.CachacaItem) {
+            // oferenda: dobra o tempo alimentado e garante um achado na hora
+            if (this.level() instanceof ServerLevel level) {
+                held.consume(1, player);
+                player.getInventory().placeItemBackInInventory(new ItemStack(Items.GLASS_BOTTLE));
+                this.setFedTicks(Math.max(this.fedTicks * 2, this.fedTicks + FOOD_TICKS));
+                this.giftTimer = GIFT_EVERY;
+                this.gift(level, player);
+                level.sendParticles(ParticleTypes.HAPPY_VILLAGER, this.getX(), this.getY() + 1.0, this.getZ(), 12, 0.4, 0.4, 0.4, 0.0);
+                player.sendOverlayMessage(Component.translatable("message.mistech.saci.cachaca", (this.fedTicks + 1199) / 1200)
+                        .withStyle(ChatFormatting.GOLD));
+            }
+            return InteractionResult.SUCCESS;
+        }
         if (player.isShiftKeyDown() && held.is(Mistech.GLASS_JAR_ITEM.get())) {
             if (this.level() instanceof ServerLevel level) {
                 held.consume(1, player);

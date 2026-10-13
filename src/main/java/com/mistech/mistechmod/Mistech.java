@@ -494,6 +494,7 @@ public class Mistech {
                 com.mistech.mistechmod.registry.RitualContent.creativeItems().forEach(item -> output.accept(item.get()));
                 // Magia Purificada
                 com.mistech.mistechmod.purity.PurityContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.fluid.MoltenMetals.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.celestial.CelestialContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.folklore.FolkloreContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.beyond.BeyondContent.creativeItems().forEach(item -> output.accept(item.get()));
@@ -503,6 +504,11 @@ public class Mistech {
                 com.mistech.mistechmod.ranged.RangedContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.mage.MageContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.seeking.SeekingContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.utility.UtilityContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.drink.DrinkContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.infuser.InfuserContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.boitata.BoitataGear.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.lore.LoreContent.creativeItems().forEach(item -> output.accept(item.get()));
                 for (com.mistech.mistechmod.item.RuneElement element : com.mistech.mistechmod.item.RuneElement.values()) {
                     output.accept(com.mistech.mistechmod.ranged.RuneArrowRecipe.of(element, 1));
                 }
@@ -562,6 +568,11 @@ public class Mistech {
         com.mistech.mistechmod.ranged.RangedContent.register(modEventBus);
         com.mistech.mistechmod.mage.MageContent.register(modEventBus);
         com.mistech.mistechmod.seeking.SeekingContent.register(modEventBus);
+        com.mistech.mistechmod.utility.UtilityContent.register(modEventBus);
+        com.mistech.mistechmod.drink.DrinkContent.register(modEventBus);
+        com.mistech.mistechmod.infuser.InfuserContent.register(modEventBus);
+        com.mistech.mistechmod.boitata.BoitataGear.register(modEventBus);
+        com.mistech.mistechmod.lore.LoreContent.register(modEventBus);
         com.mistech.mistechmod.artifact.ArtifactContent.register(modEventBus);
         com.mistech.mistechmod.ether.EtherContent.register(modEventBus);
         com.mistech.mistechmod.power.PowerContent.register(modEventBus);
@@ -572,6 +583,7 @@ public class Mistech {
         MistechBlockEntities.register(modEventBus);
         MistechMenus.register(modEventBus);
         MistechRecipes.register(modEventBus);
+        com.mistech.mistechmod.fluid.MoltenMetals.init(); // antes de registrar FLUID_TYPES/FLUIDS
         MistechFluids.register(modEventBus);
         MistechAttachments.register(modEventBus);
         modEventBus.addListener(this::registerCapabilities);

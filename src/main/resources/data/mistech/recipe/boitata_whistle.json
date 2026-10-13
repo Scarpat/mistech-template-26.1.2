@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "tools",
+  "ingredients": [
+    "minecraft:bone",
+    "minecraft:gold_ingot",
+    "mistech:boitata_scale"
+  ],
+  "result": {
+    "id": "mistech:boitata_whistle"
+  }
+}

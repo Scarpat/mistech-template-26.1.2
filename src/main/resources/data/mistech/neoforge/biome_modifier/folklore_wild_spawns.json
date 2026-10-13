@@ -1,0 +1,18 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#mistech:folklore_wilds",
+  "spawners": [
+    {
+      "type": "mistech:matinta_pereira",
+      "minCount": 1,
+      "maxCount": 1,
+      "weight": 2
+    },
+    {
+      "type": "mistech:caipora",
+      "minCount": 1,
+      "maxCount": 1,
+      "weight": 1
+    }
+  ]
+}

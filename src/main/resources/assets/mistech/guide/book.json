@@ -1052,6 +1052,125 @@
           ],
           "x": 6.4,
           "y": 5.0
+        },
+        {
+          "id": "runic_hookah",
+          "icon": "mistech:runic_hookah",
+          "name": "guide.mistech.entry.runic_hookah",
+          "deps": [
+            "runic_pipe"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:runic_hookah"
+            ]
+          },
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "",
+                "minecraft:gold_ingot",
+                "",
+                "minecraft:purple_stained_glass",
+                "minecraft:amethyst_shard",
+                "minecraft:purple_stained_glass",
+                "mistech:hemp_fiber",
+                "minecraft:purple_stained_glass",
+                "mistech:hemp_fiber"
+              ],
+              "result": "mistech:runic_hookah",
+              "text": "guide.mistech.runic_hookah.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_hookah.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_hookah.3"
+            }
+          ],
+          "x": 4.8,
+          "y": 3.0
+        },
+        {
+          "id": "cachaca",
+          "icon": "mistech:cachaca",
+          "name": "guide.mistech.entry.cachaca",
+          "deps": [
+            "kettle",
+            "murky_tree"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:cachaca"
+            ]
+          },
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "minecraft:sugar_cane",
+                "minecraft:sugar_cane",
+                "minecraft:sugar_cane",
+                "minecraft:glass_bottle",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "result": "mistech:garapa",
+              "shapeless": true,
+              "text": "guide.mistech.cachaca.1"
+            },
+            {
+              "type": "crafting",
+              "grid": [
+                "mistech:murky_planks",
+                "mistech:murky_slab",
+                "mistech:murky_planks",
+                "mistech:murky_planks",
+                "minecraft:copper_ingot",
+                "mistech:murky_planks",
+                "mistech:murky_planks",
+                "mistech:murky_slab",
+                "mistech:murky_planks"
+              ],
+              "result": "mistech:fermentation_barrel",
+              "text": "guide.mistech.cachaca.2"
+            },
+            {
+              "type": "crafting",
+              "grid": [
+                "minecraft:copper_ingot",
+                "minecraft:glass_pane",
+                "minecraft:copper_ingot",
+                "minecraft:copper_ingot",
+                "mistech:kettle",
+                "minecraft:copper_ingot",
+                "minecraft:copper_block",
+                "minecraft:furnace",
+                "minecraft:copper_block"
+              ],
+              "result": "mistech:cane_still",
+              "text": "guide.mistech.cachaca.3"
+            },
+            {
+              "type": "spotlight",
+              "item": "mistech:aged_cachaca",
+              "text": "guide.mistech.cachaca.4"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.cachaca.5"
+            }
+          ],
+          "x": 3.2,
+          "y": 5.4
         }
       ]
     },
@@ -1896,6 +2015,44 @@
           ],
           "x": 5.71,
           "y": 9.3
+        },
+        {
+          "id": "runic_elevator",
+          "icon": "mistech:runic_elevator",
+          "name": "guide.mistech.entry.runic_elevator",
+          "deps": [
+            "air_rune"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:runic_elevator"
+            ]
+          },
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "minecraft:polished_blackstone",
+                "minecraft:amethyst_shard",
+                "minecraft:polished_blackstone",
+                "minecraft:polished_blackstone",
+                "mistech:air_rune",
+                "minecraft:polished_blackstone",
+                "minecraft:polished_blackstone",
+                "minecraft:polished_blackstone",
+                "minecraft:polished_blackstone"
+              ],
+              "result": "mistech:runic_elevator",
+              "text": "guide.mistech.runic_elevator.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_elevator.2"
+            }
+          ],
+          "x": 4.36,
+          "y": 11.46
         }
       ]
     },
@@ -2273,6 +2430,82 @@
               "text": "guide.mistech.impure_magic_block.1"
             }
           ]
+        },
+        {
+          "id": "arcane_infuser",
+          "icon": "mistech:arcane_infuser",
+          "name": "guide.mistech.entry.arcane_infuser",
+          "deps": [
+            "impure_magic_block",
+            "arcane_rune"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:arcane_infuser"
+            ]
+          },
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "",
+                "mistech:arcane_rune",
+                "",
+                "minecraft:amethyst_shard",
+                "minecraft:enchanting_table",
+                "minecraft:amethyst_shard",
+                "minecraft:obsidian",
+                "mistech:impure_magic_block",
+                "minecraft:obsidian"
+              ],
+              "result": "mistech:arcane_infuser",
+              "text": "guide.mistech.arcane_infuser.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.arcane_infuser.2"
+            },
+            {
+              "type": "ritual",
+              "catalyst": "mistech:arcane_infuser",
+              "ingredients": [
+                "minecraft:lapis_block",
+                "minecraft:lapis_block",
+                "minecraft:diamond",
+                "minecraft:diamond",
+                "mistech:arcane_rune",
+                "mistech:impure_magic_block"
+              ],
+              "essence": 5,
+              "min_tier": 2,
+              "result": "mistech:greater_arcane_infuser",
+              "title": "guide.mistech.ritual.greater_arcane_infuser"
+            },
+            {
+              "type": "ritual",
+              "catalyst": "mistech:greater_arcane_infuser",
+              "ingredients": [
+                "mistech:star_fragment",
+                "mistech:star_fragment",
+                "mistech:purified_essence_bottle",
+                "mistech:time_rune",
+                "mistech:space_rune",
+                "minecraft:echo_shard"
+              ],
+              "essence": 8,
+              "min_tier": 3,
+              "condition": "night",
+              "result": "mistech:astral_arcane_infuser",
+              "title": "guide.mistech.ritual.astral_arcane_infuser"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.arcane_infuser.3"
+            }
+          ],
+          "x": 6.4,
+          "y": 0.0
         }
       ]
     },
@@ -8059,6 +8292,317 @@
           ],
           "x": 3.2,
           "y": 4.0
+        },
+        {
+          "id": "boitata_armor",
+          "icon": "mistech:boitata_chestplate",
+          "name": "guide.mistech.entry.boitata_armor",
+          "deps": [
+            "boitata"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:boitata_chestplate"
+            ]
+          },
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "mistech:boitata_scale",
+                "",
+                "mistech:boitata_scale",
+                "mistech:boitata_scale",
+                "mistech:boitata_eye",
+                "mistech:boitata_scale",
+                "mistech:boitata_scale",
+                "mistech:boitata_scale",
+                "mistech:boitata_scale"
+              ],
+              "result": "mistech:boitata_chestplate",
+              "text": "guide.mistech.boitata_armor.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.boitata_armor.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.boitata_armor.3"
+            }
+          ],
+          "x": 3.2,
+          "y": 5.0
+        },
+        {
+          "id": "boitata_egg",
+          "icon": "mistech:boitata_egg",
+          "name": "guide.mistech.entry.boitata_egg",
+          "deps": [
+            "boitata",
+            "altar_tier3"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:boitata_egg"
+            ]
+          },
+          "pages": [
+            {
+              "type": "ritual",
+              "catalyst": "mistech:boitata_eye",
+              "ingredients": [
+                "mistech:boitata_scale",
+                "mistech:boitata_scale",
+                "mistech:boitata_scale",
+                "mistech:boitata_scale",
+                "mistech:time_rune",
+                "mistech:fire_rune",
+                "minecraft:magma_block",
+                "mistech:lunar_blood"
+              ],
+              "essence": 8,
+              "min_tier": 3,
+              "condition": "night",
+              "result": "mistech:boitata_egg",
+              "title": "guide.mistech.ritual.boitata_egg"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.boitata_egg.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.boitata_egg.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.boitata_egg.3"
+            }
+          ],
+          "x": 4.8,
+          "y": 5.0
+        },
+        {
+          "id": "boitata_mount_gear",
+          "icon": "mistech:boitata_whistle",
+          "name": "guide.mistech.entry.boitata_mount_gear",
+          "deps": [
+            "boitata_egg"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:boitata_whistle"
+            ]
+          },
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "minecraft:bone",
+                "minecraft:gold_ingot",
+                "mistech:boitata_scale",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "result": "mistech:boitata_whistle",
+              "shapeless": true,
+              "text": "guide.mistech.boitata_mount_gear.1"
+            },
+            {
+              "type": "crafting",
+              "grid": [
+                "mistech:boitata_scale",
+                "",
+                "mistech:boitata_scale",
+                "mistech:boitata_scale",
+                "minecraft:leather",
+                "mistech:boitata_scale",
+                "mistech:boitata_scale",
+                "",
+                "mistech:boitata_scale"
+              ],
+              "result": "mistech:boitata_mount_armor_scale",
+              "text": "guide.mistech.boitata_mount_gear.2"
+            },
+            {
+              "type": "ritual",
+              "catalyst": "mistech:boitata_mount_armor_scale",
+              "ingredients": [
+                "mistech:orichalcum_ingot",
+                "mistech:orichalcum_ingot",
+                "mistech:orichalcum_ingot",
+                "mistech:orichalcum_ingot",
+                "mistech:fire_rune",
+                "mistech:earth_rune"
+              ],
+              "essence": 5,
+              "min_tier": 2,
+              "result": "mistech:boitata_mount_armor_orichalcum",
+              "title": "guide.mistech.ritual.boitata_mount_armor_orichalcum"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.boitata_mount_gear.3"
+            }
+          ],
+          "x": 6.4,
+          "y": 5.0
+        },
+        {
+          "id": "ancestral_forest",
+          "icon": "minecraft:jungle_sapling",
+          "name": "guide.mistech.entry.ancestral_forest",
+          "deps": [
+            "folklore_intro"
+          ],
+          "pages": [
+            {
+              "type": "text",
+              "text": "guide.mistech.ancestral_forest.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.ancestral_forest.2"
+            }
+          ],
+          "x": 1.6,
+          "y": 5.0
+        },
+        {
+          "id": "matinta_pereira",
+          "icon": "mistech:matinta_feather",
+          "name": "guide.mistech.entry.matinta_pereira",
+          "deps": [
+            "ancestral_forest"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:matinta_feather"
+            ]
+          },
+          "pages": [
+            {
+              "type": "text",
+              "text": "guide.mistech.matinta_pereira.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.matinta_pereira.2"
+            }
+          ],
+          "x": 3.2,
+          "y": 6.0
+        },
+        {
+          "id": "caipora",
+          "icon": "mistech:caipora_spawn_egg",
+          "name": "guide.mistech.entry.caipora",
+          "deps": [
+            "ancestral_forest"
+          ],
+          "pages": [
+            {
+              "type": "text",
+              "text": "guide.mistech.caipora.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.caipora.2"
+            }
+          ],
+          "x": 4.8,
+          "y": 6.0
+        },
+        {
+          "id": "iara",
+          "icon": "mistech:iara_scale",
+          "name": "guide.mistech.entry.iara",
+          "deps": [
+            "ancestral_forest"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:iara_scale"
+            ]
+          },
+          "pages": [
+            {
+              "type": "text",
+              "text": "guide.mistech.iara.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.iara.2"
+            }
+          ],
+          "x": 6.4,
+          "y": 6.0
+        },
+        {
+          "id": "cuca",
+          "icon": "mistech:cuca_cauldron",
+          "name": "guide.mistech.entry.cuca",
+          "deps": [
+            "matinta_pereira"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:cuca_cauldron"
+            ]
+          },
+          "pages": [
+            {
+              "type": "text",
+              "text": "guide.mistech.cuca.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.cuca.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.cuca.3"
+            }
+          ],
+          "x": 8.0,
+          "y": 6.0
+        },
+        {
+          "id": "mapinguari",
+          "icon": "mistech:mapinguari_axe",
+          "name": "guide.mistech.entry.mapinguari",
+          "deps": [
+            "ancestral_forest"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:mapinguari_claw"
+            ]
+          },
+          "pages": [
+            {
+              "type": "text",
+              "text": "guide.mistech.mapinguari.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.mapinguari.2"
+            }
+          ],
+          "x": 9.6,
+          "y": 6.0
         }
       ]
     },
@@ -9033,6 +9577,16 @@
             "id": "rune_arrows",
             "x": 1.6,
             "y": 13.02
+          },
+          {
+            "id": "runic_elevator",
+            "x": 3.2,
+            "y": 12.52
+          },
+          {
+            "id": "cachaca",
+            "x": 4.8,
+            "y": 6.27
           }
         ]
       },
@@ -9246,6 +9800,11 @@
             "id": "mage_robes",
             "x": 6.4,
             "y": 7.0
+          },
+          {
+            "id": "arcane_infuser",
+            "x": 6.4,
+            "y": 5.0
           }
         ]
       },
@@ -9503,6 +10062,36 @@
             "id": "seeking_pendulum",
             "x": 4.8,
             "y": 10.0
+          },
+          {
+            "id": "ancestral_forest",
+            "x": 4.8,
+            "y": 13.0
+          },
+          {
+            "id": "matinta_pereira",
+            "x": 6.4,
+            "y": 15.0
+          },
+          {
+            "id": "caipora",
+            "x": 8.0,
+            "y": 15.0
+          },
+          {
+            "id": "iara",
+            "x": 9.6,
+            "y": 15.0
+          },
+          {
+            "id": "cuca",
+            "x": 11.2,
+            "y": 15.0
+          },
+          {
+            "id": "mapinguari",
+            "x": 12.8,
+            "y": 15.0
           }
         ]
       },
@@ -9658,6 +10247,11 @@
             "id": "arcane_crossbow",
             "x": 1.6,
             "y": 16.81
+          },
+          {
+            "id": "runic_hookah",
+            "x": 1.6,
+            "y": 17.81
           }
         ]
       },
@@ -9788,6 +10382,21 @@
             "id": "astral_pocket_battery",
             "x": 4.8,
             "y": 2.5
+          },
+          {
+            "id": "boitata_armor",
+            "x": 1.6,
+            "y": 3.0
+          },
+          {
+            "id": "boitata_egg",
+            "x": 3.2,
+            "y": 4.0
+          },
+          {
+            "id": "boitata_mount_gear",
+            "x": 4.8,
+            "y": 5.0
           }
         ]
       }
@@ -10083,6 +10692,16 @@
             "id": "rune_arrows",
             "x": 1.6,
             "y": 12.13
+          },
+          {
+            "id": "runic_elevator",
+            "x": 3.2,
+            "y": 10.63
+          },
+          {
+            "id": "cachaca",
+            "x": 4.8,
+            "y": 5.33
           }
         ]
       },
@@ -10260,6 +10879,11 @@
             "id": "mage_robes",
             "x": 6.4,
             "y": 5.0
+          },
+          {
+            "id": "arcane_infuser",
+            "x": 6.4,
+            "y": 10.0
           }
         ]
       },
@@ -10441,6 +11065,36 @@
             "id": "seeking_pendulum",
             "x": 4.8,
             "y": 8.0
+          },
+          {
+            "id": "ancestral_forest",
+            "x": 4.8,
+            "y": 11.0
+          },
+          {
+            "id": "matinta_pereira",
+            "x": 6.4,
+            "y": 11.0
+          },
+          {
+            "id": "caipora",
+            "x": 8.0,
+            "y": 11.0
+          },
+          {
+            "id": "iara",
+            "x": 9.6,
+            "y": 11.0
+          },
+          {
+            "id": "cuca",
+            "x": 11.2,
+            "y": 11.0
+          },
+          {
+            "id": "mapinguari",
+            "x": 12.8,
+            "y": 11.0
           }
         ]
       },
@@ -10571,6 +11225,11 @@
             "id": "arcane_crossbow",
             "x": 1.6,
             "y": 15.27
+          },
+          {
+            "id": "runic_hookah",
+            "x": 1.6,
+            "y": 16.27
           }
         ]
       },
@@ -10685,6 +11344,21 @@
             "id": "astral_pocket_battery",
             "x": 4.8,
             "y": 2.5
+          },
+          {
+            "id": "boitata_armor",
+            "x": 1.6,
+            "y": 3.0
+          },
+          {
+            "id": "boitata_egg",
+            "x": 3.2,
+            "y": 4.0
+          },
+          {
+            "id": "boitata_mount_gear",
+            "x": 4.8,
+            "y": 5.0
           }
         ]
       },

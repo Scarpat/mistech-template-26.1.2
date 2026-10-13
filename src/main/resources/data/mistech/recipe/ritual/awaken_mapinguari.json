@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "minecraft:rotten_flesh",
+  "ingredients": [
+    "mistech:earth_rune",
+    "mistech:earth_rune",
+    "mistech:life_rune",
+    "mistech:lunar_blood",
+    "minecraft:leather",
+    "minecraft:leather",
+    "minecraft:bone_block",
+    "mistech:murky_log"
+  ],
+  "essence": 8,
+  "duration": 600,
+  "condition": "night",
+  "min_tier": 3,
+  "action": "awaken_mapinguari",
+  "effect": "nature"
+}

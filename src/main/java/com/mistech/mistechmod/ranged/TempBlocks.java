@@ -28,16 +28,22 @@ public final class TempBlocks {
 
     private TempBlocks() {}
 
-    /** Troca o bloco por {@code ticks}; não mexe em blocos com block entity, inquebráveis ou já temporários. */
+    /** Troca o bloco por {@code ticks}; não mexe em blocos com block entity, inquebráveis ou já temporários (o mesmo temporário de novo estica o tempo). */
     public static boolean place(ServerLevel level, BlockPos pos, BlockState state, int ticks) {
         BlockState original = level.getBlockState(pos);
-        if (level.getBlockEntity(pos) != null || original.getDestroySpeed(level, pos) < 0 || original == state) {
-            return false;
-        }
-        for (Temp t : TEMPS) {
+        for (int i = 0; i < TEMPS.size(); i++) {
+            Temp t = TEMPS.get(i);
             if (t.pos().equals(pos) && t.dimension() == level.dimension()) {
+                // o mesmo bloco temporário de novo: só estica o tempo
+                if (t.placed() == state && original == state) {
+                    TEMPS.set(i, new Temp(t.dimension(), t.pos(), t.placed(), t.original(), Math.max(t.until(), level.getGameTime() + ticks)));
+                    return true;
+                }
                 return false;
             }
+        }
+        if (level.getBlockEntity(pos) != null || original.getDestroySpeed(level, pos) < 0 || original == state) {
+            return false;
         }
         if (!level.setBlock(pos, state, 3)) {
             return false;

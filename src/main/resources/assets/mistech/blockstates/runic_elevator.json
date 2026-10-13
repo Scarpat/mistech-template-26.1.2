@@ -1,0 +1,55 @@
+{
+  "variants": {
+    "color=0": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=1": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=2": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=3": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=4": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=5": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=6": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=7": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=8": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=9": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=10": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=11": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=12": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=13": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=14": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=15": {
+      "model": "mistech:block/runic_elevator"
+    },
+    "color=16": {
+      "model": "mistech:block/runic_elevator"
+    }
+  }
+}

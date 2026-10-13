@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PSP",
+    "PIP",
+    "PSP"
+  ],
+  "key": {
+    "P": "mistech:murky_planks",
+    "S": "mistech:murky_slab",
+    "I": "minecraft:copper_ingot"
+  },
+  "result": {
+    "id": "mistech:fermentation_barrel"
+  }
+}

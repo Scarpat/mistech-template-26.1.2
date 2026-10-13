@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "mistech:block/cane_still_bottom",
+    "front": "mistech:block/cane_still_front",
+    "side": "mistech:block/cane_still_side",
+    "top": "mistech:block/cane_still_top"
+  }
+}

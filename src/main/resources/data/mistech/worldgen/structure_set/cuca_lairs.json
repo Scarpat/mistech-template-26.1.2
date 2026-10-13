@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 61420917,
+    "spacing": 28,
+    "separation": 10
+  },
+  "structures": [
+    {
+      "structure": "mistech:cuca_lair",
+      "weight": 1
+    }
+  ]
+}

@@ -48,7 +48,8 @@ public final class MithrilEvents {
         return true;
     }
 
-    @SubscribeEvent
+    // LOWEST: roda depois dos outros mods (afixos/gemas do Apotheosis etc.), então peça sem energia perde tudo mesmo.
+    @SubscribeEvent(priority = net.neoforged.bus.api.EventPriority.LOWEST)
     static void onAttributes(ItemAttributeModifierEvent event) {
         ItemStack stack = event.getItemStack();
         if (!MithrilGear.isMithril(stack)) {

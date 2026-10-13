@@ -121,6 +121,7 @@ public class MistechClient {
         event.registerEntityRenderer(com.mistech.mistechmod.beyond.PaleNetherContent.RUNIC_STRIDER.get(), com.mistech.mistechmod.beyond.client.PaleNetherRenderers.RunicStrider::new);
         event.registerEntityRenderer(com.mistech.mistechmod.folklore.FolkloreContent.WEREWOLF.get(), com.mistech.mistechmod.folklore.client.FolkRenderers.Werewolf::new);
         event.registerEntityRenderer(com.mistech.mistechmod.folklore.FolkloreContent.BOITATA.get(), com.mistech.mistechmod.folklore.client.FolkRenderers.Boitata::new);
+        event.registerEntityRenderer(com.mistech.mistechmod.boitata.BoitataGear.MOUNT.get(), com.mistech.mistechmod.boitata.client.BoitataMountRenderer::new);
         event.registerEntityRenderer(com.mistech.mistechmod.folklore.FolkloreContent.HEADLESS_MULE.get(), com.mistech.mistechmod.folklore.client.FolkRenderers.HeadlessMule::new);
         event.registerEntityRenderer(com.mistech.mistechmod.registry.RitualContent.BLACK_CAT.get(), net.minecraft.client.renderer.entity.CatRenderer::new);
         event.registerEntityRenderer(com.mistech.mistechmod.registry.GolemContent.CLAY_GOLEM.get(), com.mistech.mistechmod.client.ClayGolemRenderer::new);
@@ -168,6 +169,9 @@ public class MistechClient {
     static void onRegisterLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(com.mistech.mistechmod.client.MysticWearLayer.LAYER, com.mistech.mistechmod.client.MysticWearLayer::createLayer);
         event.registerLayerDefinition(com.mistech.mistechmod.mage.client.MageWearLayer.LAYER, com.mistech.mistechmod.mage.client.MageWearLayer::createLayer);
+        event.registerLayerDefinition(com.mistech.mistechmod.boitata.client.BoitataWearLayer.LAYER, com.mistech.mistechmod.boitata.client.BoitataWearLayer::createLayer);
+        event.registerLayerDefinition(com.mistech.mistechmod.boitata.client.BoitataMountModel.LAYER, com.mistech.mistechmod.boitata.client.BoitataMountModel::createBodyLayer);
+        event.registerLayerDefinition(com.mistech.mistechmod.boitata.client.BoitataMountArmorModel.LAYER, com.mistech.mistechmod.boitata.client.BoitataMountArmorModel::createBodyLayer);
         event.registerLayerDefinition(com.mistech.mistechmod.client.GnomeModel.LAYER, com.mistech.mistechmod.client.GnomeModel::createBodyLayer);
         event.registerLayerDefinition(com.mistech.mistechmod.folklore.client.FolkRenderers.HeadlessModel.LAYER, com.mistech.mistechmod.folklore.client.FolkRenderers.HeadlessModel::createBodyLayer);
         event.registerLayerDefinition(com.mistech.mistechmod.client.PisadeiraModel.LAYER, com.mistech.mistechmod.client.PisadeiraModel::createBodyLayer);
@@ -201,18 +205,21 @@ public class MistechClient {
     static void onAddLayers(EntityRenderersEvent.AddLayers event) {
         var wearModel = event.getEntityModels().bakeLayer(com.mistech.mistechmod.client.MysticWearLayer.LAYER);
         var mageModel = event.getEntityModels().bakeLayer(com.mistech.mistechmod.mage.client.MageWearLayer.LAYER);
+        var boitataModel = event.getEntityModels().bakeLayer(com.mistech.mistechmod.boitata.client.BoitataWearLayer.LAYER);
         for (var skin : event.getSkins()) {
             net.minecraft.client.renderer.entity.player.AvatarRenderer<net.minecraft.client.player.AbstractClientPlayer> wearer =
                     event.getPlayerRenderer(skin);
             if (wearer != null) {
                 wearer.addLayer(new com.mistech.mistechmod.client.MysticWearLayer(wearer, wearModel));
                 wearer.addLayer(new com.mistech.mistechmod.mage.client.MageWearLayer(wearer, mageModel));
+                wearer.addLayer(new com.mistech.mistechmod.boitata.client.BoitataWearLayer(wearer, boitataModel));
             }
             net.minecraft.client.renderer.entity.player.AvatarRenderer<net.minecraft.client.entity.ClientMannequin> wearerMannequin =
                     event.getMannequinRenderer(skin);
             if (wearerMannequin != null) {
                 wearerMannequin.addLayer(new com.mistech.mistechmod.client.MysticWearLayer(wearerMannequin, wearModel));
                 wearerMannequin.addLayer(new com.mistech.mistechmod.mage.client.MageWearLayer(wearerMannequin, mageModel));
+                wearerMannequin.addLayer(new com.mistech.mistechmod.boitata.client.BoitataWearLayer(wearerMannequin, boitataModel));
             }
             net.minecraft.client.renderer.entity.player.AvatarRenderer<net.minecraft.client.player.AbstractClientPlayer> player =
                     event.getPlayerRenderer(skin);
@@ -244,6 +251,7 @@ public class MistechClient {
         event.register(OPEN_ACCESSORIES);
         event.register(com.mistech.mistechmod.artifact.client.ArtifactClient.SPATIAL_RING);
         event.register(com.mistech.mistechmod.fey.client.FeyClient.CROWN_CALL);
+        event.register(com.mistech.mistechmod.boitata.client.BoitataClient.FIRE_BREATH);
     }
 
     /** Filtro de cores da Visão Mística (assets/mistech/post_effect/mystic_sight.json). */
@@ -339,5 +347,12 @@ public class MistechClient {
                 new Material(Identifier.fromNamespaceAndPath(Mistech.MODID, "block/impure_essence_still")),
                 new Material(Identifier.fromNamespaceAndPath(Mistech.MODID, "block/impure_essence_flow")),
                 null, null, null), MistechFluids.IMPURE_ESSENCE, MistechFluids.FLOWING_IMPURE_ESSENCE);
+        // metais derretidos (Productive Metalworks)
+        for (com.mistech.mistechmod.fluid.MoltenMetals.Molten molten : com.mistech.mistechmod.fluid.MoltenMetals.ALL) {
+            event.register(new FluidModel.Unbaked(
+                    new Material(Identifier.fromNamespaceAndPath(Mistech.MODID, "block/molten_" + molten.metal + "_still")),
+                    new Material(Identifier.fromNamespaceAndPath(Mistech.MODID, "block/molten_" + molten.metal + "_flow")),
+                    null, null, null), molten.source, molten.flowing);
+        }
     }
 }

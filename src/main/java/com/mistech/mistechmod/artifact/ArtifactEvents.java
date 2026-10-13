@@ -300,7 +300,8 @@ public final class ArtifactEvents {
                     continue;
                 }
                 for (BlockEntity be : java.util.List.copyOf(level.getChunk(cx + dx, cz + dz).getBlockEntities().values())) {
-                    if (be instanceof AbstractFurnaceBlockEntity && be.getBlockPos().closerThan(center, HOURGLASS_RADIUS + 0.5)) {
+                    if ((be instanceof AbstractFurnaceBlockEntity || be instanceof com.mistech.mistechmod.boitata.BoitataEggBlockEntity)
+                            && be.getBlockPos().closerThan(center, HOURGLASS_RADIUS + 0.5)) {
                         BlockState state = be.getBlockState();
                         BlockEntityTicker ticker = state.getTicker(level, (net.minecraft.world.level.block.entity.BlockEntityType) be.getType());
                         if (ticker != null) {

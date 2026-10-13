@@ -1,0 +1,12 @@
+{
+  "type": "neoforge:add_spawns",
+  "biomes": "#mistech:iara_waters",
+  "spawners": [
+    {
+      "type": "mistech:iara",
+      "minCount": 1,
+      "maxCount": 1,
+      "weight": 6
+    }
+  ]
+}

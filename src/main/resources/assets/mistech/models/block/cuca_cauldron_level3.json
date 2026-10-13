@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/template_cauldron_full",
+  "textures": {
+    "bottom": "mistech:block/cuca_cauldron_bottom",
+    "inside": "mistech:block/cuca_cauldron_inner",
+    "particle": "mistech:block/cuca_cauldron_side",
+    "side": "mistech:block/cuca_cauldron_side",
+    "top": "mistech:block/cuca_cauldron_top",
+    "content": "minecraft:block/water_still"
+  }
+}

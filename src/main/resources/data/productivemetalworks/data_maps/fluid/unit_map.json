@@ -1,0 +1,40 @@
+{
+  "values": {
+    "mistech:molten_mithril": {
+      "units": [
+        {
+          "amount": 90,
+          "unit": "ingot"
+        },
+        {
+          "amount": 810,
+          "unit": "block"
+        }
+      ]
+    },
+    "mistech:molten_adamantine": {
+      "units": [
+        {
+          "amount": 90,
+          "unit": "ingot"
+        },
+        {
+          "amount": 810,
+          "unit": "block"
+        }
+      ]
+    },
+    "mistech:molten_orichalcum": {
+      "units": [
+        {
+          "amount": 90,
+          "unit": "ingot"
+        },
+        {
+          "amount": 810,
+          "unit": "block"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " R ",
+    "AEA",
+    "OIO"
+  ],
+  "key": {
+    "R": "mistech:arcane_rune",
+    "A": "minecraft:amethyst_shard",
+    "E": "minecraft:enchanting_table",
+    "O": "minecraft:obsidian",
+    "I": "mistech:impure_magic_block"
+  },
+  "result": {
+    "id": "mistech:arcane_infuser"
+  }
+}

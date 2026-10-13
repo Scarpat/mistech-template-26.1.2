@@ -1,0 +1,120 @@
+{
+  "min_purity": "flawed",
+  "unique": true,
+  "weights": {
+    "quality": 1.0,
+    "weight": 20
+  },
+  "bonuses": [
+    {
+      "type": "apotheosis:attribute",
+      "attribute": "apothic_attributes:healing_received",
+      "gem_class": {
+        "key": "upper_lower",
+        "types": [
+          "apotheosis:helmet",
+          "apotheosis:boots"
+        ]
+      },
+      "operation": "add_multiplied_base",
+      "values": {
+        "flawed": 0.1,
+        "normal": 0.15,
+        "flawless": 0.2,
+        "perfect": 0.3
+      }
+    },
+    {
+      "type": "apotheosis:mob_effect",
+      "gem_class": {
+        "key": "core_armor",
+        "types": [
+          "apotheosis:chestplate",
+          "apotheosis:leggings"
+        ]
+      },
+      "mob_effect": "mistech:arcane_ward",
+      "target": "hurt_self",
+      "values": {
+        "flawed": {
+          "duration": 100,
+          "amplifier": 0,
+          "cooldown": 900
+        },
+        "normal": {
+          "duration": 100,
+          "amplifier": 0,
+          "cooldown": 700
+        },
+        "flawless": {
+          "duration": 100,
+          "amplifier": 0,
+          "cooldown": 500
+        },
+        "perfect": {
+          "duration": 100,
+          "amplifier": 1,
+          "cooldown": 400
+        }
+      }
+    },
+    {
+      "type": "apotheosis:mob_effect",
+      "gem_class": {
+        "key": "light_weapon",
+        "types": [
+          "apotheosis:melee_weapon",
+          "apotheosis:trident"
+        ]
+      },
+      "mob_effect": "minecraft:weakness",
+      "target": "attack_target",
+      "values": {
+        "flawed": {
+          "duration": 80,
+          "amplifier": 0,
+          "cooldown": 200
+        },
+        "normal": {
+          "duration": 80,
+          "amplifier": 0,
+          "cooldown": 160
+        },
+        "flawless": {
+          "duration": 80,
+          "amplifier": 1,
+          "cooldown": 160
+        },
+        "perfect": {
+          "duration": 80,
+          "amplifier": 1,
+          "cooldown": 120
+        }
+      }
+    },
+    {
+      "type": "apotheosis:attribute",
+      "attribute": "apothic_attributes:arrow_damage",
+      "gem_class": "apotheosis:bow",
+      "operation": "add_multiplied_base",
+      "values": {
+        "flawed": 0.05,
+        "normal": 0.1,
+        "flawless": 0.15,
+        "perfect": 0.2
+      }
+    },
+    {
+      "type": "apotheosis:attribute",
+      "attribute": "apothic_attributes:experience_gained",
+      "gem_class": "apotheosis:breaker",
+      "operation": "add_multiplied_base",
+      "values": {
+        "flawed": 0.25,
+        "normal": 0.5,
+        "flawless": 0.75,
+        "perfect": 1.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "S S",
+    "SLS",
+    "S S"
+  ],
+  "key": {
+    "S": "mistech:boitata_scale",
+    "L": "minecraft:leather"
+  },
+  "result": {
+    "id": "mistech:boitata_mount_armor_scale"
+  }
+}

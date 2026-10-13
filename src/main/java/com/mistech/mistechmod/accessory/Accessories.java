@@ -206,6 +206,14 @@ public final class Accessories {
         if (has(player, Accessory.TIDE_RING)) {
             keep(player, MobEffects.WATER_BREATHING);
         }
+        if (has(player, Accessory.IARA_RING)) {
+            keep(player, MobEffects.WATER_BREATHING);
+            if (player.isInWater()) {
+                keep(player, MobEffects.DOLPHINS_GRACE);
+                keep(player, MobEffects.CONDUIT_POWER);
+                keep(player, MobEffects.NIGHT_VISION);
+            }
+        }
         if (has(player, Accessory.EMBER_RING) && player.isOnFire()) {
             player.clearFire();
         }

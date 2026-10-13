@@ -136,6 +136,20 @@ dependencies {
     // localRuntime "maven.modrinth:silent-gear:${silentgear_version}"
     // localRuntime "maven.modrinth:silent-lib:${silentlib_version}"
 
+    // Apotheosis / Apothic Enchanting: integração só por dados (data/mistech/apotheosis/gems e
+    // data/mistech/apothic_enchanting/enchanting_stats). Ficam fora do runClient; para testar, descomente o bloco.
+    // localRuntime "maven.modrinth:apotheosis:${apotheosis_version}"
+    // localRuntime "maven.modrinth:apothic-enchanting:${apothic_enchanting_version}"
+    // localRuntime "maven.modrinth:apothic-attributes:${apothic_attributes_version}"
+    // localRuntime "maven.modrinth:apothic-spawners:${apothic_spawners_version}"
+    // localRuntime "maven.modrinth:placebo:${placebo_version}"
+    // localRuntime "maven.modrinth:patchouli:${patchouli_version}"
+
+    // Productive Metalworks: Mistech registra os fluidos (Mithril/Adamantina/Oricalco derretidos) sempre; as receitas de
+    // fundição em data/mistech/recipe/compat/productivemetalworks só carregam com ele. Para testar: adicionar o repositório
+    // Curse Maven (https://cursemaven.com, grupo "curse.maven") e
+    // localRuntime "curse.maven:productive-metalworks-1184570:8764957" + o Productive Lib da mesma versão.
+
     // Example optional mod dependency with JEI
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
     // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
@@ -172,6 +186,9 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             mod_version            : mod_version,
             curios_version_range   : curios_version_range,
             silentgear_version_range: silentgear_version_range,
+            apotheosis_version_range: apotheosis_version_range,
+            apothic_enchanting_version_range: apothic_enchanting_version_range,
+            productivemetalworks_version_range: productivemetalworks_version_range,
     ]
     inputs.properties replaceProperties
     expand replaceProperties

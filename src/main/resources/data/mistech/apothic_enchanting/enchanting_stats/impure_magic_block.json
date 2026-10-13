@@ -1,0 +1,8 @@
+{
+  "blocks": "mistech:impure_magic_block",
+  "stats": {
+    "maxEterna": 45.0,
+    "eterna": 3.0,
+    "quanta": 7.5
+  }
+}

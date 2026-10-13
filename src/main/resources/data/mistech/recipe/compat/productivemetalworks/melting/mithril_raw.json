@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "productivemetalworks"
+    }
+  ],
+  "type": "productivemetalworks:item_melting",
+  "ingredient": "#c:raw_materials/mithril",
+  "maximum_temperature": 0,
+  "minimum_temperature": 1000,
+  "result": [
+    {
+      "amount": 180,
+      "id": "mistech:molten_mithril"
+    }
+  ]
+}

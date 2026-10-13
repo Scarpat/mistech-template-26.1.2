@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mistech:cachaca",
+    "minecraft:honey_bottle"
+  ],
+  "result": {
+    "id": "mistech:honey_cachaca"
+  }
+}

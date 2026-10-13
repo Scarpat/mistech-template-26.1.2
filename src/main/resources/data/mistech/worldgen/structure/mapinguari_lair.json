@@ -1,0 +1,10 @@
+{
+  "type": "mistech:lore_lair",
+  "lair": "mapinguari",
+  "biomes": [
+    "mistech:ancestral_forest"
+  ],
+  "spawn_overrides": {},
+  "step": "underground_structures",
+  "terrain_adaptation": "none"
+}

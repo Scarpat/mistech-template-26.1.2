@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:boitata_mount_armor_scale",
+  "ingredients": [
+    "mistech:orichalcum_ingot",
+    "mistech:orichalcum_ingot",
+    "mistech:orichalcum_ingot",
+    "mistech:orichalcum_ingot",
+    "mistech:fire_rune",
+    "mistech:earth_rune"
+  ],
+  "essence": 5,
+  "duration": 400,
+  "condition": "none",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:boitata_mount_armor_orichalcum"
+  },
+  "effect": "forge"
+}

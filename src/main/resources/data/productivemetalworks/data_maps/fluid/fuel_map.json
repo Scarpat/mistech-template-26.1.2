@@ -1,0 +1,14 @@
+{
+  "values": {
+    "mistech:impure_essence": {
+      "temperature": 2500,
+      "consumption": 0.15,
+      "speed": 0.75
+    },
+    "mistech:purified_essence": {
+      "temperature": 3000,
+      "consumption": 0.1,
+      "speed": 1.0
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " I ",
+    "GAG",
+    "HGH"
+  ],
+  "key": {
+    "I": "minecraft:gold_ingot",
+    "G": "minecraft:purple_stained_glass",
+    "A": "minecraft:amethyst_shard",
+    "H": "mistech:hemp_fiber"
+  },
+  "result": {
+    "id": "mistech:runic_hookah"
+  }
+}

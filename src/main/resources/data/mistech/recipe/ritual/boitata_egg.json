@@ -1,0 +1,22 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:boitata_eye",
+  "ingredients": [
+    "mistech:boitata_scale",
+    "mistech:boitata_scale",
+    "mistech:boitata_scale",
+    "mistech:boitata_scale",
+    "mistech:time_rune",
+    "mistech:fire_rune",
+    "minecraft:magma_block",
+    "mistech:lunar_blood"
+  ],
+  "essence": 8,
+  "duration": 600,
+  "condition": "night",
+  "min_tier": 3,
+  "result": {
+    "id": "mistech:boitata_egg"
+  },
+  "effect": "fire"
+}

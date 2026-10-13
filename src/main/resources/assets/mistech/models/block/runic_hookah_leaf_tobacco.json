@@ -1,0 +1,144 @@
+{
+  "textures": {
+    "particle": "mistech:block/runic_hookah_tobacco",
+    "leaf": "mistech:block/runic_hookah_tobacco"
+  },
+  "elements": [
+    {
+      "from": [
+        6.3,
+        13.3,
+        6.3
+      ],
+      "to": [
+        9.7,
+        14.3,
+        9.7
+      ],
+      "faces": {
+        "north": {
+          "texture": "#leaf",
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ]
+        },
+        "south": {
+          "texture": "#leaf",
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ]
+        },
+        "east": {
+          "texture": "#leaf",
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ]
+        },
+        "west": {
+          "texture": "#leaf",
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ]
+        },
+        "up": {
+          "texture": "#leaf",
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ]
+        },
+        "down": {
+          "texture": "#leaf",
+          "uv": [
+            4,
+            4,
+            8,
+            8
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        7,
+        14.3,
+        7
+      ],
+      "to": [
+        8.5,
+        14.8,
+        8.8
+      ],
+      "faces": {
+        "north": {
+          "texture": "#leaf",
+          "uv": [
+            2,
+            2,
+            4,
+            4
+          ]
+        },
+        "south": {
+          "texture": "#leaf",
+          "uv": [
+            2,
+            2,
+            4,
+            4
+          ]
+        },
+        "east": {
+          "texture": "#leaf",
+          "uv": [
+            2,
+            2,
+            4,
+            4
+          ]
+        },
+        "west": {
+          "texture": "#leaf",
+          "uv": [
+            2,
+            2,
+            4,
+            4
+          ]
+        },
+        "up": {
+          "texture": "#leaf",
+          "uv": [
+            2,
+            2,
+            4,
+            4
+          ]
+        },
+        "down": {
+          "texture": "#leaf",
+          "uv": [
+            2,
+            2,
+            4,
+            4
+          ]
+        }
+      }
+    }
+  ]
+}

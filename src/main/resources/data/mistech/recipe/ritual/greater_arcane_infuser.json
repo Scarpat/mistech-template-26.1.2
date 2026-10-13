@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:arcane_infuser",
+  "ingredients": [
+    "minecraft:lapis_block",
+    "minecraft:lapis_block",
+    "minecraft:diamond",
+    "minecraft:diamond",
+    "mistech:arcane_rune",
+    "mistech:impure_magic_block"
+  ],
+  "essence": 5,
+  "duration": 400,
+  "condition": "none",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:greater_arcane_infuser"
+  },
+  "effect": "arcane"
+}

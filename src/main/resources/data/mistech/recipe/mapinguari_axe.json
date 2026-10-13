@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "CC",
+    "CS",
+    " S"
+  ],
+  "key": {
+    "C": "mistech:mapinguari_claw",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "mistech:mapinguari_axe",
+    "count": 1
+  }
+}

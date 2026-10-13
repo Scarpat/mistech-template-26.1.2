@@ -28,6 +28,10 @@
     {
       "id": "mistech:spatial_ring",
       "required": false
+    },
+    {
+      "id": "mistech:iara_ring",
+      "required": false
     }
   ]
 }
