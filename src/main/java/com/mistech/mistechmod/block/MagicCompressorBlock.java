@@ -36,7 +36,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
  * Compressor de Magia: pedestal com um buraco redondo no topo.
  * Botão direito com Frasco de Essência Mágica Impura enche o buraco. Com incenso aceso por perto
  * (jogador segurando/carregando incenso aceso ou Porta-Incenso ativo ao alcance), a essência endurece
- * e sai um Fragmento de Magia Impura.
+ * e sai um Fragmento de Magia Impura, que fica guardado em cima (mão vazia, funil ou golem tiram).
  */
 public class MagicCompressorBlock extends BaseEntityBlock {
     public static final MapCodec<MagicCompressorBlock> CODEC = simpleCodec(MagicCompressorBlock::new);
@@ -90,6 +90,36 @@ public class MagicCompressorBlock extends BaseEntityBlock {
             level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 0.7F);
         }
         return InteractionResult.SUCCESS;
+    }
+
+    /** Mão vazia: pega o fragmento pronto que fica em cima. */
+    @Override
+    protected InteractionResult useWithoutItem(BlockState state, Level level, BlockPos pos, Player player, BlockHitResult hitResult) {
+        if (!(level.getBlockEntity(pos) instanceof MagicCompressorBlockEntity compressor) || compressor.getOutput().isEmpty()) {
+            return InteractionResult.PASS;
+        }
+        if (!level.isClientSide()) {
+            ItemStack out = compressor.takeOutput();
+            if (!player.getInventory().add(out)) {
+                player.drop(out, false);
+            }
+            level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.5F, 1.0F);
+        }
+        return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    protected boolean hasAnalogOutputSignal(BlockState state) {
+        return true;
+    }
+
+    @Override
+    protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos, net.minecraft.core.Direction direction) {
+        if (!(level.getBlockEntity(pos) instanceof MagicCompressorBlockEntity compressor) || compressor.getOutput().isEmpty()) {
+            return 0;
+        }
+        ItemStack out = compressor.getOutput();
+        return 1 + Math.round(14.0F * out.getCount() / out.getMaxStackSize());
     }
 
     @Override

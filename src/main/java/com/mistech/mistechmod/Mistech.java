@@ -124,7 +124,7 @@ public class Mistech {
     // Incenso: acende com isqueiro na outra mão, queima por 2 minutos e afasta a atenção de zumbis/esqueletos
     public static final DeferredItem<IncenseItem> INCENSE = ITEMS.registerItem("incense", IncenseItem::new);
 
-    // Cinzas: sobram (25% de chance) quando um incenso termina no Porta-Incenso
+    // Cinzas: todo incenso não mágico que termina (na mão ou no Porta-Incenso) deixa 1 (35% de chance de 2)
     public static final DeferredItem<Item> INCENSE_ASH = ITEMS.registerSimpleItem("incense_ash");
 
     // Giz de Cinzas: argila + garrafa de água + cinzas de incenso
@@ -490,6 +490,8 @@ public class Mistech {
                 com.mistech.mistechmod.registry.MurkyWood.creativeItems().forEach(item -> output.accept(item.get()));
                 // Gnomos
                 com.mistech.mistechmod.registry.GnomeContent.creativeItems().forEach(item -> output.accept(item.get()));
+                // Criação (Vaso de Cultivo)
+                com.mistech.mistechmod.husbandry.HusbandryContent.creativeItems().forEach(item -> output.accept(item.get()));
                 // Rituais Tier I
                 com.mistech.mistechmod.registry.RitualContent.creativeItems().forEach(item -> output.accept(item.get()));
                 // Magia Purificada
@@ -569,6 +571,7 @@ public class Mistech {
         com.mistech.mistechmod.mage.MageContent.register(modEventBus);
         com.mistech.mistechmod.seeking.SeekingContent.register(modEventBus);
         com.mistech.mistechmod.utility.UtilityContent.register(modEventBus);
+        com.mistech.mistechmod.husbandry.HusbandryContent.register(modEventBus);
         com.mistech.mistechmod.drink.DrinkContent.register(modEventBus);
         com.mistech.mistechmod.infuser.InfuserContent.register(modEventBus);
         com.mistech.mistechmod.boitata.BoitataGear.register(modEventBus);
@@ -617,6 +620,13 @@ public class Mistech {
                 (barrel, side) -> net.neoforged.neoforge.transfer.item.VanillaContainerWrapper.of(barrel));
         event.registerBlockEntity(Capabilities.Fluid.BLOCK, MistechBlockEntities.RUNIC_TANK.get(),
                 (tank, side) -> tank.getTank());
+        // Extrator de Essência (só tira) e Compressor de Magia (só coloca): golem com Runa da Água, canos de outros mods
+        event.registerBlockEntity(Capabilities.Fluid.BLOCK, MistechBlockEntities.ESSENCE_EXTRACTOR.get(),
+                (extractor, side) -> new com.mistech.mistechmod.block.EssenceFluidHandlers.Extractor(extractor.getLevel(), extractor.getBlockPos()));
+        event.registerBlockEntity(Capabilities.Item.BLOCK, MistechBlockEntities.MAGIC_COMPRESSOR.get(),
+                (compressor, side) -> new net.neoforged.neoforge.transfer.item.WorldlyContainerWrapper(compressor, side));
+        event.registerBlockEntity(Capabilities.Fluid.BLOCK, MistechBlockEntities.MAGIC_COMPRESSOR.get(),
+                (compressor, side) -> new com.mistech.mistechmod.block.EssenceFluidHandlers.Compressor(compressor.getLevel(), compressor.getBlockPos()));
         event.registerBlock(Capabilities.Item.BLOCK, (level, pos, state, be, side) -> {
             var master = RuneConfectorBlock.getMaster(level, state, pos);
             return master == null ? null : new net.neoforged.neoforge.transfer.item.WorldlyContainerWrapper(master, side);

@@ -33,6 +33,15 @@ repositories {
         url = "https://maven.theillusivec4.top/"
         content { includeGroup "top.theillusivec4.curios" }
     }
+    // JEI (Just Enough Items)
+    maven {
+        name = "BlameJared"
+        url = "https://maven.blamejared.com/"
+        content {
+            includeGroup "mezz.jei"
+            includeGroup "net.mezzdev.config" // mezz_config, dependência do JEI
+        }
+    }
     // Modrinth Maven: Silent Gear e Silent Lib (o maven oficial deles é GitHub Packages e exige login)
     exclusiveContent {
         forRepository {
@@ -128,8 +137,9 @@ configurations {
 dependencies {
     // ---- Compatibilidade opcional (não é publicada como dependência do Mistech) ----
     // Curios: a API fica disponível para compilar; o mod completo só roda no ambiente de dev.
-    compileOnly "top.theillusivec4.curios:curios-neoforge:${curios_version}:api"
-    localRuntime "top.theillusivec4.curios:curios-neoforge:${curios_version}"
+    // Vem do Modrinth (o maven.theillusivec4.top estava fora do ar e quebrava o runClient). O jar completo inclui a API.
+    compileOnly "maven.modrinth:curios:${curios_version}"
+    localRuntime "maven.modrinth:curios:${curios_version}"
 
     // Silent Gear: a integração é só por dados (data/mistech/silentgear_materials) e só carrega se o jogador
     // tiver o Silent Gear instalado. Ele fica fora do runClient; para testar a integração, descomente as 2 linhas.
@@ -150,12 +160,10 @@ dependencies {
     // Curse Maven (https://cursemaven.com, grupo "curse.maven") e
     // localRuntime "curse.maven:productive-metalworks-1184570:8764957" + o Productive Lib da mesma versão.
 
-    // Example optional mod dependency with JEI
-    // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
-    // compileOnly "mezz.jei:jei-${mc_version}-common-api:${jei_version}"
-    // compileOnly "mezz.jei:jei-${mc_version}-neoforge-api:${jei_version}"
-    // We add the full version to localRuntime, not runtimeOnly, so that we do not publish a dependency on it
-    // localRuntime "mezz.jei:jei-${mc_version}-neoforge:${jei_version}"
+    // JEI: a API para compilar (com.mistech.mistechmod.compat.jei); o mod completo só no ambiente de dev.
+    compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
+    compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
+    localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
@@ -189,6 +197,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             apotheosis_version_range: apotheosis_version_range,
             apothic_enchanting_version_range: apothic_enchanting_version_range,
             productivemetalworks_version_range: productivemetalworks_version_range,
+            jei_version_range      : jei_version_range,
     ]
     inputs.properties replaceProperties
     expand replaceProperties
@@ -210,7 +219,7 @@ publishing {
     }
     repositories {
         maven {
-            url "file://${project.projectDir}/repo"
+            url = "file://${project.projectDir}/repo"
         }
     }
 }

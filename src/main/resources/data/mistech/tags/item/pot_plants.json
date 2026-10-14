@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:sugar_cane",
+    "#minecraft:small_flowers",
+    "mistech:yellow_mushroom",
+    "minecraft:brown_mushroom",
+    "minecraft:red_mushroom"
+  ]
+}

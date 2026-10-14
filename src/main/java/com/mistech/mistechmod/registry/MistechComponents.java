@@ -37,6 +37,14 @@ public final class MistechComponents {
             DATA_COMPONENTS.registerComponentType("smoke_rune",
                     builder -> builder.persistent(Codec.STRING).networkSynchronized(ByteBufCodecs.STRING_UTF8));
 
+    /** Bicho preso no Pote com Criatura (galinha, vaca, ovelha, lula...). Vem do bloco ao quebrar. */
+    public static final Codec<net.minecraft.world.item.component.TypedEntityData<net.minecraft.world.entity.EntityType<?>>> JAR_CREATURE_CODEC =
+            net.minecraft.world.item.component.TypedEntityData.codec(net.minecraft.world.entity.EntityType.CODEC);
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<net.minecraft.world.item.component.TypedEntityData<net.minecraft.world.entity.EntityType<?>>>> JAR_CREATURE =
+            DATA_COMPONENTS.registerComponentType("jar_creature",
+                    builder -> builder.persistent(JAR_CREATURE_CODEC)
+                            .networkSynchronized(net.minecraft.world.item.component.TypedEntityData.streamCodec(net.minecraft.world.entity.EntityType.STREAM_CODEC)));
+
     /** Energia (FE) guardada no item das Baterias Rúnicas (vem do bloco ao quebrar). */
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> BATTERY_ENERGY =
             DATA_COMPONENTS.registerComponentType("battery_energy",
@@ -82,6 +90,11 @@ public final class MistechComponents {
                     builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.VAR_INT));
 
     // ----- Vara de Comando (Golem de Barro) -----
+    /** Vara de Comando Rúnica: origens, destinos e modos. */
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<com.mistech.mistechmod.golem.GolemRoute>> GOLEM_ROUTE =
+            DATA_COMPONENTS.registerComponentType("golem_route",
+                    builder -> builder.persistent(com.mistech.mistechmod.golem.GolemRoute.CODEC)
+                            .networkSynchronized(com.mistech.mistechmod.golem.GolemRoute.STREAM_CODEC));
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<net.minecraft.core.BlockPos>> GOLEM_SOURCE =
             DATA_COMPONENTS.registerComponentType("golem_source",
                     builder -> builder.persistent(net.minecraft.core.BlockPos.CODEC).networkSynchronized(net.minecraft.core.BlockPos.STREAM_CODEC));

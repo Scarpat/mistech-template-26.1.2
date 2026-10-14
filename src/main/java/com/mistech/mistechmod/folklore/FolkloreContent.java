@@ -48,6 +48,8 @@ public final class FolkloreContent {
     public static final DeferredItem<SaciJarItem> SACI_JAR = Mistech.ITEMS.registerItem("saci_jar", SaciJarItem::new,
             p -> p.stacksTo(1).rarity(Rarity.UNCOMMON));
     public static final DeferredItem<Item> WEREWOLF_FANG = Mistech.ITEMS.registerSimpleItem("werewolf_fang", p -> p.rarity(Rarity.UNCOMMON));
+    /** Incenso de Prata: a fumaça espanta lobisomens (e impede que apareçam por perto). */
+    public static final DeferredItem<SilverIncenseItem> SILVER_INCENSE = Mistech.ITEMS.registerItem("silver_incense", SilverIncenseItem::new);
     public static final DeferredItem<Item> BOITATA_SCALE = Mistech.ITEMS.registerSimpleItem("boitata_scale", p -> p.rarity(Rarity.RARE).fireResistant());
     public static final DeferredItem<Item> BOITATA_EYE = Mistech.ITEMS.registerSimpleItem("boitata_eye", p -> p.rarity(Rarity.EPIC).fireResistant());
 
@@ -61,7 +63,7 @@ public final class FolkloreContent {
     private FolkloreContent() {}
 
     public static List<DeferredItem<? extends Item>> creativeItems() {
-        return List.of(SACI_JAR, WEREWOLF_FANG, BOITATA_SCALE, BOITATA_EYE);
+        return List.of(SACI_JAR, WEREWOLF_FANG, SILVER_INCENSE, BOITATA_SCALE, BOITATA_EYE);
     }
 
     public static void register(IEventBus modEventBus) {

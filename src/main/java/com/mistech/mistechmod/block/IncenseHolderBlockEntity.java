@@ -35,7 +35,7 @@ import net.minecraft.world.phys.AABB;
  *  0 = isqueiro (flint and steel)
  *  1 = estoque de incensos (até 64)
  *  2 = incenso ativo (queimando)
- *  3 = cinzas (25% de chance quando um incenso acaba)
+ *  3 = cinzas (todo incenso não mágico que acaba deixa 1, com {@link #EXTRA_ASH_CHANCE} de chance de deixar 2)
  */
 public class IncenseHolderBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
     public static final int SLOT_LIGHTER = 0;
@@ -47,7 +47,8 @@ public class IncenseHolderBlockEntity extends BaseContainerBlockEntity implement
     public static final double EFFECT_RADIUS = 10.0;
     /** Maior raio possível (Incenso Mágico: 4×). */
     public static final double MAX_EFFECT_RADIUS = EFFECT_RADIUS * 4;
-    public static final float ASH_CHANCE = 0.25F;
+    /** Chance de um incenso não mágico deixar uma 2ª cinza (a 1ª é garantida). */
+    public static final float EXTRA_ASH_CHANCE = 0.35F;
 
     private static final int[] SLOTS_FOR_UP = {SLOT_STOCK};
     private static final int[] SLOTS_FOR_SIDES = {SLOT_LIGHTER, SLOT_STOCK};
@@ -130,14 +131,18 @@ public class IncenseHolderBlockEntity extends BaseContainerBlockEntity implement
             com.mistech.mistechmod.beyond.FlowerIncenseItem.applyAny(active, serverLevel, pos.getCenter(), radius);
             // Incenso de Fada: Véu Feérico (duendes ignoram)
             com.mistech.mistechmod.fey.FairyIncenseItem.applyAny(active, serverLevel, pos.getCenter(), radius);
+            // Incenso de Prata: lobisomens fogem e não aparecem por perto
+            com.mistech.mistechmod.folklore.SilverIncenseItem.applyAny(active, serverLevel, pos, radius);
 
             boolean magic = IncenseItem.makesResidue(active);
             if (IncenseItem.burnOneSecond(active, () -> holder.addAsh(level, pos, Mistech.MAGIC_RESIDUE.get()))) {
                 holder.items.set(SLOT_ACTIVE, ItemStack.EMPTY);
                 level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.4F, 1.8F);
-                // o incenso mágico já deixa Resíduo Mágico; cinzas comuns só do incenso comum
-                if (!magic && level.getRandom().nextFloat() < ASH_CHANCE) {
-                    holder.addAsh(level, pos, Mistech.INCENSE_ASH.get());
+                // o incenso mágico já deixa Resíduo Mágico; todos os outros (comum, arruda, flores, fada...) deixam cinzas
+                if (!magic) {
+                    for (int i = IncenseItem.rollAsh(level.getRandom()); i > 0; i--) {
+                        holder.addAsh(level, pos, Mistech.INCENSE_ASH.get());
+                    }
                 }
             }
             setChanged(level, pos, state);

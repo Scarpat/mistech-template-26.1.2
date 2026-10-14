@@ -91,6 +91,12 @@ public class MistechClient {
     @SubscribeEvent
     static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(MistechBlockEntities.GLASS_JAR.get(), GlassJarRenderer::new);
+        event.registerBlockEntityRenderer(MistechBlockEntities.MAGIC_COMPRESSOR.get(), com.mistech.mistechmod.client.MagicCompressorRenderer::new);
+        event.registerBlockEntityRenderer(com.mistech.mistechmod.husbandry.HusbandryContent.GROWING_POT_BE.get(),
+                com.mistech.mistechmod.husbandry.client.GrowingPotRenderer::new);
+        event.registerBlockEntityRenderer(com.mistech.mistechmod.husbandry.HusbandryContent.CREATURE_JAR_BE.get(),
+                com.mistech.mistechmod.husbandry.client.CreatureJarRenderer::new);
+        event.registerBlockEntityRenderer(MistechBlockEntities.WRITING_TABLE.get(), com.mistech.mistechmod.client.WritingTableRenderer::new);
         event.registerBlockEntityRenderer(MistechBlockEntities.RUNIC_TANK.get(), com.mistech.mistechmod.client.RunicTankRenderer::new);
         event.registerBlockEntityRenderer(MistechBlockEntities.RUNE_CONFECTOR.get(), com.mistech.mistechmod.client.RuneConfectorRenderer::new);
         event.registerBlockEntityRenderer(MistechBlockEntities.MINER.get(), com.mistech.mistechmod.client.MinerRenderer::new);

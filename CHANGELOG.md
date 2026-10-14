@@ -1,8 +1,41 @@
 # Mistech — Changelog
 
-## Unreleased (Oct 9 – Oct 13, 2026)
+## Oct 14, 2026 — Early-game farming, fluid golems, JEI
 
-All changes since the initial commit (`f272be5`, Oct 8). Compiles; most of it has not yet been tested in-game.
+Everything since commit `dcb44ef` (Oct 13). Compiles; not yet fully tested in-game.
+
+### Early-game farming
+- **Growing Pot** (bricks + dirt + bone meal): plant sugar cane, any small flower or a mushroom (incl. the **Yellowish Mushroom**) and it grows copies over time (cane 45 s, flowers 60 s, mushrooms 90 s, Yellowish Mushroom 2 min). Water touching it = 2×, a fed Bottled Gnome nearby = +50%, bone meal = instant copy. Holds a stack; hopper below pulls, hopper above/sides inserts. Accepted plants: `#mistech:pot_plants`.
+- **Creature Jar**: sneak + use an empty Glass Jar on an adult chicken, cow/mooshroom, sheep, squid or glow squid. Placed, it produces eggs (variant-aware), milk (up to 4 buckets), wool in the sheep's color, or (glow) ink sacs. Sneak + empty hand releases the animal. The animal is drawn inside the jar and kept on the item.
+- **Grinder**: Amethyst Block → 4 Amethyst Shards.
+
+### Golems & logistics
+- **Runic Command Rod** (Command Rod + Space Rune + ender pearl; alone in the grid = clear): up to 8 origins and 8 destinations within 48 blocks. Use = origin, sneak = destination; use in air = delivery mode (Priority / Round-robin / Even), sneak in air = collect mode (Priority / Round-robin / Fullest). Use on a golem = assign route, sneak on a golem = copy its route. Points glow while held.
+- **Water Rune on golems** (fluid transport): Terracotta and Mithril work golems carry fluids between the rod's points (any fluid tank). Load = item load × 125 mB (4 / 8 buckets, doubled with Earth). With no tank at the origin they pick up fluid source blocks next to the point. A filled bucket works as a filter. They spill one block of fluid on death.
+- Essence Extractor and Magic Compressor now expose fluid handling (pipes and golems can pull/push essence). The regular Command Rod also accepts fluid blocks.
+- Work golems drop their statue when killed (runes are lost).
+
+### Werewolves & Silver Incense
+- **Silver Incense** (4 incense around a mithril ingot → 4): its smoke makes werewolves drop their target and flee, and stops them from spawning nearby — around you in your hand, or 48 blocks around an Incense Holder.
+- Full-moon werewolves are now **rare and only around villages**, one at a time (Blood Moon still spawns them anywhere).
+- At dawn a werewolf turns back into an unemployed villager instead of vanishing.
+
+### Blocks & visuals
+- **Magic Compressor** keeps the hardened shard on top (up to a stack; taken by hand, hopper, pipes or golems) instead of dropping it, and renders it.
+- **Writing Table** shows the item being written, floating and spinning above the table.
+- Every non-magic incense now leaves 1 Incense Ash (35% chance of 2) instead of a 25% chance.
+- Boitatá mount armor now follows the body's animation.
+
+### Compatibility
+- **JEI**: categories for Writing Table, Grinder (crushing), Impure and Sanctuary rituals, machines, generators, magic cigars/joints and multiblocks, plus info pages (Incense Ash, Magic Residue, Werewolf Fang).
+- **Botany Pots**: Yellowish Mushroom crop.
+- Build: Curios now comes from Modrinth (the old maven was down); JEI from the BlameJared maven.
+
+---
+
+## Oct 13, 2026 — Folklore expansion, Boitatá, cachaça, utilities, Arcane Infuser
+
+Commit `dcb44ef` — all changes since the initial commit (`f272be5`, Oct 8).
 
 ---
 

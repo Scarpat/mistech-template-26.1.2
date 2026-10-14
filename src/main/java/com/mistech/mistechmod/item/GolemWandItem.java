@@ -22,7 +22,7 @@ import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.capabilities.Capabilities;
 
 /**
- * Vara de Comando: 1º clique num container = origem, 2º = destino (reinicia depois).
+ * Vara de Comando: 1º clique num container/tanque = origem, 2º = destino (reinicia depois).
  * Clique no Golem de Barro passa a rota para ele; agachado no golem mostra a rota dele.
  * Origem e destino a no máximo {@link ClayGolemEntity#MAX_ROUTE} blocos entre si.
  */
@@ -31,13 +31,36 @@ public class GolemWandItem extends Item {
         super(properties);
     }
 
+    /** Roda antes do clique do bloco, para blocos que reagem ao clique (Extrator, Compressor...) não "engolirem" a vara. */
+    @Override
+    public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {
+        return this.useOn(context);
+    }
+
+    /**
+     * Pontos válidos: qualquer bloco com itens ou com líquido (tanques, Extrator de Essência, Compressor de Magia, caldeirão...),
+     * ou um bloco encostado numa fonte de líquido (para o golem com Runa da Água tirar de lago/poça).
+     */
+    public static boolean isRoutePoint(Level level, BlockPos pos) {
+        if (level.getCapability(Capabilities.Item.BLOCK, pos, null) != null
+                || level.getCapability(Capabilities.Fluid.BLOCK, pos, null) != null) {
+            return true;
+        }
+        for (BlockPos at : BlockPos.betweenClosed(pos.offset(-1, -1, -1), pos.offset(1, 1, 1))) {
+            if (level.getFluidState(at).isSource()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
         BlockPos pos = context.getClickedPos();
         Player player = context.getPlayer();
         ItemStack stack = context.getItemInHand();
-        if (level.getCapability(Capabilities.Item.BLOCK, pos, null) == null) {
+        if (!isRoutePoint(level, pos)) {
             return InteractionResult.PASS;
         }
         if (level.isClientSide()) {

@@ -77,6 +77,14 @@ public class IncenseItem extends Item {
         return stack.getItem() instanceof IncenseItem incense && incense.residueInterval > 0;
     }
 
+    /**
+     * Quantas Cinzas de Incenso um incenso não mágico deixa ao terminar: sempre 1, e
+     * {@link com.mistech.mistechmod.block.IncenseHolderBlockEntity#EXTRA_ASH_CHANCE} de chance de 2.
+     */
+    public static int rollAsh(net.minecraft.util.RandomSource random) {
+        return random.nextFloat() < com.mistech.mistechmod.block.IncenseHolderBlockEntity.EXTRA_ASH_CHANCE ? 2 : 1;
+    }
+
     /** Isqueiro ou Runa de Fogo. */
     public static boolean isLighter(ItemStack stack) {
         return stack.getItem() instanceof net.minecraft.world.item.FlintAndSteelItem || stack.is(com.mistech.mistechmod.Mistech.FIRE_RUNE.get());
@@ -209,17 +217,26 @@ public class IncenseItem extends Item {
         if (player.getAbilities().instabuild) {
             return; // criativo: não gasta
         }
+        boolean magic = makesResidue(stack);
         if (burnOneSecond(stack, () -> giveResidue(player))) {
             level.playSound(null, player.getX(), player.getY(), player.getZ(),
                     SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, 0.5F, 1.6F);
+            // queimado na mão/inventário também deixa cinzas (o mágico já deixou Resíduo Mágico)
+            if (!magic) {
+                giveItem(player, new ItemStack(com.mistech.mistechmod.Mistech.INCENSE_ASH.get(), rollAsh(level.getRandom())));
+            }
         }
     }
 
     /** Resíduo Mágico vai para o inventário (cai no chão se estiver cheio). */
     private static void giveResidue(Player player) {
-        ItemStack residue = new ItemStack(com.mistech.mistechmod.Mistech.MAGIC_RESIDUE.get());
-        if (!player.getInventory().add(residue)) {
-            player.drop(residue, false);
+        giveItem(player, new ItemStack(com.mistech.mistechmod.Mistech.MAGIC_RESIDUE.get()));
+    }
+
+    /** Vai para o inventário (cai no chão se estiver cheio). */
+    private static void giveItem(Player player, ItemStack stack) {
+        if (!player.getInventory().add(stack)) {
+            player.drop(stack, false);
         }
     }
 

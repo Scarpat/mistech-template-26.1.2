@@ -125,3 +125,11 @@ config="${mod_id}.mixins.json"
     versionRange="${productivemetalworks_version_range}"
     ordering="NONE"
     side="BOTH"
+
+# JEI: receitas da Mesa de Escrita, Triturador Rúnico e Rituais (Altar Impuro / Fonte do Santuário)
+[[dependencies.${mod_id}]]
+    modId="jei"
+    type="optional"
+    versionRange="${jei_version_range}"
+    ordering="NONE"
+    side="CLIENT"

@@ -2,6 +2,39 @@
   "values": {
     "mistech:murky_sapling": {
       "chance": 0.3
+    },
+    "mistech:tobacco_seeds": {
+      "chance": 0.3
+    },
+    "mistech:hemp_seeds": {
+      "chance": 0.3
+    },
+    "mistech:belladonna_seeds": {
+      "chance": 0.3
+    },
+    "mistech:coffee_seeds": {
+      "chance": 0.3
+    },
+    "mistech:rue_seeds": {
+      "chance": 0.3
+    },
+    "mistech:tobacco_leaf": {
+      "chance": 0.5
+    },
+    "mistech:hemp_leaf": {
+      "chance": 0.5
+    },
+    "mistech:rue_leaf": {
+      "chance": 0.5
+    },
+    "mistech:belladonna_berries": {
+      "chance": 0.3
+    },
+    "mistech:coffee_cherry": {
+      "chance": 0.3
+    },
+    "mistech:yellow_mushroom": {
+      "chance": 0.65
     }
   }
 }

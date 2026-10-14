@@ -711,6 +711,11 @@
             {
               "type": "text",
               "text": "guide.mistech.coffee.2"
+            },
+            {
+              "type": "spotlight",
+              "item": "minecraft:amethyst_shard",
+              "text": "guide.mistech.coffee.amethyst"
             }
           ]
         },
@@ -1171,6 +1176,90 @@
           ],
           "x": 3.2,
           "y": 5.4
+        },
+        {
+          "id": "growing_pot",
+          "icon": "mistech:growing_pot",
+          "name": "guide.mistech.entry.growing_pot",
+          "deps": [
+            "path"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:growing_pot"
+            ]
+          },
+          "x": 0.0,
+          "y": 3.4,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "minecraft:brick",
+                "minecraft:bone_meal",
+                "minecraft:brick",
+                "minecraft:brick",
+                "minecraft:dirt",
+                "minecraft:brick",
+                "",
+                "minecraft:brick",
+                ""
+              ],
+              "result": "mistech:growing_pot",
+              "text": "guide.mistech.growing_pot.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.growing_pot.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.growing_pot.2"
+            }
+          ]
+        },
+        {
+          "id": "creature_jar",
+          "icon": "mistech:creature_jar",
+          "name": "guide.mistech.entry.creature_jar",
+          "deps": [
+            "path"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:creature_jar"
+            ]
+          },
+          "x": 0.0,
+          "y": 4.4,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "#minecraft:wooden_slabs",
+                "",
+                "",
+                "minecraft:glass",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "result": "mistech:glass_jar",
+              "text": "guide.mistech.glass_jar.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.creature_jar.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.creature_jar.2"
+            }
+          ]
         }
       ]
     },
@@ -6920,6 +7009,15 @@
             {
               "type": "text",
               "text": "guide.mistech.golem_runes.1"
+            },
+            {
+              "type": "spotlight",
+              "item": "mistech:water_rune",
+              "text": "guide.mistech.golem_runes.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.golem_runes.3"
             }
           ]
         },
@@ -7107,6 +7205,50 @@
             {
               "type": "text",
               "text": "guide.mistech.golem_keeper.1"
+            }
+          ]
+        },
+        {
+          "id": "runic_golem_wand",
+          "icon": "mistech:runic_golem_wand",
+          "name": "guide.mistech.entry.runic_golem_wand",
+          "deps": [
+            "golem_runes",
+            "space_rune"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:runic_golem_wand"
+            ]
+          },
+          "x": 1.6,
+          "y": 3.0,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "mistech:golem_wand",
+                "mistech:space_rune",
+                "minecraft:ender_pearl",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "result": "mistech:runic_golem_wand",
+              "shapeless": true,
+              "text": "guide.mistech.runic_golem_wand.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_golem_wand.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_golem_wand.2"
             }
           ]
         }
@@ -8161,6 +8303,23 @@
             {
               "type": "text",
               "text": "guide.mistech.folklore.werewolf.2"
+            },
+            {
+              "type": "crafting",
+              "grid": [
+                "",
+                "mistech:incense",
+                "",
+                "mistech:incense",
+                "mistech:mithril_ingot",
+                "mistech:incense",
+                "",
+                "mistech:incense",
+                ""
+              ],
+              "result": "mistech:silver_incense",
+              "count": 4,
+              "text": "guide.mistech.folklore.silver_incense"
             },
             {
               "type": "ritual",
@@ -9340,6 +9499,16 @@
             "id": "pipe",
             "x": 4.8,
             "y": 4.0
+          },
+          {
+            "id": "growing_pot",
+            "x": 1.6,
+            "y": 2.9
+          },
+          {
+            "id": "creature_jar",
+            "x": 1.6,
+            "y": 3.9
           }
         ]
       },
@@ -9587,6 +9756,11 @@
             "id": "cachaca",
             "x": 4.8,
             "y": 6.27
+          },
+          {
+            "id": "runic_golem_wand",
+            "x": 6.4,
+            "y": 13.57
           }
         ]
       },
@@ -10465,6 +10639,16 @@
             "id": "pipe",
             "x": 4.8,
             "y": 4.0
+          },
+          {
+            "id": "growing_pot",
+            "x": 1.6,
+            "y": 2.9
+          },
+          {
+            "id": "creature_jar",
+            "x": 1.6,
+            "y": 3.9
           }
         ]
       },
@@ -10702,6 +10886,11 @@
             "id": "cachaca",
             "x": 4.8,
             "y": 5.33
+          },
+          {
+            "id": "runic_golem_wand",
+            "x": 6.4,
+            "y": 12.1
           }
         ]
       },

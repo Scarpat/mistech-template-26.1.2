@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "tools",
+  "ingredients": [
+    "mistech:runic_golem_wand"
+  ],
+  "result": {
+    "id": "mistech:runic_golem_wand",
+    "count": 1
+  }
+}

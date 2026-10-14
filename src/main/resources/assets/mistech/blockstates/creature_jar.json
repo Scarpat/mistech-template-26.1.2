@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mistech:block/creature_jar"
+    },
+    "facing=south": {
+      "model": "mistech:block/creature_jar"
+    },
+    "facing=east": {
+      "model": "mistech:block/creature_jar"
+    },
+    "facing=west": {
+      "model": "mistech:block/creature_jar"
+    }
+  }
+}

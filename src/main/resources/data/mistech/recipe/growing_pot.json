@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "decorations",
+  "pattern": [
+    "BMB",
+    "BDB",
+    " B "
+  ],
+  "key": {
+    "B": "minecraft:brick",
+    "M": "minecraft:bone_meal",
+    "D": "minecraft:dirt"
+  },
+  "result": {
+    "id": "mistech:growing_pot",
+    "count": 1
+  }
+}

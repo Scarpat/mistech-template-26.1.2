@@ -51,7 +51,15 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.material.FluidState;
 import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.FluidType;
+import net.neoforged.neoforge.transfer.fluid.FluidResource;
+import net.neoforged.neoforge.transfer.fluid.FluidStacksResourceHandler;
+import net.neoforged.neoforge.transfer.fluid.FluidUtil;
 import net.neoforged.neoforge.transfer.ResourceHandler;
 import net.neoforged.neoforge.transfer.ResourceHandlerUtil;
 import net.neoforged.neoforge.transfer.item.ItemResource;
@@ -62,7 +70,7 @@ import net.neoforged.neoforge.transfer.transaction.Transaction;
  * <ul>
  * <li>Botão direito com item: filtro (Artesão: aprende a receita do item; Zelador: põe/tira a regra "manter N", N = pilha na mão).</li>
  * <li>Agachar + botão direito com uma runa: melhoria (até 2): Ar = mais rápido, Terra = carga ×2, Espaço = alcance/teleporte,
- * Tempo = sem espera, Fogo = derrete o que carrega.</li>
+ * Tempo = sem espera, Fogo = derrete o que carrega, Água = carrega líquidos em vez de itens (só Terracota e Mitril).</li>
  * <li>Mão vazia: mostra a configuração; agachado com mão vazia: limpa filtro/regras.</li>
  * </ul>
  */
@@ -76,12 +84,17 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
     private static final Identifier AIR_SPEED = Identifier.fromNamespaceAndPath(com.mistech.mistechmod.Mistech.MODID, "golem_air_rune");
 
     private @Nullable BlockPos source;
+    /** Todas as origens/destinos (Vara de Comando Rúnica); {@link #source}/{@link #target} são os escolhidos para a viagem atual. */
+    private GolemRoute route = GolemRoute.EMPTY;
+    private int rrSource, rrTarget;
     private @Nullable BlockPos target;
     private ItemStack filter = ItemStack.EMPTY;
     private final List<RuneElement> runes = new ArrayList<>();
     private @Nullable ResourceKey<Recipe<?>> recipe;
     private final List<ItemStack> rules = new ArrayList<>();
     int mood;
+    /** Runa da Água: o "balde" do golem (1 líquido, capacidade = carga × 125 mB). */
+    private final GolemTank tank = new GolemTank(this);
 
     public WorkGolemEntity(EntityType<? extends WorkGolemEntity> type, Level level) {
         super(type, level);
@@ -114,6 +127,7 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
 
     public void setKind(GolemKind kind) {
         this.entityData.set(KIND, kind.ordinal());
+        this.tank.setCapacity(this.fluidCarry());
         AttributeInstance speed = this.getAttribute(Attributes.MOVEMENT_SPEED);
         if (speed != null) {
             speed.setBaseValue(kind.speed);
@@ -136,6 +150,20 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
         return this.kind().carry * (this.hasRune(RuneElement.EARTH) ? 2 : 1);
     }
 
+    /** Runa da Água (só Terracota e Mitril): carrega líquido de tanque em tanque. */
+    boolean fluidMode() {
+        return this.hasRune(RuneElement.WATER) && (this.kind() == GolemKind.SORTER || this.kind() == GolemKind.MESSENGER);
+    }
+
+    /** Terracota 4 baldes, Mitril 8 baldes; Runa da Terra dobra. */
+    int fluidCarry() {
+        return this.carry() * 125;
+    }
+
+    int fluidAmount() {
+        return this.tank.getAmountAsInt(0);
+    }
+
     int cooldown() {
         return this.hasRune(RuneElement.TIME) ? 5 : 20;
     }
@@ -152,9 +180,194 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
 
     @Override
     public void setRoute(BlockPos source, BlockPos target) {
-        this.source = source.immutable();
-        this.target = target.immutable();
+        this.setRoute(new GolemRoute(List.of(source.immutable()), List.of(target.immutable()), GolemRoute.Collect.ORDER, GolemRoute.Deliver.ORDER));
+    }
+
+    @Override
+    public void setRoute(GolemRoute route) {
+        if (!route.isComplete()) {
+            return;
+        }
+        this.route = route;
+        this.source = route.sources().get(0);
+        this.target = route.targets().get(0);
+        this.rrSource = 0;
+        this.rrTarget = 0;
         this.mood = 0;
+    }
+
+    @Override
+    public GolemRoute getRoute() {
+        if (this.route.isComplete()) {
+            return this.route;
+        }
+        return this.source != null && this.target != null
+                ? new GolemRoute(List.of(this.source), List.of(this.target), GolemRoute.Collect.ORDER, GolemRoute.Deliver.ORDER)
+                : GolemRoute.EMPTY;
+    }
+
+    boolean multiSource() {
+        return this.route.sources().size() > 1;
+    }
+
+    boolean multiTarget() {
+        return this.route.targets().size() > 1;
+    }
+
+    // ------------------------------------------------------------------ escolha de origem/destino (várias)
+
+    /** Quanto dá para pegar dessa origem (com o filtro). */
+    private long availableAt(BlockPos pos) {
+        if (this.fluidMode()) {
+            ResourceHandler<FluidResource> handler = this.fluidHandlerAt(pos);
+            if (handler == null) {
+                for (BlockPos at : BlockPos.betweenClosed(pos.offset(-1, -1, -1), pos.offset(1, 1, 1))) {
+                    var state = this.level().getFluidState(at);
+                    if (state.isSource() && this.acceptsFluid(FluidResource.of(state.getType()))) {
+                        return FluidType.BUCKET_VOLUME;
+                    }
+                }
+                return 0;
+            }
+            long total = 0;
+            for (int i = 0; i < handler.size(); i++) {
+                FluidResource r = handler.getResource(i);
+                if (!r.isEmpty() && this.acceptsFluid(r)) {
+                    total += handler.getAmountAsLong(i);
+                }
+            }
+            return total;
+        }
+        ResourceHandler<ItemResource> handler = this.handlerAt(pos, Direction.DOWN);
+        if (handler == null) {
+            return 0;
+        }
+        if (this.kind() == GolemKind.CRAFTER) {
+            return 1; // o Artesão precisa ir lá para saber se a receita fecha
+        }
+        long total = 0;
+        for (int i = 0; i < handler.size(); i++) {
+            ItemResource r = handler.getResource(i);
+            if (!r.isEmpty() && this.accepts(r)) {
+                total += handler.getAmountAsLong(i);
+            }
+        }
+        return total;
+    }
+
+    /** Quanto desse destino já tem do que o golem carrega; -1 se não cabe. */
+    private long heldAt(BlockPos pos) {
+        if (this.fluidMode()) {
+            FluidResource carried = this.tank.getResource(0);
+            ResourceHandler<FluidResource> handler = this.fluidHandlerAt(pos);
+            if (handler == null || carried.isEmpty()) {
+                return -1;
+            }
+            int room;
+            try (Transaction sim = Transaction.openRoot()) {
+                room = handler.insert(carried, this.fluidAmount(), sim);
+            }
+            if (room <= 0) {
+                return -1;
+            }
+            long have = 0;
+            for (int i = 0; i < handler.size(); i++) {
+                if (handler.getResource(i).equals(carried)) {
+                    have += handler.getAmountAsLong(i);
+                }
+            }
+            return have;
+        }
+        ItemStack carried = this.getCarried();
+        ResourceHandler<ItemResource> handler = this.handlerAt(pos, Direction.UP);
+        if (handler == null || carried.isEmpty()) {
+            return -1;
+        }
+        ItemResource resource = ItemResource.of(carried);
+        int room;
+        try (Transaction sim = Transaction.openRoot()) {
+            room = ResourceHandlerUtil.insertStacking(handler, resource, 1, sim);
+        }
+        if (room <= 0) {
+            return -1;
+        }
+        long have = 0;
+        for (int i = 0; i < handler.size(); i++) {
+            if (handler.getResource(i).equals(resource)) {
+                have += handler.getAmountAsLong(i);
+            }
+        }
+        return have;
+    }
+
+    /** Escolhe a origem da próxima viagem conforme o modo de coleta. Se nenhuma tem nada, fica onde está. */
+    void chooseSource() {
+        List<BlockPos> list = this.route.sources();
+        int n = list.size();
+        if (n <= 1) {
+            return;
+        }
+        GolemRoute.Collect mode = this.route.collect();
+        BlockPos best = null;
+        long bestAmount = -1;
+        for (int k = 0; k < n; k++) {
+            int idx = mode == GolemRoute.Collect.ROUND_ROBIN ? (this.rrSource + k) % n : k;
+            BlockPos pos = list.get(idx);
+            long amount = this.availableAt(pos);
+            if (amount <= 0) {
+                continue;
+            }
+            if (mode == GolemRoute.Collect.FULLEST) {
+                if (amount > bestAmount) {
+                    best = pos;
+                    bestAmount = amount;
+                }
+                continue;
+            }
+            best = pos;
+            if (mode == GolemRoute.Collect.ROUND_ROBIN) {
+                this.rrSource = (idx + 1) % n;
+            }
+            break;
+        }
+        if (best != null) {
+            this.source = best;
+        }
+    }
+
+    /** Escolhe o destino da carga atual conforme o modo de entrega (só os que têm espaço). */
+    void chooseTarget() {
+        List<BlockPos> list = this.route.targets();
+        int n = list.size();
+        if (n <= 1) {
+            return;
+        }
+        GolemRoute.Deliver mode = this.route.deliver();
+        BlockPos best = null;
+        long bestHeld = Long.MAX_VALUE;
+        for (int k = 0; k < n; k++) {
+            int idx = mode == GolemRoute.Deliver.ROUND_ROBIN ? (this.rrTarget + k) % n : k;
+            BlockPos pos = list.get(idx);
+            long held = this.heldAt(pos);
+            if (held < 0) {
+                continue;
+            }
+            if (mode == GolemRoute.Deliver.EQUAL) {
+                if (held < bestHeld) {
+                    best = pos;
+                    bestHeld = held;
+                }
+                continue;
+            }
+            best = pos;
+            if (mode == GolemRoute.Deliver.ROUND_ROBIN) {
+                this.rrTarget = (idx + 1) % n;
+            }
+            break;
+        }
+        if (best != null) {
+            this.target = best;
+        }
     }
 
     @Override
@@ -167,18 +380,23 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
 
     @Override
     public void showRoute(ServerLevel level) {
-        if (this.source != null) {
-            level.sendParticles(ParticleTypes.HAPPY_VILLAGER, this.source.getX() + 0.5, this.source.getY() + 1.1, this.source.getZ() + 0.5, 12, 0.3, 0.2, 0.3, 0.0);
+        GolemRoute r = this.getRoute();
+        for (BlockPos p : r.sources()) {
+            level.sendParticles(ParticleTypes.HAPPY_VILLAGER, p.getX() + 0.5, p.getY() + 1.1, p.getZ() + 0.5, 12, 0.3, 0.2, 0.3, 0.0);
         }
-        if (this.target != null) {
-            level.sendParticles(ParticleTypes.WAX_ON, this.target.getX() + 0.5, this.target.getY() + 1.1, this.target.getZ() + 0.5, 12, 0.3, 0.2, 0.3, 0.0);
+        for (BlockPos p : r.targets()) {
+            level.sendParticles(ParticleTypes.WAX_ON, p.getX() + 0.5, p.getY() + 1.1, p.getZ() + 0.5, 12, 0.3, 0.2, 0.3, 0.0);
         }
     }
 
     @Override
     public Component describe() {
         Component name = Component.translatable("entity.mistech.golem." + this.kind().id);
-        String route = (this.source == null ? "-" : this.source.toShortString()) + " → " + (this.target == null ? "-" : this.target.toShortString());
+        String route = this.multiSource() || this.multiTarget()
+                ? Component.translatable("message.mistech.golem.multi_route", this.route.sources().size(),
+                        Component.translatable(this.route.collect().key()), this.route.targets().size(),
+                        Component.translatable(this.route.deliver().key())).getString()
+                : (this.source == null ? "-" : this.source.toShortString()) + " → " + (this.target == null ? "-" : this.target.toShortString());
         String runes = this.runes.isEmpty() ? "-" : String.join(", ", this.runes.stream()
                 .map(r -> Component.translatable(r.translationKey()).getString()).toList());
         String extra = switch (this.kind()) {
@@ -187,6 +405,11 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
                     .map(s -> s.getCount() + "× " + s.getHoverName().getString()).toList());
             default -> this.filter.isEmpty() ? Component.translatable("message.mistech.clay_golem.any").getString() : this.filter.getHoverName().getString();
         };
+        if (this.fluidMode()) {
+            FluidStack fluid = FluidUtil.getStack(this.tank, 0);
+            extra = extra + " | " + (fluid.isEmpty() ? "0" : fluid.getAmount() + " mB " + fluid.getHoverName().getString())
+                    + " / " + this.fluidCarry() + " mB";
+        }
         return Component.translatable("message.mistech.golem.describe", name, route, extra, runes);
     }
 
@@ -195,7 +418,7 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
     @Override
     protected InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack held = player.getItemInHand(hand);
-        if (held.is(GolemContent.GOLEM_WAND.get())) {
+        if (held.is(GolemContent.GOLEM_WAND.get()) || held.is(GolemContent.RUNIC_GOLEM_WAND.get())) {
             return InteractionResult.PASS;
         }
         if (!(this.level() instanceof ServerLevel server)) {
@@ -206,6 +429,15 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
             if (this.runes.contains(rune) || this.runes.size() >= MAX_RUNES) {
                 player.sendOverlayMessage(Component.translatable("message.mistech.golem.rune_full", MAX_RUNES).withStyle(ChatFormatting.RED));
                 return InteractionResult.FAIL;
+            }
+            if (rune == RuneElement.WATER && this.kind() != GolemKind.SORTER && this.kind() != GolemKind.MESSENGER) {
+                player.sendOverlayMessage(Component.translatable("message.mistech.golem.water_rune_kind").withStyle(ChatFormatting.RED));
+                return InteractionResult.FAIL;
+            }
+            if (rune == RuneElement.WATER && !this.getCarried().isEmpty()) {
+                // larga os itens que estava carregando: agora ele só leva líquido
+                this.spawnAtLocation(server, this.getCarried());
+                this.setCarried(ItemStack.EMPTY);
             }
             this.runes.add(rune);
             this.applyRunes();
@@ -260,6 +492,7 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
     }
 
     private void applyRunes() {
+        this.tank.setCapacity(this.fluidCarry());
         AttributeInstance speed = this.getAttribute(Attributes.MOVEMENT_SPEED);
         if (speed != null) {
             speed.removeModifier(AIR_SPEED);
@@ -449,6 +682,151 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
         return moved;
     }
 
+    // ------------------------------------------------------------------ líquidos (Runa da Água)
+
+    @Nullable ResourceHandler<FluidResource> fluidHandlerAt(@Nullable BlockPos pos) {
+        return pos == null ? null : this.level().getCapability(Capabilities.Fluid.BLOCK, pos, Direction.UP);
+    }
+
+    /** Filtro: um balde (ou qualquer recipiente) com líquido = só aquele líquido; sem filtro = qualquer um. */
+    boolean acceptsFluid(FluidResource resource) {
+        if (this.filter.isEmpty()) {
+            return true;
+        }
+        FluidStack wanted = FluidUtil.getFirstStackContained(this.filter);
+        return wanted.isEmpty() || resource.getFluid().isSame(wanted.getFluid());
+    }
+
+    /**
+     * Enche o balde do golem na origem: de um tanque (qualquer mod) ou, se não tiver tanque, de uma fonte de líquido
+     * encostada no ponto (lago, poça infinita de água). @return true se pegou algo.
+     */
+    boolean takeFluid(ServerLevel level, @Nullable BlockPos pos) {
+        int room = this.fluidCarry() - this.fluidAmount();
+        if (pos == null || room <= 0) {
+            return false;
+        }
+        ResourceHandler<FluidResource> handler = this.fluidHandlerAt(pos);
+        if (handler != null) {
+            int moved;
+            FluidResource before = this.tank.getResource(0);
+            try (Transaction tx = Transaction.openRoot()) {
+                moved = ResourceHandlerUtil.move(handler, this.tank, this::acceptsFluid, room, tx);
+                tx.commit();
+            }
+            if (moved > 0) {
+                FluidResource got = before.isEmpty() ? this.tank.getResource(0) : before;
+                FluidUtil.triggerSoundAndGameEvent(got, level, this.position(), null, true);
+                return true;
+            }
+            return false;
+        }
+        if (room < FluidType.BUCKET_VOLUME) {
+            return false;
+        }
+        for (BlockPos at : BlockPos.betweenClosed(pos.offset(-1, -1, -1), pos.offset(1, 1, 1))) {
+            FluidState state = level.getFluidState(at);
+            if (!state.isSource() || !this.acceptsFluid(FluidResource.of(state.getType()))) {
+                continue;
+            }
+            FluidStack got;
+            try (Transaction tx = Transaction.openRoot()) {
+                got = FluidUtil.tryPickupFluid(this.tank, null, level, at.immutable(), tx);
+                tx.commit();
+            }
+            if (!got.isEmpty()) {
+                level.sendParticles(ParticleTypes.SPLASH, at.getX() + 0.5, at.getY() + 0.9, at.getZ() + 0.5, 8, 0.3, 0.1, 0.3, 0.0);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /** Despeja no tanque do ponto. @return true se ficou vazio ou se despejou alguma coisa (ex.: Compressor só aceita 1 frasco). */
+    boolean depositFluid(@Nullable BlockPos pos) {
+        FluidResource carried = this.tank.getResource(0);
+        if (carried.isEmpty()) {
+            return true;
+        }
+        ResourceHandler<FluidResource> handler = this.fluidHandlerAt(pos);
+        if (handler == null) {
+            return false;
+        }
+        int moved;
+        try (Transaction tx = Transaction.openRoot()) {
+            moved = ResourceHandlerUtil.move(this.tank, handler, r -> true, this.fluidAmount(), tx);
+            tx.commit();
+        }
+        if (moved > 0) {
+            FluidUtil.triggerSoundAndGameEvent(carried, this.level(), this.position(), null, false);
+        }
+        return moved > 0 || this.fluidAmount() <= 0;
+    }
+
+    /** Terracota com Runa da Água: o tanque perto do destino que já tem esse líquido e cabe (senão o próprio destino). */
+    @Nullable BlockPos sortFluidDestination() {
+        FluidResource resource = this.tank.getResource(0);
+        if (this.target == null || resource.isEmpty()) {
+            return this.target;
+        }
+        int r = this.hasRune(RuneElement.SPACE) ? 16 : 8;
+        BlockPos best = null;
+        double bestDist = Double.MAX_VALUE;
+        for (BlockPos pos : BlockPos.betweenClosed(this.target.offset(-r, -3, -r), this.target.offset(r, 3, r))) {
+            if (pos.equals(this.source)) {
+                continue;
+            }
+            ResourceHandler<FluidResource> handler = this.fluidHandlerAt(pos);
+            if (handler == null || !ResourceHandlerUtil.contains(handler, resource)) {
+                continue;
+            }
+            int room;
+            try (Transaction sim = Transaction.openRoot()) {
+                room = handler.insert(resource, 1, sim);
+            }
+            double d = pos.distSqr(this.blockPosition());
+            if (room > 0 && d < bestDist) {
+                best = pos.immutable();
+                bestDist = d;
+            }
+        }
+        return best != null ? best : this.target;
+    }
+
+    /** Mostra na mão do golem um balde do líquido que ele carrega. */
+    void updateFluidDisplay() {
+        FluidStack fluid = FluidUtil.getStack(this.tank, 0);
+        if (fluid.isEmpty()) {
+            if (this.fluidMode() || this.getCarried().is(Items.BUCKET) || this.getCarried().getItem() instanceof net.minecraft.world.item.BucketItem) {
+                this.setCarried(ItemStack.EMPTY);
+            }
+            return;
+        }
+        Item bucket = fluid.getFluid().getBucket();
+        this.setCarried(new ItemStack(bucket == null || bucket == Items.AIR ? Items.BUCKET : bucket));
+    }
+
+    /** O balde interno do golem: avisa o golem quando muda (para trocar o balde na mão). */
+    static final class GolemTank extends FluidStacksResourceHandler {
+        private final WorkGolemEntity golem;
+
+        GolemTank(WorkGolemEntity golem) {
+            super(1, 4000);
+            this.golem = golem;
+        }
+
+        void setCapacity(int capacity) {
+            this.capacity = capacity;
+        }
+
+        @Override
+        protected void onContentsChanged(int index, FluidStack previousContents) {
+            if (this.golem != null) {
+                this.golem.updateFluidDisplay();
+            }
+        }
+    }
+
     /** Mensageiro com Runa do Espaço: aparece do lado do ponto. */
     boolean blinkTo(BlockPos pos) {
         if (!(this.level() instanceof ServerLevel server)) {
@@ -485,6 +863,21 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
     @Override
     protected void dropCustomDeathLoot(ServerLevel level, DamageSource source, boolean killedByPlayer) {
         super.dropCustomDeathLoot(level, source, killedByPlayer);
+        // volta a ser a estátua (as runas aplicadas se perdem)
+        var statue = GolemRegistry.STATUE_ITEMS.get(this.kind());
+        if (statue != null) {
+            this.spawnAtLocation(level, new ItemStack(statue.get()));
+        }
+        FluidStack fluid = FluidUtil.getStack(this.tank, 0);
+        if (!fluid.isEmpty()) {
+            // o balde não cai: o líquido derrama onde o golem estava (1 bloco, se couber)
+            this.setCarried(ItemStack.EMPTY);
+            BlockPos at = this.blockPosition();
+            if (fluid.getAmount() >= FluidType.BUCKET_VOLUME && level.getBlockState(at).canBeReplaced()) {
+                level.setBlock(at, fluid.getFluid().defaultFluidState().createLegacyBlock(), 3);
+            }
+            this.tank.set(0, FluidResource.EMPTY, 0);
+        }
         if (!this.getCarried().isEmpty()) {
             this.spawnAtLocation(level, this.getCarried());
             this.setCarried(ItemStack.EMPTY);
@@ -519,8 +912,10 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
         output.putInt("Kind", this.kind().ordinal());
         if (this.source != null) output.store("Source", BlockPos.CODEC, this.source);
         if (this.target != null) output.store("Target", BlockPos.CODEC, this.target);
+        if (this.route.isComplete()) output.store("Route", GolemRoute.CODEC, this.route);
         if (!this.filter.isEmpty()) output.store("Filter", ItemStack.OPTIONAL_CODEC, this.filter);
-        if (!this.getCarried().isEmpty()) output.store("Carried", ItemStack.OPTIONAL_CODEC, this.getCarried());
+        if (!this.getCarried().isEmpty() && this.fluidAmount() <= 0) output.store("Carried", ItemStack.OPTIONAL_CODEC, this.getCarried());
+        this.tank.serialize(output.child("Tank"));
         output.store("Runes", com.mojang.serialization.Codec.STRING.listOf(), this.runes.stream().map(RuneElement::id).toList());
         if (this.recipe != null) output.store("Recipe", ResourceKey.codec(Registries.RECIPE), this.recipe);
         output.store("Rules", ItemStack.OPTIONAL_CODEC.listOf(), List.copyOf(this.rules));
@@ -532,6 +927,7 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
         this.setKind(GolemKind.byId(input.getIntOr("Kind", 0)));
         this.source = input.read("Source", BlockPos.CODEC).orElse(null);
         this.target = input.read("Target", BlockPos.CODEC).orElse(null);
+        this.route = input.read("Route", GolemRoute.CODEC).orElse(GolemRoute.EMPTY);
         this.filter = input.read("Filter", ItemStack.OPTIONAL_CODEC).orElse(ItemStack.EMPTY);
         this.setCarried(input.read("Carried", ItemStack.OPTIONAL_CODEC).orElse(ItemStack.EMPTY));
         this.runes.clear();
@@ -543,6 +939,10 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
         this.recipe = input.read("Recipe", ResourceKey.codec(Registries.RECIPE)).orElse(null);
         this.rules.clear();
         this.rules.addAll(input.read("Rules", ItemStack.OPTIONAL_CODEC.listOf()).orElse(List.of()).stream().filter(s -> !s.isEmpty()).toList());
+        input.child("Tank").ifPresent(this.tank::deserialize);
+        if (this.fluidAmount() > 0) {
+            this.updateFluidDisplay();
+        }
     }
 
     // ------------------------------------------------------------------ trabalho
@@ -551,7 +951,7 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
     static class WorkGoal extends Goal {
         private final WorkGolemEntity golem;
         private int repath, stuck, cooldown, failures, blinkCooldown;
-        private boolean returning;
+        private boolean returning, filling, pickedSource, pickedTarget;
         private @Nullable BlockPos sortTo;
 
         WorkGoal(WorkGolemEntity golem) {
@@ -595,6 +995,53 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
             return false;
         }
 
+        /** Runa da Água: enche na origem (até lotar ou a origem secar) e despeja no destino (Terracota: no tanque com o mesmo líquido). */
+        private void tickFluid(ServerLevel level) {
+            WorkGolemEntity g = this.golem;
+            int amount = g.fluidAmount();
+            if (amount <= 0 || (this.filling && amount < g.fluidCarry() && !this.returning)) {
+                this.returning = false;
+                this.sortTo = null;
+                if (!this.filling && !this.pickedSource) {
+                    g.chooseSource();
+                    this.pickedSource = true;
+                }
+                if (this.approach(g.source()) && this.ready()) {
+                    boolean took = g.takeFluid(level, g.source());
+                    this.filling = took;
+                    this.pickedSource = took;
+                    g.mood = took || g.fluidAmount() > 0 ? 0 : 1;
+                }
+                return;
+            }
+            this.pickedSource = false;
+            this.filling = false;
+            if (this.returning) {
+                if (this.approach(g.source()) && this.ready()) {
+                    g.depositFluid(g.source());
+                    this.returning = false;
+                }
+                return;
+            }
+            if (this.sortTo == null) {
+                g.chooseTarget();
+                this.sortTo = g.kind() == GolemKind.SORTER && !g.multiTarget() ? g.sortFluidDestination() : g.target();
+            }
+            if (this.sortTo != null && this.approach(this.sortTo) && this.ready()) {
+                if (g.depositFluid(this.sortTo)) {
+                    this.failures = 0;
+                    g.mood = 0;
+                } else if (++this.failures >= 10) {
+                    this.failures = 0;
+                    this.returning = true;
+                    g.mood = 1;
+                } else {
+                    this.sortTo = g.multiTarget() ? null : g.kind() == GolemKind.SORTER ? g.target() : this.sortTo;
+                    g.mood = 1;
+                }
+            }
+        }
+
         private boolean ready() {
             if (--this.cooldown > 0) {
                 return false;
@@ -607,6 +1054,10 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
         public void tick() {
             WorkGolemEntity g = this.golem;
             if (!(g.level() instanceof ServerLevel level)) {
+                return;
+            }
+            if (g.fluidMode()) {
+                this.tickFluid(level);
                 return;
             }
             boolean carrying = !g.getCarried().isEmpty();
@@ -650,19 +1101,40 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
                 }
                 case CRAFTER -> {
                     if (!carrying) {
+                        this.pickedTarget = false;
+                        if (!this.pickedSource) {
+                            g.chooseSource();
+                            this.pickedSource = true;
+                        }
                         if (this.approach(g.source()) && this.ready()) {
                             g.mood = g.craftFromSource(level) ? 0 : 1;
+                            this.pickedSource = false;
                         }
-                    } else if (this.approach(g.target()) && this.ready()) {
-                        g.mood = g.depositInto(g.target()) ? 0 : 1;
+                        return;
+                    }
+                    if (!this.pickedTarget) {
+                        g.chooseTarget();
+                        this.pickedTarget = true;
+                    }
+                    if (this.approach(g.target()) && this.ready()) {
+                        boolean done = g.depositInto(g.target());
+                        g.mood = done ? 0 : 1;
+                        if (!done) {
+                            this.pickedTarget = false; // tenta outro destino
+                        }
                     }
                 }
                 default -> { // SORTER e MESSENGER: origem -> destino
                     if (!carrying) {
                         this.returning = false;
                         this.sortTo = null;
+                        if (!this.pickedSource) {
+                            g.chooseSource();
+                            this.pickedSource = true;
+                        }
                         if (this.approach(g.source()) && this.ready()) {
                             g.mood = g.takeFrom(g.source()) ? 0 : 1;
+                            this.pickedSource = false;
                         }
                         return;
                     }
@@ -678,7 +1150,8 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
                         return;
                     }
                     if (this.sortTo == null) {
-                        this.sortTo = g.kind() == GolemKind.SORTER ? g.sortDestination(g.getCarried()) : g.target();
+                        g.chooseTarget();
+                        this.sortTo = g.kind() == GolemKind.SORTER && !g.multiTarget() ? g.sortDestination(g.getCarried()) : g.target();
                     }
                     if (this.sortTo != null && this.approach(this.sortTo) && this.ready()) {
                         if (g.depositInto(this.sortTo)) {
@@ -689,7 +1162,7 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
                             this.returning = true;
                             g.mood = 1;
                         } else {
-                            this.sortTo = g.kind() == GolemKind.SORTER ? g.target() : this.sortTo;
+                            this.sortTo = g.multiTarget() ? null : g.kind() == GolemKind.SORTER ? g.target() : this.sortTo;
                             g.mood = 1;
                         }
                     }

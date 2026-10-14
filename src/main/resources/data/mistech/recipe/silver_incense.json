@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " I ",
+    "IMI",
+    " I "
+  ],
+  "key": {
+    "I": "mistech:incense",
+    "M": "mistech:mithril_ingot"
+  },
+  "result": {
+    "id": "mistech:silver_incense",
+    "count": 4
+  }
+}

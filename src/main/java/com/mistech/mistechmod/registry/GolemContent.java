@@ -31,10 +31,14 @@ public final class GolemContent {
     public static final DeferredItem<GolemWandItem> GOLEM_WAND = Mistech.ITEMS.registerItem("golem_wand", GolemWandItem::new,
             p -> p.stacksTo(1));
 
+    /** Vara de Comando Rúnica: várias origens/destinos e modos de coleta/entrega (Vara de Comando + Runa do Espaço). */
+    public static final DeferredItem<com.mistech.mistechmod.item.RunicGolemWandItem> RUNIC_GOLEM_WAND = Mistech.ITEMS.registerItem("runic_golem_wand",
+            com.mistech.mistechmod.item.RunicGolemWandItem::new, p -> p.stacksTo(1).rarity(net.minecraft.world.item.Rarity.UNCOMMON));
+
     private GolemContent() {}
 
     public static List<DeferredItem<? extends Item>> creativeItems() {
-        return List.of(CLAY_STATUE_ITEM, GOLEM_WAND);
+        return List.of(CLAY_STATUE_ITEM, GOLEM_WAND, RUNIC_GOLEM_WAND);
     }
 
     public static void register(IEventBus modEventBus) {

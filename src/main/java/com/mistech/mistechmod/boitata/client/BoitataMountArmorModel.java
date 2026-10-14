@@ -58,6 +58,27 @@ public class BoitataMountArmorModel extends EntityModel<BoitataMountRenderer.Sta
         return LayerDefinition.create(mesh, 128, 64);
     }
 
+    private BoitataMountModel source;
+
+    /** O corpo de onde a pose é copiada. */
+    public void bindSource(BoitataMountModel source) {
+        this.source = source;
+    }
+
+    /**
+     * O coletor chama isto logo antes de desenhar a armadura. Antes a armadura só copiava a pose na hora de enviar e depois o
+     * setupAnim padrão zerava tudo — a armadura ficava parada na pose de repouso enquanto a cabeça do corpo virava/olhava
+     * (a cabeça "saía" da armadura). Agora recalcula a animação do corpo para este estado e copia.
+     */
+    @Override
+    public void setupAnim(BoitataMountRenderer.State state) {
+        super.setupAnim(state);
+        if (this.source != null) {
+            this.source.setupAnim(state);
+            this.copyPose(this.source);
+        }
+    }
+
     /** Copia a pose do corpo (mesma ordem de {@link BoitataMountModel#posedParts()}). */
     public void copyPose(BoitataMountModel source) {
         ModelPart[] from = source.posedParts();

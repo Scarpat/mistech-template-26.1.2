@@ -112,8 +112,8 @@ public class BoitataMountRenderer extends MobRenderer<BoitataMountEntity, Boitat
             if (state.isInvisible || state.armor <= 0 || state.armor >= ARMOR.length) {
                 return;
             }
-            this.model.setupAnim(state);
-            this.model.copyPose(this.getParentModel());
+            // a pose é montada na hora de desenhar (setupAnim do coletor), a partir do corpo — ver BoitataMountArmorModel.setupAnim
+            this.model.bindSource(this.getParentModel());
             collector.submitModel(this.model, state, pose, RenderTypes.armorCutoutNoCull(ARMOR[state.armor]), light, OverlayTexture.NO_OVERLAY,
                     -1, null, state.outlineColor, null);
             collector.submitModel(this.model, state, pose, RenderTypes.eyes(ARMOR_GLOW[state.armor]), 0xF000F0, OverlayTexture.NO_OVERLAY,

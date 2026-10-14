@@ -165,6 +165,7 @@ public class WritingTableMenu extends AbstractContainerMenu {
                 if (hasPaper && isChalk(this.inputs.getItem(CHALK))) {
                     this.amberSeal = true;
                     this.resultContainer.setItem(0, amber);
+                    this.showPreview(amber);
                     return true;
                 }
             }
@@ -176,7 +177,15 @@ public class WritingTableMenu extends AbstractContainerMenu {
             }
         }
         this.resultContainer.setItem(0, result);
+        this.showPreview(result);
         return true;
+    }
+
+    /** O item que vai sair flutua em cima da mesa enquanto ela está aberta. */
+    private void showPreview(ItemStack result) {
+        if (this.inputs instanceof com.mistech.mistechmod.block.WritingTableBlockEntity table) {
+            table.setPreview(result);
+        }
     }
 
     /** Pega mudanças feitas por fora do menu (funil, outro jogador com a mesa aberta...). */
@@ -310,5 +319,8 @@ public class WritingTableMenu extends AbstractContainerMenu {
     public void removed(Player player) {
         super.removed(player);
         this.resultContainer.removeItemNoUpdate(0); // a saída é só uma prévia; os itens ficam na mesa
+        if (!player.level().isClientSide()) {
+            this.showPreview(ItemStack.EMPTY);
+        }
     }
 }

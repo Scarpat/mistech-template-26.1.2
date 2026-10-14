@@ -108,7 +108,7 @@ public class ClayGolemEntity extends PathfinderMob implements com.mistech.mistec
     @Override
     protected InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack held = player.getItemInHand(hand);
-        if (held.is(GolemContent.GOLEM_WAND.get())) {
+        if (held.is(GolemContent.GOLEM_WAND.get()) || held.is(GolemContent.RUNIC_GOLEM_WAND.get())) {
             return InteractionResult.PASS; // a vara cuida (interactLivingEntity)
         }
         if (this.level().isClientSide()) {

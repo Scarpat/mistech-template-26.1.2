@@ -92,16 +92,36 @@ public final class CelestialEffects {
                         spawnMonster(overworld, player, false, overworld.getRandom().nextInt(8) == 0
                                 ? com.mistech.mistechmod.folklore.FolkloreContent.WEREWOLF.get() : null);
                     }
-                } else if (overworld.isDarkOutside() && overworld.getRandom().nextInt(25) == 0
-                        && overworld.environmentAttributes().getValue(net.minecraft.world.attribute.EnvironmentAttributes.MOON_PHASE, player.blockPosition())
-                                == net.minecraft.world.level.MoonPhase.FULL_MOON) {
-                    // lua cheia: de vez em quando um lobisomem
+                } else if (canFullMoonWerewolfSpawn(overworld, player)) {
+                    // lua cheia: raramente um lobisomem, e só rondando vilas
                     spawnMonster(overworld, player, false, com.mistech.mistechmod.folklore.FolkloreContent.WEREWOLF.get());
                 }
             }
             tickLures(server, gameTime);
             tickVigils(server, gameTime);
         }
+    }
+
+    /** Chance (1 em N, a cada 5 s por jogador) de um lobisomem na lua cheia fora da Lua de Sangue. */
+    public static final int FULL_MOON_WEREWOLF_ODDS = 150;
+    /** Distância (em seções de 16 blocos) da vila em que o lobisomem da lua cheia pode aparecer. */
+    public static final int WEREWOLF_VILLAGE_SECTIONS = 3;
+    /** Raio sem outro lobisomem para nascer um novo na lua cheia. */
+    public static final double WEREWOLF_SPACING = 96.0;
+
+    /**
+     * Fora da Lua de Sangue o lobisomem só aparece em noite de lua cheia, perto de vilas, bem raramente e um de cada vez
+     * (nunca se já houver outro por perto).
+     */
+    private static boolean canFullMoonWerewolfSpawn(ServerLevel overworld, ServerPlayer player) {
+        if (!overworld.isDarkOutside() || overworld.getRandom().nextInt(FULL_MOON_WEREWOLF_ODDS) != 0
+                || overworld.environmentAttributes().getValue(net.minecraft.world.attribute.EnvironmentAttributes.MOON_PHASE, player.blockPosition())
+                        != net.minecraft.world.level.MoonPhase.FULL_MOON
+                || !overworld.isCloseToVillage(player.blockPosition(), WEREWOLF_VILLAGE_SECTIONS)) {
+            return false;
+        }
+        return overworld.getEntitiesOfClass(com.mistech.mistechmod.folklore.WerewolfEntity.class,
+                player.getBoundingBox().inflate(WEREWOLF_SPACING), net.minecraft.world.entity.Entity::isAlive).isEmpty();
     }
 
     private static void perPlayerSecond(ServerLevel level, ServerPlayer player) {
@@ -221,6 +241,14 @@ public final class CelestialEffects {
         BlockPos pos = new BlockPos(x, level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z), z);
         if (Math.abs(pos.getY() - near.getY()) > 24) {
             return;
+        }
+        if (forced == com.mistech.mistechmod.folklore.FolkloreContent.WEREWOLF.get()
+                && com.mistech.mistechmod.folklore.SilverIncenseItem.isWarded(level, near, pos)) {
+            // fumaça de Incenso de Prata: nada de lobisomem (na Lua de Sangue vem um monstro comum no lugar)
+            if (!Celestial.isActive(level, CelestialEvent.BLOOD_MOON)) {
+                return;
+            }
+            forced = null;
         }
         @SuppressWarnings("unchecked")
         EntityType<Mob> type = (EntityType<Mob>) (forced != null ? forced : WILD.get(random.nextInt(WILD.size())));
