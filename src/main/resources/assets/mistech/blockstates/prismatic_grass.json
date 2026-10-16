@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "mistech:block/prismatic_grass"
+      },
+      {
+        "model": "mistech:block/prismatic_grass",
+        "y": 90
+      },
+      {
+        "model": "mistech:block/prismatic_grass",
+        "y": 180
+      },
+      {
+        "model": "mistech:block/prismatic_grass",
+        "y": 270
+      }
+    ]
+  }
+}

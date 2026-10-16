@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mistech:murky_sapling"
+    "mistech:murky_sapling",
+    "mistech:fractal_sapling"
   ]
 }

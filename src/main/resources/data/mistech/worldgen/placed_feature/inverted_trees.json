@@ -1,0 +1,12 @@
+{
+  "feature": "mistech:inverted_trees",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 5
+    },
+    {
+      "type": "minecraft:in_square"
+    }
+  ]
+}

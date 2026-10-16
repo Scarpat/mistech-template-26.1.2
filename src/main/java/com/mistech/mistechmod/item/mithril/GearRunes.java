@@ -75,11 +75,12 @@ public final class GearRunes {
             return map;
         }
         NonNullList<ItemStack> runes = load(gear);
+        double multiplier = MithrilGear.tier(gear).runeMultiplier();
         for (int i = 0; i < slots; i++) {
             ItemStack rune = runes.get(i);
             RuneElement element = RuneElement.ofRune(rune);
             if (element != null) {
-                map.merge(element, weight(rune), Double::sum);
+                map.merge(element, weight(rune) * multiplier, Double::sum);
             }
         }
         return map;
@@ -118,6 +119,11 @@ public final class GearRunes {
             }
         }
         builder.accept(Component.translatable("item.mistech.gear.runes", used, slots).withStyle(ChatFormatting.LIGHT_PURPLE));
+        double multiplier = MithrilGear.tier(gear).runeMultiplier();
+        if (multiplier != 1.0) {
+            builder.accept(Component.translatable("item.mistech.gear.rune_power", String.format(java.util.Locale.ROOT, "%.2f", multiplier).replaceAll("0+$", "").replaceAll("\\.$", ""))
+                    .withStyle(ChatFormatting.DARK_PURPLE));
+        }
         for (int i = 0; i < slots; i++) {
             ItemStack rune = runes.get(i);
             RuneElement element = RuneElement.ofRune(rune);

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "MEM",
+    "ABA",
+    "MDM"
+  ],
+  "key": {
+    "M": "mistech:memory_shard",
+    "E": "mistech:watcher_eye",
+    "A": "mistech:dream_amber",
+    "B": "minecraft:bell",
+    "D": "mistech:dream_dust"
+  },
+  "result": {
+    "id": "mistech:awakening_bell",
+    "count": 1
+  }
+}

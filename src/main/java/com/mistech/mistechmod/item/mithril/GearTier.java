@@ -14,10 +14,10 @@ import net.minecraft.ChatFormatting;
  * </ul>
  */
 public enum GearTier {
-    MITHRIL("mithril", 100_000, 2_000, 0, false, 0.0, 0.0, false, 0x7FD8FF, ChatFormatting.AQUA),
-    ADAMANTINE("adamantine", 200_000, 3_000, 3, false, 0.0, 0.0, false, 0xE8576A, ChatFormatting.RED),
-    ORICHALCUM("orichalcum", 400_000, 4_000, 6, true, 0.10, 0.10, false, 0xFFB04A, ChatFormatting.GOLD),
-    PURE_ORICHALCUM("pure_orichalcum", 800_000, 6_000, 8, true, 0.25, 0.125, true, 0xFFF1B8, ChatFormatting.YELLOW);
+    MITHRIL("mithril", 200_000, 4_000, 0, false, 0.0, 0.0, false, 1.0, 0x7FD8FF, ChatFormatting.AQUA),
+    ADAMANTINE("adamantine", 400_000, 6_000, 3, false, 0.0, 0.0, false, 1.0, 0xE8576A, ChatFormatting.RED),
+    ORICHALCUM("orichalcum", 1_000_000, 10_000, 6, true, 0.10, 0.10, false, 1.25, 0xFFB04A, ChatFormatting.GOLD),
+    PURE_ORICHALCUM("pure_orichalcum", 2_000_000, 20_000, 8, true, 0.25, 0.125, true, 1.5, 0xFFF1B8, ChatFormatting.YELLOW);
 
     private final String id;
     private final int capacity;
@@ -29,11 +29,13 @@ public enum GearTier {
     /** Quanto cada peça de armadura vestida aumenta a Lua e o Ascendente. */
     private final double moonRisingBoost;
     private final boolean tarot;
+    /** Quanto cada runa engastada nesta peça vale (Oricalco ×1,25, Oricalco Puro ×1,5). */
+    private final double runeMultiplier;
     private final int barColor;
     private final ChatFormatting textColor;
 
     GearTier(String id, int capacity, int chargeRate, int runeSlots, boolean constellation, double sunBoost,
-            double moonRisingBoost, boolean tarot, int barColor, ChatFormatting textColor) {
+            double moonRisingBoost, boolean tarot, double runeMultiplier, int barColor, ChatFormatting textColor) {
         this.id = id;
         this.capacity = capacity;
         this.chargeRate = chargeRate;
@@ -42,6 +44,7 @@ public enum GearTier {
         this.sunBoost = sunBoost;
         this.moonRisingBoost = moonRisingBoost;
         this.tarot = tarot;
+        this.runeMultiplier = runeMultiplier;
         this.barColor = barColor;
         this.textColor = textColor;
     }
@@ -75,6 +78,15 @@ public enum GearTier {
 
     public double natalBoost(NatalChart.Part part) {
         return part == NatalChart.Part.SUN ? this.sunBoost : this.moonRisingBoost;
+    }
+
+    public double runeMultiplier() {
+        return this.runeMultiplier;
+    }
+
+    /** Este nível é pelo menos tão alto quanto {@code other}? */
+    public boolean atLeast(GearTier other) {
+        return this.ordinal() >= other.ordinal();
     }
 
     public int barColor() {

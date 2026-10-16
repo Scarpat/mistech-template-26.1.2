@@ -1,0 +1,18 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 51830272,
+    "separation": 9,
+    "spacing": 26,
+    "exclusion_zone": {
+      "other_set": "mistech:goblin_villages",
+      "chunk_count": 4
+    }
+  },
+  "structures": [
+    {
+      "structure": "mistech:ruined_hamlet",
+      "weight": 1
+    }
+  ]
+}

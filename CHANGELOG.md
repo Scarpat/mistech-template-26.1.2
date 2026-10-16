@@ -1,5 +1,45 @@
 # Mistech — Changelog
 
+## Oct 16, 2026 — The Dream dimension, Spatial Dreamcatcher, gear rework
+
+Everything since commit `927417f` (Oct 14). Compiles and the server starts; not yet fully tested in-game. Old worlds: delete `dimensions/mistech/gnome_realm` so the realm regenerates.
+
+### The Dream — Gnome Realm rebuilt as concentric rings
+- The Gnome Realm is now a dream made of **4 rings** around the King's House and mine (kept at the center): **Common Dream** (0–400) → **Nightmare** (400–2000) → **Deep Dream** (2000–5000, psychedelic, floating islands) → **REM Sleep** (5000+, dark and mysterious). The **Dream's Edge** at 30,000 wakes you up at home.
+- 14 new biomes: Gnome Meadow, Sweet Mushroom Grove, Pillow Hills · Murky Wastes, Hand Forest, Falling Chasms, Wrong Neighborhood · Floating Meadows (−40% gravity), Fractal Garden, Inverted Forest · Starry Void, Memory Quilt, Abyssal Gaze — plus the Gnome Depths (ores) under the whole dimension.
+- Custom biome source and terrain (rolling rings, pillow hills, chasms, sky islands in rings 3–4).
+- New blocks: Sleep Poppy, Dream Flower, Giant Dandelion, Cloud Cotton, Blackthorn, Eye Flower, Sleepless Ivy, Kaleidoscope Flower, Prism Mushroom, Spiral Vine, Memory Lily, Sweet Mycelium, Cloud Wool, Prismatic Grass (shifts color in sync), Star Stone, Star Moss, Bouncy Cloud, pink/cyan Dream Mushroom blocks and the **Fractal Tree** wood set.
+- Features: Hand Trees, Fractal Trees, Inverted Trees, Spiral Vines, Bouncy Clouds, unlit lamp posts, giant mushrooms.
+
+### Dream creatures
+- **Counting Sheep** (shear for Cloud Wool; count 3 in 30 s for Regeneration + Saturation), **Gnome Merchant** (trades), **Corrupted Gnome** (hostile), **Gnome Miner** (sniffs out the nearest ore for you), **Bogeyman** (strong in the dark, weak in light), **Shade** (freezes when looked at).
+- **Cloud Whale** (rideable, sings and drops Dream Amber when fed Cloud Cotton), **Air Fish** (schools; food with Slow Falling), **Stained-Glass Moth** (circles lights, drops Dream Dust).
+- **Echo** (retraces your path 3.5 s behind and catches you if you stop), **REM Watcher** (a chandelier of eyes that raises the alarm), **Memory** (tells a memory and becomes a Memory Fragment).
+- **The Dreamer** — boss (400 HP): sleep bubbles, lullaby, summons Echoes; at half health it **wakes up** (faster, summons Shades, Darkness, teleports behind you). Summoned with the **Bell of Awakening** in REM.
+
+### Dream structures
+- Gnome Hamlet, Ruined Hamlet, **Wrong House** (3 identical looping rooms; beds release Bogeymen), **Endless Stair**, **Fractal Temple** (a 27³ Menger sponge on a sky island), **Library of Memories** (3 crooked stacked floors, upside-down top room).
+- Dream Anchor (hidden block that runs the loops and spawns).
+
+### Dream items
+- Dream Dust, Dream Amber, Air Fish, Memory Fragment, Watcher Eye, Dreamer's Essence, **Bell of Awakening**.
+- **Lucid Dreamcatcher**: travel between the dream layers you've already visited.
+- **Spatial Dreamcatcher** (Dream Dust, ender pearl, Dream Amber, Dreamcatcher, Space Rune): catch up to 3 dream creatures (bosses excluded) and release them anywhere — inside the Dream or in other dimensions. Keeps health, name, saddle and variant. Released Cloud Whales get a home and roam around it.
+- **Cloud Whale saddle**: put a vanilla saddle on a Cloud Whale (dispensers work too) and **pilot it**: fly where you look (~9 blocks/s), jump to climb, a second passenger rides on the clouds. Piloted whales collide with blocks and can go anywhere; sneak + empty hand removes the saddle.
+- Grimoire "Gnome Dimension" chapter updated with all of the above.
+
+### Mithril / Adamantine / Orichalcum gear rework
+- Stronger tiers: Mithril 200k FE (tools speed 12, +6 dmg; armor 4/8/6/4, toughness 4), Adamantine 400k FE (speed 14, +8; toughness 6), Orichalcum 1M FE (speed 16, +10), Pure Orichalcum 2M FE.
+- **Tool abilities** (charged gear only): Adamantine+ pickaxe/shovel dig **3×3** (Pure Orichalcum **5×5**) and the axe fells whole trees (sneak to disable); Orichalcum+ **magnet** (drops go straight to your inventory) and charged sword/spear hits release a **shockwave**; Pure Orichalcum also fires a **ray of light**.
+- **Set bonuses** (stack, lowest tier of the 4 pieces counts): Adamantine **Bulwark** (+4 health, −15% physical damage, no knockback while sneaking), Orichalcum **Astral** (+6 health, +15% damage and Night Vision at night), Pure Orichalcum **Solar** (+8 health, Regeneration by day, 4-heart regenerating shield, +50% vs undead).
+- Runes socketed in Orichalcum count ×1.25, in Pure Orichalcum ×1.5.
+
+### Fixes
+- JEI: fixed a startup crash ("unbound value: mistech:magic_cloth") — the plugin no longer loads mod content too early.
+- Goblin Village / structure blueprints and the King's House adjusted for the new dream terrain.
+
+---
+
 ## Oct 14, 2026 — Early-game farming, fluid golems, JEI
 
 Everything since commit `dcb44ef` (Oct 13). Compiles; not yet fully tested in-game.

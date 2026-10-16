@@ -1,0 +1,12 @@
+{
+  "type": "mistech:dream_structure",
+  "kind": "endless_stair",
+  "biomes": [
+    "mistech:murky_wastes",
+    "mistech:falling_chasms",
+    "mistech:hand_forest"
+  ],
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_thin"
+}

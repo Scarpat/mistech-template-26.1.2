@@ -23,7 +23,7 @@ import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
 /**
- * Faz o Mal Olhado aparecer para quem fica muito tempo no Ermo Turvo (fora do prado verde).
+ * Faz o Mal Olhado aparecer para quem fica muito tempo no Pesadelo (anel 2 do Sonho, ver {@link DreamLayout}).
  * Primeira aparição depois de ~2 min lá dentro; depois ele volta mais rápido (40-80 s).
  * Aparece atrás do jogador, a 22-34 blocos, de preferência colado numa Árvore Turva.
  */
@@ -46,7 +46,7 @@ public final class EvilEyeWatcher {
             return;
         }
         UUID id = player.getUUID();
-        boolean inWastes = player.getY() > 48 && !GnomeRealmBiomeSource.isMeadow(player.getBlockX(), player.getBlockZ(), REALM_RADIUS);
+        boolean inWastes = player.getY() > 48 && DreamLayout.ring(player.getBlockX(), player.getBlockZ()) == DreamLayout.RING_NIGHTMARE;
         int exposure = EXPOSURE.getOrDefault(id, 0);
         exposure = inWastes ? exposure + 1 : Math.max(0, exposure - 2);
         EXPOSURE.put(id, exposure);
@@ -87,7 +87,7 @@ public final class EvilEyeWatcher {
             double dist = 22 + random.nextDouble() * 12;
             int x = (int) Math.floor(player.getX() + Math.cos(angle) * dist);
             int z = (int) Math.floor(player.getZ() + Math.sin(angle) * dist);
-            if ((realm && GnomeRealmBiomeSource.isMeadow(x, z, REALM_RADIUS)) || !level.hasChunkAt(new BlockPos(x, 0, z))) {
+            if ((realm && DreamLayout.ring(x, z) != DreamLayout.RING_NIGHTMARE) || !level.hasChunkAt(new BlockPos(x, 0, z))) {
                 continue;
             }
             BlockPos ground = level.getHeightmapPos(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, new BlockPos(x, 0, z));

@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mistech:murky_planks"
+    "mistech:murky_planks",
+    "mistech:fractal_planks"
   ]
 }

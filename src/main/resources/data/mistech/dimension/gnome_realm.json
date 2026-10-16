@@ -5,11 +5,33 @@
     "settings": "mistech:gnome_realm",
     "biome_source": {
       "type": "mistech:gnome_realm",
-      "meadow": "mistech:gnome_meadow",
-      "wastes": "mistech:murky_wastes",
+      "rings": [
+        [
+          "mistech:gnome_meadow",
+          "mistech:sweet_mushroom_grove",
+          "mistech:pillow_hills"
+        ],
+        [
+          "mistech:murky_wastes",
+          "mistech:hand_forest",
+          "mistech:falling_chasms",
+          "mistech:wrong_neighborhood"
+        ],
+        [
+          "mistech:cloud_sea",
+          "mistech:fractal_garden",
+          "mistech:inverted_forest"
+        ],
+        [
+          "mistech:starry_void",
+          "mistech:memory_quilt",
+          "mistech:abyssal_gaze"
+        ]
+      ],
       "depths": "mistech:gnome_depths",
-      "radius": 112,
-      "depths_y": 48
+      "edge": "mistech:dream_edge",
+      "depths_y": 48,
+      "island_depths_y": 12
     }
   }
 }

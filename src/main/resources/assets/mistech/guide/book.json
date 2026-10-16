@@ -2727,6 +2727,119 @@
             {
               "type": "text",
               "text": "guide.mistech.gnome_realm.3"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.gnome_realm.4"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.gnome_realm.5"
+            },
+            {
+              "type": "spotlight",
+              "item": "mistech:counting_sheep_spawn_egg",
+              "text": "guide.mistech.gnome_realm.6"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.gnome_realm.7"
+            },
+            {
+              "type": "spotlight",
+              "item": "mistech:bogeyman_spawn_egg",
+              "text": "guide.mistech.gnome_realm.8"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.gnome_realm.9"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.gnome_realm.10"
+            },
+            {
+              "type": "spotlight",
+              "item": "mistech:gnome_miner_spawn_egg",
+              "text": "guide.mistech.gnome_realm.11"
+            },
+            {
+              "type": "spotlight",
+              "item": "mistech:cloud_whale_spawn_egg",
+              "text": "guide.mistech.gnome_realm.12"
+            },
+            {
+              "type": "spotlight",
+              "item": "mistech:dream_dust",
+              "text": "guide.mistech.gnome_realm.13"
+            },
+            {
+              "type": "spotlight",
+              "item": "mistech:echo_spawn_egg",
+              "text": "guide.mistech.gnome_realm.14"
+            },
+            {
+              "type": "spotlight",
+              "item": "mistech:memory_shard",
+              "text": "guide.mistech.gnome_realm.15"
+            },
+            {
+              "type": "spotlight",
+              "item": "mistech:lucid_dreamcatcher",
+              "text": "guide.mistech.gnome_realm.16"
+            },
+            {
+              "type": "crafting",
+              "grid": [
+                "",
+                "mistech:dream_dust",
+                "",
+                "mistech:cloud_wool",
+                "mistech:dreamcatcher",
+                "mistech:cloud_wool",
+                "",
+                "mistech:dream_amber",
+                ""
+              ],
+              "result": "mistech:lucid_dreamcatcher",
+              "text": "guide.mistech.gnome_realm.recipe_lucid"
+            },
+            {
+              "type": "spotlight",
+              "item": "mistech:spatial_dreamcatcher",
+              "text": "guide.mistech.gnome_realm.17"
+            },
+            {
+              "type": "crafting",
+              "grid": [
+                "mistech:dream_dust",
+                "minecraft:ender_pearl",
+                "mistech:dream_dust",
+                "mistech:dream_amber",
+                "mistech:dreamcatcher",
+                "mistech:dream_amber",
+                "mistech:dream_dust",
+                "mistech:space_rune",
+                "mistech:dream_dust"
+              ],
+              "result": "mistech:spatial_dreamcatcher",
+              "text": "guide.mistech.gnome_realm.recipe_spatial"
+            },
+            {
+              "type": "crafting",
+              "grid": [
+                "mistech:memory_shard",
+                "mistech:watcher_eye",
+                "mistech:memory_shard",
+                "mistech:dream_amber",
+                "minecraft:bell",
+                "mistech:dream_amber",
+                "mistech:memory_shard",
+                "mistech:dream_dust",
+                "mistech:memory_shard"
+              ],
+              "result": "mistech:awakening_bell",
+              "text": "guide.mistech.gnome_realm.recipe_bell"
             }
           ]
         },
@@ -3732,6 +3845,10 @@
             {
               "type": "text",
               "text": "guide.mistech.adamantine_gear.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.adamantine_gear.3"
             }
           ]
         },
@@ -4033,6 +4150,10 @@
             {
               "type": "text",
               "text": "guide.mistech.orichalcum_gear.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.orichalcum_gear.3"
             }
           ]
         },
@@ -4076,6 +4197,10 @@
             {
               "type": "text",
               "text": "guide.mistech.pure_orichalcum_gear.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.pure_orichalcum_gear.3"
             }
           ]
         },

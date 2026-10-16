@@ -53,7 +53,9 @@
       "minecraft:patch_berry_common",
       "minecraft:patch_bush",
       "minecraft:brown_mushroom_normal",
-      "minecraft:red_mushroom_normal"
+      "minecraft:red_mushroom_normal",
+      "mistech:patch_dream_poppy",
+      "mistech:patch_dreamflower"
     ],
     []
   ],
@@ -68,6 +70,12 @@
         "weight": 10,
         "minCount": 2,
         "maxCount": 4
+      },
+      {
+        "type": "mistech:counting_sheep",
+        "weight": 6,
+        "minCount": 2,
+        "maxCount": 3
       }
     ],
     "misc": [],

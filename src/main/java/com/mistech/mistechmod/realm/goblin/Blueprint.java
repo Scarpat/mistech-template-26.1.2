@@ -276,5 +276,35 @@ public final class Blueprint {
                 op.apply(ctx);
             }
         }
+        this.removeFloatingPlants(level, chunk);
+    }
+
+    /**
+     * Plantas que nasceram antes da estrutura (a vegetação das chunks vizinhas às vezes chega primeiro) e perderam o apoio — chão
+     * aplainado, metade de baixo do capim alto coberta por parede — ficariam flutuando. De baixo para cima, tira as que não se sustentam.
+     */
+    private void removeFloatingPlants(WorldGenLevel level, BoundingBox chunk) {
+        if (this.ops.isEmpty()) {
+            return;
+        }
+        int ax = Math.max(this.minX, chunk.minX()), bx = Math.min(this.maxX, chunk.maxX());
+        int az = Math.max(this.minZ, chunk.minZ()), bz = Math.min(this.maxZ, chunk.maxZ());
+        int ay = Math.max(this.minY - 2, level.getMinY()), by = Math.min(this.maxY + 3, level.getMaxY());
+        BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
+        for (int x = ax; x <= bx; x++) {
+            for (int z = az; z <= bz; z++) {
+                for (int y = ay; y <= by; y++) {
+                    pos.set(x, y, z);
+                    BlockState state = level.getBlockState(pos);
+                    if (state.isAir() || !(state.getBlock() instanceof net.minecraft.world.level.block.VegetationBlock
+                            || state.is(net.minecraft.tags.BlockTags.REPLACEABLE_BY_TREES))) {
+                        continue;
+                    }
+                    if (!state.canSurvive(level, pos)) {
+                        level.setBlock(pos, Blocks.AIR.defaultBlockState(), 2);
+                    }
+                }
+            }
+        }
     }
 }

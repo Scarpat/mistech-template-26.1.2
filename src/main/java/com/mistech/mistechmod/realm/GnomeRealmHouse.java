@@ -581,10 +581,10 @@ public final class GnomeRealmHouse {
             level.setBlock(end, Blocks.CHEST.defaultBlockState(), Block.UPDATE_CLIENTS);
             RandomizableContainer.setBlockEntityLootTable(level, random, end,
                     ResourceKey.create(Registries.LOOT_TABLE, Identifier.withDefaultNamespace("chests/abandoned_mineshaft")));
-            // dois gnomos mineiros por túnel
+            // dois Gnomos Mineradores por túnel
             for (int g = 0; g < 2; g++) {
                 BlockPos p = start.relative(dir, 6 + random.nextInt(length - 8));
-                spawnGnome(level, p.getX() + 0.5, p.getY(), p.getZ() + 0.5, new ItemStack(Items.IRON_PICKAXE));
+                spawnMiner(level, p.getX() + 0.5, p.getY(), p.getZ() + 0.5);
             }
         }
     }
@@ -597,6 +597,15 @@ public final class GnomeRealmHouse {
                 int top = level.getHeight(Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, x, z);
                 gnome.snapTo(x + 0.5, top, z + 0.5, gnome.getYRot(), 0.0F);
             }
+        }
+    }
+
+    private static void spawnMiner(ServerLevel level, double x, double y, double z) {
+        var miner = com.mistech.mistechmod.registry.DreamMobs.GNOME_MINER.get().create(level, EntitySpawnReason.STRUCTURE);
+        if (miner != null) {
+            miner.snapTo(x, y, z, level.getRandom().nextFloat() * 360.0F, 0.0F);
+            miner.setPersistenceRequired();
+            level.addFreshEntity(miner);
         }
     }
 

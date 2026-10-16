@@ -1,0 +1,21 @@
+{
+  "variants": {
+    "": [
+      {
+        "model": "mistech:block/star_moss"
+      },
+      {
+        "model": "mistech:block/star_moss",
+        "y": 90
+      },
+      {
+        "model": "mistech:block/star_moss",
+        "y": 180
+      },
+      {
+        "model": "mistech:block/star_moss",
+        "y": 270
+      }
+    ]
+  }
+}

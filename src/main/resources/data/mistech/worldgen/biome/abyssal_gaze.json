@@ -1,0 +1,85 @@
+{
+  "attributes": {
+    "minecraft:visual/sky_color": "#0b0006",
+    "minecraft:visual/fog_color": "#1a0710",
+    "minecraft:visual/water_fog_color": "#0a0006",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:crimson_spore"
+        },
+        "probability": 0.01
+      }
+    ],
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 12000,
+        "min_delay": 6000,
+        "sound": "minecraft:music.overworld.deep_dark"
+      }
+    },
+    "minecraft:visual/fog_start_distance": 0.0,
+    "minecraft:visual/fog_end_distance": 40.0,
+    "minecraft:audio/ambient_sounds": {
+      "mood": {
+        "block_search_extent": 8,
+        "offset": 2.0,
+        "sound": "minecraft:ambient.cave",
+        "tick_delay": 1200
+      }
+    }
+  },
+  "carvers": [],
+  "downfall": 0.5,
+  "effects": {
+    "water_color": "#3a0a1e",
+    "grass_color": "#3a1e2a",
+    "foliage_color": "#2e1822",
+    "dry_foliage_color": "#2e1822"
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "mistech:rem_dark_oaks",
+      "mistech:patch_eye_flower",
+      "mistech:patch_memory_lily"
+    ],
+    [
+      "mistech:bouncy_pads"
+    ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "mistech:rem_watcher",
+        "weight": 25,
+        "minCount": 1,
+        "maxCount": 2
+      },
+      {
+        "type": "mistech:echo",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.7
+}

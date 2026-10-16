@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "mistech:block/star_moss_top",
+    "side": "mistech:block/star_moss_side",
+    "bottom": "mistech:block/star_stone",
+    "particle": "mistech:block/star_stone"
+  }
+}

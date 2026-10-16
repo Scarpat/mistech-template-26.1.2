@@ -5,6 +5,7 @@ Cada caixa recebe uma região de UV no layout padrão do Minecraft:
   linha 2 (altura h):  [direita d][frente w][esquerda d][trás w]
 A frente é a face -Z (para onde o mob olha).
 """
+import math
 import random
 from PIL import Image
 
@@ -35,8 +36,18 @@ class Box:
         self.uv = None
 
     @property
+    def isize(self):
+        """Tamanho inteiro usado na textura. O Minecraft mapeia a UV com o tamanho real da caixa, então caixa de tamanho
+        quebrado (1,5; 0,01...) lê a textura fora do lugar: a caixa vira inteira na UV e encolhe com CubeDeformation."""
+        return tuple(max(1, math.ceil(s - 1e-6)) for s in self.size)
+
+    @property
+    def grow(self):
+        return tuple((s - n) / 2.0 for s, n in zip(self.size, self.isize))
+
+    @property
     def uvsize(self):
-        w, h, d = [int(round(s)) for s in self.size]
+        w, h, d = self.isize
         return (2 * (w + d), d + h)
 
 
@@ -103,7 +114,7 @@ class Model:
             glow.save(glow_path)
 
     def _paint_box(self, img, glow, b, rng):
-        w, h, d = [int(round(s)) for s in b.size]
+        w, h, d = b.isize
         u, v = b.uv
         regions = {
             'top': (u + d, v, w, d, 1.10),
@@ -158,13 +169,16 @@ class Model:
             var[p.name] = v
             cubes = 'CubeListBuilder.create()'
             for b in p.boxes:
-                ox, oy, oz = b.origin
-                w, h, d = b.size
+                gx, gy, gz = b.grow
+                ox, oy, oz = b.origin[0] + gx, b.origin[1] + gy, b.origin[2] + gz
+                w, h, d = b.isize
                 cubes += f'.texOffs({b.uv[0]}, {b.uv[1]})'
                 if b.mirror:
                     cubes += '.mirror()'
-                if b.inflate:
-                    cubes += f'.addBox({f(ox)}, {f(oy)}, {f(oz)}, {f(w)}, {f(h)}, {f(d)}, new CubeDeformation({f(b.inflate)}))'
+                if b.inflate or gx or gy or gz:
+                    i = b.inflate
+                    cubes += (f'.addBox({f(ox)}, {f(oy)}, {f(oz)}, {f(w)}, {f(h)}, {f(d)}, '
+                              f'new CubeDeformation({f(gx + i)}, {f(gy + i)}, {f(gz + i)}))')
                 else:
                     cubes += f'.addBox({f(ox)}, {f(oy)}, {f(oz)}, {f(w)}, {f(h)}, {f(d)})'
                 if b.mirror:
@@ -205,6 +219,19 @@ class Painter:
             self.img.putpixel((self.x0 + x, self.y0 + y), c[:3] + (255,))
             if glow and self.glow is not None:
                 self.glow.putpixel((self.x0 + x, self.y0 + y), c[:3] + (255,))
+
+    def pxa(self, x, y, color, alpha, glow=False):
+        """Pixel com transparência (alpha 0-255) — partes fantasmagóricas."""
+        if 0 <= x < self.w and 0 <= y < self.h:
+            c = hexc(color) if isinstance(color, int) else color
+            self.img.putpixel((self.x0 + x, self.y0 + y), c[:3] + (alpha,))
+            if glow and self.glow is not None:
+                self.glow.putpixel((self.x0 + x, self.y0 + y), c[:3] + (alpha,))
+
+    def clear(self, x, y):
+        """Pixel transparente (recorte: bordas rasgadas, buracos)."""
+        if 0 <= x < self.w and 0 <= y < self.h:
+            self.img.putpixel((self.x0 + x, self.y0 + y), (0, 0, 0, 0))
 
     def rect(self, x, y, w, h, color, glow=False):
         for yy in range(h):

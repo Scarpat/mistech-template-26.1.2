@@ -15,8 +15,8 @@ import net.minecraft.world.level.levelgen.structure.StructureType;
  */
 public class GoblinVillageStructure extends Structure {
     public static final MapCodec<GoblinVillageStructure> CODEC = simpleCodec(GoblinVillageStructure::new);
-    /** Distância mínima do centro da dimensão (o prado tem raio ~112 + a vila tem raio ~45). */
-    private static final int MIN_DISTANCE = 190;
+    /** A vila (raio ~45) inteira dentro do Pesadelo: longe da borda do Sonho Comum e da queda para o Sonho Profundo. */
+    private static final int MARGIN = 70;
 
     public GoblinVillageStructure(StructureSettings settings) {
         super(settings);
@@ -26,7 +26,8 @@ public class GoblinVillageStructure extends Structure {
     protected Optional<GenerationStub> findGenerationPoint(GenerationContext context) {
         int x = context.chunkPos().getMiddleBlockX();
         int z = context.chunkPos().getMiddleBlockZ();
-        if ((long) x * x + (long) z * z < (long) MIN_DISTANCE * MIN_DISTANCE) {
+        double d = com.mistech.mistechmod.realm.DreamLayout.distance(x, z);
+        if (d < com.mistech.mistechmod.realm.DreamLayout.COMMON + MARGIN || d > com.mistech.mistechmod.realm.DreamLayout.NIGHTMARE - MARGIN) {
             return Optional.empty();
         }
         int y = Structure.getMeanFirstOccupiedHeight(context, x - 12, 25, z - 12, 25);

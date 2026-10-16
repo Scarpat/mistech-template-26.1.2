@@ -31,8 +31,8 @@ import net.neoforged.neoforge.transfer.transaction.Transaction;
  */
 public final class MithrilGear {
     /** Capacidade do mitril; os outros níveis em {@link GearTier}. */
-    public static final int CAPACITY = 100_000;
-    public static final int MAX_CHARGE_PER_TICK = 2_000;
+    public static final int CAPACITY = 200_000;
+    public static final int MAX_CHARGE_PER_TICK = 4_000;
     public static final int COST_PER_DAMAGE = 50;
     /** Carga com que o item sai do ritual (vem da Runa de Energia Mágica). */
     public static final int INITIAL_CHARGE = 25_000;
@@ -107,6 +107,10 @@ public final class MithrilGear {
         GearConstellation.tooltip(stack, builder);
         com.mistech.mistechmod.tarot.GearArcana.tooltip(stack, builder);
         builder.accept(Component.translatable("item.mistech." + tier.id() + "_gear.hint").withStyle(ChatFormatting.DARK_GRAY));
+        if (tier.atLeast(GearTier.ADAMANTINE)) {
+            builder.accept(Component.translatable("item.mistech." + tier.id() + "_gear.set").withStyle(tier.textColor()));
+            builder.accept(Component.translatable("item.mistech." + tier.id() + "_gear.ability").withStyle(ChatFormatting.GRAY));
+        }
     }
 
     /**

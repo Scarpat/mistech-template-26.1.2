@@ -1,0 +1,84 @@
+{
+  "attributes": {
+    "minecraft:visual/sky_color": "#7fe0c8",
+    "minecraft:visual/fog_color": "#d4fff0",
+    "minecraft:visual/water_fog_color": "#9ff0dc",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:cherry_leaves"
+        },
+        "probability": 0.004
+      }
+    ],
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 12000,
+        "min_delay": 6000,
+        "sound": "minecraft:music.overworld.cherry_grove"
+      }
+    }
+  },
+  "carvers": [],
+  "downfall": 0.5,
+  "effects": {
+    "water_color": "#8fe8d4",
+    "grass_color": "#7fe08a",
+    "foliage_color": "#ffb3d9",
+    "dry_foliage_color": "#ffb3d9"
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "mistech:dream_cherry_trees",
+      "mistech:inverted_trees",
+      "minecraft:patch_grass_plain",
+      "mistech:patch_kaleido_flower",
+      "mistech:hanging_vines"
+    ],
+    [
+      "mistech:bouncy_pads"
+    ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [
+      {
+        "type": "mistech:sky_fish",
+        "weight": 10,
+        "minCount": 3,
+        "maxCount": 6
+      },
+      {
+        "type": "mistech:prism_moth",
+        "weight": 6,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ],
+    "axolotls": [],
+    "creature": [
+      {
+        "type": "mistech:cloud_whale",
+        "weight": 2,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "misc": [],
+    "monster": [],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.7
+}

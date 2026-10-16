@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 51830273,
+    "separation": 4,
+    "spacing": 12
+  },
+  "structures": [
+    {
+      "structure": "mistech:wrong_house",
+      "weight": 1
+    }
+  ]
+}

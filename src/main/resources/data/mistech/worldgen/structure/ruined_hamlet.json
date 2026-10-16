@@ -1,0 +1,11 @@
+{
+  "type": "mistech:dream_structure",
+  "kind": "ruined_hamlet",
+  "biomes": [
+    "mistech:murky_wastes",
+    "mistech:hand_forest"
+  ],
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "terrain_adaptation": "beard_thin"
+}

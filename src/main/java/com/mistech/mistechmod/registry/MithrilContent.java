@@ -39,17 +39,17 @@ import net.neoforged.neoforge.transfer.energy.ItemAccessEnergyHandler;
  * gasta energia no lugar da durabilidade (ver {@link MithrilGear}). Armadura completa: velocidade + resistência a magia.
  */
 public final class MithrilContent {
-    /** Ferramentas: tier netherite, velocidade 11, +5 de dano, encantabilidade 20. A durabilidade não é usada. */
-    public static final ToolMaterial MITHRIL = new ToolMaterial(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 2031, 11.0F, 5.0F, 20,
+    /** Ferramentas: tier netherite, velocidade 12, +6 de dano, encantabilidade 22. A durabilidade não é usada. */
+    public static final ToolMaterial MITHRIL = new ToolMaterial(BlockTags.INCORRECT_FOR_NETHERITE_TOOL, 2031, 12.0F, 6.0F, 22,
             MistechTags.MITHRIL_TOOL_MATERIALS);
 
     public static final ResourceKey<EquipmentAsset> MITHRIL_ASSET =
             ResourceKey.create(EquipmentAssets.ROOT_ID, Identifier.fromNamespaceAndPath(Mistech.MODID, "mithril"));
 
-    /** Armadura: defesa de netherite, resistência 3,5, repulsão 0,15. */
+    /** Armadura: 4/8/6/4, resistência 4, repulsão 0,2. */
     public static final ArmorMaterial MITHRIL_ARMOR = new ArmorMaterial(40,
-            Map.of(ArmorType.BOOTS, 3, ArmorType.LEGGINGS, 6, ArmorType.CHESTPLATE, 8, ArmorType.HELMET, 3, ArmorType.BODY, 19),
-            20, SoundEvents.ARMOR_EQUIP_NETHERITE, 3.5F, 0.15F, MistechTags.MITHRIL_TOOL_MATERIALS, MITHRIL_ASSET);
+            Map.of(ArmorType.BOOTS, 4, ArmorType.LEGGINGS, 6, ArmorType.CHESTPLATE, 8, ArmorType.HELMET, 4, ArmorType.BODY, 20),
+            22, SoundEvents.ARMOR_EQUIP_NETHERITE, 4.0F, 0.2F, MistechTags.MITHRIL_TOOL_MATERIALS, MITHRIL_ASSET);
 
     public static final DeferredItem<MithrilItem> MITHRIL_SWORD = Mistech.ITEMS.registerItem("mithril_sword", MithrilItem::new,
             p -> p.sword(MITHRIL, 3.0F, -2.4F).fireResistant().rarity(Rarity.RARE));
@@ -126,17 +126,17 @@ public final class MithrilContent {
     }
 
     /** Adamantina (ritual Tier II sobre o mitril): 3 engastes de runa. */
-    public static final GearSet ADAMANTINE = new GearSet(GearTier.ADAMANTINE, 12.0F, 6.0F, 22,
-            Map.of(ArmorType.BOOTS, 3, ArmorType.LEGGINGS, 7, ArmorType.CHESTPLATE, 9, ArmorType.HELMET, 3, ArmorType.BODY, 20),
-            4.5F, 0.2F, Rarity.EPIC);
-    /** Oricalco (ritual Tier III sobre a adamantina): 6 engastes, constelação, reforça Sol/Lua/Ascendente. */
-    public static final GearSet ORICHALCUM = new GearSet(GearTier.ORICHALCUM, 13.0F, 7.0F, 24,
-            Map.of(ArmorType.BOOTS, 4, ArmorType.LEGGINGS, 7, ArmorType.CHESTPLATE, 9, ArmorType.HELMET, 4, ArmorType.BODY, 21),
-            5.0F, 0.25F, Rarity.EPIC);
-    /** Oricalco Puro (ritual do Santuário sobre o oricalco): 8 engastes, Sol muito mais forte, Tarô (futuro). */
-    public static final GearSet PURE_ORICHALCUM = new GearSet(GearTier.PURE_ORICHALCUM, 14.0F, 8.0F, 26,
-            Map.of(ArmorType.BOOTS, 4, ArmorType.LEGGINGS, 8, ArmorType.CHESTPLATE, 10, ArmorType.HELMET, 4, ArmorType.BODY, 22),
+    public static final GearSet ADAMANTINE = new GearSet(GearTier.ADAMANTINE, 14.0F, 8.0F, 24,
+            Map.of(ArmorType.BOOTS, 4, ArmorType.LEGGINGS, 7, ArmorType.CHESTPLATE, 9, ArmorType.HELMET, 4, ArmorType.BODY, 22),
             6.0F, 0.3F, Rarity.EPIC);
+    /** Oricalco (ritual Tier III sobre a adamantina): 6 engastes, constelação, reforça Sol/Lua/Ascendente. */
+    public static final GearSet ORICHALCUM = new GearSet(GearTier.ORICHALCUM, 16.0F, 10.0F, 26,
+            Map.of(ArmorType.BOOTS, 5, ArmorType.LEGGINGS, 8, ArmorType.CHESTPLATE, 10, ArmorType.HELMET, 5, ArmorType.BODY, 24),
+            8.0F, 0.35F, Rarity.EPIC);
+    /** Oricalco Puro (ritual do Santuário sobre o oricalco): 8 engastes, Sol muito mais forte, Tarô (futuro). */
+    public static final GearSet PURE_ORICHALCUM = new GearSet(GearTier.PURE_ORICHALCUM, 20.0F, 12.0F, 30,
+            Map.of(ArmorType.BOOTS, 5, ArmorType.LEGGINGS, 9, ArmorType.CHESTPLATE, 11, ArmorType.HELMET, 5, ArmorType.BODY, 26),
+            10.0F, 0.4F, Rarity.EPIC);
 
     /** Bigorna Rúnica: engasta runas no equipamento. */
     public static final DeferredBlock<RuneAnvilBlock> RUNE_ANVIL = Mistech.BLOCKS.registerBlock("rune_anvil", RuneAnvilBlock::new,
@@ -166,7 +166,7 @@ public final class MithrilContent {
         modEventBus.addListener(MithrilContent::onCapabilities);
     }
 
-    /** Energia: recebe de qualquer carregador (até 2.000 FE/t), não deixa tirar. */
+    /** Energia: recebe de qualquer carregador (taxa por nível, ver {@link GearTier}), não deixa tirar. */
     private static void onCapabilities(RegisterCapabilitiesEvent event) {
         for (DeferredItem<? extends Item> item : gear()) {
             GearTier tier = ((MithrilGear.Gear) item.get()).tier();

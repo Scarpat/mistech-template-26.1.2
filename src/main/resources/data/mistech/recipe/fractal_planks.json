@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    "#mistech:fractal_logs"
+  ],
+  "result": {
+    "count": 4,
+    "id": "mistech:fractal_planks"
+  }
+}

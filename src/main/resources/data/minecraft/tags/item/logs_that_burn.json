@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "#mistech:murky_logs"
+    "#mistech:murky_logs",
+    "#mistech:fractal_logs"
   ]
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mistech:item/the_dreamer_spawn_egg"
+  }
+}

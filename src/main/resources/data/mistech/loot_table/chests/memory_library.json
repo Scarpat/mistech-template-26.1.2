@@ -1,0 +1,306 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 3,
+        "max": 6
+      },
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mistech:memory_shard",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 3
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:book",
+          "weight": 8,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 5
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:candle",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 4
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:watcher_eye",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:raw_adamantine",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:time_rune",
+          "weight": 3
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:echo_shard",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 3
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:experience_bottle",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 6
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:memory_lily",
+          "weight": 5,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 3
+              },
+              "add": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_written_book_pages",
+              "pages": [
+                {
+                  "translate": "book.mistech.memory_1.page1"
+                },
+                {
+                  "translate": "book.mistech.memory_1.page2"
+                },
+                {
+                  "translate": "book.mistech.memory_1.page3"
+                }
+              ],
+              "mode": "replace_all"
+            },
+            {
+              "function": "minecraft:set_book_cover",
+              "title": "Memória 1",
+              "author": "???"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "translate": "book.mistech.memory_1.title",
+                "italic": false
+              },
+              "target": "item_name"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_written_book_pages",
+              "pages": [
+                {
+                  "translate": "book.mistech.memory_2.page1"
+                },
+                {
+                  "translate": "book.mistech.memory_2.page2"
+                },
+                {
+                  "translate": "book.mistech.memory_2.page3"
+                }
+              ],
+              "mode": "replace_all"
+            },
+            {
+              "function": "minecraft:set_book_cover",
+              "title": "Memória 2",
+              "author": "???"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "translate": "book.mistech.memory_2.title",
+                "italic": false
+              },
+              "target": "item_name"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_written_book_pages",
+              "pages": [
+                {
+                  "translate": "book.mistech.memory_3.page1"
+                },
+                {
+                  "translate": "book.mistech.memory_3.page2"
+                },
+                {
+                  "translate": "book.mistech.memory_3.page3"
+                }
+              ],
+              "mode": "replace_all"
+            },
+            {
+              "function": "minecraft:set_book_cover",
+              "title": "Memória 3",
+              "author": "???"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "translate": "book.mistech.memory_3.title",
+                "italic": false
+              },
+              "target": "item_name"
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:written_book",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_written_book_pages",
+              "pages": [
+                {
+                  "translate": "book.mistech.memory_4.page1"
+                },
+                {
+                  "translate": "book.mistech.memory_4.page2"
+                }
+              ],
+              "mode": "replace_all"
+            },
+            {
+              "function": "minecraft:set_book_cover",
+              "title": "Memória 4",
+              "author": "???"
+            },
+            {
+              "function": "minecraft:set_name",
+              "name": {
+                "translate": "book.mistech.memory_4.title",
+                "italic": false
+              },
+              "target": "item_name"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mistech:awakening_bell",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 3
+        }
+      ]
+    }
+  ]
+}

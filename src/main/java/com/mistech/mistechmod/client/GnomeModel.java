@@ -36,6 +36,11 @@ public class GnomeModel extends EntityModel<GnomeRenderState> {
     }
 
     public static LayerDefinition createBodyLayer() {
+        return LayerDefinition.create(createMesh(), 64, 64);
+    }
+
+    /** A malha do gnomo, para as variantes (Mercador, Corrompido) acrescentarem peças. */
+    public static MeshDefinition createMesh() {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
@@ -74,7 +79,7 @@ public class GnomeModel extends EntityModel<GnomeRenderState> {
         partdefinition.addOrReplaceChild("Hand2", CubeListBuilder.create().texOffs(28, 14).addBox(-1.0F, -2.0F, -1.0F, 2.0F, 2.0F, 2.0F, new CubeDeformation(0.0F)),
                 PartPose.offset(3.0F, 22.0F, -1.0F));
 
-        return LayerDefinition.create(meshdefinition, 64, 64);
+        return meshdefinition;
     }
 
     @Override

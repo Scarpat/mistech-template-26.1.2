@@ -1,0 +1,12 @@
+{
+  "feature": "mistech:hanging_vines",
+  "placement": [
+    {
+      "type": "minecraft:count",
+      "count": 10
+    },
+    {
+      "type": "minecraft:in_square"
+    }
+  ]
+}

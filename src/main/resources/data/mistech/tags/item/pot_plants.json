@@ -5,6 +5,10 @@
     "#minecraft:small_flowers",
     "mistech:yellow_mushroom",
     "minecraft:brown_mushroom",
-    "minecraft:red_mushroom"
+    "minecraft:red_mushroom",
+    "mistech:dream_poppy",
+    "mistech:dreamflower",
+    "mistech:prism_mushroom",
+    "mistech:memory_lily"
   ]
 }

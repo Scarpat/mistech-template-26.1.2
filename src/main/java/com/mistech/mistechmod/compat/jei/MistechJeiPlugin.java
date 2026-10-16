@@ -37,10 +37,6 @@ import net.minecraft.world.item.crafting.RecipeMap;
 public class MistechJeiPlugin implements IModPlugin {
     private static final Identifier UID = Identifier.fromNamespaceAndPath(Mistech.MODID, "jei_plugin");
 
-    public static final Supplier<IRecipeHolderType<WritingRecipe>> WRITING = IRecipeHolderType.createDeferred(MistechRecipes.WRITING_TYPE);
-    public static final Supplier<IRecipeHolderType<CrushingRecipe>> CRUSHING = IRecipeHolderType.createDeferred(MistechRecipes.CRUSHING_TYPE);
-    public static final IRecipeType<RecipeHolder<RitualRecipe>> IMPURE_RITUAL = ritualType("impure_ritual");
-    public static final IRecipeType<RecipeHolder<RitualRecipe>> SANCTUARY_RITUAL = ritualType("sanctuary_ritual");
 
     /** Máquinas sem receita de jogo: id, título, ícone, estações, receitas. */
     private record Machine(IRecipeType<MachineRecipe> type, String title, Supplier<? extends net.minecraft.world.level.ItemLike> icon,
@@ -50,39 +46,53 @@ public class MistechJeiPlugin implements IModPlugin {
         return IRecipeType.create(Mistech.MODID, path, MachineRecipe.class);
     }
 
-    private static final List<Machine> MACHINES = List.of(
-            new Machine(machineType("magic_compressor"), "block.mistech.magic_compressor", Mistech.MAGIC_COMPRESSOR_ITEM,
-                    () -> List.of(Mistech.MAGIC_COMPRESSOR_ITEM.get()), MistechMachineRecipes::compressor),
-            new Machine(machineType("crystallizer"), "block.mistech.crystallizer", PurityContent.CRYSTALLIZER_ITEM,
-                    () -> List.of(PurityContent.CRYSTALLIZER_ITEM.get()), MistechMachineRecipes::crystallizer),
-            new Machine(machineType("essence_extractor"), "block.mistech.essence_extractor", Mistech.ESSENCE_EXTRACTOR_ITEM,
-                    () -> List.of(Mistech.ESSENCE_EXTRACTOR_ITEM.get()), MistechMachineRecipes::extractor),
-            new Machine(machineType("condenser"), "block.mistech.condenser", Mistech.CONDENSER_ITEM,
-                    () -> List.of(Mistech.CONDENSER_ITEM.get()), MistechMachineRecipes::condenser),
-            new Machine(machineType("distiller"), "block.mistech.distiller", PurityContent.DISTILLER_ITEM,
-                    () -> List.of(PurityContent.DISTILLER_ITEM.get()), MistechMachineRecipes::distiller),
-            new Machine(machineType("magic_loom"), "block.mistech.magic_loom", com.mistech.mistechmod.mage.MageContent.MAGIC_LOOM_ITEM,
-                    () -> List.of(com.mistech.mistechmod.mage.MageContent.MAGIC_LOOM_ITEM.get()), MistechMachineRecipes::loom),
-            new Machine(machineType("kettle"), "block.mistech.kettle", Mistech.KETTLE_ITEM,
-                    () -> List.of(Mistech.KETTLE_ITEM.get()), MistechMachineRecipes::kettle),
-            new Machine(machineType("fermentation_barrel"), "block.mistech.fermentation_barrel",
-                    com.mistech.mistechmod.drink.DrinkContent.FERMENTATION_BARREL_ITEM,
-                    () -> List.of(com.mistech.mistechmod.drink.DrinkContent.FERMENTATION_BARREL_ITEM.get()), MistechMachineRecipes::barrel),
-            new Machine(machineType("cane_still"), "block.mistech.cane_still", com.mistech.mistechmod.drink.DrinkContent.CANE_STILL_ITEM,
-                    () -> List.of(com.mistech.mistechmod.drink.DrinkContent.CANE_STILL_ITEM.get()), MistechMachineRecipes::still),
-            new Machine(machineType("magic_smoke"), "jei.mistech.category.magic_smoke", Mistech.RUNE_ROLLER_ITEM,
-                    () -> List.of(Mistech.RUNE_ROLLER_ITEM.get(), net.minecraft.world.item.Items.CRAFTING_TABLE), MistechMachineRecipes::smokes),
-            new Machine(machineType("rune_anvil"), "block.mistech.rune_anvil", com.mistech.mistechmod.registry.MithrilContent.RUNE_ANVIL_ITEM,
-                    () -> List.of(com.mistech.mistechmod.registry.MithrilContent.RUNE_ANVIL_ITEM.get()), MistechMachineRecipes::runeAnvil),
-            new Machine(machineType("generators"), "jei.mistech.category.generators", MachineContent.ASH_GENERATOR_ITEM,
-                    () -> List.of(MachineContent.ASH_GENERATOR_ITEM.get(), com.mistech.mistechmod.beyond.PaleNetherContent.BLAZE_GENERATOR_ITEM.get(),
-                            com.mistech.mistechmod.power.PowerContent.IGNEOUS_BOILER_ITEM.get(), com.mistech.mistechmod.power.PowerContent.IMPURE_REACTOR_ITEM.get(),
-                            PurityContent.PURE_GENERATOR_ITEM.get(), com.mistech.mistechmod.power.PowerContent.EXPERIENCE_GENERATOR_ITEM.get(),
-                            com.mistech.mistechmod.registry.GnomeContent.GNOME_BICYCLE_ITEM.get(), MachineContent.ASTRAL_GENERATOR_ITEM.get(),
-                            com.mistech.mistechmod.power.PowerContent.STELLAR_OBSERVATORY_ITEM.get()),
-                    MistechMachineRecipes::generators),
-            new Machine(machineType("multiblocks"), "jei.mistech.category.multiblocks", Mistech.GUIDE_STONE,
-                    () -> List.of(Mistech.GUIDE_STONE.get()), MistechMachineRecipes::multiblocks));
+
+
+    /**
+     * Tudo que toca nos itens/blocos do mod fica aqui dentro: o JEI cria o plugin enquanto os mods ainda estão sendo
+     * construídos (em outra thread), e carregar as classes de conteúdo nessa hora fazia registros se perderem
+     * (crash "unbound value: mistech:magic_cloth"). Esta classe só carrega quando o JEI pede as categorias.
+     */
+    private static final class Lazy {
+        public static final Supplier<IRecipeHolderType<WritingRecipe>> WRITING = IRecipeHolderType.createDeferred(MistechRecipes.WRITING_TYPE);
+        public static final Supplier<IRecipeHolderType<CrushingRecipe>> CRUSHING = IRecipeHolderType.createDeferred(MistechRecipes.CRUSHING_TYPE);
+        public static final IRecipeType<RecipeHolder<RitualRecipe>> IMPURE_RITUAL = ritualType("impure_ritual");
+        public static final IRecipeType<RecipeHolder<RitualRecipe>> SANCTUARY_RITUAL = ritualType("sanctuary_ritual");
+
+        static final List<Machine> MACHINES = List.of(
+                new Machine(machineType("magic_compressor"), "block.mistech.magic_compressor", Mistech.MAGIC_COMPRESSOR_ITEM,
+                        () -> List.of(Mistech.MAGIC_COMPRESSOR_ITEM.get()), MistechMachineRecipes::compressor),
+                new Machine(machineType("crystallizer"), "block.mistech.crystallizer", PurityContent.CRYSTALLIZER_ITEM,
+                        () -> List.of(PurityContent.CRYSTALLIZER_ITEM.get()), MistechMachineRecipes::crystallizer),
+                new Machine(machineType("essence_extractor"), "block.mistech.essence_extractor", Mistech.ESSENCE_EXTRACTOR_ITEM,
+                        () -> List.of(Mistech.ESSENCE_EXTRACTOR_ITEM.get()), MistechMachineRecipes::extractor),
+                new Machine(machineType("condenser"), "block.mistech.condenser", Mistech.CONDENSER_ITEM,
+                        () -> List.of(Mistech.CONDENSER_ITEM.get()), MistechMachineRecipes::condenser),
+                new Machine(machineType("distiller"), "block.mistech.distiller", PurityContent.DISTILLER_ITEM,
+                        () -> List.of(PurityContent.DISTILLER_ITEM.get()), MistechMachineRecipes::distiller),
+                new Machine(machineType("magic_loom"), "block.mistech.magic_loom", com.mistech.mistechmod.mage.MageContent.MAGIC_LOOM_ITEM,
+                        () -> List.of(com.mistech.mistechmod.mage.MageContent.MAGIC_LOOM_ITEM.get()), MistechMachineRecipes::loom),
+                new Machine(machineType("kettle"), "block.mistech.kettle", Mistech.KETTLE_ITEM,
+                        () -> List.of(Mistech.KETTLE_ITEM.get()), MistechMachineRecipes::kettle),
+                new Machine(machineType("fermentation_barrel"), "block.mistech.fermentation_barrel",
+                        com.mistech.mistechmod.drink.DrinkContent.FERMENTATION_BARREL_ITEM,
+                        () -> List.of(com.mistech.mistechmod.drink.DrinkContent.FERMENTATION_BARREL_ITEM.get()), MistechMachineRecipes::barrel),
+                new Machine(machineType("cane_still"), "block.mistech.cane_still", com.mistech.mistechmod.drink.DrinkContent.CANE_STILL_ITEM,
+                        () -> List.of(com.mistech.mistechmod.drink.DrinkContent.CANE_STILL_ITEM.get()), MistechMachineRecipes::still),
+                new Machine(machineType("magic_smoke"), "jei.mistech.category.magic_smoke", Mistech.RUNE_ROLLER_ITEM,
+                        () -> List.of(Mistech.RUNE_ROLLER_ITEM.get(), net.minecraft.world.item.Items.CRAFTING_TABLE), MistechMachineRecipes::smokes),
+                new Machine(machineType("rune_anvil"), "block.mistech.rune_anvil", com.mistech.mistechmod.registry.MithrilContent.RUNE_ANVIL_ITEM,
+                        () -> List.of(com.mistech.mistechmod.registry.MithrilContent.RUNE_ANVIL_ITEM.get()), MistechMachineRecipes::runeAnvil),
+                new Machine(machineType("generators"), "jei.mistech.category.generators", MachineContent.ASH_GENERATOR_ITEM,
+                        () -> List.of(MachineContent.ASH_GENERATOR_ITEM.get(), com.mistech.mistechmod.beyond.PaleNetherContent.BLAZE_GENERATOR_ITEM.get(),
+                                com.mistech.mistechmod.power.PowerContent.IGNEOUS_BOILER_ITEM.get(), com.mistech.mistechmod.power.PowerContent.IMPURE_REACTOR_ITEM.get(),
+                                PurityContent.PURE_GENERATOR_ITEM.get(), com.mistech.mistechmod.power.PowerContent.EXPERIENCE_GENERATOR_ITEM.get(),
+                                com.mistech.mistechmod.registry.GnomeContent.GNOME_BICYCLE_ITEM.get(), MachineContent.ASTRAL_GENERATOR_ITEM.get(),
+                                com.mistech.mistechmod.power.PowerContent.STELLAR_OBSERVATORY_ITEM.get()),
+                        MistechMachineRecipes::generators),
+                new Machine(machineType("multiblocks"), "jei.mistech.category.multiblocks", Mistech.GUIDE_STONE,
+                        () -> List.of(Mistech.GUIDE_STONE.get()), MistechMachineRecipes::multiblocks));
+    }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     private static IRecipeType<RecipeHolder<RitualRecipe>> ritualType(String path) {
@@ -105,11 +115,11 @@ public class MistechJeiPlugin implements IModPlugin {
     public void registerCategories(IRecipeCategoryRegistration registration) {
         IGuiHelper gui = registration.getJeiHelpers().getGuiHelper();
         registration.addRecipeCategories(
-                new WritingCategory(WRITING.get(), gui),
-                new CrushingCategory(CRUSHING.get(), gui),
-                new RitualCategory(IMPURE_RITUAL, gui, false, RitualContent.IMPURE_ALTAR_ITEM.get(), "block.mistech.impure_altar"),
-                new RitualCategory(SANCTUARY_RITUAL, gui, true, PurityContent.SANCTUARY_FONT_ITEM.get(), "block.mistech.sanctuary_font"));
-        for (Machine machine : MACHINES) {
+                new WritingCategory(Lazy.WRITING.get(), gui),
+                new CrushingCategory(Lazy.CRUSHING.get(), gui),
+                new RitualCategory(Lazy.IMPURE_RITUAL, gui, false, RitualContent.IMPURE_ALTAR_ITEM.get(), "block.mistech.impure_altar"),
+                new RitualCategory(Lazy.SANCTUARY_RITUAL, gui, true, PurityContent.SANCTUARY_FONT_ITEM.get(), "block.mistech.sanctuary_font"));
+        for (Machine machine : Lazy.MACHINES) {
             registration.addRecipeCategories(new MachineCategory(machine.type(), gui, machine.title(), machine.icon().get()));
         }
     }
@@ -117,18 +127,18 @@ public class MistechJeiPlugin implements IModPlugin {
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         RecipeMap recipes = ClientRecipes.get();
-        registration.addRecipes(WRITING.get(), List.copyOf(recipes.byType(MistechRecipes.WRITING_TYPE.get())));
-        registration.addRecipes(CRUSHING.get(), List.copyOf(recipes.byType(MistechRecipes.CRUSHING_TYPE.get())));
+        registration.addRecipes(Lazy.WRITING.get(), List.copyOf(recipes.byType(MistechRecipes.WRITING_TYPE.get())));
+        registration.addRecipes(Lazy.CRUSHING.get(), List.copyOf(recipes.byType(MistechRecipes.CRUSHING_TYPE.get())));
 
         List<RecipeHolder<RitualRecipe>> impure = new ArrayList<>();
         List<RecipeHolder<RitualRecipe>> sanctuary = new ArrayList<>();
         for (RecipeHolder<RitualRecipe> ritual : recipes.byType(RitualContent.RITUAL_TYPE.get())) {
             (ritual.value().sanctuary() ? sanctuary : impure).add(ritual);
         }
-        registration.addRecipes(IMPURE_RITUAL, impure);
-        registration.addRecipes(SANCTUARY_RITUAL, sanctuary);
+        registration.addRecipes(Lazy.IMPURE_RITUAL, impure);
+        registration.addRecipes(Lazy.SANCTUARY_RITUAL, sanctuary);
 
-        for (Machine machine : MACHINES) {
+        for (Machine machine : Lazy.MACHINES) {
             List<MachineRecipe> list = machine.recipes().get();
             for (int i = 0; i < list.size(); i++) {
                 list.get(i).id = machine.type().getUid().withSuffix("/" + i);
@@ -160,14 +170,14 @@ public class MistechJeiPlugin implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addCraftingStation(WRITING.get(), Mistech.WRITING_TABLE_ITEM.get());
-        registration.addCraftingStation(CRUSHING.get(), MachineContent.RUNIC_CRUSHER_ITEM.get());
-        registration.addCraftingStation(IMPURE_RITUAL, RitualContent.IMPURE_ALTAR_ITEM.get(), RitualContent.IMPURE_ALTAR_2_ITEM.get(),
+        registration.addCraftingStation(Lazy.WRITING.get(), Mistech.WRITING_TABLE_ITEM.get());
+        registration.addCraftingStation(Lazy.CRUSHING.get(), MachineContent.RUNIC_CRUSHER_ITEM.get());
+        registration.addCraftingStation(Lazy.IMPURE_RITUAL, RitualContent.IMPURE_ALTAR_ITEM.get(), RitualContent.IMPURE_ALTAR_2_ITEM.get(),
                 RitualContent.IMPURE_ALTAR_3_ITEM.get(), RitualContent.RITUAL_PEDESTAL_ITEM.get());
-        registration.addCraftingStation(SANCTUARY_RITUAL, PurityContent.SANCTUARY_FONT_ITEM.get());
+        registration.addCraftingStation(Lazy.SANCTUARY_RITUAL, PurityContent.SANCTUARY_FONT_ITEM.get());
         // a Fornalha Rúnica faz as receitas da fornalha comum
         registration.addCraftingStation(mezz.jei.api.constants.RecipeTypes.SMELTING, Mistech.RUNIC_FURNACE_ITEM.get());
-        for (Machine machine : MACHINES) {
+        for (Machine machine : Lazy.MACHINES) {
             registration.addCraftingStation(machine.type(), machine.stations().get().toArray(net.minecraft.world.level.ItemLike[]::new));
         }
     }

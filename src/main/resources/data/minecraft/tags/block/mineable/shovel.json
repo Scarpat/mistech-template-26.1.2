@@ -4,6 +4,12 @@
     "mistech:ash_block",
     "mistech:clay_statue",
     "mistech:withered_grass",
-    "mistech:tainted_soil"
+    "mistech:tainted_soil",
+    "mistech:sweet_mycelium",
+    "mistech:prismatic_grass",
+    "mistech:star_moss",
+    "mistech:dense_cloud",
+    "mistech:star_mist",
+    "mistech:bouncy_cloud"
   ]
 }

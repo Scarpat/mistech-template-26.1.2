@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "DPD",
+    "AXA",
+    "DSD"
+  ],
+  "key": {
+    "D": "mistech:dream_dust",
+    "P": "minecraft:ender_pearl",
+    "A": "mistech:dream_amber",
+    "X": "mistech:dreamcatcher",
+    "S": "mistech:space_rune"
+  },
+  "result": {
+    "id": "mistech:spatial_dreamcatcher",
+    "count": 1
+  }
+}

@@ -469,6 +469,9 @@ public class Mistech {
                 output.accept(BELLADONNA_TEA_CUP.get());
                 com.mistech.mistechmod.registry.DreamContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.registry.RealmContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.registry.DreamRealmContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.registry.DreamMobs.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.registry.DreamDeepContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.registry.OreContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.registry.GoblinContent.creativeItems().forEach(item -> output.accept(item.get()));
                 output.accept(BELLADONNA_BERRIES.get());
@@ -554,6 +557,10 @@ public class Mistech {
         com.mistech.mistechmod.registry.RitualContent.register(modEventBus);
         com.mistech.mistechmod.registry.DreamContent.register(modEventBus);
         com.mistech.mistechmod.registry.RealmContent.register(modEventBus);
+        com.mistech.mistechmod.registry.DreamRealmContent.register(modEventBus);
+        com.mistech.mistechmod.registry.DreamMobs.register(modEventBus);
+        com.mistech.mistechmod.registry.DreamStructures.register(modEventBus);
+        com.mistech.mistechmod.registry.DreamDeepContent.register(modEventBus);
         com.mistech.mistechmod.registry.OreContent.init();
         com.mistech.mistechmod.registry.SpatialContent.register(modEventBus);
         com.mistech.mistechmod.registry.MithrilContent.register(modEventBus);

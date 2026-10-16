@@ -1,0 +1,9 @@
+{
+  "texture": {
+    "mipmap_strategy": "strict_cutout"
+  },
+  "animation": {
+    "frametime": 4,
+    "interpolate": true
+  }
+}

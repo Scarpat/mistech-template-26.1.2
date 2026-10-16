@@ -1,0 +1,82 @@
+{
+  "attributes": {
+    "minecraft:visual/sky_color": "#2a2629",
+    "minecraft:visual/fog_color": "#3a3236",
+    "minecraft:visual/water_fog_color": "#15171c",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:white_ash"
+        },
+        "probability": 0.02
+      }
+    ],
+    "minecraft:audio/background_music": {},
+    "minecraft:audio/music_volume": 0.0,
+    "minecraft:visual/fog_start_distance": 0.0,
+    "minecraft:visual/fog_end_distance": 36.0,
+    "minecraft:visual/cloud_color": "#cc2a2a2e",
+    "minecraft:audio/ambient_sounds": {
+      "mood": {
+        "block_search_extent": 8,
+        "offset": 2.0,
+        "sound": "minecraft:ambient.cave",
+        "tick_delay": 1200
+      }
+    }
+  },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground"
+  ],
+  "downfall": 0.5,
+  "effects": {
+    "water_color": "#30343a",
+    "grass_color": "#8a8e84",
+    "foliage_color": "#6f7266",
+    "dry_foliage_color": "#6f7266"
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "mistech:wastes_murky_trees",
+      "mistech:lamp_posts",
+      "mistech:patch_sleepless_ivy"
+    ],
+    []
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "mistech:bogeyman",
+        "weight": 25,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "mistech:shade",
+        "weight": 20,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.5
+}

@@ -48,6 +48,8 @@
     [],
     [
       "mistech:wastes_murky_trees",
+      "mistech:patch_sleepless_ivy",
+      "mistech:patch_eye_flower",
       "mistech:yellow_mushroom_patch"
     ],
     []
@@ -59,7 +61,26 @@
     "axolotls": [],
     "creature": [],
     "misc": [],
-    "monster": [],
+    "monster": [
+      {
+        "type": "mistech:corrupted_gnome",
+        "weight": 40,
+        "minCount": 1,
+        "maxCount": 3
+      },
+      {
+        "type": "mistech:shade",
+        "weight": 15,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "mistech:bogeyman",
+        "weight": 8,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
     "underground_water_creature": [],
     "water_ambient": [],
     "water_creature": []

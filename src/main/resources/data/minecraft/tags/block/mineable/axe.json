@@ -13,6 +13,11 @@
     "mistech:archive_terminal",
     "mistech:tarot_table",
     "mistech:magic_loom",
-    "mistech:fermentation_barrel"
+    "mistech:fermentation_barrel",
+    "mistech:pink_dream_mushroom_block",
+    "mistech:cyan_dream_mushroom_block",
+    "mistech:fractal_log",
+    "mistech:fractal_wood",
+    "mistech:fractal_planks"
   ]
 }

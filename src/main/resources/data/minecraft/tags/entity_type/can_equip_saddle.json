@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mistech:headless_mule"
+    "mistech:headless_mule",
+    "mistech:cloud_whale"
   ]
 }

@@ -53,6 +53,14 @@ public class MithrilAxeItem extends AxeItem implements MithrilGear.Gear {
     }
 
     @Override
+    public boolean mineBlock(ItemStack stack, net.minecraft.world.level.Level level, BlockState state, net.minecraft.core.BlockPos pos,
+            LivingEntity miningEntity) {
+        boolean result = super.mineBlock(stack, level, state, pos, miningEntity);
+        GearAbilities.afterMine(stack, level, state, pos, miningEntity);
+        return result;
+    }
+
+    @Override
     public float getDestroySpeed(ItemStack stack, BlockState state) {
         return MithrilGear.isCharged(stack) ? super.getDestroySpeed(stack, state) : 1.0F;
     }

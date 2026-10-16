@@ -1,0 +1,77 @@
+{
+  "attributes": {
+    "minecraft:visual/sky_color": "#b9a8ff",
+    "minecraft:visual/fog_color": "#fbefff",
+    "minecraft:visual/water_fog_color": "#cfe8ff",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:white_ash"
+        },
+        "probability": 0.01
+      }
+    ],
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 12000,
+        "min_delay": 6000,
+        "sound": "minecraft:music.overworld.meadow"
+      }
+    }
+  },
+  "carvers": [
+    "minecraft:cave",
+    "minecraft:cave_extra_underground"
+  ],
+  "downfall": 0.5,
+  "effects": {
+    "water_color": "#a8dcff",
+    "grass_color": "#9ee08a",
+    "foliage_color": "#8fd67c",
+    "dry_foliage_color": "#8fd67c"
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "minecraft:patch_grass_plain",
+      "mistech:patch_dreamflower",
+      "mistech:patch_cloud_cotton",
+      "mistech:patch_puffball"
+    ],
+    []
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [],
+    "axolotls": [],
+    "creature": [
+      {
+        "type": "mistech:gnome",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "mistech:counting_sheep",
+        "weight": 10,
+        "minCount": 2,
+        "maxCount": 4
+      }
+    ],
+    "misc": [],
+    "monster": [],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.6
+}

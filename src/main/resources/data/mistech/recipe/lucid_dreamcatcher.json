@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " D ",
+    "WXW",
+    " A "
+  ],
+  "key": {
+    "D": "mistech:dream_dust",
+    "W": "mistech:cloud_wool",
+    "X": "mistech:dreamcatcher",
+    "A": "mistech:dream_amber"
+  },
+  "result": {
+    "id": "mistech:lucid_dreamcatcher",
+    "count": 1
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "type": "mistech:dream_structure",
+  "kind": "fractal_temple",
+  "biomes": [
+    "mistech:fractal_garden",
+    "mistech:cloud_sea",
+    "mistech:inverted_forest"
+  ],
+  "spawn_overrides": {},
+  "step": "surface_structures",
+  "terrain_adaptation": "none"
+}

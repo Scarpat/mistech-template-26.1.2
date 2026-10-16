@@ -1,5 +1,6 @@
 package com.mistech.mistechmod.realm;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 import com.mojang.serialization.Codec;
@@ -13,36 +14,40 @@ import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.biome.Climate;
 
 /**
- * Biomas da Dimensão dos Gnomos pela distância do centro (0,0):
- * até {@code radius} blocos = Prado dos Gnomos (verde); depois = Ermo Turvo (cinza).
- * Abaixo de {@code depthsY} = Profundezas dos Gnomos (cavernas cheias de minério), em qualquer lugar.
- * A borda do prado ondula um pouco para não ficar um círculo perfeito.
+ * Biomas do Sonho (Dimensão dos Gnomos) — ver {@link DreamLayout}.
+ * <ul>
+ * <li>{@code rings}: 4 listas de biomas, uma por anel (Sonho Comum, Pesadelo, Sonho Profundo, Sono REM), na ordem de
+ * {@link DreamLayout#subBiome}.</li>
+ * <li>{@code edge}: a Borda do Sonho (últimos 1000 blocos antes de acordar).</li>
+ * <li>{@code depths}: Profundezas dos Gnomos, embaixo de tudo — abaixo de {@code depths_y} nos anéis 1-2 e abaixo de
+ * {@code island_depths_y} onde o chão desce (anéis 3+).</li>
+ * </ul>
+ * Os sub-biomas usam os ruídos de temperatura e vegetação do noise router ({@code mistech:dream_region_a/b}).
  */
 public class GnomeRealmBiomeSource extends BiomeSource {
     public static final MapCodec<GnomeRealmBiomeSource> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
-            Biome.CODEC.fieldOf("meadow").forGetter(s -> s.meadow),
-            Biome.CODEC.fieldOf("wastes").forGetter(s -> s.wastes),
+            Biome.CODEC.listOf().listOf().fieldOf("rings").forGetter(s -> s.rings),
             Biome.CODEC.fieldOf("depths").forGetter(s -> s.depths),
-            Codec.intRange(16, 4096).fieldOf("radius").orElse(112).forGetter(s -> s.radius),
-            Codec.INT.fieldOf("depths_y").orElse(48).forGetter(s -> s.depthsY)
+            Biome.CODEC.fieldOf("edge").forGetter(s -> s.edge),
+            Codec.INT.fieldOf("depths_y").orElse(48).forGetter(s -> s.depthsY),
+            Codec.INT.fieldOf("island_depths_y").orElse(12).forGetter(s -> s.islandDepthsY)
     ).apply(i, GnomeRealmBiomeSource::new));
 
-    private final Holder<Biome> meadow;
-    private final Holder<Biome> wastes;
+    private final List<List<Holder<Biome>>> rings;
     private final Holder<Biome> depths;
-    private final int radius;
+    private final Holder<Biome> edge;
     private final int depthsY;
+    private final int islandDepthsY;
 
-    public GnomeRealmBiomeSource(Holder<Biome> meadow, Holder<Biome> wastes, Holder<Biome> depths, int radius, int depthsY) {
-        this.meadow = meadow;
-        this.wastes = wastes;
+    public GnomeRealmBiomeSource(List<List<Holder<Biome>>> rings, Holder<Biome> depths, Holder<Biome> edge, int depthsY, int islandDepthsY) {
+        if (rings.size() != 4 || rings.stream().anyMatch(List::isEmpty)) {
+            throw new IllegalArgumentException("gnome_realm: 'rings' precisa de 4 listas de biomas não vazias");
+        }
+        this.rings = rings;
         this.depths = depths;
-        this.radius = radius;
+        this.edge = edge;
         this.depthsY = depthsY;
-    }
-
-    public int radius() {
-        return this.radius;
+        this.islandDepthsY = islandDepthsY;
     }
 
     @Override
@@ -52,22 +57,30 @@ public class GnomeRealmBiomeSource extends BiomeSource {
 
     @Override
     protected Stream<Holder<Biome>> collectPossibleBiomes() {
-        return Stream.of(this.meadow, this.wastes, this.depths);
+        return Stream.concat(this.rings.stream().flatMap(List::stream), Stream.of(this.depths, this.edge)).distinct();
     }
 
     @Override
     public Holder<Biome> getNoiseBiome(int quartX, int quartY, int quartZ, Climate.Sampler sampler) {
         int x = QuartPos.toBlock(quartX), y = QuartPos.toBlock(quartY), z = QuartPos.toBlock(quartZ);
-        if (y < this.depthsY) {
+        int floor = DreamLayout.islandWeight(x, z) > 0.5 ? this.islandDepthsY : this.depthsY;
+        if (y < floor) {
             return this.depths;
         }
-        return isMeadow(x, z, this.radius) ? this.meadow : this.wastes;
+        int ring = DreamLayout.ring(x, z);
+        if (ring >= DreamLayout.RING_EDGE) {
+            return this.edge;
+        }
+        Climate.TargetPoint point = sampler.sample(quartX, quartY, quartZ);
+        double t = Climate.unquantizeCoord(point.temperature());
+        double v = Climate.unquantizeCoord(point.humidity());
+        List<Holder<Biome>> list = this.rings.get(ring - 1);
+        int index = DreamLayout.subBiome(ring, x, z, t, v);
+        return list.get(Math.min(index, list.size() - 1));
     }
 
-    /** Dentro do prado verde? (mesma conta usada pelo Mal Olhado). */
-    public static boolean isMeadow(int x, int z, int radius) {
-        double angle = Math.atan2(z, x);
-        double wobble = Math.sin(angle * 5.0) * 10.0 + Math.sin(angle * 3.0 + 1.3) * 6.0;
-        return x * (double) x + z * (double) z < (radius + wobble) * (radius + wobble);
+    /** No Sonho Comum (anel 1)? */
+    public static boolean isCommonDream(int x, int z) {
+        return DreamLayout.ring(x, z) == DreamLayout.RING_COMMON;
     }
 }

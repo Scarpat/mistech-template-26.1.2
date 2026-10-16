@@ -1,0 +1,18 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 51830274,
+    "separation": 12,
+    "spacing": 36,
+    "exclusion_zone": {
+      "other_set": "mistech:goblin_villages",
+      "chunk_count": 4
+    }
+  },
+  "structures": [
+    {
+      "structure": "mistech:endless_stair",
+      "weight": 1
+    }
+  ]
+}

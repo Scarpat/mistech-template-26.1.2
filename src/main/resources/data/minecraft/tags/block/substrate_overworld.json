@@ -1,6 +1,10 @@
 {
   "replace": false,
   "values": [
-    "mistech:withered_grass"
+    "mistech:withered_grass",
+    "mistech:sweet_mycelium",
+    "mistech:prismatic_grass",
+    "mistech:star_moss",
+    "mistech:cloud_wool"
   ]
 }

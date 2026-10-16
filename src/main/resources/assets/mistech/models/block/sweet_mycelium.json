@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "mistech:block/sweet_mycelium_top",
+    "side": "mistech:block/sweet_mycelium_side",
+    "bottom": "minecraft:block/dirt",
+    "particle": "minecraft:block/dirt"
+  }
+}

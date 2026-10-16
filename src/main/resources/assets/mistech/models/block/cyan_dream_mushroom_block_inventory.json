@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "mistech:block/cyan_dream_mushroom_block"
+  }
+}

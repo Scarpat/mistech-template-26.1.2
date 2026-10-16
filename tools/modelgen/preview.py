@@ -65,7 +65,7 @@ def box_quads(b, M, T, tex):
     x0, y0, z0 = b.origin
     w, h, d = b.size
     x1, y1, z1 = x0 + w, y0 + h, z0 + d
-    iw, ih, idd = [int(round(s)) for s in (w, h, d)]
+    iw, ih, idd = b.isize
     u, v = b.uv
     faces = []
     # (região uv, função (s,t) frações -> ponto 3D)
@@ -115,8 +115,8 @@ def draw(quads, yaw, pitch, scale):
     W = int((maxx - minx) * scale) + 20
     H = int((maxy - miny) * scale) + 20
     img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-    dr = ImageDraw.Draw(img)
+    dr = ImageDraw.Draw(img, 'RGBA')
     for _, sp, c in proj:
         poly = [((x - minx) * scale + 10, (maxy - y) * scale + 10) for x, y in sp]
-        dr.polygon(poly, fill=c[:3] + (255,), outline=c[:3] + (255,))
+        dr.polygon(poly, fill=tuple(c[:4]), outline=tuple(c[:4]) if c[3] == 255 else None)
     return img

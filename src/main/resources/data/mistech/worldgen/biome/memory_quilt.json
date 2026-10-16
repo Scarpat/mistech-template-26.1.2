@@ -1,0 +1,94 @@
+{
+  "attributes": {
+    "minecraft:visual/sky_color": "#4e4a62",
+    "minecraft:visual/fog_color": "#6f675c",
+    "minecraft:visual/water_fog_color": "#4a5a78",
+    "minecraft:visual/ambient_particles": [
+      {
+        "particle": {
+          "type": "minecraft:white_ash"
+        },
+        "probability": 0.008
+      }
+    ],
+    "minecraft:audio/background_music": {
+      "default": {
+        "max_delay": 12000,
+        "min_delay": 6000,
+        "sound": "minecraft:music.overworld.deep_dark"
+      }
+    },
+    "minecraft:visual/fog_start_distance": 0.0,
+    "minecraft:visual/fog_end_distance": 64.0,
+    "minecraft:audio/ambient_sounds": {
+      "mood": {
+        "block_search_extent": 8,
+        "offset": 2.0,
+        "sound": "minecraft:ambient.cave",
+        "tick_delay": 1200
+      }
+    }
+  },
+  "carvers": [],
+  "downfall": 0.5,
+  "effects": {
+    "water_color": "#3e5070",
+    "grass_color": "#6b8457",
+    "foliage_color": "#5f7a4e",
+    "dry_foliage_color": "#5f7a4e"
+  },
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [],
+    [
+      "mistech:memory_oaks",
+      "mistech:memory_birches",
+      "minecraft:flower_default",
+      "minecraft:patch_grass_plain",
+      "mistech:patch_memory_lily"
+    ],
+    [
+      "mistech:bouncy_pads"
+    ]
+  ],
+  "has_precipitation": false,
+  "spawn_costs": {},
+  "spawners": {
+    "ambient": [
+      {
+        "type": "mistech:memory",
+        "weight": 16,
+        "minCount": 1,
+        "maxCount": 3
+      }
+    ],
+    "axolotls": [],
+    "creature": [],
+    "misc": [],
+    "monster": [
+      {
+        "type": "mistech:echo",
+        "weight": 10,
+        "minCount": 1,
+        "maxCount": 1
+      },
+      {
+        "type": "mistech:rem_watcher",
+        "weight": 6,
+        "minCount": 1,
+        "maxCount": 1
+      }
+    ],
+    "underground_water_creature": [],
+    "water_ambient": [],
+    "water_creature": []
+  },
+  "temperature": 0.7
+}
