@@ -1,0 +1,575 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mistech:archmage_staff"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mistech:aether_crown",
+          "weight": 1
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 3
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 3
+      },
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "meteor",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    16738847
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "stone_golem",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    9071162
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "living_forest",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    6084188
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "rewind",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    6280880
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "inferno",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    16738847
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "ice_age",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    10478591
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "tidal_wave",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    4164863
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "cataclysm",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    9071162
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "hurricane",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    14546175
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "judgement",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    16769354
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "dawn",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    16774848
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "total_eclipse",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    5910136
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "eternal_instant",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    6280880
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "black_hole",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    9064408
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "tree_of_life",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    6084188
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "eruption",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    14701083
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "magma_armor",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    14701083
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "cloud_bridge",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    15134975
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "living_web",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    6084188
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "phoenix",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    16738847
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "soul_harvest",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    5232614
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "blizzard",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    10478591
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "earthquake",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    9071162
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "thunderstorm",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    16769354
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 1,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "time_stop",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    6280880
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 3,
+        "max": 5
+      },
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mistech:arcane_rune",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:lapis_lazuli",
+          "weight": 6,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 6,
+                "max": 16
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:impure_magic_shard",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 2,
+                "max": 6
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:amethyst_shard",
+          "weight": 4,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 4,
+                "max": 12
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:diamond",
+          "weight": 2,
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 3
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

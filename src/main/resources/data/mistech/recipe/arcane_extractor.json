@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "MTM",
+    "AXA",
+    "MEM"
+  ],
+  "key": {
+    "M": "#c:ingots/mithril",
+    "T": "mistech:runic_tank",
+    "A": "mistech:impure_magic_shard",
+    "X": "mistech:essence_extractor",
+    "E": "mistech:energy_rune"
+  },
+  "result": {
+    "id": "mistech:arcane_extractor",
+    "count": 1
+  }
+}

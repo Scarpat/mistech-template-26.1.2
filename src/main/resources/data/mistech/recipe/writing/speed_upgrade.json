@@ -1,0 +1,14 @@
+{
+  "type": "mistech:writing",
+  "ingredients": [
+    "mistech:runic_plate",
+    "mistech:time_rune",
+    "minecraft:sugar",
+    "minecraft:redstone"
+  ],
+  "chalk_damage": 10,
+  "result": {
+    "id": "mistech:speed_upgrade",
+    "count": 1
+  }
+}

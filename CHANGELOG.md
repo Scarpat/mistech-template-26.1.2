@@ -1,5 +1,80 @@
 # Mistech — Changelog
 
+## Oct 23, 2026 — Spellcraft, Crusher Forge, machine upgrades, Dream Rifts
+
+Everything since commit `071dafb` (Oct 16). Compiles; **not yet tested in-game**. New structures only generate in new worlds or unexplored chunks. The Create recipes are data-only (no Create build for 26.1 exists yet).
+
+### Spellcraft — a full spell system (72 spells)
+- **Spell Scrolls**: right-click to learn a spell (the scroll is consumed). Found in loot (common / rare / epic tiers by structure) or copied on the **Inscription Table** (Writing Table + book + 2 pencils + amethyst; costs paper, pencils, element rune, Impure Magic Fragments and XP by tier; world-only spells can't be copied).
+- **Mana**: new mana bar. Max = 100 + 15 per affinity level (cap 600); regen scales with affinity. Robes of the Mage, Essence Amulet and Arcane Surge make spells cheaper. Creative mode doesn't spend mana.
+- **Affinity up to level 7**: casting grants affinity and it never decreases. Spell power is +10% per level; **Mastery (level 7)** makes that element's spells cost and recharge 15% less. Tier 1–6 spells require the matching affinity level (tier 6 = level 6). An affinity panel (Sneak + right-click on a focus) shows all 10 levels. Op command: `/mistech affinity get|reset|set|level`.
+- **Cast types**: instant, continuous (pulses), **charged** (hold and release: up to ×2 power, ×1.6 cost) and **ritual** (stand still; cancels if you move).
+- **Focus items** with spell slots (right-click casts, mouse wheel switches slot, Sneak + right-click opens the slot screen):
+  - **Tomes**: Apprentice's (3 slots, T2), Adept's (4, T3), Archmage's (5, T5), plus 11 element Tomes — Flames, Glacial, Waters, Earth, Winds, Electric, Radiant, Shadow, Temporal, Spatial, Life (4 slots, up to T4; −20% mana for their element, +20% for the opposite).
+  - **Wands** (faster recharge): Apprentice's (2 slots, −20%), Copper (−25%), Gold (3 slots, −35%), Mithril (3 slots, T4, −50%).
+  - **Staffs** with a **mana reserve** spent before your own mana: Wooden (100), Runic (300), Mithril (800), Archmage's (2000, 4 slots, T6, unique). Staffs add power and make continuous spells cheaper.
+  - **Gems & runes**: every focus has sockets; a socketed rune gives −5% mana and +5% power for its element (right-click with a rune in the off-hand; Sneak to pull one out).
+  - The old **Gnome Staff** and **Mage Staff** now also buff spells when held (−10% mana / +15% power and −15% recharge).
+- **Arcane Charger** (workbench block): charges a staff's reserve from FE (20 FE = 1 mana).
+- **Resonance**: every spell leaves an element mark for 5 s; a spell of a matching element gets +25% power and a bonus effect (Fire→Water Steam, Ice→Energy Shatter, Water→Ice Deep Freeze, Earth→Life Bloom, Air→Energy Chain Lightning, Light→Dark Eclipse, Time→Space Fold, Fire→Earth Magma). Matching Tome in hand: +40%.
+- **Spells**: 10 basic elements from tier 1 up — Spark, Ice Shard, Water Bolt, Gust, Discharge, Healing Tide, Stone Skin, Holy Light, Shadow Veil, Blink, Fire Burst, Wind Step, Dark Drain, Time Slow, Blizzard, Boulder, Meteor, Earthquake, Thunderstorm, Time Stop and more.
+  - **Life**: Sprout, **Vine** (a grappling-hook rope: you swing like a pendulum; Quick Vine and Living Web variants), Roots, Living Forest, Tree of Life.
+  - **Combinations**: Magma (Lava River, Eruption, Magma Armor), Steam (Mist, Steam Jet), Cloud (Cloud Platform, Cloud Bridge).
+  - **Tier 6 legendaries** (found in the world only): Inferno, Ice Age, Tidal Wave, Cataclysm, Hurricane, Judgement, Dawn, Total Eclipse, Eternal Instant, Black Hole, Tree of Life.
+  - **Summons** (duration-based; limit 1 + level/3): **Stone Golem**, **Wood Guardians**, **Shadow Wolf**, **Guardian Spirit**, **Phoenix** — all with custom models; they never attack players or each other.
+  - **Utilities**: Anchor, Rewind, Telekinesis, Purify, Recharge (mana → FE in your items), Arcane Impulse (speeds up machines), Arcane Focus, Rift (opens your Ender chest anywhere), Light Orb, Vigilant Gaze, Lucky Coin, Echo, Void Touch, Soul Harvest.
+- **New spell visuals**: animated 3D magic circles, shockwaves, spikes, pillars of light, real projectiles, camera shake and screen flashes, and custom tinted particles for every spell.
+- **World structures** (find with `/locate structure mistech:<name>`):
+  - **Fallen Archmage's Tower** (`archmage_tower`) — guaranteed **Archmage's Staff**, tier 4+ scrolls; 1 in 4 chance of the **Aether Crown** (+150 max mana, ×1.75 regen, amulet slot).
+  - **Element Shrine** (`element_shrine`, one per element) — single glowing guardian, an element scroll and a chance at the element Tome.
+  - **Forbidden Library** (`forbidden_library`) — buried library; guaranteed **Forbidden Tome** (5 slots, T6, +15% power, ignores affinity but costs hearts per cast); 1 in 3 chance of the **Wand of the Void** (T6, −60% recharge).
+  - **Mother Tree** (`mother_tree`) — giant oak with a hollow trunk; guaranteed **Vine Scroll** and Life loot.
+  - **Rune Stone Circle** (`rune_circle`) — the Rune Altar grants a permanent blessing: resonance marks last 8 s instead of 5.
+- **Grimoire**: new **Spells** chapter (scrolls, Inscription Table, casting, staffs, Arcane Charger, Tomes/Wands/sockets, ruins and relics).
+
+### Machines & automation
+- **Machine tabs** on every machine: **Redstone** (ignore / needs signal / needs no signal), **Sides** (each face: off / input / output / both) and **Upgrades**; automatic item input/output with adjacent inventories.
+- **Runic Upgrades** (Runic Plate → Speed / Efficiency / Range): Speed +50% each (max 4, +10% energy), Efficiency −15% energy each (max 4), Range +1 radius (max 3, Harvester/Planter only). Generators and batteries don't accept them.
+- **Arcane Furnace**: 3 parallel lines; with power it runs at 1/4 of furnace time, ×1.5 XP and a 25% chance of an extra ingot from ores; without power it still works at Runic Furnace speed.
+- **Arcane Extractor** (250 mB / 15 s, 8,000 mB tank) and **Arcane Compressor** (250 mB → 1 Fragment / 6 s, no incense needed).
+- **Arcane Crusher**: 2 lines, 2.5 s per item, extra output from Earth Runes, makes **Mithril / Adamantine / Orichalcum Dust** (ore → 2 dusts).
+- **Crusher Forge** (2×2×2 multiblock: Forge Core + Arcane Furnace + Arcane Crusher + 5 Impure Magic Blocks): crushes and smelts in one go — ore → dust → ingots, 3 lines, 60 FE/t each, with animated twin millstones.
+- **Impure Magic Block** is now crafted TNT-style: 5 Impure Magic Fragments + 4 Magical Residue.
+- **Runic Liquefier**: turns Fragments (250 mB), Impure Magic Dust (125 mB) and Impure Magic Blocks (750 mB) into Impure Essence; 8,000 mB tank.
+- **Impure Magic Compressor** now has a reserve: with the output full, 3 more bottles wait (a bucket fills 4 at once).
+- **Guide Stone**: Sneak + right-click on an anchor shows a **hologram** of the structure (blue = missing, red = wrong, green = correct, gold = optional); holding it also shows the **range** of incense holders, Harvesters, Planters, batteries, Sanctuary Fountain and more.
+- Adamantine and Orichalcum can finally be smelted in any Mistech furnace (they only had blast-furnace recipes).
+
+### Dreams
+- **Dream Rift**: right-click a Surface block with a **Dream Fragment** (radius 12) or **Amplified Dream Fragment** (radius 28) to spread the Dream there — plants, trees and ground are replaced, then the biome, vegetation and creatures of a Dream region take over. 13 fixed-region fragments (Gnome Meadow, Sweet Mushroom Grove, Pillow Hills, Murky Wastes, Forest of Hands, Falling Chasms, Wrong Neighborhood, Floating Meadows, Fractal Garden, Inverted Forest, Starry Void, Memory Quilt, Abyssal Gaze). Crafted at the Impure Altar (Tier I/II).
+
+### Farming, herbs & utilities
+- **Hammock**: sleep by day; skips to **dusk** instead of morning. Doesn't set your spawn. (Sticks + 3 Hemp Fiber.)
+- **Mandrake** (night harvests drop seeds; the Gnome King trades them): ripe plants scream when pulled (Nausea, Darkness, Slowness — helmet mutes it). The root screams in combat, **Mandrake Powder** is a 3×3 fertilizer, and the **Bottled Mandrake** (root in a Glass Jar) grows nearby crops about 3× faster when fed bone meal.
+- **Belladonna**: Mystic/Psychedelic Vision now reveals invisible creatures and folklore beings and makes ores glow through stone; edible berries; **Belladonna Arrow**.
+- **Coffee**: new **Caffeinated** effect (no Phantoms, can't sleep, +10% XP); a cup in the Gnome Bicycle gives +50% FE for 5 min.
+- **Scroll Case**: holds up to 9 runes; right-click uses the selected rune, Z to switch. With a Fire Rune selected it works as a lighter.
+
+### Quality of life
+- **Grimoire search** (Ctrl+F or the magnifier). New entries for machines, upgrades, hologram, range and spells.
+- **JEI**: "+" buttons for the Writing Table, Crusher, Runic and Arcane Furnaces; new stations.
+- **Config files**: server (machine/upgrade/early-game/anchor/scroll case values) and client (range display, hologram).
+- Progression: the Extractor now needs the **Ash Generator** first, instead of a Gnome Bicycle.
+
+### Compatibility
+- **Jade** (optional): progress, tanks, redstone, upgrades, incense, altar tier and more on Mistech blocks.
+- **Create** (optional, recipes only): Deployer rolls cigars and joints; sequenced assembly for incense and Rue Cigar; Millstone, Crushing Wheels, Mechanical Saw and Mixing recipes (30 total). Waiting for a 26.1 build of Create.
+
+### Fixes
+- Continuous spells (Blizzard, Earthquake, Time Slow, Vine) no longer skip their recharge when you change hotbar slot.
+- Dead summons free their slot immediately; Living Forest now counts as one summon.
+- Vine rope feels like a real rope instead of jittering.
+- Fixed the Forbidden Library stairway getting blocked and the Archmage Tower stair floating.
+- Aether Crown mana bonus now shows on the client bar.
+- Fire Burst only damages when the ball lands.
+
+---
+
 ## Oct 16, 2026 — The Dream dimension, Spatial Dreamcatcher, gear rework
 
 Everything since commit `927417f` (Oct 14). Compiles and the server starts; not yet fully tested in-game. Old worlds: delete `dimensions/mistech/gnome_realm` so the realm regenerates.

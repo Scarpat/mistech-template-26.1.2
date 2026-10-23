@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:star_fragment",
+  "ingredients": [
+    "mistech:dreamcatcher",
+    "mistech:dream_poppy",
+    "mistech:dreamflower",
+    "mistech:impure_magic_shard",
+    "minecraft:amethyst_shard"
+  ],
+  "essence": 2,
+  "duration": 300,
+  "condition": "night",
+  "min_tier": 1,
+  "result": {
+    "id": "mistech:dream_fragment"
+  },
+  "effect": "stars"
+}

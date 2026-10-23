@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mistech:apprentice_tome",
+    "minecraft:gold_ingot",
+    "minecraft:gold_ingot",
+    "minecraft:amethyst_shard",
+    "minecraft:lapis_lazuli"
+  ],
+  "result": {
+    "id": "mistech:adept_tome",
+    "count": 1
+  }
+}

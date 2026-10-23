@@ -87,7 +87,18 @@ public class IncenseItem extends Item {
 
     /** Isqueiro ou Runa de Fogo. */
     public static boolean isLighter(ItemStack stack) {
-        return stack.getItem() instanceof net.minecraft.world.item.FlintAndSteelItem || stack.is(com.mistech.mistechmod.Mistech.FIRE_RUNE.get());
+        return stack.getItem() instanceof net.minecraft.world.item.FlintAndSteelItem || stack.is(com.mistech.mistechmod.Mistech.FIRE_RUNE.get())
+                || com.mistech.mistechmod.item.scroll.ScrollCaseItem.selectedIs(stack, com.mistech.mistechmod.Mistech.FIRE_RUNE.get());
+    }
+
+    /** Gasta 1 uso do isqueiro (ou da Runa de Fogo escolhida no Porta-Pergaminhos). */
+    public static void useLighter(ItemStack lighter, Player player, EquipmentSlot slot) {
+        if (lighter.getItem() instanceof com.mistech.mistechmod.item.scroll.ScrollCaseItem) {
+            com.mistech.mistechmod.item.scroll.ScrollCaseItem.damageSelected(lighter, 1,
+                    player.level() instanceof ServerLevel server ? server : null, player);
+        } else {
+            lighter.hurtAndBreak(1, player, slot);
+        }
     }
 
     public static boolean isLit(ItemStack stack) {
@@ -170,7 +181,7 @@ public class IncenseItem extends Item {
         lightInPlace(player, player.getItemInHand(incenseHand));
 
         EquipmentSlot flintSlot = flintHand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND;
-        flint.hurtAndBreak(1, player, flintSlot);
+        useLighter(flint, player, flintSlot);
         level.playSound(null, player.getX(), player.getY(), player.getZ(),
                 SoundEvents.FLINTANDSTEEL_USE, SoundSource.PLAYERS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
     }

@@ -37,7 +37,7 @@ import net.minecraft.world.phys.AABB;
  *  2 = incenso ativo (queimando)
  *  3 = cinzas (todo incenso não mágico que acaba deixa 1, com {@link #EXTRA_ASH_CHANCE} de chance de deixar 2)
  */
-public class IncenseHolderBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
+public class IncenseHolderBlockEntity extends BaseContainerBlockEntity implements com.mistech.mistechmod.compat.InfoProvider, WorldlyContainer {
     public static final int SLOT_LIGHTER = 0;
     public static final int SLOT_STOCK = 1;
     public static final int SLOT_ACTIVE = 2;
@@ -83,8 +83,59 @@ public class IncenseHolderBlockEntity extends BaseContainerBlockEntity implement
         super(MistechBlockEntities.INCENSE_HOLDER.get(), pos, state);
     }
 
+    // ----- alcance para o cliente (Pedra Guia) -----
+    private double syncedRadius = -1;
+    private boolean syncedSilver;
+    private double clientRadius;
+    private boolean clientSilver;
+
+    public double clientRadius() {
+        return this.clientRadius;
+    }
+
+    public boolean clientSilver() {
+        return this.clientSilver;
+    }
+
+    private void syncRange(Level level, BlockPos pos, BlockState state) {
+        double radius = this.getEffectRadius();
+        boolean silver = this.items.get(SLOT_ACTIVE).is(com.mistech.mistechmod.folklore.FolkloreContent.SILVER_INCENSE.get());
+        if (radius != this.syncedRadius || silver != this.syncedSilver) {
+            this.syncedRadius = radius;
+            this.syncedSilver = silver;
+            level.sendBlockUpdated(pos, state, state, Block.UPDATE_CLIENTS);
+        }
+    }
+
+    @Override
+    public net.minecraft.nbt.CompoundTag getUpdateTag(net.minecraft.core.HolderLookup.Provider registries) {
+        net.minecraft.nbt.CompoundTag tag = new net.minecraft.nbt.CompoundTag();
+        tag.putDouble("ClientRadius", this.getEffectRadius());
+        tag.putBoolean("ClientSilver", this.items.get(SLOT_ACTIVE).is(com.mistech.mistechmod.folklore.FolkloreContent.SILVER_INCENSE.get()));
+        return tag;
+    }
+
+    @Override
+    public net.minecraft.network.protocol.Packet<net.minecraft.network.protocol.game.ClientGamePacketListener> getUpdatePacket() {
+        return net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public void handleUpdateTag(net.minecraft.world.level.storage.ValueInput input) {
+        this.clientRadius = input.getDoubleOr("ClientRadius", 0.0);
+        this.clientSilver = input.getBooleanOr("ClientSilver", false);
+    }
+
+    @Override
+    public void onDataPacket(net.minecraft.network.Connection connection, net.minecraft.world.level.storage.ValueInput input) {
+        this.handleUpdateTag(input);
+    }
+
     public static void serverTick(Level level, BlockPos pos, BlockState state, IncenseHolderBlockEntity holder) {
         ItemStack active = holder.items.get(SLOT_ACTIVE);
+        if (level.getGameTime() % 20 == 5) {
+            holder.syncRange(level, pos, state);
+        }
 
         // 1) Sem incenso ativo: o isqueiro acende o próximo do estoque
         if (active.isEmpty()) {
@@ -94,7 +145,11 @@ public class IncenseHolderBlockEntity extends BaseContainerBlockEntity implement
                 ItemStack lit = stock.split(1);
                 IncenseItem.setLit(lit);
                 holder.items.set(SLOT_ACTIVE, lit);
-                lighter.hurtAndBreak(1, serverLevel, (LivingEntity) null, item -> {});
+                if (lighter.getItem() instanceof com.mistech.mistechmod.item.scroll.ScrollCaseItem) {
+                    com.mistech.mistechmod.item.scroll.ScrollCaseItem.damageSelected(lighter, 1, serverLevel, null);
+                } else {
+                    lighter.hurtAndBreak(1, serverLevel, (LivingEntity) null, item -> {});
+                }
                 level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F,
                         level.getRandom().nextFloat() * 0.4F + 0.8F);
                 active = lit;
@@ -249,5 +304,20 @@ public class IncenseHolderBlockEntity extends BaseContainerBlockEntity implement
     @Override
     protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
         return new IncenseHolderMenu(containerId, inventory, this, this.dataAccess);
+    }
+
+    @Override
+    public void addInfo(java.util.List<net.minecraft.network.chat.Component> lines) {
+        ItemStack active = this.items.get(SLOT_ACTIVE);
+        if (active.isEmpty()) {
+            lines.add(net.minecraft.network.chat.Component.translatable("info.mistech.incense.none"));
+        } else {
+            lines.add(net.minecraft.network.chat.Component.translatable("info.mistech.incense.burning", active.getHoverName(),
+                    IncenseItem.getRemainingSeconds(active), (int) this.getEffectRadius()));
+        }
+        ItemStack stock = this.items.get(SLOT_STOCK);
+        if (!stock.isEmpty()) {
+            lines.add(net.minecraft.network.chat.Component.translatable("info.mistech.incense.stock", stock.getCount()));
+        }
     }
 }

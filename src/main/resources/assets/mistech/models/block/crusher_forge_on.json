@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "top": "mistech:block/crusher_forge_top",
+    "front": "mistech:block/crusher_forge_front_on",
+    "side": "mistech:block/arcane_casing"
+  }
+}

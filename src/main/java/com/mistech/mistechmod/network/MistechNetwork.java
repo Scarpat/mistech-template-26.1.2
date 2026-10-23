@@ -49,7 +49,13 @@ public final class MistechNetwork {
         registrar.playToClient(ConfectorRecipesPayload.TYPE, ConfectorRecipesPayload.STREAM_CODEC);
         registrar.playToServer(StaffScrollPayload.TYPE, StaffScrollPayload.STREAM_CODEC, (payload, context) -> {
             if (context.player() instanceof ServerPlayer player) {
-                if (com.mistech.mistechmod.ranged.ArcaneCrossbowItem.is(player.getMainHandItem())
+                if (com.mistech.mistechmod.spellcraft.SpellFocusItem.is(player.getMainHandItem())
+                        || com.mistech.mistechmod.spellcraft.SpellFocusItem.is(player.getOffhandItem())
+                        && !com.mistech.mistechmod.item.staff.GnomeStaffItem.holdsRunes(player.getMainHandItem())
+                        && !com.mistech.mistechmod.tarot.magus.MagusStaffItem.is(player.getMainHandItem())
+                        && !com.mistech.mistechmod.ranged.ArcaneCrossbowItem.is(player.getMainHandItem())) {
+                    com.mistech.mistechmod.spellcraft.SpellFocusItem.scroll(player, payload.direction());
+                } else if (com.mistech.mistechmod.ranged.ArcaneCrossbowItem.is(player.getMainHandItem())
                         || com.mistech.mistechmod.ranged.ArcaneCrossbowItem.is(player.getOffhandItem())
                         && !com.mistech.mistechmod.item.staff.GnomeStaffItem.holdsRunes(player.getMainHandItem())
                         && !com.mistech.mistechmod.tarot.magus.MagusStaffItem.is(player.getMainHandItem())) {

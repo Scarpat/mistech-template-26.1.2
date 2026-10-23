@@ -1,0 +1,45 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:sequenced_assembly",
+  "ingredient": "minecraft:stick",
+  "transitional_item": {
+    "id": "minecraft:stick"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        "minecraft:stick",
+        "minecraft:stick"
+      ],
+      "results": [
+        {
+          "id": "minecraft:stick"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        "minecraft:stick",
+        "#minecraft:small_flowers"
+      ],
+      "results": [
+        {
+          "id": "minecraft:stick"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "mistech:incense"
+    }
+  ]
+}

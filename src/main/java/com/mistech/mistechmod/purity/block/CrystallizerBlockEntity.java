@@ -20,7 +20,7 @@ import net.minecraft.world.level.storage.ValueInput;
 import net.minecraft.world.level.storage.ValueOutput;
 
 /** Cristaliza a Essência Purificada com luz: sol a céu aberto (100%) ou luar de lua cheia (50%). Sem luz, pausa. */
-public class CrystallizerBlockEntity extends BlockEntity {
+public class CrystallizerBlockEntity extends BlockEntity implements com.mistech.mistechmod.compat.InfoProvider {
     public static final int HARDEN_TICKS = 15 * 20;
 
     private int progress;
@@ -86,5 +86,12 @@ public class CrystallizerBlockEntity extends BlockEntity {
     protected void saveAdditional(ValueOutput output) {
         super.saveAdditional(output);
         output.putInt("Progress", this.progress);
+    }
+
+    @Override
+    public void addInfo(java.util.List<net.minecraft.network.chat.Component> lines) {
+        if (this.progress > 0) {
+            lines.add(com.mistech.mistechmod.compat.InfoProvider.progress(this.progress, HARDEN_TICKS));
+        }
     }
 }

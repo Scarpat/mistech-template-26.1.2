@@ -16,6 +16,11 @@ public final class MistechComponents {
             DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, Mistech.MODID);
 
     /** Presente (true) quando o incenso está aceso. Sincronizado com o cliente para trocar o modelo. */
+    /** Porta-Pergaminhos: qual runa está escolhida (índice do espaço). */
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> SCROLL_SELECTED =
+            DATA_COMPONENTS.registerComponentType("scroll_selected",
+                    builder -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.VAR_INT));
+
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> INCENSE_LIT =
             DATA_COMPONENTS.registerComponentType("incense_lit",
                     builder -> builder.persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL));

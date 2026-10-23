@@ -72,22 +72,42 @@ public class MagicCompressorBlock extends BaseEntityBlock {
     protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player,
                                           InteractionHand hand, BlockHitResult hitResult) {
         boolean igneous = stack.is(com.mistech.mistechmod.beyond.PaleNetherContent.IGNEOUS_ESSENCE_BOTTLE.get());
-        if (state.getValue(FILLED) || !(stack.is(Mistech.IMPURE_ESSENCE_BOTTLE.get()) || igneous)) {
+        boolean bottle = stack.is(Mistech.IMPURE_ESSENCE_BOTTLE.get());
+        boolean bucket = stack.is(Mistech.IMPURE_ESSENCE_BUCKET.get());
+        if (!(bottle || bucket || igneous) || !(level.getBlockEntity(pos) instanceof MagicCompressorBlockEntity compressor)) {
             return InteractionResult.TRY_WITH_EMPTY_HAND;
         }
+        boolean filled = state.getValue(FILLED);
+        // cheio: frasco/balde de Essência Impura vai para a reserva (até 3 a mais)
+        int fills = bucket ? 4 : 1;
+        int toReserve = filled ? fills : fills - 1;
+        if (filled && (igneous || compressor.getReserve() + toReserve > MagicCompressorBlockEntity.MAX_RESERVE)) {
+            if (!level.isClientSide()) {
+                player.sendOverlayMessage(net.minecraft.network.chat.Component.translatable("message.mistech.compressor.full",
+                        compressor.getReserve(), MagicCompressorBlockEntity.MAX_RESERVE));
+            }
+            return InteractionResult.FAIL;
+        }
+        if (!filled && compressor.getReserve() + toReserve > MagicCompressorBlockEntity.MAX_RESERVE) {
+            return InteractionResult.FAIL;
+        }
         if (!level.isClientSide()) {
-            level.setBlock(pos, state.setValue(FILLED, true), Block.UPDATE_ALL);
-            if (level.getBlockEntity(pos) instanceof MagicCompressorBlockEntity compressor) {
+            if (!filled) {
+                level.setBlock(pos, state.setValue(FILLED, true), Block.UPDATE_ALL);
                 compressor.setIgneous(igneous);
             }
+            compressor.addReserve(toReserve);
             if (!player.getAbilities().instabuild) {
                 stack.shrink(1);
-                ItemStack bottle = new ItemStack(Items.GLASS_BOTTLE);
-                if (!player.getInventory().add(bottle)) {
-                    player.drop(bottle, false);
+                ItemStack empty = new ItemStack(bucket ? Items.BUCKET : Items.GLASS_BOTTLE);
+                if (!player.getInventory().add(empty)) {
+                    player.drop(empty, false);
                 }
             }
-            level.playSound(null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 0.7F);
+            level.playSound(null, pos, bucket ? SoundEvents.BUCKET_EMPTY : SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 0.7F);
+            if (compressor.getReserve() > 0) {
+                player.sendOverlayMessage(net.minecraft.network.chat.Component.translatable("info.mistech.compressor.reserve", compressor.getReserve()));
+            }
         }
         return InteractionResult.SUCCESS;
     }

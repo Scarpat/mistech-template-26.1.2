@@ -1,0 +1,30 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:crushing",
+  "ingredients": [
+    "mistech:deepslate_orichalcum_ore"
+  ],
+  "results": [
+    {
+      "id": "mistech:raw_orichalcum"
+    },
+    {
+      "id": "mistech:raw_orichalcum",
+      "chance": 0.75
+    },
+    {
+      "id": "create:experience_nugget",
+      "chance": 0.75
+    },
+    {
+      "id": "minecraft:cobbled_deepslate",
+      "chance": 0.125
+    }
+  ],
+  "processing_time": 350
+}

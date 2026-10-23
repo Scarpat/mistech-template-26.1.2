@@ -1,0 +1,11 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "#c:ores/orichalcum",
+  "result": {
+    "id": "mistech:orichalcum_dust",
+    "count": 2
+  },
+  "bonus_chance": 0.25,
+  "rune_bonus": true,
+  "tier": 2
+}

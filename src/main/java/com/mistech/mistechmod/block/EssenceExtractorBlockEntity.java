@@ -18,7 +18,7 @@ import net.neoforged.neoforge.transfer.energy.SimpleEnergyHandler;
  * Enche 1 nível de essência a cada {@link #TICKS_PER_LEVEL} ticks com energia,
  * gastando {@link #ENERGY_PER_TICK} FE/tick (3 minutos para encher com 3 níveis).
  */
-public class EssenceExtractorBlockEntity extends BlockEntity {
+public class EssenceExtractorBlockEntity extends BlockEntity implements com.mistech.mistechmod.compat.InfoProvider {
     public static final int CAPACITY = 10_000;
     public static final int MAX_INPUT_PER_TICK = 100;
     public static final int ENERGY_PER_TICK = 10;
@@ -59,7 +59,7 @@ public class EssenceExtractorBlockEntity extends BlockEntity {
             extractor.energy.set(extractor.energy.getAmountAsInt() - ENERGY_PER_TICK);
             extractor.progress++;
         }
-        if (extractor.progress >= TICKS_PER_LEVEL) {
+        if (extractor.progress >= com.mistech.mistechmod.Config.extractorTicksPerLevel()) {
             extractor.progress = 0;
             level.setBlock(pos, state.setValue(EssenceExtractorBlock.LEVEL, current + 1), Block.UPDATE_ALL);
             level.playSound(null, pos, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 0.7F, 0.6F);
@@ -79,5 +79,15 @@ public class EssenceExtractorBlockEntity extends BlockEntity {
         super.saveAdditional(output);
         output.putInt("Progress", this.progress);
         this.energy.serialize(output);
+    }
+
+    @Override
+    public void addInfo(java.util.List<net.minecraft.network.chat.Component> lines) {
+        BlockState state = this.getBlockState();
+        int lvl = state.hasProperty(EssenceExtractorBlock.LEVEL) ? state.getValue(EssenceExtractorBlock.LEVEL) : 0;
+        lines.add(net.minecraft.network.chat.Component.translatable("info.mistech.extractor.level", lvl, EssenceExtractorBlock.MAX_LEVEL));
+        if (lvl < EssenceExtractorBlock.MAX_LEVEL && this.progress > 0) {
+            lines.add(com.mistech.mistechmod.compat.InfoProvider.progress(this.progress, com.mistech.mistechmod.Config.extractorTicksPerLevel()));
+        }
     }
 }

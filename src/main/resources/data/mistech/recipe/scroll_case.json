@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "LSL",
+    "LPL",
+    "LGL"
+  ],
+  "key": {
+    "L": "minecraft:leather",
+    "S": "minecraft:string",
+    "P": "minecraft:paper",
+    "G": "minecraft:gold_ingot"
+  },
+  "result": {
+    "id": "mistech:scroll_case",
+    "count": 1
+  }
+}

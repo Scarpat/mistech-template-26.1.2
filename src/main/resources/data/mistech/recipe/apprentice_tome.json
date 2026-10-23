@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:book",
+    "minecraft:amethyst_shard",
+    "minecraft:lapis_lazuli",
+    "minecraft:lapis_lazuli"
+  ],
+  "result": {
+    "id": "mistech:apprentice_tome",
+    "count": 1
+  }
+}

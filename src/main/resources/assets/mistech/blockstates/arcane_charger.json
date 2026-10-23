@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "filled=false": {
+      "model": "mistech:block/arcane_charger"
+    },
+    "filled=true": {
+      "model": "mistech:block/arcane_charger_filled"
+    }
+  }
+}

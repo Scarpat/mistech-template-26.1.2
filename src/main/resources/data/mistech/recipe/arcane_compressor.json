@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "MWM",
+    "ACA",
+    "MEM"
+  ],
+  "key": {
+    "M": "#c:ingots/mithril",
+    "W": "mistech:earth_rune",
+    "A": "mistech:impure_magic_shard",
+    "C": "mistech:magic_compressor",
+    "E": "mistech:energy_rune"
+  },
+  "result": {
+    "id": "mistech:arcane_compressor",
+    "count": 1
+  }
+}

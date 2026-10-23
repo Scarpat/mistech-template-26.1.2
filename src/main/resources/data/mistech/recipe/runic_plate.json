@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CPC",
+    "PAP",
+    "CPC"
+  ],
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "P": "minecraft:paper",
+    "A": "minecraft:amethyst_shard"
+  },
+  "result": {
+    "id": "mistech:runic_plate",
+    "count": 4
+  }
+}

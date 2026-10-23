@@ -45,3 +45,4 @@ repo/
 
 ### Python ###
 __pycache__/
+spell_delta*.tgz

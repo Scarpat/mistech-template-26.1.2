@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "mistech:orichalcum_dust",
+  "result": {
+    "id": "mistech:orichalcum_ingot"
+  },
+  "experience": 1.5,
+  "cookingtime": 300
+}

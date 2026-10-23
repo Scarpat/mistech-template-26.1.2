@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "MTM",
+    "ACA",
+    "MEM"
+  ],
+  "key": {
+    "M": "#c:ingots/mithril",
+    "T": "mistech:earth_rune",
+    "A": "mistech:impure_magic_shard",
+    "C": "mistech:runic_crusher",
+    "E": "mistech:energy_rune"
+  },
+  "result": {
+    "id": "mistech:arcane_crusher",
+    "count": 1
+  }
+}

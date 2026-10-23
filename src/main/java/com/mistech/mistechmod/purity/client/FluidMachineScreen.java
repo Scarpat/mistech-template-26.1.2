@@ -43,6 +43,12 @@ public class FluidMachineScreen extends MachineScreen {
         } else if (name.equals("experience_generator")) {
             this.gauges = List.of(new Gauge(gx, 1, com.mistech.mistechmod.power.ExperienceGeneratorBlockEntity.TANK, XP, XP_TOP,
                     "gui.mistech.experience_generator.stored", "gui.mistech.experience_amount"));
+        } else if (name.equals("arcane_extractor")) {
+            this.gauges = List.of(new Gauge(gx, 1, com.mistech.mistechmod.machine.arcane.ArcaneExtractorBlockEntity.TANK, IMPURE, IMPURE_TOP, "block.mistech.impure_essence"));
+        } else if (name.equals("liquefier")) {
+            this.gauges = List.of(new Gauge(gx, 1, com.mistech.mistechmod.machine.arcane.LiquefierBlockEntity.TANK, IMPURE, IMPURE_TOP, "block.mistech.impure_essence"));
+        } else if (name.equals("arcane_compressor")) {
+            this.gauges = List.of(new Gauge(gx, 1, com.mistech.mistechmod.machine.arcane.ArcaneCompressorBlockEntity.TANK, IMPURE, IMPURE_TOP, "block.mistech.impure_essence"));
         } else if (name.equals("distiller")) {
             this.gauges = List.of(
                     new Gauge(PurityLayouts.DISTILLER_IMPURE_X, 0, DistillerBlockEntity.TANK, IMPURE, IMPURE_TOP, "block.mistech.impure_essence"),

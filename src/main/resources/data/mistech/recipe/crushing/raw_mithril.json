@@ -1,0 +1,11 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "#c:raw_materials/mithril",
+  "result": {
+    "id": "mistech:mithril_dust",
+    "count": 1
+  },
+  "bonus_chance": 0.35,
+  "rune_bonus": true,
+  "tier": 2
+}

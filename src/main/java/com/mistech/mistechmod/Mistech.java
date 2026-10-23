@@ -227,8 +227,9 @@ public class Mistech {
     public static final DeferredItem<Item> IMPURE_MAGIC_SHARD = ITEMS.registerSimpleItem("impure_magic_shard");
 
     // Bloco de Magia Impura: bloco sólido (como diamante/esmeralda), escuro, pulsando roxo <-> laranja
-    // Receita: Fragmento + Resíduo / Resíduo + Fragmento (2x2)
-    public static final DeferredBlock<Block> IMPURE_MAGIC_BLOCK = BLOCKS.registerSimpleBlock("impure_magic_block",
+    // Receita: 5 Fragmentos + 4 Resíduos Mágicos (formato da TNT). Também é o revestimento da Forja Trituradora
+    public static final DeferredBlock<com.mistech.mistechmod.block.ImpureMagicBlock> IMPURE_MAGIC_BLOCK = BLOCKS.registerBlock("impure_magic_block",
+            com.mistech.mistechmod.block.ImpureMagicBlock::new,
             p -> p.mapColor(MapColor.COLOR_PURPLE).instrument(net.minecraft.world.level.block.state.properties.NoteBlockInstrument.BIT)
                     .requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.AMETHYST).lightLevel(state -> 3));
     // Pilar de Conexão Astral: multibloco Tronco Turvo + Lápis + Bloco de Magia Impura (Pedra Guia); 3 blocos de altura
@@ -306,7 +307,8 @@ public class Mistech {
             .component(DataComponents.CONSUMABLE, net.minecraft.world.item.component.Consumables.defaultDrink()
                     .onConsume(new net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect(java.util.List.of(
                             new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.HASTE, 1800, 0),
-                            new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.SPEED, 1800, 0))))
+                            new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.SPEED, 1800, 0),
+                            new net.minecraft.world.effect.MobEffectInstance(MistechEffects.CAFFEINATED, 1800, 0))))
                     .build()));
     // Chá de Beladona: Visão Mística por 1:30
     public static final DeferredItem<Item> BELLADONNA_TEA_CUP = ITEMS.registerSimpleItem("belladonna_tea_cup", p -> p.stacksTo(16)
@@ -316,7 +318,15 @@ public class Mistech {
                             new net.minecraft.world.effect.MobEffectInstance(MistechEffects.MYSTIC_SIGHT, 1800, 0)))
                     .build()));
     public static final DeferredItem<Item> HEMP_FIBER = ITEMS.registerSimpleItem("hemp_fiber");
-    public static final DeferredItem<Item> BELLADONNA_BERRIES = ITEMS.registerSimpleItem("belladonna_berries");
+    // Bagas de Beladona: dá para comer... mas são venenosas (Veneno, Náusea e um pouco de Visão Mística)
+    public static final DeferredItem<Item> BELLADONNA_BERRIES = ITEMS.registerSimpleItem("belladonna_berries", p -> p.food(
+            new net.minecraft.world.food.FoodProperties(1, 0.1F, true),
+            net.minecraft.world.item.component.Consumables.defaultFood()
+                    .onConsume(new net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect(java.util.List.of(
+                            new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.POISON, 100, 0),
+                            new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.NAUSEA, 160, 0),
+                            new net.minecraft.world.effect.MobEffectInstance(MistechEffects.MYSTIC_SIGHT, 400, 0))))
+                    .build()));
     public static final DeferredItem<Item> HEMP_LEAF = ITEMS.registerSimpleItem("hemp_leaf");
 
     // Folhas secas: fornalha, defumador ou fogueira
@@ -397,7 +407,7 @@ public class Mistech {
 
     // Creates a creative tab with the id "mistech:example_tab" for the example item, that is placed after the combat tab
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.mistech")) //The language key for the title of your CreativeModeTab
+            .title(Component.translatable("itemGroup.mistech"))
             .withTabsBefore(CreativeModeTabs.COMBAT)
             .icon(() -> INCENSE.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
@@ -416,21 +426,6 @@ public class Mistech {
                 for (DyeColor color : DyeColor.values()) {
                     output.accept(writingTableStack(color));
                 }
-                output.accept(FIRE_RUNE.get());
-                output.accept(WATER_RUNE.get());
-                output.accept(EARTH_RUNE.get());
-                output.accept(AIR_RUNE.get());
-                output.accept(ICE_RUNE.get());
-                output.accept(ENERGY_RUNE.get());
-                output.accept(LIGHT_RUNE.get());
-                output.accept(DARKNESS_RUNE.get());
-                output.accept(SPACE_RUNE.get());
-                output.accept(TIME_RUNE.get());
-                output.accept(MAGMA_RUNE.get());
-                output.accept(VAPOR_RUNE.get());
-                output.accept(VOID_RUNE.get());
-                output.accept(LUCK_RUNE.get());
-                output.accept(ARCANE_RUNE.get());
                 com.mistech.mistechmod.registry.MithrilContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.registry.SpatialContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.registry.AltarContent.creativeItems().forEach(item -> output.accept(item.get()));
@@ -451,40 +446,15 @@ public class Mistech {
                     output.accept(guideStoneStack(color));
                 }
                 output.accept(ASTROLOGY_TABLE_ITEM.get());
-                output.accept(TOBACCO_SEEDS.get());
-                output.accept(TOBACCO_LEAF.get());
-                output.accept(HEMP_SEEDS.get());
-                output.accept(HEMP_LEAF.get());
-                output.accept(HEMP_FIBER.get());
-                output.accept(BELLADONNA_SEEDS.get());
-                output.accept(COFFEE_SEEDS.get());
-                output.accept(COFFEE_CHERRY.get());
-                output.accept(ROASTED_COFFEE_BEANS.get());
-                output.accept(COFFEE_POWDER.get());
-                output.accept(GRINDER.get());
-                output.accept(KETTLE_ITEM.get());
-                output.accept(RAW_CUP.get());
-                output.accept(CUP.get());
-                output.accept(COFFEE_CUP.get());
-                output.accept(BELLADONNA_TEA_CUP.get());
                 com.mistech.mistechmod.registry.DreamContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.registry.RealmContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.registry.DreamRealmContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.registry.DreamMobs.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.registry.DreamDeepContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.registry.DreamRiftContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.registry.OreContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.registry.GoblinContent.creativeItems().forEach(item -> output.accept(item.get()));
-                output.accept(BELLADONNA_BERRIES.get());
-                output.accept(DRIED_TOBACCO_LEAF.get());
-                output.accept(DRIED_HEMP_LEAF.get());
-                output.accept(CIGAR.get());
-                output.accept(JOINT.get());
-                output.accept(PIPE.get());
-                output.accept(RUNIC_PIPE.get());
-                output.accept(MIST_PIPE.get());
                 output.accept(NATAL_CHART.get());
-                output.accept(RUNIC_ASHTRAY_ITEM.get());
-                output.accept(RUNE_ROLLER_ITEM.get());
                 // Máquinas II
                 com.mistech.mistechmod.registry.MachineContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.registry.GolemContent.creativeItems().forEach(item -> output.accept(item.get()));
@@ -507,31 +477,95 @@ public class Mistech {
                 com.mistech.mistechmod.fey.FeyContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.life.LifeContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.ranged.RangedContent.creativeItems().forEach(item -> output.accept(item.get()));
-                com.mistech.mistechmod.mage.MageContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.seeking.SeekingContent.creativeItems().forEach(item -> output.accept(item.get()));
-                com.mistech.mistechmod.utility.UtilityContent.creativeItems().forEach(item -> output.accept(item.get()));
-                com.mistech.mistechmod.drink.DrinkContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.utility.UtilityContent.creativeItems().stream().filter(i -> !i.getId().getPath().contains("hookah")).forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.infuser.InfuserContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.boitata.BoitataGear.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.lore.LoreContent.creativeItems().forEach(item -> output.accept(item.get()));
-                for (com.mistech.mistechmod.item.RuneElement element : com.mistech.mistechmod.item.RuneElement.values()) {
-                    output.accept(com.mistech.mistechmod.ranged.RuneArrowRecipe.of(element, 1));
-                }
                 com.mistech.mistechmod.artifact.ArtifactContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.ether.EtherContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.power.PowerContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.archive.ArchiveContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.golem.GolemRegistry.creativeItems().forEach(item -> output.accept(item.get()));
-                com.mistech.mistechmod.tarot.TarotContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.machine.arcane.ArcaneMachines.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.machine.forge.ForgeContent.creativeItems().forEach(item -> output.accept(item.get()));
                 output.accept(com.mistech.mistechmod.registry.MistechWear.GNOME_HAT.get());
                 output.accept(com.mistech.mistechmod.registry.MistechWear.MYSTIC_ROBE.get());
                 output.accept(com.mistech.mistechmod.registry.MistechWear.COMFY_PANTS.get());
                 output.accept(com.mistech.mistechmod.registry.MistechWear.SLIPPERS.get());
+                output.accept(EXAMPLE_ITEM.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
+            }).build());
+
+    /** Aba de Magias: runas, sistema de feitiços (Tomos, Varinhas, pergaminhos, Mesa de Inscrição), vestes de mago, Tarot. */
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> SPELLS_TAB = CREATIVE_MODE_TABS.register("spells_tab", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.mistech.spells"))
+            .withTabsBefore(EXAMPLE_TAB.getKey())
+            .icon(() -> com.mistech.mistechmod.spellcraft.SpellcraftContent.APPRENTICE_TOME.get().getDefaultInstance())
+            .displayItems((parameters, output) -> {
+                output.accept(FIRE_RUNE.get());
+                output.accept(WATER_RUNE.get());
+                output.accept(EARTH_RUNE.get());
+                output.accept(AIR_RUNE.get());
+                output.accept(ICE_RUNE.get());
+                output.accept(ENERGY_RUNE.get());
+                output.accept(LIGHT_RUNE.get());
+                output.accept(DARKNESS_RUNE.get());
+                output.accept(SPACE_RUNE.get());
+                output.accept(TIME_RUNE.get());
+                output.accept(MAGMA_RUNE.get());
+                output.accept(VAPOR_RUNE.get());
+                output.accept(VOID_RUNE.get());
+                output.accept(LUCK_RUNE.get());
+                output.accept(ARCANE_RUNE.get());
+                com.mistech.mistechmod.mage.MageContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.spellcraft.SpellcraftContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.spellcraft.SpellcraftContent.creativeStacks().forEach(output::accept);
+                for (com.mistech.mistechmod.item.RuneElement element : com.mistech.mistechmod.item.RuneElement.values()) {
+                    output.accept(com.mistech.mistechmod.ranged.RuneArrowRecipe.of(element, 1));
+                }
+                com.mistech.mistechmod.tarot.TarotContent.creativeItems().forEach(item -> output.accept(item.get()));
+                output.accept(com.mistech.mistechmod.item.scroll.ScrollCaseContent.SCROLL_CASE.get());
+            }).build());
+
+    /** Aba de Herbalismo e Fumo: plantações, café e chá, bebidas, charutos, cigarros, cachimbos. */
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> HERBAL_TAB = CREATIVE_MODE_TABS.register("herbal_tab", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.mistech.herbal"))
+            .withTabsBefore(SPELLS_TAB.getKey())
+            .icon(() -> TOBACCO_LEAF.get().getDefaultInstance())
+            .displayItems((parameters, output) -> {
+                output.accept(TOBACCO_SEEDS.get());
+                output.accept(TOBACCO_LEAF.get());
+                output.accept(HEMP_SEEDS.get());
+                output.accept(HEMP_LEAF.get());
+                output.accept(HEMP_FIBER.get());
+                output.accept(BELLADONNA_SEEDS.get());
+                output.accept(COFFEE_SEEDS.get());
+                output.accept(COFFEE_CHERRY.get());
+                output.accept(ROASTED_COFFEE_BEANS.get());
+                output.accept(COFFEE_POWDER.get());
+                output.accept(GRINDER.get());
+                output.accept(KETTLE_ITEM.get());
+                output.accept(RAW_CUP.get());
+                output.accept(CUP.get());
+                output.accept(COFFEE_CUP.get());
+                output.accept(BELLADONNA_TEA_CUP.get());
+                output.accept(BELLADONNA_BERRIES.get());
+                output.accept(DRIED_TOBACCO_LEAF.get());
+                output.accept(DRIED_HEMP_LEAF.get());
+                output.accept(CIGAR.get());
+                output.accept(JOINT.get());
+                output.accept(PIPE.get());
+                output.accept(RUNIC_PIPE.get());
+                output.accept(MIST_PIPE.get());
+                output.accept(RUNIC_ASHTRAY_ITEM.get());
+                output.accept(RUNE_ROLLER_ITEM.get());
+                com.mistech.mistechmod.utility.UtilityContent.creativeItems().stream().filter(i -> i.getId().getPath().contains("hookah")).forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.garden.GardenContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.drink.DrinkContent.creativeItems().forEach(item -> output.accept(item.get()));
                 for (com.mistech.mistechmod.item.RuneElement element : com.mistech.mistechmod.item.RuneElement.values()) {
                     output.accept(com.mistech.mistechmod.item.MagicSmokableItem.create(MAGIC_CIGAR.get(), element, 1));
                     output.accept(com.mistech.mistechmod.item.MagicSmokableItem.create(MAGIC_JOINT.get(), element, 1));
                 }
-                output.accept(EXAMPLE_ITEM.get());// Add the example item to the tab. For your own tabs, this method is preferred over the event
             }).build());
 
     // The constructor for the mod class is the first code that is run when your mod is loaded.
@@ -561,6 +595,7 @@ public class Mistech {
         com.mistech.mistechmod.registry.DreamMobs.register(modEventBus);
         com.mistech.mistechmod.registry.DreamStructures.register(modEventBus);
         com.mistech.mistechmod.registry.DreamDeepContent.register(modEventBus);
+        com.mistech.mistechmod.registry.DreamRiftContent.register(modEventBus);
         com.mistech.mistechmod.registry.OreContent.init();
         com.mistech.mistechmod.registry.SpatialContent.register(modEventBus);
         com.mistech.mistechmod.registry.MithrilContent.register(modEventBus);
@@ -576,8 +611,10 @@ public class Mistech {
         com.mistech.mistechmod.life.LifeContent.register(modEventBus);
         com.mistech.mistechmod.ranged.RangedContent.register(modEventBus);
         com.mistech.mistechmod.mage.MageContent.register(modEventBus);
+        com.mistech.mistechmod.spellcraft.SpellcraftContent.register(modEventBus);
         com.mistech.mistechmod.seeking.SeekingContent.register(modEventBus);
         com.mistech.mistechmod.utility.UtilityContent.register(modEventBus);
+        com.mistech.mistechmod.garden.GardenContent.register(modEventBus);
         com.mistech.mistechmod.husbandry.HusbandryContent.register(modEventBus);
         com.mistech.mistechmod.drink.DrinkContent.register(modEventBus);
         com.mistech.mistechmod.infuser.InfuserContent.register(modEventBus);
@@ -589,6 +626,9 @@ public class Mistech {
         com.mistech.mistechmod.archive.ArchiveContent.register(modEventBus);
         com.mistech.mistechmod.golem.GolemRegistry.register(modEventBus);
         com.mistech.mistechmod.tarot.TarotContent.register(modEventBus);
+        com.mistech.mistechmod.machine.arcane.ArcaneMachines.register(modEventBus);
+        com.mistech.mistechmod.item.scroll.ScrollCaseContent.init();
+        com.mistech.mistechmod.machine.forge.ForgeContent.register(modEventBus);
         com.mistech.mistechmod.event.MurkySaplingModifier.register(modEventBus);
         MistechBlockEntities.register(modEventBus);
         MistechMenus.register(modEventBus);
@@ -607,7 +647,8 @@ public class Mistech {
         modEventBus.addListener(this::addCreative);
 
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        modContainer.registerConfig(ModConfig.Type.SERVER, Config.SERVER_SPEC);
+        modContainer.registerConfig(ModConfig.Type.CLIENT, Config.CLIENT_SPEC);
     }
 
     private static BlockBehaviour.Properties cropProperties(BlockBehaviour.Properties p) {
@@ -665,13 +706,6 @@ public class Mistech {
         LOGGER.info("HELLO FROM COMMON SETUP");
         event.enqueueWork(com.mistech.mistechmod.registry.MurkyWood::setup);
 
-        if (Config.LOG_DIRT_BLOCK.getAsBoolean()) {
-            LOGGER.info("DIRT BLOCK >> {}", BuiltInRegistries.BLOCK.getKey(Blocks.DIRT));
-        }
-
-        LOGGER.info("{}{}", Config.MAGIC_NUMBER_INTRODUCTION.get(), Config.MAGIC_NUMBER.getAsInt());
-
-        Config.ITEM_STRINGS.get().forEach((item) -> LOGGER.info("ITEM >> {}", item));
     }
 
     // Add the example block item to the building blocks tab

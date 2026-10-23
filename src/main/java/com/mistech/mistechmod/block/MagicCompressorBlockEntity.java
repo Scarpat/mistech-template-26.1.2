@@ -27,7 +27,7 @@ import net.minecraft.world.phys.AABB;
  * O fragmento pronto fica guardado em cima do compressor (até 1 pack) para golens/funis tirarem — sai por qualquer lado.
  * Se o que está guardado for outro fragmento ou estiver cheio, espera.
  */
-public class MagicCompressorBlockEntity extends BlockEntity implements net.minecraft.world.WorldlyContainer {
+public class MagicCompressorBlockEntity extends BlockEntity implements com.mistech.mistechmod.compat.InfoProvider, net.minecraft.world.WorldlyContainer {
     private static final int[] SLOTS = {0};
     private ItemStack output = ItemStack.EMPTY;
     public static final int HARDEN_TICKS = 15 * 20;
@@ -37,6 +37,23 @@ public class MagicCompressorBlockEntity extends BlockEntity implements net.minec
     private int progress;
     /** Cheio de Essência Ígnea: endurece em Fragmento Choroso. */
     private boolean igneous;
+    /** Frascos de Essência Impura esperando a vez (balde = 4 de uma vez): o compressor enche sozinho ao terminar. */
+    private int reserve;
+    public static final int MAX_RESERVE = 3;
+
+    public int getReserve() {
+        return this.reserve;
+    }
+
+    /** Guarda mais {@code amount} frascos na reserva (só Essência Impura). Devolve quantos couberam. */
+    public int addReserve(int amount) {
+        int added = Math.max(0, Math.min(amount, MAX_RESERVE - this.reserve));
+        this.reserve += added;
+        if (added > 0) {
+            this.setChanged();
+        }
+        return added;
+    }
 
     public void setIgneous(boolean igneous) {
         this.igneous = igneous;
@@ -58,16 +75,20 @@ public class MagicCompressorBlockEntity extends BlockEntity implements net.minec
         compressor.progress += com.mistech.mistechmod.machine.GnomeBoost.isBoosted(level, pos) ? 30 : 20;
         serverLevel.sendParticles(ParticleTypes.WITCH, pos.getX() + 0.5, pos.getY() + 1.05, pos.getZ() + 0.5,
                 4, 0.12, 0.05, 0.12, 0.0);
-        if (compressor.progress >= HARDEN_TICKS) {
+        if (compressor.progress >= com.mistech.mistechmod.Config.compressorTicks()) {
             ItemStack made = new ItemStack(compressor.igneous
                     ? com.mistech.mistechmod.beyond.PaleNetherContent.CRYING_SHARD.get() : Mistech.IMPURE_MAGIC_SHARD.get());
             if (!compressor.output.isEmpty() && (!ItemStack.isSameItemSameComponents(compressor.output, made)
                     || compressor.output.getCount() >= compressor.output.getMaxStackSize())) {
-                compressor.progress = HARDEN_TICKS; // pronto, esperando alguém tirar o que está em cima
+                compressor.progress = com.mistech.mistechmod.Config.compressorTicks(); // pronto, esperando alguém tirar o que está em cima
                 return;
             }
             compressor.progress = 0;
-            level.setBlock(pos, state.setValue(MagicCompressorBlock.FILLED, false), Block.UPDATE_ALL);
+            if (compressor.reserve > 0) {
+                compressor.reserve--; // a reserva enche o buraco de novo
+            } else {
+                level.setBlock(pos, state.setValue(MagicCompressorBlock.FILLED, false), Block.UPDATE_ALL);
+            }
             if (compressor.output.isEmpty()) {
                 compressor.output = made;
             } else {
@@ -142,6 +163,7 @@ public class MagicCompressorBlockEntity extends BlockEntity implements net.minec
         super.loadAdditional(input);
         this.progress = input.getIntOr("Progress", 0);
         this.igneous = input.getBooleanOr("Igneous", false);
+        this.reserve = input.getIntOr("Reserve", 0);
         this.output = input.read("Output", ItemStack.OPTIONAL_CODEC).orElse(ItemStack.EMPTY);
     }
 
@@ -150,6 +172,7 @@ public class MagicCompressorBlockEntity extends BlockEntity implements net.minec
         super.saveAdditional(output);
         output.putInt("Progress", this.progress);
         output.putBoolean("Igneous", this.igneous);
+        output.putInt("Reserve", this.reserve);
         if (!this.output.isEmpty()) {
             output.store("Output", ItemStack.OPTIONAL_CODEC, this.output);
         }
@@ -231,5 +254,21 @@ public class MagicCompressorBlockEntity extends BlockEntity implements net.minec
     public void clearContent() {
         this.output = ItemStack.EMPTY;
         this.sync();
+    }
+
+    @Override
+    public void addInfo(java.util.List<net.minecraft.network.chat.Component> lines) {
+        BlockState state = this.getBlockState();
+        if (state.hasProperty(MagicCompressorBlock.FILLED) && state.getValue(MagicCompressorBlock.FILLED)) {
+            lines.add(com.mistech.mistechmod.compat.InfoProvider.progress(this.progress, com.mistech.mistechmod.Config.compressorTicks()));
+            if (this.reserve > 0) {
+                lines.add(net.minecraft.network.chat.Component.translatable("info.mistech.compressor.reserve", this.reserve));
+            }
+            if (this.level instanceof ServerLevel server && !hasIncenseNearby(server, this.worldPosition)) {
+                lines.add(net.minecraft.network.chat.Component.translatable("info.mistech.compressor.needs_incense"));
+            }
+        } else {
+            lines.add(net.minecraft.network.chat.Component.translatable("info.mistech.compressor.empty"));
+        }
     }
 }

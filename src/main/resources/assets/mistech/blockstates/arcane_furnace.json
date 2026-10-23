@@ -1,0 +1,58 @@
+{
+  "variants": {
+    "facing=north,formed=false,lit=false": {
+      "model": "mistech:block/arcane_furnace"
+    },
+    "facing=north,formed=true,lit=false": {
+      "model": "mistech:block/forge_part_hidden"
+    },
+    "facing=north,formed=false,lit=true": {
+      "model": "mistech:block/arcane_furnace_on"
+    },
+    "facing=north,formed=true,lit=true": {
+      "model": "mistech:block/forge_part_hidden"
+    },
+    "facing=east,formed=false,lit=false": {
+      "model": "mistech:block/arcane_furnace",
+      "y": 90
+    },
+    "facing=east,formed=true,lit=false": {
+      "model": "mistech:block/forge_part_hidden"
+    },
+    "facing=east,formed=false,lit=true": {
+      "model": "mistech:block/arcane_furnace_on",
+      "y": 90
+    },
+    "facing=east,formed=true,lit=true": {
+      "model": "mistech:block/forge_part_hidden"
+    },
+    "facing=south,formed=false,lit=false": {
+      "model": "mistech:block/arcane_furnace",
+      "y": 180
+    },
+    "facing=south,formed=true,lit=false": {
+      "model": "mistech:block/forge_part_hidden"
+    },
+    "facing=south,formed=false,lit=true": {
+      "model": "mistech:block/arcane_furnace_on",
+      "y": 180
+    },
+    "facing=south,formed=true,lit=true": {
+      "model": "mistech:block/forge_part_hidden"
+    },
+    "facing=west,formed=false,lit=false": {
+      "model": "mistech:block/arcane_furnace",
+      "y": 270
+    },
+    "facing=west,formed=true,lit=false": {
+      "model": "mistech:block/forge_part_hidden"
+    },
+    "facing=west,formed=false,lit=true": {
+      "model": "mistech:block/arcane_furnace_on",
+      "y": 270
+    },
+    "facing=west,formed=true,lit=true": {
+      "model": "mistech:block/forge_part_hidden"
+    }
+  }
+}

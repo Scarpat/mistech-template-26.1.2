@@ -30,18 +30,21 @@ import net.minecraft.world.level.Level;
  *   "ingredient": "#c:ores/iron",
  *   "result": { "id": "mistech:iron_dust", "count": 2 },
  *   "bonus_chance": 0.25,
- *   "rune_bonus": true }
+ *   "rune_bonus": true,
+ *   "tier": 1 }
  * </pre>
+ * {@code tier}: 1 = qualquer triturador; 2 = só o Triturador Arcano e a Forja Trituradora (metais dos gnomos).
  */
 public record CrushingRecipe(Recipe.CommonInfo commonInfo, Ingredient ingredient, ItemStackTemplate result,
-        float bonusChance, boolean runeBonus) implements Recipe<SingleRecipeInput> {
+        float bonusChance, boolean runeBonus, int tier) implements Recipe<SingleRecipeInput> {
 
     public static final MapCodec<CrushingRecipe> CODEC = RecordCodecBuilder.mapCodec(i -> i.group(
             Recipe.CommonInfo.MAP_CODEC.forGetter(CrushingRecipe::commonInfo),
             Ingredient.CODEC.fieldOf("ingredient").forGetter(CrushingRecipe::ingredient),
             ItemStackTemplate.CODEC.fieldOf("result").forGetter(CrushingRecipe::result),
             Codec.floatRange(0.0F, 1.0F).optionalFieldOf("bonus_chance", 0.0F).forGetter(CrushingRecipe::bonusChance),
-            Codec.BOOL.optionalFieldOf("rune_bonus", false).forGetter(CrushingRecipe::runeBonus)
+            Codec.BOOL.optionalFieldOf("rune_bonus", false).forGetter(CrushingRecipe::runeBonus),
+            Codec.intRange(1, 3).optionalFieldOf("tier", 1).forGetter(CrushingRecipe::tier)
     ).apply(i, CrushingRecipe::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, CrushingRecipe> STREAM_CODEC = StreamCodec.composite(
@@ -50,6 +53,7 @@ public record CrushingRecipe(Recipe.CommonInfo commonInfo, Ingredient ingredient
             ItemStackTemplate.STREAM_CODEC, CrushingRecipe::result,
             ByteBufCodecs.FLOAT, CrushingRecipe::bonusChance,
             ByteBufCodecs.BOOL, CrushingRecipe::runeBonus,
+            ByteBufCodecs.VAR_INT, CrushingRecipe::tier,
             CrushingRecipe::new);
 
     @Override

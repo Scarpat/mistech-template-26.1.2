@@ -42,7 +42,7 @@ public class RunicPlanterBlockEntity extends FarmMachineBlockEntity {
 
     @Override
     protected int radius() {
-        return BASE_RADIUS;
+        return BASE_RADIUS + this.rangeBonus();
     }
 
     @Override

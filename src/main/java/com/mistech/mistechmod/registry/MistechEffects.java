@@ -59,6 +59,13 @@ public final class MistechEffects {
                             net.minecraft.resources.Identifier.fromNamespaceAndPath(Mistech.MODID, "effect.extended_reach_entity"), 3.0,
                             net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation.ADD_VALUE));
 
+    /**
+     * Cafeinado (Xícara de Café): não dá sono (Phantoms não aparecem, mas também não dá para dormir) e +10% de experiência.
+     * Lógica em {@link com.mistech.mistechmod.herbal.HerbalEvents}.
+     */
+    public static final DeferredHolder<MobEffect, MobEffect> CAFFEINATED =
+            MOB_EFFECTS.register("caffeinated", () -> new SimpleEffect(MobEffectCategory.BENEFICIAL, 0x6B3A1E));
+
     /** Visão Mística (poção de Beladona): campo de visão maior, cores estranhas e a câmera balançando (no cliente). */
     public static final DeferredHolder<MobEffect, MobEffect> MYSTIC_SIGHT =
             MOB_EFFECTS.register("mystic_sight", () -> new SimpleEffect(MobEffectCategory.NEUTRAL, 0x7A3FC8));

@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "formed=false": {
       "model": "mistech:block/impure_magic_block"
+    },
+    "formed=true": {
+      "model": "mistech:block/forge_part_hidden"
     }
   }
 }

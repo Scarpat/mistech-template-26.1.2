@@ -40,7 +40,7 @@ import net.neoforged.neoforge.transfer.energy.SimpleEnergyHandler;
  * Lento: {@link #WORK_TICKS} por item, gastando {@link #ENERGY_PER_TICK} FE/tick.
  * A água/lava do mundo NÃO é consumida.
  */
-public class CondenserBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
+public class CondenserBlockEntity extends BaseContainerBlockEntity implements com.mistech.mistechmod.compat.InfoProvider, WorldlyContainer {
     public static final int SLOT_INPUT = 0;
     public static final int SLOT_OUTPUT = 1;
     public static final int CAPACITY = 10_000;
@@ -236,5 +236,12 @@ public class CondenserBlockEntity extends BaseContainerBlockEntity implements Wo
     @Override
     protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
         return new CondenserMenu(containerId, inventory, this, this.dataAccess);
+    }
+
+    @Override
+    public void addInfo(java.util.List<net.minecraft.network.chat.Component> lines) {
+        if (this.progress > 0) {
+            lines.add(com.mistech.mistechmod.compat.InfoProvider.progress(this.progress, WORK_TICKS));
+        }
     }
 }

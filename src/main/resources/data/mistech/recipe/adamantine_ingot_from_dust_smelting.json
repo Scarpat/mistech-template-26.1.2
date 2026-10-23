@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "ingredient": "mistech:adamantine_dust",
+  "result": {
+    "id": "mistech:adamantine_ingot"
+  },
+  "experience": 1.0,
+  "cookingtime": 200
+}

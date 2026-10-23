@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 71832099,
+    "spacing": 30,
+    "separation": 10
+  },
+  "structures": [
+    {
+      "structure": "mistech:rune_circle",
+      "weight": 1
+    }
+  ]
+}

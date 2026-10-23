@@ -64,6 +64,9 @@ public class GnomeKingEntity extends PathfinderMob implements Merchant {
         // Gnomo Engarrafado (um ajudante pronto): 16 maçãs + 1 Pote de Vidro
         list.add(new MerchantOffer(new ItemCost(Items.APPLE, 16), Optional.of(new ItemCost(Mistech.GLASS_JAR_ITEM.get(), 1)),
                 new ItemStack(GnomeContent.BOTTLED_GNOME_ITEM.get()), 6, 10, 0.05F));
+        // Sementes de Mandrágora: 12 farinhas de osso + 2 maçãs (o Rei sabe onde elas brotam)
+        list.add(new MerchantOffer(new ItemCost(Items.BONE_MEAL, 12), Optional.of(new ItemCost(Items.APPLE, 2)),
+                new ItemStack(com.mistech.mistechmod.garden.GardenContent.MANDRAKE_SEEDS.get()), 4, 10, 0.05F));
         // Cajado do Gnomo: 8 barras de ouro + 1 Runa de Energia
         list.add(new MerchantOffer(new ItemCost(Items.GOLD_INGOT, 8), Optional.of(new ItemCost(Mistech.ENERGY_RUNE.get(), 1)),
                 new ItemStack(GnomeContent.GNOME_STAFF.get()), 1, 30, 0.05F));

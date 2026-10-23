@@ -36,7 +36,7 @@ import net.minecraft.world.level.storage.ValueOutput;
  * Slots: 0 = entrada, 1 = saída. Sem slot de combustível.
  * Usa as receitas de fornalha comum (tipo minecraft:smelting) com 75% do tempo.
  */
-public class RunicFurnaceBlockEntity extends BaseContainerBlockEntity implements WorldlyContainer {
+public class RunicFurnaceBlockEntity extends BaseContainerBlockEntity implements com.mistech.mistechmod.compat.InfoProvider, WorldlyContainer {
     public static final int SLOT_INPUT = 0;
     public static final int SLOT_OUTPUT = 1;
     /** Multiplicador do tempo de cozimento (0.75 = 25% mais rápida que a fornalha comum). */
@@ -86,16 +86,15 @@ public class RunicFurnaceBlockEntity extends BaseContainerBlockEntity implements
         boolean cooking = false;
 
         if (!input.isEmpty()) {
-            SingleRecipeInput recipeInput = new SingleRecipeInput(input);
-            Optional<RecipeHolder<SmeltingRecipe>> found =
-                    serverLevel.recipeAccess().getRecipeFor(RecipeType.SMELTING, recipeInput, serverLevel, furnace.lastRecipe);
+            // fornalha comum ou, se não houver, alto-forno (minérios de adamantina e oricalco)
+            var found = com.mistech.mistechmod.machine.SmeltingLookup.find(serverLevel, input);
             if (found.isPresent()) {
-                furnace.lastRecipe = found.get();
-                SmeltingRecipe recipe = found.get().value();
-                ItemStack result = recipe.assemble(recipeInput);
+                var recipe = found.get();
+                ItemStack result = recipe.output();
                 if (furnace.canOutput(result)) {
                     cooking = true;
-                    furnace.cookTotal = Math.max(1, Math.round(recipe.cookingTime() * SPEED_FACTOR));
+                    int base = recipe.blasting() ? recipe.cookingTime() * 2 : recipe.cookingTime();
+                    furnace.cookTotal = Math.max(1, Math.round(base * com.mistech.mistechmod.Config.runicFurnaceTime()));
                     furnace.cookProgress += com.mistech.mistechmod.machine.GnomeBoost.extraStep(level, pos) ? 2 : 1;
                     if (furnace.cookProgress >= furnace.cookTotal) {
                         furnace.cookProgress = 0;
@@ -219,5 +218,15 @@ public class RunicFurnaceBlockEntity extends BaseContainerBlockEntity implements
     @Override
     protected AbstractContainerMenu createMenu(int containerId, Inventory inventory) {
         return new RunicFurnaceMenu(containerId, inventory, this, this.dataAccess);
+    }
+
+    @Override
+    public void addInfo(java.util.List<net.minecraft.network.chat.Component> lines) {
+        if (this.cookProgress > 0 && this.cookTotal > 0) {
+            lines.add(com.mistech.mistechmod.compat.InfoProvider.progress(this.cookProgress, this.cookTotal));
+        }
+        if (this.storedExperience >= 1.0F) {
+            lines.add(net.minecraft.network.chat.Component.translatable("info.mistech.stored_xp", (int) this.storedExperience));
+        }
     }
 }

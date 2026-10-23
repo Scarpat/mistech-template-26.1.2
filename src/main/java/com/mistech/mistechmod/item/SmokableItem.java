@@ -107,7 +107,7 @@ public class SmokableItem extends Item {
         // acende o PRÓPRIO stack da mão (trocar por um stack novo fazia o item sumir)
         this.lightInPlace(player, player.getItemInHand(hand));
         EquipmentSlot slot = lighterHand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND;
-        lighter.hurtAndBreak(1, player, slot);
+        IncenseItem.useLighter(lighter, player, slot);
         level.playSound(null, player.getX(), player.getY(), player.getZ(),
                 SoundEvents.FLINTANDSTEEL_USE, SoundSource.PLAYERS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
     }

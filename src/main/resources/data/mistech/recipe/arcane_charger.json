@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ARA",
+    "ICI",
+    "III"
+  ],
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "R": "mistech:arcane_rune",
+    "I": "minecraft:iron_ingot",
+    "C": "minecraft:copper_ingot"
+  },
+  "result": {
+    "id": "mistech:arcane_charger",
+    "count": 1
+  }
+}

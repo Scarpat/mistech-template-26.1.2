@@ -22,6 +22,8 @@ public enum Accessory {
     // Coroas da Rainha Duende (vão no espaço de amuleto; efeitos em com.mistech.mistechmod.fey.FeyEvents)
     CORRUPTED_CROWN("corrupted_crown", false),
     PURIFIED_CROWN("purified_crown", false),
+    // Coroa de Éter (magias): mais mana e regeneração mais rápida; efeito em ManaService
+    AETHER_CROWN("aether_crown", false),
     // Folclore: Anel da Iara (escama da Iara) — protege do canto e dá fôlego/agilidade na água
     IARA_RING("iara_ring", true);
 

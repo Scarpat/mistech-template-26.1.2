@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CEC",
+    "FBT",
+    "CAC"
+  ],
+  "key": {
+    "C": "#c:ingots/mithril",
+    "E": "mistech:energy_rune",
+    "F": "mistech:fire_rune",
+    "B": "minecraft:blast_furnace",
+    "T": "mistech:earth_rune",
+    "A": "mistech:impure_magic_block"
+  },
+  "result": {
+    "id": "mistech:crusher_forge",
+    "count": 1
+  }
+}

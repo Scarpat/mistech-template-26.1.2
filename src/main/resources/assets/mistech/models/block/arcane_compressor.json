@@ -1,0 +1,9 @@
+{
+  "parent": "mistech:block/magic_compressor_filled",
+  "textures": {
+    "particle": "mistech:block/arcane_compressor_body",
+    "body": "mistech:block/arcane_compressor_body",
+    "top": "mistech:block/arcane_compressor_top",
+    "essence": "minecraft:block/amethyst_block"
+  }
+}

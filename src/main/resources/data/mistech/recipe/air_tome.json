@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mistech:adept_tome",
+    "mistech:air_rune",
+    "mistech:air_rune",
+    "mistech:air_rune"
+  ],
+  "result": {
+    "id": "mistech:air_tome",
+    "count": 1
+  }
+}

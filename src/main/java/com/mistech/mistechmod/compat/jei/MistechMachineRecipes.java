@@ -291,6 +291,14 @@ final class MistechMachineRecipes {
                 .out(Mistech.ASTRAL_PILLAR_ITEM.get())
                 .note("jei.mistech.multiblock.astral_pillar"));
 
+        list.add(MachineRecipe.create().station(Mistech.GUIDE_STONE.get())
+                .in(com.mistech.mistechmod.machine.forge.ForgeContent.CRUSHER_FORGE_ITEM.get())
+                .in(com.mistech.mistechmod.machine.arcane.ArcaneMachines.ARCANE_FURNACE_ITEM.get())
+                .in(com.mistech.mistechmod.machine.arcane.ArcaneMachines.ARCANE_CRUSHER_ITEM.get())
+                .in(Mistech.IMPURE_MAGIC_BLOCK_ITEM.get(), 5)
+                .label(Component.translatable("block.mistech.crusher_forge"))
+                .note("jei.mistech.multiblock.crusher_forge"));
+
         int lapis = count(AstrologyField.PATTERN, 'L'), gold = count(AstrologyField.PATTERN, 'O');
         list.add(MachineRecipe.create().station(Mistech.GUIDE_STONE.get())
                 .in(Mistech.WRITING_TABLE_ITEM.get()).in(Blocks.LAPIS_BLOCK, lapis).in(Blocks.GOLD_BLOCK, gold)

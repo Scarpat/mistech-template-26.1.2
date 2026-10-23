@@ -1,0 +1,537 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": 1,
+      "bonus_rolls": 0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "fire_spark",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    16738847
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "ice_shard",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    10478591
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "water_bolt",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    4164863
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "gust",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    14546175
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "energy_discharge",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    16769354
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "water_mend",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    4164863
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "stone_skin",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    9071162
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "holy_light",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    16774848
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "shadow_veil",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    5910136
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "blink",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    9064408
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "sprout",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    6084188
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "boulder",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    9071162
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "spark_arc",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    16769354
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "glimmer",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    16774848
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "gloom",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    5910136
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "quicken",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    6280880
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "pull",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    9064408
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "ember_ring",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    16738847
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "frost_nova",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    10478591
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "updraft",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    14546175
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "foresight",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    6280880
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "bloom",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    6084188
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "telekinesis",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    9064408
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "mist",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    13228264
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "quick_vine",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    6084188
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "recharge",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    11558143
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "light_orb",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    16774848
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "vigilant_gaze",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    15262422
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "mistech:spell_scroll",
+          "weight": 10,
+          "functions": [
+            {
+              "function": "minecraft:set_components",
+              "components": {
+                "mistech:spell_id": "lucky_coin",
+                "minecraft:custom_model_data": {
+                  "colors": [
+                    5228891
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "type": "minecraft:empty",
+          "weight": 260
+        }
+      ]
+    }
+  ]
+}

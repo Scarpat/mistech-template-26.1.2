@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 71831405,
+    "spacing": 40,
+    "separation": 16
+  },
+  "structures": [
+    {
+      "structure": "mistech:forbidden_library",
+      "weight": 1
+    }
+  ]
+}

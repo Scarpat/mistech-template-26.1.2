@@ -61,11 +61,11 @@ public class MistechJeiPlugin implements IModPlugin {
 
         static final List<Machine> MACHINES = List.of(
                 new Machine(machineType("magic_compressor"), "block.mistech.magic_compressor", Mistech.MAGIC_COMPRESSOR_ITEM,
-                        () -> List.of(Mistech.MAGIC_COMPRESSOR_ITEM.get()), MistechMachineRecipes::compressor),
+                        () -> List.of(Mistech.MAGIC_COMPRESSOR_ITEM.get(), com.mistech.mistechmod.machine.arcane.ArcaneMachines.ARCANE_COMPRESSOR_ITEM.get()), MistechMachineRecipes::compressor),
                 new Machine(machineType("crystallizer"), "block.mistech.crystallizer", PurityContent.CRYSTALLIZER_ITEM,
                         () -> List.of(PurityContent.CRYSTALLIZER_ITEM.get()), MistechMachineRecipes::crystallizer),
                 new Machine(machineType("essence_extractor"), "block.mistech.essence_extractor", Mistech.ESSENCE_EXTRACTOR_ITEM,
-                        () -> List.of(Mistech.ESSENCE_EXTRACTOR_ITEM.get()), MistechMachineRecipes::extractor),
+                        () -> List.of(Mistech.ESSENCE_EXTRACTOR_ITEM.get(), com.mistech.mistechmod.machine.arcane.ArcaneMachines.ARCANE_EXTRACTOR_ITEM.get()), MistechMachineRecipes::extractor),
                 new Machine(machineType("condenser"), "block.mistech.condenser", Mistech.CONDENSER_ITEM,
                         () -> List.of(Mistech.CONDENSER_ITEM.get()), MistechMachineRecipes::condenser),
                 new Machine(machineType("distiller"), "block.mistech.distiller", PurityContent.DISTILLER_ITEM,
@@ -162,23 +162,84 @@ public class MistechJeiPlugin implements IModPlugin {
         registration.addIngredientInfo(com.mistech.mistechmod.registry.GnomeContent.BOTTLED_GNOME_ITEM.get(), Component.translatable("jei.mistech.info.bottled_gnome"));
         registration.addIngredientInfo(com.mistech.mistechmod.husbandry.HusbandryContent.GROWING_POT_ITEM.get(), Component.translatable("jei.mistech.info.growing_pot"));
         registration.addIngredientInfo(com.mistech.mistechmod.husbandry.HusbandryContent.CREATURE_JAR_ITEM.get(), Component.translatable("jei.mistech.info.creature_jar"));
+        registration.addIngredientInfo(com.mistech.mistechmod.utility.UtilityContent.HAMMOCK_ITEM.get(), Component.translatable("jei.mistech.info.hammock"));
+        registration.addIngredientInfo(com.mistech.mistechmod.garden.GardenContent.MANDRAKE_SEEDS.get(), Component.translatable("jei.mistech.info.mandrake_seeds"));
+        registration.addIngredientInfo(com.mistech.mistechmod.garden.GardenContent.MANDRAKE.get(), Component.translatable("jei.mistech.info.mandrake_root"));
+        registration.addIngredientInfo(com.mistech.mistechmod.garden.GardenContent.BOTTLED_MANDRAKE_ITEM.get(), Component.translatable("jei.mistech.info.bottled_mandrake"));
         registration.addIngredientInfo(com.mistech.mistechmod.Mistech.GRINDER.get(), Component.translatable("jei.mistech.info.grinder"));
         registration.addIngredientInfo(MachineContent.TUNNELER_ITEM.get(), Component.translatable("jei.mistech.info.tunneler"));
         registration.addIngredientInfo(com.mistech.mistechmod.lore.LoreContent.CUCA_CAULDRON_ITEM.get(), Component.translatable("jei.mistech.info.cuca_cauldron"));
         registration.addIngredientInfo(Mistech.RUNIC_ASHTRAY_ITEM.get(), Component.translatable("jei.mistech.info.runic_ashtray"));
+        registration.addIngredientInfo(com.mistech.mistechmod.machine.arcane.ArcaneMachines.LIQUEFIER_ITEM.get(), Component.translatable("guide.mistech.liquefier.1"));
+        registration.addIngredientInfo(com.mistech.mistechmod.machine.forge.ForgeContent.CRUSHER_FORGE_ITEM.get(),
+                Component.translatable("guide.mistech.crusher_forge.1"), Component.translatable("guide.mistech.crusher_forge.2"));
+        registration.addIngredientInfo(com.mistech.mistechmod.garden.GardenContent.MANDRAKE_POWDER.get(), Component.translatable("item.mistech.mandrake_powder.desc"));
+        registration.addIngredientInfo(Mistech.BELLADONNA_BERRIES.get(), Component.translatable("guide.mistech.belladonna_uses.1"));
+        registration.addIngredientInfo(Mistech.COFFEE_CUP.get(), Component.translatable("guide.mistech.coffee_uses.1"));
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addCraftingStation(Lazy.WRITING.get(), Mistech.WRITING_TABLE_ITEM.get());
-        registration.addCraftingStation(Lazy.CRUSHING.get(), MachineContent.RUNIC_CRUSHER_ITEM.get());
+        registration.addCraftingStation(Lazy.CRUSHING.get(), MachineContent.RUNIC_CRUSHER_ITEM.get(),
+                com.mistech.mistechmod.machine.arcane.ArcaneMachines.ARCANE_CRUSHER_ITEM.get(),
+                com.mistech.mistechmod.machine.forge.ForgeContent.CRUSHER_FORGE_ITEM.get());
         registration.addCraftingStation(Lazy.IMPURE_RITUAL, RitualContent.IMPURE_ALTAR_ITEM.get(), RitualContent.IMPURE_ALTAR_2_ITEM.get(),
                 RitualContent.IMPURE_ALTAR_3_ITEM.get(), RitualContent.RITUAL_PEDESTAL_ITEM.get());
         registration.addCraftingStation(Lazy.SANCTUARY_RITUAL, PurityContent.SANCTUARY_FONT_ITEM.get());
         // a Fornalha Rúnica faz as receitas da fornalha comum
-        registration.addCraftingStation(mezz.jei.api.constants.RecipeTypes.SMELTING, Mistech.RUNIC_FURNACE_ITEM.get());
+        registration.addCraftingStation(mezz.jei.api.constants.RecipeTypes.SMELTING, Mistech.RUNIC_FURNACE_ITEM.get(),
+                com.mistech.mistechmod.machine.arcane.ArcaneMachines.ARCANE_FURNACE_ITEM.get(),
+                com.mistech.mistechmod.machine.forge.ForgeContent.CRUSHER_FORGE_ITEM.get());
+        // as fornalhas do Mistech também fazem as receitas do alto-forno (minérios de adamantina e oricalco)
+        registration.addCraftingStation(mezz.jei.api.constants.RecipeTypes.BLASTING, Mistech.RUNIC_FURNACE_ITEM.get(),
+                com.mistech.mistechmod.machine.arcane.ArcaneMachines.ARCANE_FURNACE_ITEM.get(),
+                com.mistech.mistechmod.machine.forge.ForgeContent.CRUSHER_FORGE_ITEM.get());
         for (Machine machine : Lazy.MACHINES) {
             registration.addCraftingStation(machine.type(), machine.stations().get().toArray(net.minecraft.world.level.ItemLike[]::new));
         }
+    }
+
+    /** Botão "+" do JEI: passa os ingredientes do inventário para a máquina. */
+    @Override
+    public void registerRecipeTransferHandlers(mezz.jei.api.registration.IRecipeTransferRegistration registration) {
+        // Mesa de Escrita: papel + 4 da cruz (espaços 1..5); o giz fica onde está
+        registration.addRecipeTransferHandler(com.mistech.mistechmod.menu.WritingTableMenu.class,
+                com.mistech.mistechmod.registry.MistechMenus.WRITING_TABLE.get(), Lazy.WRITING.get(),
+                com.mistech.mistechmod.menu.WritingTableMenu.PAPER, 5, com.mistech.mistechmod.menu.WritingTableMenu.RESULT + 1, 36);
+        // Triturador Rúnico: entrada no espaço 0
+        registration.addRecipeTransferHandler(com.mistech.mistechmod.machine.MachineMenu.class,
+                com.mistech.mistechmod.registry.MistechMenus.RUNIC_CRUSHER.get(), Lazy.CRUSHING.get(),
+                0, 1, com.mistech.mistechmod.machine.MachineLayouts.CRUSHER.size(), 36);
+        // Fornalha Rúnica e Fornalha Arcana: receitas da fornalha comum
+        registration.addRecipeTransferHandler(com.mistech.mistechmod.menu.RunicFurnaceMenu.class,
+                com.mistech.mistechmod.registry.MistechMenus.RUNIC_FURNACE.get(), mezz.jei.api.constants.RecipeTypes.SMELTING, 0, 1, 2, 36);
+        registration.addRecipeTransferHandler(com.mistech.mistechmod.machine.MachineMenu.class,
+                com.mistech.mistechmod.machine.arcane.ArcaneMachines.FURNACE_MENU.get(), mezz.jei.api.constants.RecipeTypes.SMELTING,
+                0, 1, com.mistech.mistechmod.machine.arcane.ArcaneMachines.FURNACE_LAYOUT.size(), 36);
+        registration.addRecipeTransferHandler(com.mistech.mistechmod.menu.RunicFurnaceMenu.class,
+                com.mistech.mistechmod.registry.MistechMenus.RUNIC_FURNACE.get(), mezz.jei.api.constants.RecipeTypes.BLASTING, 0, 1, 2, 36);
+        registration.addRecipeTransferHandler(com.mistech.mistechmod.machine.MachineMenu.class,
+                com.mistech.mistechmod.machine.arcane.ArcaneMachines.FURNACE_MENU.get(), mezz.jei.api.constants.RecipeTypes.BLASTING,
+                0, 1, com.mistech.mistechmod.machine.arcane.ArcaneMachines.FURNACE_LAYOUT.size(), 36);
+        // Triturador Arcano e Forja Trituradora: primeira entrada
+        registration.addRecipeTransferHandler(com.mistech.mistechmod.machine.MachineMenu.class,
+                com.mistech.mistechmod.machine.arcane.ArcaneMachines.CRUSHER_MENU.get(), Lazy.CRUSHING.get(),
+                0, 1, com.mistech.mistechmod.machine.arcane.ArcaneMachines.CRUSHER_LAYOUT.size(), 36);
+        registration.addRecipeTransferHandler(com.mistech.mistechmod.machine.MachineMenu.class,
+                com.mistech.mistechmod.machine.forge.ForgeContent.FORGE_MENU.get(), Lazy.CRUSHING.get(),
+                0, 1, com.mistech.mistechmod.machine.forge.ForgeContent.FORGE_LAYOUT.size(), 36);
+    }
+
+    /** As abas de configuração das máquinas ficam fora da tela: o JEI desvia delas. */
+    @Override
+    public void registerGuiHandlers(mezz.jei.api.registration.IGuiHandlerRegistration registration) {
+        registration.addGenericGuiContainerHandler(com.mistech.mistechmod.client.MachineScreen.class,
+                new mezz.jei.api.gui.handlers.IGuiContainerHandler<com.mistech.mistechmod.client.MachineScreen>() {
+                    @Override
+                    public java.util.List<net.minecraft.client.renderer.Rect2i> getGuiExtraAreas(com.mistech.mistechmod.client.MachineScreen screen) {
+                        return screen.configAreas();
+                    }
+                });
     }
 }

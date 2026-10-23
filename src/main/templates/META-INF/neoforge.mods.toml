@@ -126,6 +126,23 @@ config="${mod_id}.mixins.json"
     ordering="NONE"
     side="BOTH"
 
+# Create: Implantador enrola charuto/baseado; linha de montagem para incensos e Charuto de Arruda;
+# mó/trituradoras, serra e misturador (só receitas em data/mistech/recipe/compat/create)
+[[dependencies.${mod_id}]]
+    modId="create"
+    type="optional"
+    versionRange="${create_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
+# Jade: informações dos blocos do Mistech (progresso, tanque, redstone, melhorias)
+[[dependencies.${mod_id}]]
+    modId="jade"
+    type="optional"
+    versionRange="${jade_version_range}"
+    ordering="NONE"
+    side="BOTH"
+
 # JEI: receitas da Mesa de Escrita, Triturador Rúnico e Rituais (Altar Impuro / Fonte do Santuário)
 [[dependencies.${mod_id}]]
     modId="jei"

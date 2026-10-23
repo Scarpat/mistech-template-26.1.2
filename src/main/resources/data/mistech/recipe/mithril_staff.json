@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": ["mistech:runic_staff", "mistech:mithril_ingot", "mistech:mithril_ingot", "mistech:mithril_ingot", "mistech:arcane_rune"],
+  "result": { "id": "mistech:mithril_staff", "count": 1 }
+}

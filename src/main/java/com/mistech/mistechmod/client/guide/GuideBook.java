@@ -47,7 +47,24 @@ public final class GuideBook {
     public record Entry(String id, String icon, String name, List<JsonObject> pages, List<String> deps, Task task,
                         float x, float y, boolean big) {}
 
-    public record Category(String id, String icon, String name, String description, List<Entry> entries) {}
+    /**
+     * Ligação: uma entrada de OUTRO capítulo desenhada como nó-fantasma, de onde saem as entradas deste capítulo que
+     * dependem só de coisas de fora. Gerada pelo tools/guide/journey.py.
+     */
+    public record Link(String id, float x, float y) {}
+
+    public record Category(String id, String icon, String name, String description, List<Entry> entries, List<Link> links) {}
+
+    private static List<Link> links(JsonObject cat) {
+        List<Link> out = new ArrayList<>();
+        if (cat.has("links")) {
+            for (JsonElement l : cat.getAsJsonArray("links")) {
+                JsonObject o = l.getAsJsonObject();
+                out.add(new Link(o.get("id").getAsString(), o.get("x").getAsFloat(), o.get("y").getAsFloat()));
+            }
+        }
+        return List.copyOf(out);
+    }
 
     public final String title;
     public final String subtitle;
@@ -103,7 +120,7 @@ public final class GuideBook {
                 index++;
             }
             categories.add(new Category(cat.get("id").getAsString(), cat.get("icon").getAsString(),
-                    cat.get("name").getAsString(), cat.get("description").getAsString(), entries));
+                    cat.get("name").getAsString(), cat.get("description").getAsString(), entries, links(cat)));
         }
         this.views.put(TYPE_VIEW, List.copyOf(categories));
         this.index();
@@ -126,10 +143,19 @@ public final class GuideBook {
                                 ref.has("size") && ref.get("size").getAsString().equals("big")));
                     }
                     list.add(new Category(cat.get("id").getAsString(), cat.get("icon").getAsString(), cat.get("name").getAsString(),
-                            cat.get("description").getAsString(), refs));
+                            cat.get("description").getAsString(), refs, links(cat)));
                 }
                 if (!list.isEmpty()) {
                     this.views.put(v.getKey(), List.copyOf(list));
+                }
+            }
+        }
+        for (List<Category> list : views.values()) {
+            for (Category c : list) {
+                for (Link link : c.links()) {
+                    if (!byId.containsKey(link.id())) {
+                        Mistech.LOGGER.warn("Grimório: o capítulo {} liga com {}, que não existe", c.id(), link.id());
+                    }
                 }
             }
         }

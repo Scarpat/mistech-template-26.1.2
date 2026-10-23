@@ -1,0 +1,8 @@
+{
+  "values": [
+    "mistech:fire_rune", "mistech:water_rune", "mistech:earth_rune", "mistech:air_rune", "mistech:ice_rune",
+    "mistech:energy_rune", "mistech:light_rune", "mistech:darkness_rune", "mistech:space_rune", "mistech:time_rune",
+    "mistech:magma_rune", "mistech:vapor_rune", "mistech:void_rune", "mistech:luck_rune", "mistech:arcane_rune",
+    "mistech:cloud_rune", "mistech:soul_rune", "mistech:echo_rune", "mistech:vigil_rune", "mistech:life_rune"
+  ]
+}

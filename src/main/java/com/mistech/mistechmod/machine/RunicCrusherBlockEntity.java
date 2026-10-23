@@ -41,7 +41,8 @@ public class RunicCrusherBlockEntity extends MachineBlockEntity {
         if (input.isEmpty()) {
             return Optional.empty();
         }
-        return level.recipeAccess().getRecipeFor(MistechRecipes.CRUSHING_TYPE.get(), new SingleRecipeInput(input), level, this.lastRecipe);
+        return level.recipeAccess().getRecipeFor(MistechRecipes.CRUSHING_TYPE.get(), new SingleRecipeInput(input), level, this.lastRecipe)
+                .filter(r -> r.value().tier() <= 1);
     }
 
     @Override

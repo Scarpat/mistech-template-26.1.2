@@ -2,6 +2,7 @@
 # Rodar DEPOIS do tools/guide/journey.py (usa as dependências e tarefas que ele grava).
 # Uso: python3 tools/guide/views.py [--dry]
 import json, sys
+from guide_lib import external_links, layout as lib_layout, overlaps
 
 BOOK = 'src/main/resources/assets/mistech/guide/book.json'
 LANG = 'src/main/resources/assets/mistech/lang/'
@@ -51,13 +52,16 @@ progress = [(cid, icon, [n for n in order if stage[n] == i]) for i, (cid, icon) 
 
 # ---------------------------------------------------------------- por dimensão (onde você precisa ir)
 WHERE = {
-    'd_realm': ('mistech:withered_grass', ['dreams', 'gnome_realm', 'realm_ores', 'metal_blocks', 'goblin_village', 'goblin_crowns', 'fairy_incense']),
+    'd_realm': ('mistech:dreamcatcher', ['dreams', 'gnome_realm', 'realm_ores', 'metal_blocks', 'dream_layers', 'common_dream', 'nightmare',
+                                         'goblin_village', 'goblin_crowns', 'deep_dream', 'lucid_dreamcatcher', 'spatial_dreamcatcher',
+                                         'rem_sleep', 'the_dreamer', 'fairy_incense']),
     'd_deep_dark': ('minecraft:sculk_catalyst', ['echo_collector', 'echo_compass', 'runic_note_block', 'silence_seal', 'echoling',
                                                  'guardian', 'echo_rune']),
     'd_pale': ('minecraft:pale_oak_sapling', ['pale_sentinel', 'pale_chalk', 'eyeblossom_incense', 'pale_heart', 'vigil_rune']),
     'd_nether': ('minecraft:netherrack', ['igneous_essence', 'infernal_heart', 'piglin_pact', 'runic_strider', 'infernal_tools',
-                                          'blaze_generator', 'portal_anchor', 'soul_rune', 'primordial_heart']),
-    'd_between': ('mistech:spatial_anchor', ['spatial_anchor', 'translocation_orb', 'beyond_intro']),
+                                          'blaze_generator', 'igneous_boiler', 'soul_rune', 'primordial_heart']),
+    'd_arcane': ('mistech:tarot_card_the_star', ['arcane_plane', 'the_fool', 'the_magician', 'the_high_priestess', 'arcana_bond']),
+    'd_between': ('mistech:spatial_anchor', ['spatial_anchor', 'translocation_orb', 'portal_anchor', 'spatial_ring']),
 }
 taken = {n for _, ids in WHERE.values() for n in ids}
 assert taken <= set(entries), taken - set(entries)
@@ -67,50 +71,14 @@ OVERWORLD_ICONS = ['minecraft:grass_block', 'minecraft:oak_log', 'minecraft:amet
 dimension = []
 for i, (cid, _) in enumerate(STAGES):
     dimension.append(('d_overworld_' + cid[2:], OVERWORLD_ICONS[i], [n for n in order if n not in taken and stage[n] == i]))
-for cid in ('d_between', 'd_realm', 'd_deep_dark', 'd_pale', 'd_nether'):
+for cid in ('d_between', 'd_realm', 'd_deep_dark', 'd_pale', 'd_nether', 'd_arcane'):
     icon, ids = WHERE[cid]
     dimension.append((cid, icon, [n for n in order if n in ids]))
 
 
-# ---------------------------------------------------------------- layout (mesmo do journey.py: camadas pelas dependências)
-def layout(ids):
-    inside = set(ids)
-    depth = {}
-
-    def dep(n):
-        if n not in depth:
-            ps = [p for p in DEPS[n] if p in inside]
-            depth[n] = 0 if not ps else 1 + max(dep(p) for p in ps)
-        return depth[n]
-
-    for n in ids:
-        dep(n)
-    pos = {}
-    for d in range(max(depth.values()) + 1):
-        col = [n for n in ids if depth[n] == d]
-
-        def want(n):
-            ps = [pos[p][1] for p in DEPS[n] if p in pos]
-            return sum(ps) / len(ps) if ps else None
-
-        col.sort(key=lambda n: (want(n) if want(n) is not None else -1000, ids.index(n)))
-        wants = [want(n) for n in col]
-        placed = []
-        for i, n in enumerate(col):
-            w = wants[i] if wants[i] is not None else (placed[-1] + 1 if placed else 0)
-            if placed and w < placed[-1] + 1:
-                w = placed[-1] + 1
-            placed.append(w)
-        known = [w for w in wants if w is not None]
-        target = sum(known) / len(known) if known else 0
-        shift = target - sum(placed) / len(placed)
-        if shift < 0:
-            placed = [y + shift for y in placed]
-        for n, y in zip(col, placed):
-            pos[n] = (d * 1.6, y)
-    mx = min(x for x, _ in pos.values())
-    my = min(y for _, y in pos.values())
-    return {k: (round(x - mx, 2), round(y - my, 2)) for k, (x, y) in pos.items()}
+# ---------------------------------------------------------------- layout (o mesmo do journey.py, com as ligações entre capítulos)
+BIG = {k for k, e in entries.items() if e.get('size') == 'big'}
+problems = []
 
 
 def build(chapters):
@@ -118,15 +86,18 @@ def build(chapters):
     for cid, icon, ids in chapters:
         if not ids:
             continue
-        pos = layout(ids)
+        links = external_links(ids, DEPS)
+        big = BIG - set(links)
+        pos = lib_layout(ids, DEPS, links, big)
+        problems.extend((cid,) + p for p in overlaps(pos, big))
         es = []
         for n in ids:
             ref = {'id': n, 'x': pos[n][0], 'y': pos[n][1]}
-            if entries[n].get('size') == 'big':
+            if n in BIG:
                 ref['size'] = 'big'
             es.append(ref)
         out.append({'id': cid, 'icon': icon, 'name': 'guide.mistech.cat.' + cid, 'description': 'guide.mistech.cat.' + cid + '.desc',
-                    'entries': es})
+                    'links': [{'id': l, 'x': pos[l][0], 'y': pos[l][1]} for l in links], 'entries': es})
     return out
 
 
@@ -135,11 +106,13 @@ for v in views.values():
     seen = [e['id'] for c in v for e in c['entries']]
     assert sorted(seen) == sorted(order), set(order) ^ set(seen)
 
+if problems:
+    print('AVISO, nós sobrepostos:', problems)
 if '--dry' in sys.argv:
     for name, v in views.items():
         print('\n#####', name)
         for c in v:
-            print('==', c['id'], len(c['entries']), ' '.join(e['id'] for e in c['entries']))
+            print('==', c['id'], len(c['entries']), ' '.join(e['id'] for e in c['entries']), '| ligações:', len(c['links']))
 else:
     b['views'] = views
     with open(BOOK, 'w', encoding='utf-8') as f:

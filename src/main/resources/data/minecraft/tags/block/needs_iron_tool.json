@@ -9,6 +9,12 @@
     "mistech:sanctuary_font",
     "mistech:rune_anvil",
     "mistech:mithril_block",
-    "mistech:spatial_anchor"
+    "mistech:spatial_anchor",
+    "mistech:arcane_furnace",
+    "mistech:arcane_extractor",
+    "mistech:arcane_compressor",
+    "mistech:arcane_crusher",
+    "mistech:liquefier",
+    "mistech:crusher_forge"
   ]
 }

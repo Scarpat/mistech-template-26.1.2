@@ -23,8 +23,31 @@ public abstract class FarmMachineBlockEntity extends MachineBlockEntity {
         this.maxProgress = STEP_TICKS * 2;
     }
 
-    /** Raio da área agora (depende da runa). */
+    /** Raio da área agora (depende da runa e das Melhorias de Alcance). */
     protected abstract int radius();
+
+    @Override
+    protected boolean usesRange() {
+        return true;
+    }
+
+    @Override
+    protected boolean usesWorkStep() {
+        return true;
+    }
+
+    @Override
+    protected int clientSyncRadius() {
+        return this.radius();
+    }
+
+    /** Área de trabalho (para mostrar o alcance com a Pedra Guia). Vale no cliente também. */
+    public net.minecraft.world.phys.AABB workArea() {
+        int radius = this.level != null && this.level.isClientSide() && this.clientRadius >= 0 ? this.clientRadius : this.radius();
+        BlockPos center = this.areaCenter(this.worldPosition, this.getBlockState(), radius);
+        return new net.minecraft.world.phys.AABB(center.getX() - radius, this.worldPosition.getY() - 1, center.getZ() - radius,
+                center.getX() + radius + 1, this.worldPosition.getY() + 2, center.getZ() + radius + 1);
+    }
 
     /** Centro da área: logo à frente da máquina. */
     protected BlockPos areaCenter(BlockPos pos, BlockState state, int radius) {

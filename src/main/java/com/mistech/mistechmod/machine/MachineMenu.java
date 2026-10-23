@@ -18,7 +18,7 @@ import net.minecraft.world.item.ItemStack;
  * 7 e 8 = informações extras da máquina.
  */
 public class MachineMenu extends AbstractContainerMenu {
-    public static final int DATA_COUNT = 9;
+    public static final int DATA_COUNT = 12;
 
     private final MachineLayout layout;
     private final Container container;
@@ -108,7 +108,54 @@ public class MachineMenu extends AbstractContainerMenu {
 
     @Override
     public boolean clickMenuButton(Player player, int id) {
-        return this.container instanceof MachineBlockEntity machine && machine.onMenuButton(player, id);
+        if (!(this.container instanceof MachineBlockEntity machine)) {
+            return false;
+        }
+        return id >= MachineBlockEntity.BUTTON_REDSTONE ? machine.handleConfigButton(player, id) : machine.onMenuButton(player, id);
+    }
+
+    // ----- configuração (dados 9, 10 e 11) -----
+
+    public MachineBlockEntity.RedstoneMode redstoneMode() {
+        return MachineBlockEntity.RedstoneMode.values()[Math.floorMod(this.data.get(9) & 3, 3)];
+    }
+
+    /** A redstone está desligando a máquina agora. */
+    public boolean redstoneBlocked() {
+        return (this.data.get(9) & 4) != 0;
+    }
+
+    /** Frente da máquina (para desenhar as faces em relação a ela). */
+    public net.minecraft.core.Direction facing() {
+        return net.minecraft.core.Direction.from2DDataValue((this.data.get(9) >> 3) & 3);
+    }
+
+    public MachineBlockEntity.SideMode side(net.minecraft.core.Direction direction) {
+        return MachineBlockEntity.SideMode.values()[(this.data.get(10) >> (direction.get3DDataValue() * 2)) & 3];
+    }
+
+    public boolean autoOutput() {
+        return (this.data.get(11) & 1) != 0;
+    }
+
+    public boolean autoInput() {
+        return (this.data.get(11) & 2) != 0;
+    }
+
+    public int upgrade(MachineUpgrade type) {
+        return (this.data.get(11) >> (2 + type.ordinal() * 3)) & 7;
+    }
+
+    public boolean acceptsUpgrade(MachineUpgrade type) {
+        int flags = this.data.get(11);
+        return switch (type) {
+            case SPEED, EFFICIENCY -> (flags & (1 << 11)) != 0;
+            case RANGE -> (flags & (1 << 12)) != 0;
+        };
+    }
+
+    public boolean hasItemFaces() {
+        return (this.data.get(11) & (1 << 13)) != 0;
     }
 
     @Override

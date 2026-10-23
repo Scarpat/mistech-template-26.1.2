@@ -153,7 +153,7 @@ public class RunicHookahBlock extends BaseEntityBlock {
         // acender (antes da runa: a Runa de Fogo acende)
         if (IncenseItem.isLighter(stack) && !hookah.lit()) {
             hookah.setLit(true);
-            stack.hurtAndBreak(1, player, hand.asEquipmentSlot());
+            com.mistech.mistechmod.item.IncenseItem.useLighter(stack, player, hand.asEquipmentSlot());
             level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
             return InteractionResult.SUCCESS;
         }

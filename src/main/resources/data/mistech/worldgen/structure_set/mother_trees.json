@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 71831733,
+    "spacing": 36,
+    "separation": 14
+  },
+  "structures": [
+    {
+      "structure": "mistech:mother_tree",
+      "weight": 1
+    }
+  ]
+}

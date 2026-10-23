@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " A",
+    "S ",
+    "S "
+  ],
+  "key": {
+    "A": "minecraft:amethyst_shard",
+    "S": "minecraft:stick"
+  },
+  "result": { "id": "mistech:wooden_staff", "count": 1 }
+}

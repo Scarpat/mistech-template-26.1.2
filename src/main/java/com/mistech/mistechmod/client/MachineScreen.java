@@ -24,6 +24,7 @@ public class MachineScreen extends MysticContainerScreen<MachineMenu> {
 
     private final Identifier texture;
     private final MachineLayout layout;
+    private MachineConfigPanel config;
 
     public MachineScreen(MachineMenu menu, Inventory inventory, Component title) {
         super(menu, inventory, title);
@@ -35,6 +36,28 @@ public class MachineScreen extends MysticContainerScreen<MachineMenu> {
     protected void init() {
         super.init();
         this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
+        this.config = new MachineConfigPanel(this.menu, this.theme());
+    }
+
+    /** Abas de configuração (redstone, lados, melhorias) à direita da tela. */
+    public java.util.List<net.minecraft.client.renderer.Rect2i> configAreas() {
+        return this.config == null ? java.util.List.of() : this.config.areas(this.leftPos, this.topPos, this.imageWidth);
+    }
+
+    @Override
+    public boolean mouseClicked(net.minecraft.client.input.MouseButtonEvent event, boolean doubleClick) {
+        if (event.button() == 0 && this.config != null && this.config.click(event.x(), event.y(), this.menu.containerId)) {
+            return true;
+        }
+        return super.mouseClicked(event, doubleClick);
+    }
+
+    @Override
+    protected boolean hasClickedOutside(double mx, double my, int xo, int yo) {
+        if (this.config != null && this.config.isInside(mx, my, this.leftPos, this.topPos, this.imageWidth)) {
+            return false;
+        }
+        return super.hasClickedOutside(mx, my, xo, yo);
     }
 
     @Override
@@ -91,6 +114,12 @@ public class MachineScreen extends MysticContainerScreen<MachineMenu> {
     @Override
     public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
         super.extractRenderState(graphics, mouseX, mouseY, partialTick);
+        if (this.config != null) {
+            this.config.draw(graphics, this.font, this.leftPos, this.topPos, this.imageWidth, mouseX, mouseY);
+            if (this.config.tooltip(graphics, this.font, mouseX, mouseY)) {
+                return;
+            }
+        }
         if (this.isHovering(MachineLayout.BAR_X, MachineLayout.BAR_Y, MachineLayout.BAR_W, MachineLayout.BAR_H, mouseX, mouseY)) {
             List<Component> lines = new ArrayList<>();
             lines.add(Component.translatable("gui.mistech.energy_tooltip", this.menu.energy(), this.layout.capacity));

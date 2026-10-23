@@ -36,6 +36,15 @@ public class GnomeBicycleBlockEntity extends MachineBlockEntity {
 
     /** Ticks de pedalada que o gnomo ainda tem da comida que já comeu. */
     private int fedTicks;
+    /** Café: +50% de energia enquanto durar. */
+    private int coffeeTicks;
+    public static final int COFFEE_TICKS = 5 * 60 * 20;
+    public static final float COFFEE_BONUS = 1.5F;
+
+    public void caffeinate(int ticks) {
+        this.coffeeTicks = Math.min(this.coffeeTicks + ticks, ticks * 3);
+        this.setChanged();
+    }
 
     public GnomeBicycleBlockEntity(BlockPos pos, BlockState state) {
         super(MistechBlockEntities.GNOME_BICYCLE.get(), pos, state, MachineLayouts.GNOME_BICYCLE, 0, MAX_OUTPUT_PER_TICK);
@@ -86,7 +95,10 @@ public class GnomeBicycleBlockEntity extends MachineBlockEntity {
 
         int generated = 0;
         if (hasGnome && this.fedTicks > 0 && space > 0) {
-            generated = Math.min(RATE, space);
+            generated = Math.min(this.coffeeTicks > 0 ? Math.round(RATE * COFFEE_BONUS) : RATE, space);
+            if (this.coffeeTicks > 0) {
+                this.coffeeTicks--;
+            }
             this.addEnergy(generated);
             this.fedTicks--;
             if (this.fedTicks % 200 == 0) {
@@ -117,11 +129,21 @@ public class GnomeBicycleBlockEntity extends MachineBlockEntity {
 
     @Override
     protected void loadExtra(ValueInput input) {
+        this.coffeeTicks = input.getIntOr("Coffee", 0);
         this.fedTicks = input.getIntOr("FedTicks", 0);
     }
 
     @Override
     protected void saveExtra(ValueOutput output) {
+        output.putInt("Coffee", this.coffeeTicks);
         output.putInt("FedTicks", this.fedTicks);
+    }
+
+    @Override
+    public void addInfo(java.util.List<net.minecraft.network.chat.Component> lines) {
+        super.addInfo(lines);
+        if (this.coffeeTicks > 0) {
+            lines.add(com.mistech.mistechmod.compat.InfoProvider.seconds("info.mistech.gnome_bicycle.coffee", this.coffeeTicks));
+        }
     }
 }

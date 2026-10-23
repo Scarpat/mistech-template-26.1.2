@@ -69,6 +69,20 @@ public class GnomeBicycleBlock extends MachineBlock {
             }
             return InteractionResult.SUCCESS;
         }
+        // Café: o gnomo pedala +50% por 5 minutos (a xícara volta)
+        if (hasGnome && stack.is(Mistech.COFFEE_CUP.get()) && level.getBlockEntity(pos) instanceof GnomeBicycleBlockEntity bicycle) {
+            if (!level.isClientSide()) {
+                bicycle.caffeinate(GnomeBicycleBlockEntity.COFFEE_TICKS);
+                if (!player.getAbilities().instabuild) {
+                    stack.shrink(1);
+                    give(player, new ItemStack(Mistech.CUP.get()));
+                }
+                level.playSound(null, pos, SoundEvents.GENERIC_DRINK.value(), SoundSource.BLOCKS, 0.7F, 1.4F);
+                level.playSound(null, pos, SoundEvents.VILLAGER_CELEBRATE, SoundSource.BLOCKS, 0.6F, 1.9F);
+                player.sendOverlayMessage(Component.translatable("message.mistech.gnome_bicycle.coffee"));
+            }
+            return InteractionResult.SUCCESS;
+        }
         if (hasGnome && stack.is(Mistech.GLASS_JAR_ITEM.get()) && !stack.has(DataComponents.BLOCK_ENTITY_DATA)) {
             if (!level.isClientSide()) {
                 level.setBlock(pos, state.setValue(GNOME, false).setValue(LIT, false), Block.UPDATE_ALL);

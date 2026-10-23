@@ -12,16 +12,17 @@ import net.minecraft.world.entity.player.Player;
 /**
  * Afinidade Elemental: o jogador ganha pontos num elemento ao usar runas, magias do Cajado e rituais.
  * <ul>
- * <li>Níveis 0 a {@link #MAX_LEVEL} (25/100/250/500/1000 pontos); cada elemento vai até {@link #MAX_POINTS}.</li>
- * <li><b>Exclusiva</b>: ganhar N pontos tira N/2 do elemento oposto; a soma de todos tem teto de {@link #TOTAL_CAP}
- * (o que passa sai dos outros, proporcional). Na prática dá para ter 2–3 elementos altos.</li>
+ * <li>Níveis 0 a {@link #MAX_LEVEL} (25/100/250/500/1000/2000/4000 pontos; 6 = Mestre, 7 = Arquimago); cada elemento vai até {@link #MAX_POINTS}.</li>
+ * <li><b>Não diminui</b>: ganhar pontos num elemento não tira de nenhum outro (decisão de 23/10/2026).</li>
+ * <li>Poder das magias: +10% por nível. Tier 6 exige nível 6. Nível 7 (Arquimago) dá maestria: −15% de mana e de recarga
+ * nas magias do elemento (ver {@code SpellCaster.mastery}).</li>
  * </ul>
  */
 public final class Affinity {
-    public static final int[] THRESHOLDS = {0, 25, 100, 250, 500, 1000};
+    public static final int[] THRESHOLDS = {0, 25, 100, 250, 500, 1000, 2000, 4000};
     public static final int MAX_LEVEL = THRESHOLDS.length - 1;
-    public static final int MAX_POINTS = 1000;
-    public static final int TOTAL_CAP = 2500;
+    public static final int MAX_POINTS = 4000;
+    public static final int TOTAL_CAP = 6000;
 
     private Affinity() {}
 
@@ -46,43 +47,14 @@ public final class Affinity {
         };
     }
 
-    /** Aplica as regras de exclusividade (puro, para testar). */
+    /** Soma os pontos (teto por elemento). Afinidade nunca diminui. */
     public static AffinityData apply(AffinityData data, RuneElement element, int amount) {
         Map<String, Integer> points = new HashMap<>(data.points());
         int before = points.getOrDefault(element.id(), 0);
         int after = Math.min(MAX_POINTS, before + amount);
         int gained = after - before;
         points.put(element.id(), after);
-        if (gained <= 0) {
-            return new AffinityData(points);
-        }
-        // oposto perde metade do ganho
-        RuneElement opposite = opposite(element);
-        points.computeIfPresent(opposite.id(), (k, v) -> Math.max(0, v - gained / 2));
-        // teto total: o excesso sai dos outros, proporcional
-        int total = 0;
-        for (int v : points.values()) {
-            total += v;
-        }
-        int excess = total - TOTAL_CAP;
-        if (excess > 0) {
-            int others = total - after;
-            if (others > 0) {
-                int removed = 0;
-                for (Map.Entry<String, Integer> entry : points.entrySet()) {
-                    if (entry.getKey().equals(element.id()) || entry.getValue() <= 0) {
-                        continue;
-                    }
-                    int cut = (int) Math.ceil(excess * (entry.getValue() / (double) others));
-                    cut = Math.min(cut, Math.min(entry.getValue(), excess - removed));
-                    entry.setValue(entry.getValue() - cut);
-                    removed += cut;
-                    if (removed >= excess) {
-                        break;
-                    }
-                }
-            }
-        }
+        // sem perda: nem o oposto nem o teto total tiram pontos (só o teto por elemento vale)
         points.values().removeIf(v -> v <= 0);
         return new AffinityData(points);
     }
@@ -113,13 +85,50 @@ public final class Affinity {
         if (after > before) {
             player.sendOverlayMessage(Component.translatable("message.mistech.affinity.level_up",
                     Component.translatable(element.translationKey()), after).withColor(element.color()));
-        } else {
-            RuneElement opposite = opposite(element);
-            if (level(updated.get(opposite)) < level(data.get(opposite))) {
-                player.sendOverlayMessage(Component.translatable("message.mistech.affinity.level_down",
-                        Component.translatable(opposite.translationKey()), level(updated.get(opposite))).withColor(opposite.color()));
+        }
+    }
+
+    /** Elementos básicos que formam um elemento (ele mesmo se já é básico); avançados são abertos recursivamente. */
+    public static java.util.List<RuneElement> basics(RuneElement element) {
+        if (!element.isAdvanced()) {
+            return java.util.List.of(element);
+        }
+        java.util.List<RuneElement> list = new java.util.ArrayList<>();
+        for (RuneElement component : element.components()) {
+            for (RuneElement basic : basics(component)) {
+                if (!list.contains(basic)) {
+                    list.add(basic);
+                }
             }
         }
+        return list;
+    }
+
+    /** Nível "efetivo" do jogador num elemento: o próprio nível se for básico; a média arredondada para baixo dos componentes se for avançado. */
+    public static int effectiveLevel(Player player, RuneElement element) {
+        AffinityData data = get(player);
+        java.util.List<RuneElement> basics = basics(element);
+        int sum = 0;
+        for (RuneElement basic : basics) {
+            sum += level(data.get(basic));
+        }
+        return basics.isEmpty() ? 0 : sum / basics.size();
+    }
+
+    /** Tem pelo menos {@code level} em todos os componentes básicos do elemento? */
+    public static boolean meets(Player player, RuneElement element, int level) {
+        AffinityData data = get(player);
+        for (RuneElement basic : basics(element)) {
+            if (level(data.get(basic)) < level) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /** Poder de magia: 1 + 10% por nível de afinidade do elemento (nível 7 = ×1,7). */
+    public static double power(Player player, RuneElement element) {
+        return 1.0 + 0.10 * effectiveLevel(player, element);
     }
 
     public static int level(int points) {

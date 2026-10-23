@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:mixing",
+  "ingredients": [
+    "mistech:ash_chalk",
+    "minecraft:pale_moss_block",
+    "minecraft:bone_meal"
+  ],
+  "results": [
+    {
+      "id": "mistech:pale_chalk"
+    }
+  ]
+}

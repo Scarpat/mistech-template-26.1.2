@@ -65,6 +65,13 @@
     "mistech:astral_arcane_infuser",
     "mistech:cuca_cauldron",
     "mistech:growing_pot",
-    "mistech:star_stone"
+    "mistech:star_stone",
+    "mistech:arcane_furnace",
+    "mistech:arcane_extractor",
+    "mistech:arcane_compressor",
+    "mistech:arcane_crusher",
+    "mistech:liquefier",
+    "mistech:crusher_forge",
+    "mistech:arcane_charger"
   ]
 }

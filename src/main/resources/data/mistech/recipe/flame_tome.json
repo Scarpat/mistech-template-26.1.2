@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mistech:adept_tome",
+    "minecraft:blaze_powder",
+    "minecraft:blaze_powder",
+    "minecraft:magma_cream"
+  ],
+  "result": {
+    "id": "mistech:flame_tome",
+    "count": 1
+  }
+}

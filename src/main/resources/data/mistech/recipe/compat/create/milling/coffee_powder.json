@@ -1,0 +1,18 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:milling",
+  "ingredients": [
+    "mistech:roasted_coffee_beans"
+  ],
+  "results": [
+    {
+      "id": "mistech:coffee_powder"
+    }
+  ],
+  "processing_time": 50
+}

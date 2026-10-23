@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 71830211,
+    "spacing": 48,
+    "separation": 20
+  },
+  "structures": [
+    {
+      "structure": "mistech:archmage_tower",
+      "weight": 1
+    }
+  ]
+}

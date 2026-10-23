@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "mistech:rue"
+    "mistech:rue",
+    "mistech:mandrake"
   ]
 }

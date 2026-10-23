@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  A",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "A": "minecraft:gold_ingot",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "mistech:gold_wand",
+    "count": 1
+  }
+}

@@ -8,10 +8,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.structure.BoundingBox;
 
 /** Ajudas de terreno para as arenas do folclore. */
-final class LairTerrain {
+public final class LairTerrain {
     private LairTerrain() {}
 
-    static BlockState st(net.minecraft.world.level.block.Block b) {
+    public static BlockState st(net.minecraft.world.level.block.Block b) {
         return b.defaultBlockState();
     }
 
@@ -19,7 +19,7 @@ final class LairTerrain {
      * Aplaina um círculo de raio {@code flat} na altura {@code top} (bloco do chão) com {@code ground}, e faz uma rampa
      * suave de {@code blend} blocos até o terreno natural. Corta o que estiver acima (até 40 blocos).
      */
-    static void flatten(Blueprint bp, int cx, int cz, int top, int flat, int blend, Palette ground) {
+    public static void flatten(Blueprint bp, int cx, int cz, int top, int flat, int blend, Palette ground) {
         int r = flat + blend;
         BoundingBox box = new BoundingBox(cx - r, top - 30, cz - r, cx + r, top + 45, cz + r);
         bp.custom(box, ctx -> {

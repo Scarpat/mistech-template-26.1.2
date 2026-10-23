@@ -48,7 +48,7 @@ import net.minecraft.world.phys.Vec3;
  * A Pedra Guia inicia o ritual; ele roda {@code duration} ticks conferindo o multibloco a cada 10 ticks.
  * Se algo quebrar no meio → Refluxo Impuro (perde os itens, essência derrama, Wither em volta).
  */
-public class ImpureAltarBlockEntity extends SingleItemBlockEntity {
+public class ImpureAltarBlockEntity extends SingleItemBlockEntity implements com.mistech.mistechmod.compat.InfoProvider {
     public static final int MAX_ESSENCE = RitualRecipe.MAX_ESSENCE;
     public static final double BACKLASH_RADIUS = 6.0;
 
@@ -466,6 +466,15 @@ public class ImpureAltarBlockEntity extends SingleItemBlockEntity {
         }
         if (this.starter != null) {
             output.store("Starter", UUIDUtil.CODEC, this.starter);
+        }
+    }
+
+    @Override
+    public void addInfo(java.util.List<net.minecraft.network.chat.Component> lines) {
+        lines.add(net.minecraft.network.chat.Component.translatable("info.mistech.altar.tier", this.tier()));
+        lines.add(net.minecraft.network.chat.Component.translatable("info.mistech.altar.essence", this.essence, MAX_ESSENCE));
+        if (this.isRunning() && this.duration > 0) {
+            lines.add(com.mistech.mistechmod.compat.InfoProvider.progress(this.progress, this.duration));
         }
     }
 }

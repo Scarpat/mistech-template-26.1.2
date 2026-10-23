@@ -39,7 +39,7 @@ public class RunicHarvesterBlockEntity extends FarmMachineBlockEntity {
 
     @Override
     protected int radius() {
-        return this.hasRune(Mistech.SPACE_RUNE.get()) ? BIG_RADIUS : BASE_RADIUS;
+        return (this.hasRune(Mistech.SPACE_RUNE.get()) ? BIG_RADIUS : BASE_RADIUS) + this.rangeBonus();
     }
 
     @Override

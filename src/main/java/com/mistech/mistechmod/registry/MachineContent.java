@@ -34,6 +34,12 @@ public final class MachineContent {
     public static final DeferredItem<Item> GOLD_DUST = Mistech.ITEMS.registerSimpleItem("gold_dust");
     public static final DeferredItem<Item> COPPER_DUST = Mistech.ITEMS.registerSimpleItem("copper_dust");
     public static final DeferredItem<Item> IMPURE_MAGIC_DUST = Mistech.ITEMS.registerSimpleItem("impure_magic_dust");
+    // pós dos metais dos gnomos (Triturador Arcano / Forja Trituradora)
+    public static final DeferredItem<Item> MITHRIL_DUST = Mistech.ITEMS.registerSimpleItem("mithril_dust");
+    public static final DeferredItem<Item> ADAMANTINE_DUST = Mistech.ITEMS.registerSimpleItem("adamantine_dust",
+            p -> p.rarity(net.minecraft.world.item.Rarity.UNCOMMON));
+    public static final DeferredItem<Item> ORICHALCUM_DUST = Mistech.ITEMS.registerSimpleItem("orichalcum_dust",
+            p -> p.rarity(net.minecraft.world.item.Rarity.RARE));
 
     // ----- Geradores -----
     public static final DeferredBlock<AshGeneratorBlock> ASH_GENERATOR = Mistech.BLOCKS.registerBlock("ash_generator",
@@ -84,6 +90,16 @@ public final class MachineContent {
     public static final DeferredItem<com.mistech.mistechmod.item.PocketBatteryItem> POCKET_BATTERY = Mistech.ITEMS.registerItem("pocket_battery",
             com.mistech.mistechmod.item.PocketBatteryItem::new, p -> p.stacksTo(1).rarity(net.minecraft.world.item.Rarity.RARE));
 
+    // ----- Melhorias Rúnicas -----
+    /** Placa Rúnica: base das melhorias (escritas na Mesa de Escrita). */
+    public static final DeferredItem<Item> RUNIC_PLATE = Mistech.ITEMS.registerSimpleItem("runic_plate");
+    public static final DeferredItem<com.mistech.mistechmod.machine.MachineUpgradeItem> SPEED_UPGRADE = Mistech.ITEMS.registerItem("speed_upgrade",
+            p -> new com.mistech.mistechmod.machine.MachineUpgradeItem(p, com.mistech.mistechmod.machine.MachineUpgrade.SPEED), p -> p.stacksTo(16));
+    public static final DeferredItem<com.mistech.mistechmod.machine.MachineUpgradeItem> EFFICIENCY_UPGRADE = Mistech.ITEMS.registerItem("efficiency_upgrade",
+            p -> new com.mistech.mistechmod.machine.MachineUpgradeItem(p, com.mistech.mistechmod.machine.MachineUpgrade.EFFICIENCY), p -> p.stacksTo(16));
+    public static final DeferredItem<com.mistech.mistechmod.machine.MachineUpgradeItem> RANGE_UPGRADE = Mistech.ITEMS.registerItem("range_upgrade",
+            p -> new com.mistech.mistechmod.machine.MachineUpgradeItem(p, com.mistech.mistechmod.machine.MachineUpgrade.RANGE), p -> p.stacksTo(16));
+
     private MachineContent() {}
 
     private static BlockBehaviour.Properties stoneMachine(BlockBehaviour.Properties p) {
@@ -95,9 +111,10 @@ public final class MachineContent {
     }
 
     public static List<DeferredItem<? extends Item>> creativeItems() {
-        return List.of(RUNIC_CRUSHER_ITEM, IRON_DUST, GOLD_DUST, COPPER_DUST, IMPURE_MAGIC_DUST,
+        return List.of(RUNIC_CRUSHER_ITEM, IRON_DUST, GOLD_DUST, COPPER_DUST, IMPURE_MAGIC_DUST, MITHRIL_DUST, ADAMANTINE_DUST, ORICHALCUM_DUST,
                 ASH_GENERATOR_ITEM, ASTRAL_GENERATOR_ITEM, RUNIC_HARVESTER_ITEM, RUNIC_PLANTER_ITEM, TUNNELER_ITEM,
-                RUNIC_BATTERY_ITEM, ADVANCED_RUNIC_BATTERY_ITEM, POCKET_BATTERY);
+                RUNIC_BATTERY_ITEM, ADVANCED_RUNIC_BATTERY_ITEM, POCKET_BATTERY,
+                RUNIC_PLATE, SPEED_UPGRADE, EFFICIENCY_UPGRADE, RANGE_UPGRADE);
     }
 
     public static void register(IEventBus modEventBus) {

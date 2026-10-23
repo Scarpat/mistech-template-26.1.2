@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:dream_fragment",
+  "ingredients": [
+    "mistech:star_fragment",
+    "mistech:impure_magic_shard",
+    "mistech:star_stone",
+    "mistech:star_moss",
+    "mistech:memory_lily"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "night",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:dream_fragment_starry_void"
+  },
+  "effect": "stars"
+}

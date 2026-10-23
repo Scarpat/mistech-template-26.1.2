@@ -44,6 +44,9 @@ public class CrushingCategory extends AbstractRecipeCategory<RecipeHolder<Crushi
         if (recipe.runeBonus()) {
             lines.add(Component.translatable("jei.mistech.crushing.rune_bonus"));
         }
+        if (recipe.tier() >= 2) {
+            lines.add(Component.translatable("jei.mistech.crushing.arcane_only"));
+        }
         if (!lines.isEmpty()) {
             builder.addText(lines, WIDTH, 20).setPosition(0, 25).setColor(0xFF606060);
         }

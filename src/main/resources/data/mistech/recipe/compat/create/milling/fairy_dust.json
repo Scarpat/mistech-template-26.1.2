@@ -1,0 +1,22 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:milling",
+  "ingredients": [
+    "mistech:fey_remains"
+  ],
+  "results": [
+    {
+      "id": "mistech:fairy_dust"
+    },
+    {
+      "id": "mistech:fairy_dust",
+      "chance": 0.3
+    }
+  ],
+  "processing_time": 100
+}

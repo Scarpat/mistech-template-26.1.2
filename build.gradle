@@ -160,10 +160,17 @@ dependencies {
     // Curse Maven (https://cursemaven.com, grupo "curse.maven") e
     // localRuntime "curse.maven:productive-metalworks-1184570:8764957" + o Productive Lib da mesma versão.
 
+    // Create: integração só por dados (data/mistech/recipe/compat/create, condição mod_loaded "create").
+    // Quando sair o Create para 26.1, para testar: localRuntime "maven.modrinth:create:<versão>".
+
     // JEI: a API para compilar (com.mistech.mistechmod.compat.jei); o mod completo só no ambiente de dev.
     compileOnly "mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"
     compileOnly "mezz.jei:jei-${minecraft_version}-neoforge-api:${jei_version}"
     localRuntime "mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"
+
+    // Jade: dicas ao olhar para os blocos (com.mistech.mistechmod.compat.jade). Vem do Modrinth Maven.
+    compileOnly "maven.modrinth:jade:${jade_version}"
+    localRuntime "maven.modrinth:jade:${jade_version}"
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
@@ -198,6 +205,8 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
             apothic_enchanting_version_range: apothic_enchanting_version_range,
             productivemetalworks_version_range: productivemetalworks_version_range,
             jei_version_range      : jei_version_range,
+            jade_version_range     : jade_version_range,
+            create_version_range   : create_version_range,
     ]
     inputs.properties replaceProperties
     expand replaceProperties

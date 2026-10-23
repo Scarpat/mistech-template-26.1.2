@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "OCO",
+    "FBF",
+    "OEO"
+  ],
+  "key": {
+    "O": "minecraft:obsidian",
+    "C": "minecraft:cauldron",
+    "F": "mistech:fire_rune",
+    "B": "minecraft:blast_furnace",
+    "E": "mistech:energy_rune"
+  },
+  "result": {
+    "id": "mistech:liquefier",
+    "count": 1
+  }
+}

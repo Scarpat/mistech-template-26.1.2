@@ -1,0 +1,10 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "mistech:mandrake_root",
+  "result": {
+    "id": "mistech:mandrake_powder",
+    "count": 3
+  },
+  "bonus_chance": 0.25,
+  "rune_bonus": false
+}

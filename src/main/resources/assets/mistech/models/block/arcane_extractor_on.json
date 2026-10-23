@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/template_cauldron_full",
+  "textures": {
+    "particle": "mistech:block/arcane_extractor_side",
+    "top": "mistech:block/arcane_extractor_top_on",
+    "bottom": "mistech:block/arcane_extractor_bottom_on",
+    "side": "mistech:block/arcane_extractor_side_on",
+    "inside": "mistech:block/arcane_extractor_inner_on",
+    "content": "mistech:block/impure_essence_still"
+  }
+}

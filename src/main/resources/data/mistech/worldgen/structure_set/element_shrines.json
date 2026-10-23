@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 71830977,
+    "spacing": 32,
+    "separation": 12
+  },
+  "structures": [
+    {
+      "structure": "mistech:element_shrine",
+      "weight": 1
+    }
+  ]
+}

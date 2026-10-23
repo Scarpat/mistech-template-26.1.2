@@ -368,6 +368,11 @@ public class MinerBlockEntity extends MachineBlockEntity {
     }
 
     @Override
+    protected boolean usesWorkStep() {
+        return true;
+    }
+
+    @Override
     public boolean onMenuButton(net.minecraft.world.entity.player.Player player, int id) {
         return id == BUTTON_OPEN_CHAMBER && this.openChamber(player);
     }

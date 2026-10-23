@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=north,formed=false,lit=false": {
+      "model": "mistech:block/crusher_forge"
+    },
+    "facing=north,formed=true,lit=false": {
+      "model": "mistech:block/crusher_forge_formed"
+    },
+    "facing=north,formed=false,lit=true": {
+      "model": "mistech:block/crusher_forge_on"
+    },
+    "facing=north,formed=true,lit=true": {
+      "model": "mistech:block/crusher_forge_formed_on"
+    },
+    "facing=east,formed=false,lit=false": {
+      "model": "mistech:block/crusher_forge",
+      "y": 90
+    },
+    "facing=east,formed=true,lit=false": {
+      "model": "mistech:block/crusher_forge_formed",
+      "y": 90
+    },
+    "facing=east,formed=false,lit=true": {
+      "model": "mistech:block/crusher_forge_on",
+      "y": 90
+    },
+    "facing=east,formed=true,lit=true": {
+      "model": "mistech:block/crusher_forge_formed_on",
+      "y": 90
+    },
+    "facing=south,formed=false,lit=false": {
+      "model": "mistech:block/crusher_forge",
+      "y": 180
+    },
+    "facing=south,formed=true,lit=false": {
+      "model": "mistech:block/crusher_forge_formed",
+      "y": 180
+    },
+    "facing=south,formed=false,lit=true": {
+      "model": "mistech:block/crusher_forge_on",
+      "y": 180
+    },
+    "facing=south,formed=true,lit=true": {
+      "model": "mistech:block/crusher_forge_formed_on",
+      "y": 180
+    },
+    "facing=west,formed=false,lit=false": {
+      "model": "mistech:block/crusher_forge",
+      "y": 270
+    },
+    "facing=west,formed=true,lit=false": {
+      "model": "mistech:block/crusher_forge_formed",
+      "y": 270
+    },
+    "facing=west,formed=false,lit=true": {
+      "model": "mistech:block/crusher_forge_on",
+      "y": 270
+    },
+    "facing=west,formed=true,lit=true": {
+      "model": "mistech:block/crusher_forge_formed_on",
+      "y": 270
+    }
+  }
+}

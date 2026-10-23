@@ -15,7 +15,7 @@ import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredItem;
 
-/** Utilitários: Elevador Rúnico e Narguilé Rúnico. */
+/** Utilitários: Elevador Rúnico, Narguilé Rúnico e Rede de Dormir. */
 public final class UtilityContent {
     public static final DeferredBlock<RunicElevatorBlock> RUNIC_ELEVATOR = Mistech.BLOCKS.registerBlock("runic_elevator", RunicElevatorBlock::new,
             p -> p.mapColor(MapColor.COLOR_BLACK).requiresCorrectToolForDrops().strength(2.0F, 6.0F).sound(SoundType.POLISHED_DEEPSLATE));
@@ -28,10 +28,16 @@ public final class UtilityContent {
     public static final Supplier<BlockEntityType<RunicHookahBlockEntity>> RUNIC_HOOKAH_BE = MistechBlockEntities.BLOCK_ENTITY_TYPES.register(
             "runic_hookah", () -> new BlockEntityType<>(RunicHookahBlockEntity::new, RUNIC_HOOKAH.get()));
 
+    /** Rede de Dormir: cochilo de dia que pula para o anoitecer (ver {@link HammockEvents}). */
+    public static final DeferredBlock<HammockBlock> HAMMOCK = Mistech.BLOCKS.registerBlock("hammock", HammockBlock::new,
+            p -> p.mapColor(MapColor.COLOR_ORANGE).strength(0.2F).sound(SoundType.WOOL).noOcclusion().ignitedByLava()
+                    .pushReaction(net.minecraft.world.level.material.PushReaction.DESTROY));
+    public static final DeferredItem<BlockItem> HAMMOCK_ITEM = Mistech.ITEMS.registerSimpleBlockItem("hammock", HAMMOCK, p -> p.stacksTo(1));
+
     private UtilityContent() {}
 
     public static List<DeferredItem<? extends Item>> creativeItems() {
-        return List.of(RUNIC_ELEVATOR_ITEM, RUNIC_HOOKAH_ITEM);
+        return List.of(RUNIC_ELEVATOR_ITEM, RUNIC_HOOKAH_ITEM, HAMMOCK_ITEM);
     }
 
     public static void register(IEventBus modEventBus) {

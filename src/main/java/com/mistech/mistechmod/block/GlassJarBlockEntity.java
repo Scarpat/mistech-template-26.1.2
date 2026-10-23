@@ -36,6 +36,18 @@ public class GlassJarBlockEntity extends BlockEntity implements Container {
      * Gasta 1 isca; o pote vira Gnomo Engarrafado e o resto das iscas cai no chão.
      */
     public static void serverTick(net.minecraft.world.level.Level level, BlockPos pos, BlockState state, GlassJarBlockEntity jar) {
+        // Mandrágora no pote: ela se acomoda na hora e o pote vira Mandrágora Engarrafada (o resto cai no chão)
+        if (level instanceof net.minecraft.server.level.ServerLevel mandrakeLevel
+                && jar.stored.is(com.mistech.mistechmod.garden.GardenContent.MANDRAKE.get())) {
+            jar.stored.shrink(1);
+            double mx = pos.getX() + 0.5, my = pos.getY() + 0.5, mz = pos.getZ() + 0.5;
+            mandrakeLevel.sendParticles(net.minecraft.core.particles.ParticleTypes.HAPPY_VILLAGER, mx, my, mz, 12, 0.3, 0.3, 0.3, 0.0);
+            mandrakeLevel.sendParticles(net.minecraft.core.particles.ParticleTypes.SPORE_BLOSSOM_AIR, mx, my + 0.3, mz, 10, 0.3, 0.2, 0.3, 0.0);
+            mandrakeLevel.playSound(null, pos, net.minecraft.sounds.SoundEvents.ALLAY_AMBIENT_WITHOUT_ITEM, net.minecraft.sounds.SoundSource.BLOCKS, 0.8F, 0.6F);
+            mandrakeLevel.playSound(null, pos, net.minecraft.sounds.SoundEvents.BOTTLE_FILL, net.minecraft.sounds.SoundSource.BLOCKS, 0.8F, 1.0F);
+            mandrakeLevel.setBlock(pos, com.mistech.mistechmod.garden.GardenContent.BOTTLED_MANDRAKE.get().defaultBlockState(), Block.UPDATE_ALL);
+            return;
+        }
         if (!(level instanceof net.minecraft.server.level.ServerLevel server)
                 || !jar.stored.is(com.mistech.mistechmod.registry.GnomeContent.GNOME_BAIT.get())) {
             jar.baitTicks = 0;

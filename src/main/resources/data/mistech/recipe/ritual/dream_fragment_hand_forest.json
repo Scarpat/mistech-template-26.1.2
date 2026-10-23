@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:dream_fragment",
+  "ingredients": [
+    "mistech:star_fragment",
+    "mistech:impure_magic_shard",
+    "mistech:withered_grass",
+    "mistech:black_thorn",
+    "mistech:eye_flower"
+  ],
+  "essence": 3,
+  "duration": 300,
+  "condition": "night",
+  "min_tier": 2,
+  "result": {
+    "id": "mistech:dream_fragment_hand_forest"
+  },
+  "effect": "stars"
+}

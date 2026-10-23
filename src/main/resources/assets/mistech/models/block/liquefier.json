@@ -1,0 +1,11 @@
+{
+  "parent": "minecraft:block/template_cauldron_full",
+  "textures": {
+    "particle": "mistech:block/liquefier_side",
+    "top": "mistech:block/liquefier_top",
+    "bottom": "mistech:block/liquefier_bottom",
+    "side": "mistech:block/liquefier_side",
+    "inside": "mistech:block/liquefier_inner",
+    "content": "mistech:block/impure_essence_still"
+  }
+}

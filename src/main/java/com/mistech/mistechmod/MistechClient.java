@@ -85,6 +85,13 @@ public class MistechClient {
         event.register(MistechMenus.STELLAR_OBSERVATORY.get(), com.mistech.mistechmod.client.MachineScreen::new);
         event.register(MistechMenus.IGNEOUS_BOILER.get(), com.mistech.mistechmod.purity.client.FluidMachineScreen::new);
         event.register(MistechMenus.EXPERIENCE_GENERATOR.get(), com.mistech.mistechmod.purity.client.FluidMachineScreen::new);
+        event.register(com.mistech.mistechmod.item.scroll.ScrollCaseContent.MENU.get(), com.mistech.mistechmod.client.ScrollCaseScreen::new);
+        event.register(com.mistech.mistechmod.machine.arcane.ArcaneMachines.FURNACE_MENU.get(), com.mistech.mistechmod.client.MachineScreen::new);
+        event.register(com.mistech.mistechmod.machine.arcane.ArcaneMachines.CRUSHER_MENU.get(), com.mistech.mistechmod.client.MachineScreen::new);
+        event.register(com.mistech.mistechmod.machine.forge.ForgeContent.FORGE_MENU.get(), com.mistech.mistechmod.client.MachineScreen::new);
+        event.register(com.mistech.mistechmod.machine.arcane.ArcaneMachines.LIQUEFIER_MENU.get(), com.mistech.mistechmod.purity.client.FluidMachineScreen::new);
+        event.register(com.mistech.mistechmod.machine.arcane.ArcaneMachines.EXTRACTOR_MENU.get(), com.mistech.mistechmod.purity.client.FluidMachineScreen::new);
+        event.register(com.mistech.mistechmod.machine.arcane.ArcaneMachines.COMPRESSOR_MENU.get(), com.mistech.mistechmod.purity.client.FluidMachineScreen::new);
     }
 
     /** Desenha o item guardado dentro do Pote de Vidro. */
@@ -100,6 +107,8 @@ public class MistechClient {
         event.registerBlockEntityRenderer(MistechBlockEntities.RUNIC_TANK.get(), com.mistech.mistechmod.client.RunicTankRenderer::new);
         event.registerBlockEntityRenderer(MistechBlockEntities.RUNE_CONFECTOR.get(), com.mistech.mistechmod.client.RuneConfectorRenderer::new);
         event.registerBlockEntityRenderer(MistechBlockEntities.MINER.get(), com.mistech.mistechmod.client.MinerRenderer::new);
+        event.registerBlockEntityRenderer(com.mistech.mistechmod.machine.forge.ForgeContent.CRUSHER_FORGE_BE.get(),
+                com.mistech.mistechmod.client.CrusherForgeRenderer::new);
         event.registerEntityRenderer(com.mistech.mistechmod.registry.GnomeContent.GNOME.get(), com.mistech.mistechmod.client.GnomeRenderer::new);
         event.registerEntityRenderer(com.mistech.mistechmod.registry.DreamContent.PISADEIRA.get(), com.mistech.mistechmod.client.PisadeiraRenderer::new);
         event.registerEntityRenderer(com.mistech.mistechmod.registry.RealmContent.GNOME_KING.get(), com.mistech.mistechmod.client.GnomeKingRenderer::new);
@@ -112,6 +121,8 @@ public class MistechClient {
                 com.mistech.mistechmod.client.AberrationModel.LAYER, com.mistech.mistechmod.client.AberrationModel::new, "aberration", "eyes", 0.6F, 1.0F));
         event.registerEntityRenderer(com.mistech.mistechmod.registry.GoblinContent.GOBLIN_QUEEN.get(), ctx -> new com.mistech.mistechmod.client.GoblinFamilyRenderer<>(ctx,
                 com.mistech.mistechmod.client.GoblinQueenModel.LAYER, com.mistech.mistechmod.client.GoblinQueenModel::new, "goblin_queen", "glow", 0.9F, 1.0F));
+        event.registerBlockEntityRenderer(com.mistech.mistechmod.spellcraft.SpellcraftContent.ARCANE_CHARGER_BE.get(),
+                com.mistech.mistechmod.spellcraft.client.ArcaneChargerRenderer::new);
         // Rituais Tier I
         event.registerBlockEntityRenderer(com.mistech.mistechmod.registry.RitualContent.IMPURE_ALTAR_BE.get(),
                 context -> new com.mistech.mistechmod.client.FloatingItemRenderer<>(context, 1.1F));
@@ -258,6 +269,7 @@ public class MistechClient {
         event.register(com.mistech.mistechmod.artifact.client.ArtifactClient.SPATIAL_RING);
         event.register(com.mistech.mistechmod.fey.client.FeyClient.CROWN_CALL);
         event.register(com.mistech.mistechmod.boitata.client.BoitataClient.FIRE_BREATH);
+        event.register(com.mistech.mistechmod.client.ScrollCaseClient.CYCLE);
     }
 
     /** Filtro de cores da Visão Mística (assets/mistech/post_effect/mystic_sight.json). */
@@ -319,7 +331,9 @@ public class MistechClient {
         if (minecraft.player == null || minecraft.screen != null || !minecraft.player.isShiftKeyDown() || event.getScrollDeltaY() == 0) {
             return;
         }
-        if (com.mistech.mistechmod.item.staff.GnomeStaffItem.holdsRunes(minecraft.player.getMainHandItem())
+        if (com.mistech.mistechmod.spellcraft.SpellFocusItem.is(minecraft.player.getMainHandItem())
+                || com.mistech.mistechmod.spellcraft.SpellFocusItem.is(minecraft.player.getOffhandItem())
+                || com.mistech.mistechmod.item.staff.GnomeStaffItem.holdsRunes(minecraft.player.getMainHandItem())
                 || com.mistech.mistechmod.item.staff.GnomeStaffItem.holdsRunes(minecraft.player.getOffhandItem())
                 || com.mistech.mistechmod.tarot.magus.MagusStaffItem.is(minecraft.player.getMainHandItem())
                 || com.mistech.mistechmod.tarot.magus.MagusStaffItem.is(minecraft.player.getOffhandItem())

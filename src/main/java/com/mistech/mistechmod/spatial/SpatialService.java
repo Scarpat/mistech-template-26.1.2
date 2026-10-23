@@ -64,10 +64,10 @@ public final class SpatialService {
             return 0;
         }
         if (!player.level().dimension().identifier().equals(target.dimension())) {
-            return CROSS_DIMENSION_COST;
+            return com.mistech.mistechmod.Config.anchorCrossDimension();
         }
         double dist = Math.sqrt(player.blockPosition().distSqr(target.pos()));
-        return Math.min(MAX_COST, (int) Math.ceil(dist / BLOCKS_PER_LEVEL));
+        return Math.min(com.mistech.mistechmod.Config.anchorMaxCost(), (int) Math.ceil(dist / com.mistech.mistechmod.Config.anchorBlocksPerLevel()));
     }
 
     /** Manda a lista para o cliente. {@code sourceKey} vazio = aberta pelo Orbe. */

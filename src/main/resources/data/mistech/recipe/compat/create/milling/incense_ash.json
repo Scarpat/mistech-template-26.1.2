@@ -1,0 +1,19 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:milling",
+  "ingredients": [
+    "mistech:ash_block"
+  ],
+  "results": [
+    {
+      "id": "mistech:incense_ash",
+      "count": 4
+    }
+  ],
+  "processing_time": 50
+}

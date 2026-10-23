@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mistech:adept_tome",
+    "mistech:light_rune",
+    "mistech:light_rune",
+    "mistech:light_rune"
+  ],
+  "result": {
+    "id": "mistech:light_tome",
+    "count": 1
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": ["mistech:wooden_staff", "mistech:arcane_rune", "mistech:arcane_rune", "minecraft:lapis_lazuli", "minecraft:lapis_lazuli"],
+  "result": { "id": "mistech:runic_staff", "count": 1 }
+}

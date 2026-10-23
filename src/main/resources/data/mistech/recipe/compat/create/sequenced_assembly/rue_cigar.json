@@ -1,0 +1,45 @@
+{
+  "neoforge:conditions": [
+    {
+      "type": "neoforge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "type": "create:sequenced_assembly",
+  "ingredient": "minecraft:paper",
+  "transitional_item": {
+    "id": "minecraft:paper"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        "minecraft:paper",
+        "mistech:rue_leaf"
+      ],
+      "results": [
+        {
+          "id": "minecraft:paper"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        "minecraft:paper",
+        "mistech:rue_leaf"
+      ],
+      "results": [
+        {
+          "id": "minecraft:paper"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "mistech:rue_cigar"
+    }
+  ]
+}

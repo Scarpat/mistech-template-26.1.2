@@ -1,0 +1,834 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "mistech:block/glass_jar",
+    "glass": "mistech:block/glass_jar",
+    "lid": "minecraft:block/oak_planks",
+    "mandrake": "mistech:block/mandrake_model"
+  },
+  "elements": [
+    {
+      "from": [
+        5.5,
+        1,
+        5.5
+      ],
+      "to": [
+        10.5,
+        7,
+        10.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            0,
+            13,
+            6
+          ],
+          "texture": "#mandrake"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "texture": "#mandrake"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "texture": "#mandrake"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "texture": "#mandrake"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "texture": "#mandrake"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "texture": "#mandrake"
+        }
+      },
+      "name": "mandrake_body"
+    },
+    {
+      "from": [
+        6,
+        7,
+        6
+      ],
+      "to": [
+        10,
+        8,
+        10
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "texture": "#mandrake"
+        },
+        "south": {
+          "uv": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "texture": "#mandrake"
+        },
+        "east": {
+          "uv": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "texture": "#mandrake"
+        },
+        "west": {
+          "uv": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "texture": "#mandrake"
+        },
+        "up": {
+          "uv": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "texture": "#mandrake"
+        },
+        "down": {
+          "uv": [
+            0,
+            0,
+            8,
+            8
+          ],
+          "texture": "#mandrake"
+        }
+      },
+      "name": "mandrake_head"
+    },
+    {
+      "from": [
+        6.5,
+        0,
+        7.5
+      ],
+      "to": [
+        7.5,
+        1,
+        8.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "south": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "east": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "west": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "up": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "down": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        }
+      },
+      "name": "mandrake_leg_l"
+    },
+    {
+      "from": [
+        8.5,
+        0,
+        7.5
+      ],
+      "to": [
+        9.5,
+        1,
+        8.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "south": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "east": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "west": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "up": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "down": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        }
+      },
+      "name": "mandrake_leg_r"
+    },
+    {
+      "from": [
+        4,
+        3.5,
+        7.5
+      ],
+      "to": [
+        5.5,
+        4.5,
+        8.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "south": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "east": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "west": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "up": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "down": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        }
+      },
+      "name": "mandrake_arm_l"
+    },
+    {
+      "from": [
+        4,
+        4.5,
+        7.5
+      ],
+      "to": [
+        5,
+        7,
+        8.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "south": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "east": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "west": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "up": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "down": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        }
+      },
+      "name": "mandrake_hand_l"
+    },
+    {
+      "from": [
+        10.5,
+        3.5,
+        7.5
+      ],
+      "to": [
+        12,
+        4.5,
+        8.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "south": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "east": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "west": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "up": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "down": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        }
+      },
+      "name": "mandrake_arm_r"
+    },
+    {
+      "from": [
+        11,
+        4.5,
+        7.5
+      ],
+      "to": [
+        12,
+        7,
+        8.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "south": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "east": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "west": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "up": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "down": {
+          "uv": [
+            8,
+            8,
+            16,
+            16
+          ],
+          "texture": "#mandrake"
+        }
+      },
+      "name": "mandrake_hand_r"
+    },
+    {
+      "from": [
+        4,
+        8,
+        8
+      ],
+      "to": [
+        12,
+        11,
+        8
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            0,
+            8,
+            8,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "south": {
+          "uv": [
+            0,
+            8,
+            8,
+            16
+          ],
+          "texture": "#mandrake"
+        }
+      },
+      "name": "mandrake_leaves_a"
+    },
+    {
+      "from": [
+        8,
+        8,
+        4
+      ],
+      "to": [
+        8,
+        11,
+        12
+      ],
+      "faces": {
+        "east": {
+          "uv": [
+            0,
+            8,
+            8,
+            16
+          ],
+          "texture": "#mandrake"
+        },
+        "west": {
+          "uv": [
+            0,
+            8,
+            8,
+            16
+          ],
+          "texture": "#mandrake"
+        }
+      },
+      "name": "mandrake_leaves_b"
+    },
+    {
+      "from": [
+        3,
+        0,
+        3
+      ],
+      "to": [
+        13,
+        11,
+        13
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3,
+            5,
+            13,
+            16
+          ],
+          "texture": "#glass"
+        },
+        "south": {
+          "uv": [
+            3,
+            5,
+            13,
+            16
+          ],
+          "texture": "#glass"
+        },
+        "west": {
+          "uv": [
+            3,
+            5,
+            13,
+            16
+          ],
+          "texture": "#glass"
+        },
+        "east": {
+          "uv": [
+            3,
+            5,
+            13,
+            16
+          ],
+          "texture": "#glass"
+        },
+        "down": {
+          "uv": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "texture": "#glass",
+          "cullface": "down"
+        },
+        "up": {
+          "uv": [
+            3,
+            3,
+            13,
+            13
+          ],
+          "texture": "#glass"
+        }
+      }
+    },
+    {
+      "from": [
+        3.5,
+        11,
+        3.5
+      ],
+      "to": [
+        12.5,
+        13,
+        12.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            3.5,
+            3,
+            12.5,
+            5
+          ],
+          "texture": "#lid"
+        },
+        "south": {
+          "uv": [
+            3.5,
+            3,
+            12.5,
+            5
+          ],
+          "texture": "#lid"
+        },
+        "west": {
+          "uv": [
+            3.5,
+            3,
+            12.5,
+            5
+          ],
+          "texture": "#lid"
+        },
+        "east": {
+          "uv": [
+            3.5,
+            3,
+            12.5,
+            5
+          ],
+          "texture": "#lid"
+        },
+        "down": {
+          "uv": [
+            3.5,
+            3.5,
+            12.5,
+            12.5
+          ],
+          "texture": "#lid"
+        },
+        "up": {
+          "uv": [
+            3.5,
+            3.5,
+            12.5,
+            12.5
+          ],
+          "texture": "#lid"
+        }
+      }
+    },
+    {
+      "from": [
+        6.5,
+        13,
+        6.5
+      ],
+      "to": [
+        9.5,
+        13.6,
+        9.5
+      ],
+      "faces": {
+        "north": {
+          "uv": [
+            6.5,
+            2.4000000000000004,
+            9.5,
+            3
+          ],
+          "texture": "#lid"
+        },
+        "south": {
+          "uv": [
+            6.5,
+            2.4000000000000004,
+            9.5,
+            3
+          ],
+          "texture": "#lid"
+        },
+        "west": {
+          "uv": [
+            6.5,
+            2.4000000000000004,
+            9.5,
+            3
+          ],
+          "texture": "#lid"
+        },
+        "east": {
+          "uv": [
+            6.5,
+            2.4000000000000004,
+            9.5,
+            3
+          ],
+          "texture": "#lid"
+        },
+        "down": {
+          "uv": [
+            6.5,
+            6.5,
+            9.5,
+            9.5
+          ],
+          "texture": "#lid"
+        },
+        "up": {
+          "uv": [
+            6.5,
+            6.5,
+            9.5,
+            9.5
+          ],
+          "texture": "#lid"
+        }
+      }
+    }
+  ]
+}

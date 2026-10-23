@@ -56,6 +56,8 @@ public class GuideMapScreen extends Screen {
     private static final int LINE_LOCKED = 0xFF3A3542;
 
     private static final int ROW_H = 20;
+    /** Lado do nó-fantasma das ligações com outros capítulos. */
+    private static final int LINK_SIZE = 20;
     private static final int HEADER_H = 30;
 
     // ---- estado lembrado entre aberturas
@@ -75,6 +77,15 @@ public class GuideMapScreen extends Screen {
     // geometria (recalculada no init)
     private int px0, py0, px1, py1, sideW;
     private int cx0, cy0, cx1, cy1;
+
+    // busca (botão da luneta ou Ctrl+F)
+    private static final int RESULT_H = 18, RESULT_W = 250;
+    private boolean searching;
+    private String query = "";
+    private List<GuideBook.Entry> results = List.of();
+    private int resultScroll;
+    /** Texto de cada entrada para a busca (nome, capítulo e páginas), sem acentos e em minúsculas. */
+    private Map<String, String> searchIndex;
 
     // arrasto
     private boolean pressing;
@@ -207,6 +218,12 @@ public class GuideMapScreen extends Screen {
             maxX = Math.max(maxX, e.x());
             maxY = Math.max(maxY, e.y());
         }
+        for (GuideBook.Link l : current().links()) {
+            minX = Math.min(minX, l.x());
+            minY = Math.min(minY, l.y());
+            maxX = Math.max(maxX, l.x());
+            maxY = Math.max(maxY, l.y());
+        }
         float wPx = (maxX - minX) * CELL + CELL * 2;
         float hPx = (maxY - minY) * CELL + CELL * 2;
         float fit = Math.min((cx1 - cx0) / wPx, (cy1 - cy0) / hPx);
@@ -269,6 +286,42 @@ public class GuideMapScreen extends Screen {
         return best;
     }
 
+    /** Nó-fantasma (ligação com outro capítulo) sob o mouse. */
+    private GuideBook.Link linkAt(double mx, double my) {
+        if (!inCanvas(mx, my)) {
+            return null;
+        }
+        float wx = toWorldX(mx), wy = toWorldY(my);
+        for (GuideBook.Link l : current().links()) {
+            if (Math.abs(wx - l.x() * CELL) <= LINK_SIZE / 2.0F && Math.abs(wy - l.y() * CELL) <= LINK_SIZE / 2.0F) {
+                return l;
+            }
+        }
+        return null;
+    }
+
+    private GuideBook.Link linkOf(String id) {
+        for (GuideBook.Link l : current().links()) {
+            if (l.id().equals(id)) {
+                return l;
+            }
+        }
+        return null;
+    }
+
+    /** Vai até a entrada de outro capítulo que a ligação representa. */
+    private void jumpTo(GuideBook.Link link) {
+        GuideBook.Entry target = book.entry(link.id());
+        int index = book.categoryIndex(link.id());
+        if (target == null || index < 0 || !GuideProgress.chapterOpen(book, book.categories.get(index))) {
+            playSound(SoundEvents.CHEST_LOCKED);
+            return;
+        }
+        selectChapter(index);
+        centerOn(book.entry(link.id()));
+        playSound(SoundEvents.UI_BUTTON_CLICK.value());
+    }
+
     private boolean inCanvas(double mx, double my) {
         return mx >= cx0 && mx < cx1 && my >= cy0 && my < cy1;
     }
@@ -318,9 +371,192 @@ public class GuideMapScreen extends Screen {
         return mx >= x && mx < x + this.font.width(root) && my >= y && my < y + 9;
     }
 
+    // ================================================================= busca
+
+    private static String normalize(String text) {
+        String plain = text.replaceAll("§.", "").toLowerCase(java.util.Locale.ROOT);
+        return java.text.Normalizer.normalize(plain, java.text.Normalizer.Form.NFD).replaceAll("\\p{M}", "");
+    }
+
+    private void buildIndex() {
+        searchIndex = new HashMap<>();
+        for (GuideBook.Category category : book.categories) {
+            String chapterName = Component.translatable(category.name()).getString();
+            for (GuideBook.Entry entry : category.entries()) {
+                StringBuilder sb = new StringBuilder();
+                sb.append(Component.translatable(entry.name()).getString()).append(' ').append(chapterName);
+                for (com.google.gson.JsonObject page : entry.pages()) {
+                    for (String key : new String[] {"title", "text"}) {
+                        if (page.has(key) && page.get(key).isJsonPrimitive()) {
+                            sb.append(' ').append(Component.translatable(page.get(key).getAsString()).getString());
+                        }
+                    }
+                }
+                searchIndex.putIfAbsent(entry.id(), normalize(sb.toString()));
+            }
+        }
+    }
+
+    private void runSearch() {
+        resultScroll = 0;
+        String q = normalize(query.trim());
+        if (q.isEmpty()) {
+            results = List.of();
+            return;
+        }
+        if (searchIndex == null) {
+            buildIndex();
+        }
+        String[] words = q.split("\\s+");
+        List<GuideBook.Entry> nameHits = new ArrayList<>(), textHits = new ArrayList<>();
+        java.util.Set<String> seen = new java.util.HashSet<>();
+        for (GuideBook.Category category : book.categories) {
+            for (GuideBook.Entry entry : category.entries()) {
+                if (!seen.add(entry.id())) {
+                    continue;
+                }
+                // entradas trancadas não aparecem (para não estragar surpresas), exceto no modo livre
+                if (GuideProgress.state(book, entry) == GuideProgress.State.LOCKED && !GuideProgress.freeMode()) {
+                    continue;
+                }
+                String text = searchIndex.getOrDefault(entry.id(), "");
+                boolean all = true;
+                for (String w : words) {
+                    if (!text.contains(w)) {
+                        all = false;
+                        break;
+                    }
+                }
+                if (!all) {
+                    continue;
+                }
+                String name = normalize(Component.translatable(entry.name()).getString());
+                (name.contains(words[0]) ? nameHits : textHits).add(entry);
+            }
+        }
+        nameHits.addAll(textHits);
+        results = nameHits;
+    }
+
+    private void toggleSearch() {
+        searching = !searching;
+        if (!searching) {
+            query = "";
+            results = List.of();
+        }
+        playSound(SoundEvents.UI_BUTTON_CLICK.value());
+    }
+
+    private int resultsX() {
+        return cx0 + 4;
+    }
+
+    private int resultsY() {
+        return cy0 + 4;
+    }
+
+    private int resultsW() {
+        return Math.min(RESULT_W, cx1 - cx0 - 8);
+    }
+
+    private int visibleResults() {
+        return Math.max(1, Math.min(results.size() - resultScroll, (cy1 - cy0 - 8) / RESULT_H));
+    }
+
+    private int resultAt(double mx, double my) {
+        if (!searching || results.isEmpty()) {
+            return -1;
+        }
+        int x = resultsX(), y = resultsY();
+        if (mx < x || mx >= x + resultsW() || my < y) {
+            return -1;
+        }
+        int row = (int) ((my - y) / RESULT_H);
+        if (row >= visibleResults()) {
+            return -1;
+        }
+        return resultScroll + row;
+    }
+
+    private void openResult(GuideBook.Entry entry) {
+        int index = book.categoryIndex(entry.id());
+        if (index != chapter && index >= 0) {
+            saveView();
+            chapter = index;
+            loadView(false);
+        }
+        centerOn(entry);
+        openEntry(entry);
+    }
+
+    @Override
+    public boolean charTyped(net.minecraft.client.input.CharacterEvent event) {
+        if (searching && event.isAllowedChatCharacter() && query.length() < 40) {
+            query += event.codepointAsString();
+            runSearch();
+            return true;
+        }
+        return super.charTyped(event);
+    }
+
+    private void drawSearch(GuiGraphicsExtractor g, int mouseX, int mouseY) {
+        // campo no cabeçalho (no lugar da descrição do capítulo)
+        int fx = cx0 + 6, fy = py0 + 17, fw = buttonX(3) - 8 - fx;
+        g.fill(fx - 2, fy - 2, fx + fw, fy + 10, FRAME_GOLD);
+        g.fill(fx - 1, fy - 1, fx + fw - 1, fy + 9, 0xFF120E18);
+        boolean blink = (Util.getMillis() / 400) % 2 == 0;
+        String shown = query.isEmpty() ? Component.translatable("guide.mistech.search.hint").getString() : query;
+        g.text(this.font, trim(shown, fw - 8), fx + 1, fy, query.isEmpty() ? TEXT_DIM : TEXT, false);
+        if (blink) {
+            int cx = fx + 1 + (query.isEmpty() ? 0 : this.font.width(trim(query, fw - 8)));
+            g.fill(cx, fy - 1, cx + 1, fy + 9, GOLD);
+        }
+        if (query.isBlank()) {
+            return;
+        }
+        // lista de resultados por cima do mapa
+        int x = resultsX(), y = resultsY(), w = resultsW();
+        int rows = results.isEmpty() ? 1 : visibleResults();
+        g.fill(x - 1, y - 1, x + w + 1, y + rows * RESULT_H + 1, FRAME_GOLD);
+        g.fill(x, y, x + w, y + rows * RESULT_H, 0xF2160F1E);
+        if (results.isEmpty()) {
+            g.text(this.font, Component.translatable("guide.mistech.search.none"), x + 6, y + 5, TEXT_DIM, false);
+            return;
+        }
+        int hovered = resultAt(mouseX, mouseY);
+        for (int i = 0; i < rows; i++) {
+            GuideBook.Entry e = results.get(resultScroll + i);
+            int ry = y + i * RESULT_H;
+            if (resultScroll + i == hovered) {
+                g.fill(x, ry, x + w, ry + RESULT_H, 0x40C8A060);
+                g.requestCursor(CursorTypes.POINTING_HAND);
+            }
+            g.item(GuideBook.stack(e.icon()), x + 2, ry + 1);
+            String chapterName = Component.translatable(book.categories.get(Math.max(0, book.categoryIndex(e.id()))).name()).getString();
+            int nameW = w - 26 - Math.min(90, this.font.width(chapterName)) - 6;
+            boolean done = GuideProgress.state(book, e) == GuideProgress.State.DONE;
+            g.text(this.font, trim(Component.translatable(e.name()).getString(), nameW), x + 22, ry + 5, done ? GREEN : TEXT, false);
+            String ch = trim(chapterName, 90);
+            g.text(this.font, ch, x + w - 4 - this.font.width(ch), ry + 5, TEXT_DIM, false);
+        }
+        if (results.size() > rows) {
+            String more = (resultScroll + rows) + "/" + results.size();
+            g.text(this.font, more, x + w - 4 - this.font.width(more), y + rows * RESULT_H + 3, TEXT_DIM, false);
+        }
+    }
+
     @Override
     public boolean mouseClicked(MouseButtonEvent event, boolean doubleClick) {
         double mx = event.x(), my = event.y();
+        if (event.button() == 0 && overButton(mx, my, 3)) {
+            toggleSearch();
+            return true;
+        }
+        int hit = resultAt(mx, my);
+        if (event.button() == 0 && hit >= 0) {
+            openResult(results.get(hit));
+            return true;
+        }
         if (event.button() == 0) {
             int row = chapterAt(mx, my);
             if (row >= 0) {
@@ -390,6 +626,11 @@ public class GuideMapScreen extends Screen {
                 GuideBook.Entry entry = entryAt(event.x(), event.y());
                 if (entry != null) {
                     openEntry(entry);
+                } else {
+                    GuideBook.Link link = linkAt(event.x(), event.y());
+                    if (link != null) {
+                        jumpTo(link);
+                    }
                 }
             }
             dragging = false;
@@ -442,6 +683,11 @@ public class GuideMapScreen extends Screen {
         if (scrollY == 0) {
             return false;
         }
+        if (searching && !results.isEmpty() && x >= resultsX() && x < resultsX() + resultsW() && y >= resultsY()
+                && y < resultsY() + visibleResults() * RESULT_H) {
+            resultScroll = Mth.clamp(resultScroll - (int) Math.signum(scrollY), 0, Math.max(0, results.size() - visibleResults()));
+            return true;
+        }
         if (x < px0 + sideW) {
             sidebarScroll -= (int) (scrollY * ROW_H);
             clampSidebarScroll();
@@ -460,6 +706,39 @@ public class GuideMapScreen extends Screen {
 
     @Override
     public boolean keyPressed(KeyEvent event) {
+        if (event.key() == GLFW.GLFW_KEY_F && event.hasControlDown()) {
+            if (!searching) {
+                toggleSearch();
+            }
+            return true;
+        }
+        if (searching) {
+            switch (event.key()) {
+                case GLFW.GLFW_KEY_ESCAPE -> {
+                    toggleSearch();
+                    return true;
+                }
+                case GLFW.GLFW_KEY_BACKSPACE -> {
+                    if (!query.isEmpty()) {
+                        query = event.hasControlDown() ? "" : query.substring(0, query.length() - 1);
+                        runSearch();
+                    }
+                    return true;
+                }
+                case GLFW.GLFW_KEY_ENTER, GLFW.GLFW_KEY_KP_ENTER -> {
+                    if (!results.isEmpty()) {
+                        openResult(results.get(0));
+                    }
+                    return true;
+                }
+                default -> {
+                    // letras viram texto pelo charTyped; o resto (setas etc.) continua valendo
+                    if (event.key() >= GLFW.GLFW_KEY_SPACE && event.key() <= GLFW.GLFW_KEY_GRAVE_ACCENT) {
+                        return true;
+                    }
+                }
+            }
+        }
         switch (event.key()) {
             case GLFW.GLFW_KEY_UP, GLFW.GLFW_KEY_PAGE_UP -> {
                 for (int i = chapter - 1; i >= 0; i--) {
@@ -505,6 +784,9 @@ public class GuideMapScreen extends Screen {
         sidebar(graphics, mouseX, mouseY);
         header(graphics, mouseX, mouseY);
         canvas(graphics, mouseX, mouseY);
+        if (searching) {
+            drawSearch(graphics, mouseX, mouseY);
+        }
     }
 
     /** Moldura dourada em volta de tudo, com cantos ornamentados. */
@@ -621,15 +903,17 @@ public class GuideMapScreen extends Screen {
         x += this.font.width(root);
         g.text(this.font, " › ", x, y, TEXT_DIM, false);
         x += this.font.width(" › ");
-        int maxNameW = buttonX(2) - 8 - x - 40;
+        int maxNameW = buttonX(3) - 8 - x - 40;
         g.text(this.font, trim(Component.translatable(c.name()).getString(), maxNameW), x, y, TITLE, false);
-        String desc = Component.translatable(c.description()).getString();
-        g.text(this.font, trim(desc, buttonX(2) - 8 - (cx0 + 6)), cx0 + 6, y + 12, TEXT_DIM, false);
+        if (!searching) {
+            String desc = Component.translatable(c.description()).getString();
+            g.text(this.font, trim(desc, buttonX(3) - 8 - (cx0 + 6)), cx0 + 6, y + 12, TEXT_DIM, false);
+        }
 
         // progresso do capítulo
         int cDone = GuideProgress.doneCount(c), cTotal = c.entries().size();
         String count = cDone + "/" + cTotal;
-        int countX = buttonX(2) - 8 - this.font.width(count);
+        int countX = buttonX(3) - 8 - this.font.width(count);
         g.text(this.font, count, countX, y, cDone == cTotal ? GREEN : GOLD, false);
 
         // botões: [organização] [próximo passo] [modo livre]
@@ -637,8 +921,13 @@ public class GuideMapScreen extends Screen {
             button(g, 2, GuideBook.stack(viewIcon(book.view())), mouseX, mouseY);
         }
         button(g, 1, GuideBook.stack("minecraft:compass"), mouseX, mouseY);
+        button(g, 3, GuideBook.stack("minecraft:spyglass"), mouseX, mouseY);
         button(g, 0, GuideBook.stack(GuideProgress.freeMode() ? "minecraft:ender_eye" : "minecraft:ender_pearl"), mouseX, mouseY);
-        if (overButton(mouseX, mouseY, 0)) {
+        if (overButton(mouseX, mouseY, 3)) {
+            g.setComponentTooltipForNextFrame(this.font, List.of(Component.translatable("guide.mistech.search"),
+                    Component.translatable("guide.mistech.search.help").withStyle(ChatFormatting.GRAY)), mouseX, mouseY);
+            g.requestCursor(CursorTypes.POINTING_HAND);
+        } else if (overButton(mouseX, mouseY, 0)) {
             g.setComponentTooltipForNextFrame(this.font, List.of(
                     Component.translatable(GuideProgress.freeMode() ? "guide.mistech.map.free_on" : "guide.mistech.map.free_off"),
                     Component.translatable("guide.mistech.map.free_hint").withStyle(ChatFormatting.GRAY)), mouseX, mouseY);
@@ -690,6 +979,7 @@ public class GuideMapScreen extends Screen {
         g.fillGradient(cx0, cy1 - 10, cx1, cy1, 0x00000000, 0x80000000);
 
         GuideBook.Entry hovered = dragging ? null : entryAt(mouseX, mouseY);
+        GuideBook.Link hoveredLink = dragging || hovered != null ? null : linkAt(mouseX, mouseY);
         List<GuideBook.Entry> entries = current().entries();
         long millis = Util.getMillis();
 
@@ -703,19 +993,38 @@ public class GuideMapScreen extends Screen {
         for (GuideBook.Entry e : entries) {
             for (String depId : e.deps()) {
                 GuideBook.Entry dep = book.entry(depId);
-                if (dep == null || book.categoryIndex(depId) != chapter) {
+                if (dep == null) {
                     continue;
+                }
+                float fromX, fromY;
+                boolean outside = book.categoryIndex(depId) != chapter;
+                if (outside) {
+                    // de outro capítulo: só desenha se houver ligação (nó-fantasma) para ela aqui
+                    GuideBook.Link link = linkOf(depId);
+                    if (link == null) {
+                        continue;
+                    }
+                    fromX = link.x() * CELL;
+                    fromY = link.y() * CELL;
+                } else {
+                    fromX = dep.x() * CELL;
+                    fromY = dep.y() * CELL;
                 }
                 boolean depDone = GuideProgress.isDone(depId);
                 GuideProgress.State st = GuideProgress.state(book, e);
                 int color = depDone && st == GuideProgress.State.DONE ? LINE_DONE
                         : depDone ? LINE_OPEN : LINE_LOCKED;
-                boolean highlight = hovered != null && (hovered == e || hovered == dep);
-                line(g, dep.x() * CELL, dep.y() * CELL, e.x() * CELL, e.y() * CELL, highlight ? 0xFFFFFFFF : color,
-                        depDone && st == GuideProgress.State.AVAILABLE, millis);
+                boolean highlight = hovered != null && (hovered == e || hovered == dep)
+                        || outside && hoveredLink != null && hoveredLink.id().equals(depId);
+                line(g, fromX, fromY, e.x() * CELL, e.y() * CELL, highlight ? 0xFFFFFFFF : color,
+                        depDone && st == GuideProgress.State.AVAILABLE, outside, millis);
             }
         }
 
+        // ligações com outros capítulos
+        for (GuideBook.Link l : current().links()) {
+            linkNode(g, l, l == hoveredLink);
+        }
         // nós
         for (GuideBook.Entry e : entries) {
             node(g, e, e == hovered, millis);
@@ -724,7 +1033,10 @@ public class GuideMapScreen extends Screen {
 
         g.disableScissor();
 
-        if (hovered != null) {
+        if (hoveredLink != null) {
+            g.setComponentTooltipForNextFrame(this.font, linkTooltip(hoveredLink), mouseX, mouseY);
+            g.requestCursor(CursorTypes.POINTING_HAND);
+        } else if (hovered != null) {
             g.setComponentTooltipForNextFrame(this.font, tooltip(hovered), mouseX, mouseY);
             if (GuideProgress.state(book, hovered) != GuideProgress.State.LOCKED) {
                 g.requestCursor(CursorTypes.POINTING_HAND);
@@ -737,7 +1049,8 @@ public class GuideMapScreen extends Screen {
     }
 
     /** Linha grossa entre dois pontos; as que levam a uma entrada recém-revelada têm um brilho correndo. */
-    private void line(GuiGraphicsExtractor g, float x0, float y0, float x1, float y1, int color, boolean flowing, long millis) {
+    private void line(GuiGraphicsExtractor g, float x0, float y0, float x1, float y1, int color, boolean flowing, boolean dashed,
+                      long millis) {
         float dx = x1 - x0, dy = y1 - y0;
         float length = (float) Math.sqrt(dx * dx + dy * dy);
         if (length < 1) {
@@ -748,8 +1061,16 @@ public class GuideMapScreen extends Screen {
         pose.translate(x0, y0);
         pose.rotate((float) Math.atan2(dy, dx));
         int len = Math.round(length);
-        g.fill(0, -2, len, 2, 0xFF0B0810);
-        g.fill(0, -1, len, 1, color);
+        if (dashed) {
+            // vem de outro capítulo: tracejada
+            for (int i = 0; i < len; i += 7) {
+                g.fill(i, -2, Math.min(len, i + 4), 2, 0xFF0B0810);
+                g.fill(i, -1, Math.min(len, i + 4), 1, color);
+            }
+        } else {
+            g.fill(0, -2, len, 2, 0xFF0B0810);
+            g.fill(0, -1, len, 1, color);
+        }
         if (flowing) {
             int pulse = (int) ((millis / 25) % Math.max(1, len + 12)) - 6;
             g.fill(Math.max(0, pulse - 4), -1, Math.min(len, pulse + 4), 1, 0xFFFFF0B0);
@@ -800,6 +1121,64 @@ public class GuideMapScreen extends Screen {
         if (hover) {
             g.blit(RenderPipelines.GUI_TEXTURED, TEXTURE, x, y, size * 3, v, size, size, TEX_W, TEX_H);
         }
+    }
+
+    /** Nó-fantasma: a entrada de outro capítulo, pequena, de moldura pontilhada e apagada. */
+    private void linkNode(GuiGraphicsExtractor g, GuideBook.Link l, boolean hover) {
+        GuideBook.Entry target = book.entry(l.id());
+        int s = LINK_SIZE;
+        int x = Math.round(l.x() * CELL) - s / 2;
+        int y = Math.round(l.y() * CELL) - s / 2;
+        boolean done = target != null && GuideProgress.isDone(l.id());
+        boolean known = target != null && GuideProgress.state(book, target) != GuideProgress.State.LOCKED;
+        int border = hover ? 0xFFFFFFFF : done ? LINE_DONE : known ? LINE_OPEN : 0xFF5A5262;
+        g.fill(x, y, x + s, y + s, 0xFF0B0810);
+        g.fill(x + 1, y + 1, x + s - 1, y + s - 1, hover ? 0xFF2E2440 : 0xFF17121F);
+        for (int i = 1; i < s - 1; i += 3) {
+            g.fill(x + i, y, x + i + 2, y + 1, border);
+            g.fill(x + i, y + s - 1, x + i + 2, y + s, border);
+            g.fill(x, y + i, x + 1, y + i + 2, border);
+            g.fill(x + s - 1, y + i, x + s, y + i + 2, border);
+        }
+        if (known) {
+            Matrix3x2fStack pose = g.pose();
+            pose.pushMatrix();
+            pose.translate(x + 4, y + 4);
+            pose.scale(0.75F, 0.75F);
+            g.item(GuideBook.stack(target.icon()), 0, 0);
+            pose.popMatrix();
+            if (!hover) {
+                g.fill(x + 1, y + 1, x + s - 1, y + s - 1, 0x50110D17);
+            }
+        } else {
+            g.text(this.font, "?", x + s / 2 - 2, y + s / 2 - 4, TEXT_DIM, false);
+        }
+        if (done) {
+            sprite(g, x + s - 8, y + s - 7, 0, 64, 11, 9);
+        }
+    }
+
+    private List<Component> linkTooltip(GuideBook.Link l) {
+        List<Component> lines = new ArrayList<>();
+        GuideBook.Entry target = book.entry(l.id());
+        if (target == null) {
+            return lines;
+        }
+        GuideProgress.State st = GuideProgress.state(book, target);
+        lines.add(st == GuideProgress.State.LOCKED ? Component.translatable("guide.mistech.map.hidden").withStyle(ChatFormatting.DARK_GRAY)
+                : Component.translatable(target.name()).withStyle(ChatFormatting.LIGHT_PURPLE));
+        int index = book.categoryIndex(l.id());
+        boolean open = index >= 0 && GuideProgress.chapterOpen(book, book.categories.get(index));
+        Component where = open ? Component.translatable(book.categories.get(index).name()).withStyle(ChatFormatting.GOLD)
+                : Component.translatable("guide.mistech.map.hidden").withStyle(ChatFormatting.DARK_GRAY);
+        lines.add(Component.translatable("guide.mistech.map.link_from", where).withStyle(ChatFormatting.GRAY));
+        lines.add(st == GuideProgress.State.DONE ? Component.translatable("guide.mistech.map.done").withStyle(ChatFormatting.GREEN)
+                : Component.translatable(st == GuideProgress.State.LOCKED ? "guide.mistech.map.locked" : "guide.mistech.map.available")
+                        .withStyle(st == GuideProgress.State.LOCKED ? ChatFormatting.RED : ChatFormatting.GOLD));
+        if (open) {
+            lines.add(Component.translatable("guide.mistech.map.link_go").withStyle(ChatFormatting.DARK_GRAY));
+        }
+        return lines;
     }
 
     private List<Component> tooltip(GuideBook.Entry e) {

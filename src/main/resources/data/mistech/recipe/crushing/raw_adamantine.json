@@ -1,0 +1,11 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "#c:raw_materials/adamantine",
+  "result": {
+    "id": "mistech:adamantine_dust",
+    "count": 1
+  },
+  "bonus_chance": 0.35,
+  "rune_bonus": true,
+  "tier": 2
+}

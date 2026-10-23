@@ -45,7 +45,7 @@ import net.minecraft.world.phys.Vec3;
  * não tem refluxo: só se desfaz (os itens ficam onde estão). Quem ativa precisa estar Puro (Mácula &lt; 20),
  * exceto na Purificação da Alma, que serve justamente para limpar quem não está.
  */
-public class SanctuaryFontBlockEntity extends SingleItemBlockEntity {
+public class SanctuaryFontBlockEntity extends SingleItemBlockEntity implements com.mistech.mistechmod.compat.InfoProvider {
     public static final int MAX_ESSENCE = RitualRecipe.MAX_ESSENCE;
     /** Raio em volta da Fonte onde a Purificação da Alma alcança os jogadores. */
     public static final double SOUL_RADIUS = 3.5;
@@ -340,6 +340,14 @@ public class SanctuaryFontBlockEntity extends SingleItemBlockEntity {
         }
         if (this.starter != null) {
             output.store("Starter", UUIDUtil.CODEC, this.starter);
+        }
+    }
+
+    @Override
+    public void addInfo(java.util.List<net.minecraft.network.chat.Component> lines) {
+        lines.add(net.minecraft.network.chat.Component.translatable("info.mistech.altar.essence", this.essence, MAX_ESSENCE));
+        if (this.isRunning() && this.duration > 0) {
+            lines.add(com.mistech.mistechmod.compat.InfoProvider.progress(this.progress, this.duration));
         }
     }
 }

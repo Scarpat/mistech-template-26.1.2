@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "S S",
+    "FFF",
+    "S S"
+  ],
+  "key": {
+    "S": "minecraft:stick",
+    "F": "mistech:hemp_fiber"
+  },
+  "result": {
+    "id": "mistech:hammock",
+    "count": 1
+  }
+}
