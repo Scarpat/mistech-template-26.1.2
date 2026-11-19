@@ -1,0 +1,23 @@
+{
+  "type": "mistech:ore_refining",
+  "stage": "crystallizing",
+  "ingredient": "#c:ores/copper",
+  "result": {
+    "id": "mistech:copper_ore_crystal",
+    "count": 4
+  },
+  "byproducts": [
+    {
+      "item": {
+        "id": "mistech:magic_residue"
+      },
+      "chance": 0.15
+    },
+    {
+      "item": {
+        "id": "mistech:adamantine_dust"
+      },
+      "chance": 0.05
+    }
+  ]
+}

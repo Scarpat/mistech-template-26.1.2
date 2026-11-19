@@ -55,7 +55,7 @@ public class CaneStillBlockEntity extends MachineBlockEntity {
         if (input.is(DrinkContent.FERMENTED_GARAPA.get())) {
             ItemStack result = new ItemStack(DrinkContent.CACHACA.get());
             int cost = fire || rune ? 0 : this.energyStep(ENERGY_PER_TICK);
-            if (this.canOutput(result) && (cost == 0 || this.hasEnergy(cost))) {
+            if (this.canOutputProduct(result) && (cost == 0 || this.hasEnergy(cost))) {
                 working = true;
                 if (cost > 0) {
                     this.drainEnergy(cost);
@@ -67,7 +67,7 @@ public class CaneStillBlockEntity extends MachineBlockEntity {
                     if (rune) {
                         this.countRuneOp(RUNE_OPS_PER_USE);
                     }
-                    this.insertOutput(result);
+                    this.insertProduct(level, result);
                     level.playSound(null, pos, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 0.6F, 0.8F + level.getRandom().nextFloat() * 0.2F);
                 }
                 this.setChanged();

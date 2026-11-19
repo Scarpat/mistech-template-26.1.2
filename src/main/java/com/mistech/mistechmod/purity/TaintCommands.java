@@ -41,6 +41,36 @@ public final class TaintCommands {
                                                 .executes(ctx -> set(ctx.getSource(), EntityArgument.getPlayer(ctx, "player"), FloatArgumentType.getFloat(ctx, "value"), true)))))));
     }
 
+    @SubscribeEvent
+    static void onRegisterArea(RegisterCommandsEvent event) {
+        event.getDispatcher().register(Commands.literal("mistech")
+                .requires(Commands.hasPermission(Commands.LEVEL_GAMEMASTERS))
+                .then(Commands.literal("area_taint")
+                        .then(Commands.literal("get").executes(ctx -> showArea(ctx.getSource())))
+                        .then(Commands.literal("set")
+                                .then(Commands.argument("value", FloatArgumentType.floatArg(0, Taint.MAX))
+                                        .executes(ctx -> setArea(ctx.getSource(), FloatArgumentType.getFloat(ctx, "value"), false))))
+                        .then(Commands.literal("add")
+                                .then(Commands.argument("value", FloatArgumentType.floatArg(-Taint.MAX, Taint.MAX))
+                                        .executes(ctx -> setArea(ctx.getSource(), FloatArgumentType.getFloat(ctx, "value"), true))))));
+    }
+
+    private static int showArea(CommandSourceStack source) {
+        net.minecraft.core.BlockPos pos = net.minecraft.core.BlockPos.containing(source.getPosition());
+        float value = com.mistech.mistechmod.purity.area.AreaTaint.get(source.getLevel(), pos);
+        Component line = Component.translatable("commands.mistech.area_taint", pos.getX() >> 4, pos.getZ() >> 4).append(Taint.describe(value));
+        source.sendSuccess(() -> line, false);
+        return Math.round(value);
+    }
+
+    private static int setArea(CommandSourceStack source, float value, boolean add) {
+        net.minecraft.core.BlockPos pos = net.minecraft.core.BlockPos.containing(source.getPosition());
+        net.minecraft.world.level.chunk.LevelChunk chunk = source.getLevel().getChunkAt(pos);
+        float now = com.mistech.mistechmod.purity.area.AreaTaint.get(chunk);
+        com.mistech.mistechmod.purity.area.AreaTaint.set(source.getLevel(), chunk, add ? now + value : value);
+        return showArea(source);
+    }
+
     private static int show(CommandSourceStack source, ServerPlayer player) {
         Component line = Component.empty().append(player.getDisplayName()).append(": ").append(Taint.describe(Taint.get(player)));
         source.sendSuccess(() -> line, false);

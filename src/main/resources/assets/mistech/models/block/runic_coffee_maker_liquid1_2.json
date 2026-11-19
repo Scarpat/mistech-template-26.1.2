@@ -1,0 +1,38 @@
+{
+  "textures": {
+    "liquid": "mistech:block/runic_coffee_maker_tea",
+    "particle": "mistech:block/runic_coffee_maker_tea"
+  },
+  "elements": [
+    {
+      "from": [
+        6.25,
+        2.7,
+        5.5
+      ],
+      "to": [
+        9.75,
+        6.15,
+        9.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#liquid"
+        },
+        "south": {
+          "texture": "#liquid"
+        },
+        "east": {
+          "texture": "#liquid"
+        },
+        "west": {
+          "texture": "#liquid"
+        },
+        "up": {
+          "texture": "#liquid"
+        }
+      },
+      "name": "liquido"
+    }
+  ]
+}

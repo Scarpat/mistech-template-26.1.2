@@ -51,12 +51,17 @@ public class ArcaneCompressorBlockEntity extends MachineBlockEntity implements A
     }
 
     @Override
+    protected float taintPerMinute() {
+        return com.mistech.mistechmod.Config.areaTaintEssenceMachines();
+    }
+
+    @Override
     protected void tick(ServerLevel level, BlockPos pos, BlockState state) {
         this.pullInput();
         ItemStack made = new ItemStack(this.igneousBatch ? PaleNetherContent.CRYING_SHARD.get() : Mistech.IMPURE_MAGIC_SHARD.get());
         int cost = this.energyStep(FE_PER_TICK);
         boolean hasBatch = this.igneousBatch || this.tank.amount(0) >= BATCH;
-        boolean working = hasBatch && this.canOutput(made) && this.hasEnergy(cost);
+        boolean working = hasBatch && this.canOutputProduct(made) && this.hasEnergy(cost);
         if (working) {
             this.drainEnergy(cost);
             this.progress += this.workStep();
@@ -67,7 +72,7 @@ public class ArcaneCompressorBlockEntity extends MachineBlockEntity implements A
                 } else {
                     this.tank.take(0, BATCH);
                 }
-                this.insertOutput(made);
+                this.insertProduct(level, made);
                 level.playSound(null, pos, SoundEvents.AMETHYST_CLUSTER_BREAK, SoundSource.BLOCKS, 0.7F, 0.8F);
                 level.sendParticles(ParticleTypes.REVERSE_PORTAL, pos.getX() + 0.5, pos.getY() + 1.1, pos.getZ() + 0.5, 12, 0.2, 0.1, 0.2, 0.05);
             }

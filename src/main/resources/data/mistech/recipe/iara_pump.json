@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PBP",
+    "WTW",
+    "CCC"
+  ],
+  "key": {
+    "P": "minecraft:prismarine_shard",
+    "B": "minecraft:bucket",
+    "W": "mistech:water_rune",
+    "T": "mistech:runic_tank",
+    "C": "minecraft:copper_block"
+  },
+  "result": {
+    "id": "mistech:iara_pump",
+    "count": 1
+  }
+}

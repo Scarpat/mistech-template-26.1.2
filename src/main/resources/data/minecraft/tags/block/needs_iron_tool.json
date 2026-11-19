@@ -15,6 +15,10 @@
     "mistech:arcane_compressor",
     "mistech:arcane_crusher",
     "mistech:liquefier",
-    "mistech:crusher_forge"
+    "mistech:crusher_forge",
+    "mistech:runic_conjurer",
+    "mistech:essence_washer",
+    "mistech:runic_crystallizer",
+    "mistech:astral_prism"
   ]
 }

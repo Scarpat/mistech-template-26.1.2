@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "IGI",
+    "RTR",
+    "IBI"
+  ],
+  "key": {
+    "I": "minecraft:iron_ingot",
+    "G": "#c:glass_blocks",
+    "R": "mistech:water_rune",
+    "T": "mistech:runic_tank",
+    "B": "mistech:runic_crusher"
+  },
+  "result": {
+    "id": "mistech:essence_washer",
+    "count": 1
+  }
+}

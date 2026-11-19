@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "mistech:spell_crystal",
+    "minecraft:water_bucket"
+  ],
+  "result": {
+    "id": "mistech:blank_spell_crystal",
+    "count": 1
+  }
+}

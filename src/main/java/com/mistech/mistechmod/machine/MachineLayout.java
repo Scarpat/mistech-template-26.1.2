@@ -17,8 +17,11 @@ import net.minecraft.world.item.ItemStack;
  * seta cheia 24×17 em (176,0), barra de energia cheia 14×52 em (200,0) e chama cheia 14×14 em (176,17).
  */
 public final class MachineLayout {
-    /** FILTER = espaço "fantasma": guarda só uma amostra (não gasta o item do jogador) e não sai da máquina. */
-    public enum Kind { INPUT, RUNE, FUEL, OUTPUT, FILTER }
+    /**
+     * FILTER = espaço "fantasma": guarda só uma amostra (não gasta o item do jogador) e não sai da máquina.
+     * SOCKET = engaste (qualquer runa; ver {@link com.mistech.mistechmod.machine.socket.MachineSockets}), sempre no fim da lista.
+     */
+    public enum Kind { INPUT, RUNE, FUEL, OUTPUT, FILTER, SOCKET }
 
     public record SlotSpec(int x, int y, Kind kind) {}
 
@@ -39,11 +42,29 @@ public final class MachineLayout {
     /** Linhas de texto na área da máquina (pode ser vazia) e onde começam. */
     public final Function<MachineMenu, List<Component>> infoLines;
     public final int infoX, infoY;
+    /** Caixa do texto (0 = sem limite): quebra as linhas na largura e diminui a letra se passar da altura. */
+    public final int infoW, infoH;
+    /** Dicas dos espaços: ícone apagado e texto quando o espaço está vazio (índice → dica). */
+    public final java.util.Map<Integer, Hint> hints;
+
+    /** Dica de um espaço vazio: o ícone (item) desenhado apagado e a chave do texto do tooltip. */
+    public record Hint(Supplier<ItemStack> icon, String key) {}
     private final Supplier<MenuType<MachineMenu>> menuType;
+    /** Categoria e quantidade de engastes (tabela em MachineSockets). */
+    public final com.mistech.mistechmod.machine.socket.MachineSockets.Spec sockets;
+    /** Índice do primeiro engaste (= tamanho sem os engastes). */
+    public final int firstSocket;
 
     private MachineLayout(Builder b) {
         this.name = b.name;
-        this.slots = List.copyOf(b.slots);
+        this.sockets = com.mistech.mistechmod.machine.socket.MachineSockets.spec(b.name);
+        this.firstSocket = b.slots.size();
+        java.util.List<SlotSpec> all = new java.util.ArrayList<>(b.slots);
+        for (int i = 0; i < this.sockets.sockets(); i++) {
+            all.add(new SlotSpec(com.mistech.mistechmod.machine.socket.MachineSockets.SLOT_X,
+                    com.mistech.mistechmod.machine.socket.MachineSockets.SLOT_Y + i * 18, Kind.SOCKET));
+        }
+        this.slots = List.copyOf(all);
         this.capacity = b.capacity;
         this.inputFilter = b.inputFilter;
         this.runeFilter = b.runeFilter;
@@ -55,11 +76,18 @@ public final class MachineLayout {
         this.infoLines = b.infoLines;
         this.infoX = b.infoX;
         this.infoY = b.infoY;
+        this.infoW = b.infoW;
+        this.infoH = b.infoH;
+        this.hints = java.util.Map.copyOf(b.hints);
         this.menuType = b.menuType;
     }
 
     public int size() {
         return this.slots.size();
+    }
+
+    public int socketCount() {
+        return this.slots.size() - this.firstSocket;
     }
 
     public Kind kind(int slot) {
@@ -76,6 +104,7 @@ public final class MachineLayout {
             case INPUT -> this.inputFilter.test(stack);
             case RUNE -> this.runeFilter.test(stack);
             case FUEL -> this.fuelFilter.test(stack);
+            case SOCKET -> com.mistech.mistechmod.item.RuneElement.ofRune(stack) != null;
             case OUTPUT, FILTER -> false;
         };
     }
@@ -94,7 +123,8 @@ public final class MachineLayout {
         private Predicate<ItemStack> fuelFilter = s -> false;
         private int arrowX = -1, arrowY = -1, flameX = -1, flameY = -1;
         private Function<MachineMenu, List<Component>> infoLines = m -> List.of();
-        private int infoX = 10, infoY = 20;
+        private int infoX = 10, infoY = 20, infoW, infoH;
+        private final java.util.Map<Integer, Hint> hints = new java.util.HashMap<>();
 
         private Builder(String name, Supplier<MenuType<MachineMenu>> menuType) {
             this.name = name;
@@ -113,6 +143,12 @@ public final class MachineLayout {
                     this.slot(x + c * 18, y + r * 18, kind);
                 }
             }
+            return this;
+        }
+
+        /** Dica para o espaço {@code slot} (na ordem em que foram adicionados): ícone apagado + tooltip quando vazio. */
+        public Builder hint(int slot, Supplier<? extends net.minecraft.world.level.ItemLike> icon, String key) {
+            this.hints.put(slot, new Hint(() -> new ItemStack(icon.get()), key));
             return this;
         }
 
@@ -146,6 +182,13 @@ public final class MachineLayout {
             this.flameX = x;
             this.flameY = y;
             return this;
+        }
+
+        /** Texto numa caixa: quebra na largura {@code w} e encolhe (até 60%) para caber na altura {@code h}. */
+        public Builder info(int x, int y, int w, int h, Function<MachineMenu, List<Component>> lines) {
+            this.infoW = w;
+            this.infoH = h;
+            return this.info(x, y, lines);
         }
 
         public Builder info(int x, int y, Function<MachineMenu, List<Component>> lines) {

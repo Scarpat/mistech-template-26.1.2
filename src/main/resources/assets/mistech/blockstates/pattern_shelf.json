@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "mistech:block/pattern_shelf"
+    },
+    "facing=east": {
+      "model": "mistech:block/pattern_shelf",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "mistech:block/pattern_shelf",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mistech:block/pattern_shelf",
+      "y": 270
+    }
+  }
+}

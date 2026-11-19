@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CHC",
+    "GKG",
+    "WFW"
+  ],
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "H": "minecraft:hopper",
+    "G": "#c:glass_blocks",
+    "K": "mistech:kettle",
+    "W": "mistech:water_rune",
+    "F": "mistech:fire_rune"
+  },
+  "result": {
+    "id": "mistech:runic_coffee_maker",
+    "count": 1
+  }
+}

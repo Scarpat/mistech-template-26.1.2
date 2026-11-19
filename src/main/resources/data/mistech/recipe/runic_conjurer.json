@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "MAM",
+    "RCR",
+    "MBM"
+  ],
+  "key": {
+    "M": "mistech:mithril_ingot",
+    "A": "minecraft:amethyst_cluster",
+    "R": "mistech:energy_rune",
+    "C": "mistech:arcane_charger",
+    "B": "mistech:impure_magic_block"
+  },
+  "result": {
+    "id": "mistech:runic_conjurer",
+    "count": 1
+  }
+}

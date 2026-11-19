@@ -1,6 +1,6 @@
 {
   "model": {
     "type": "minecraft:model",
-    "model": "mistech:block/condenser"
+    "model": "mistech:block/condenser_item"
   }
 }

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:amethyst_shard",
+    "minecraft:amethyst_shard",
+    "minecraft:amethyst_shard",
+    "minecraft:amethyst_shard",
+    "mistech:impure_magic_shard",
+    "minecraft:quartz"
+  ],
+  "result": {
+    "id": "mistech:blank_spell_crystal",
+    "count": 2
+  }
+}

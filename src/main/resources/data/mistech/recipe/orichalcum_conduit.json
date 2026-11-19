@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CCC",
+    "CIC",
+    "CCC"
+  ],
+  "key": {
+    "C": "mistech:adamantine_conduit",
+    "I": "mistech:orichalcum_ingot"
+  },
+  "result": {
+    "id": "mistech:orichalcum_conduit",
+    "count": 8
+  }
+}

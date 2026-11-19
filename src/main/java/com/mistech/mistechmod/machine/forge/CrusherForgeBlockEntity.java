@@ -122,7 +122,7 @@ public class CrusherForgeBlockEntity extends MachineBlockEntity {
                     continue;
                 }
                 int cost = this.energyStep(FE_PER_LANE);
-                if (!this.canOutput(worst.stack()) || !this.hasEnergy(cost)) {
+                if (!this.canOutputProduct(worst.stack()) || !this.hasEnergy(cost)) {
                     continue;
                 }
                 working = true;
@@ -133,8 +133,8 @@ public class CrusherForgeBlockEntity extends MachineBlockEntity {
                     Product made = this.product(level, input, true);
                     input.shrink(1);
                     if (made != null) {
-                        this.insertOutput(made.stack());
-                        this.storedXp += made.xp();
+                        this.insertProduct(level, made.stack());
+                        this.storedXp += made.xp() * this.xpMultiplier();
                     }
                     level.playSound(null, pos, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 0.3F, 0.7F);
                     level.playSound(null, pos, SoundEvents.BLASTFURNACE_FIRE_CRACKLE, SoundSource.BLOCKS, 0.8F, 1.0F);

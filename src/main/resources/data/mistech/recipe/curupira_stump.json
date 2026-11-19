@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "SAS",
+    "LHL",
+    "LLL"
+  ],
+  "key": {
+    "S": "#minecraft:saplings",
+    "A": "minecraft:iron_axe",
+    "L": "#minecraft:logs",
+    "H": "mistech:runic_harvester"
+  },
+  "result": {
+    "id": "mistech:curupira_stump",
+    "count": 1
+  }
+}

@@ -2,12 +2,13 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "pattern": [
-    "AAA",
+    "CAC",
     "AFA",
-    "ARA"
+    "CRC"
   ],
   "key": {
     "A": "mistech:incense_ash",
+    "C": "#c:ingots/copper",
     "F": "minecraft:furnace",
     "R": "mistech:fire_rune"
   },

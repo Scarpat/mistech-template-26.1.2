@@ -1,0 +1,501 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "minecraft:block/quartz_block_side",
+    "quartz": "minecraft:block/quartz_block_side",
+    "quartz_top": "minecraft:block/quartz_block_top",
+    "gold": "minecraft:block/gold_block",
+    "glass": "minecraft:block/glass",
+    "crystal": "mistech:block/runic_crystallizer_crystal",
+    "rune": "minecraft:block/gold_block"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        4,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#quartz",
+          "uv": [
+            0,
+            12,
+            16,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#quartz",
+          "uv": [
+            0,
+            12,
+            16,
+            16
+          ]
+        },
+        "east": {
+          "texture": "#quartz",
+          "uv": [
+            0,
+            12,
+            16,
+            16
+          ]
+        },
+        "west": {
+          "texture": "#quartz",
+          "uv": [
+            0,
+            12,
+            16,
+            16
+          ]
+        },
+        "up": {
+          "texture": "#quartz_top"
+        },
+        "down": {
+          "texture": "#quartz_top"
+        }
+      }
+    },
+    {
+      "from": [
+        1,
+        4,
+        1
+      ],
+      "to": [
+        15,
+        5,
+        15
+      ],
+      "faces": {
+        "north": {
+          "texture": "#gold",
+          "uv": [
+            1,
+            11,
+            15,
+            12
+          ]
+        },
+        "south": {
+          "texture": "#gold",
+          "uv": [
+            1,
+            11,
+            15,
+            12
+          ]
+        },
+        "east": {
+          "texture": "#gold",
+          "uv": [
+            1,
+            11,
+            15,
+            12
+          ]
+        },
+        "west": {
+          "texture": "#gold",
+          "uv": [
+            1,
+            11,
+            15,
+            12
+          ]
+        },
+        "up": {
+          "texture": "#gold",
+          "uv": [
+            1,
+            1,
+            15,
+            15
+          ]
+        },
+        "down": {
+          "texture": "#gold"
+        }
+      }
+    },
+    {
+      "from": [
+        2,
+        5,
+        2
+      ],
+      "to": [
+        14,
+        14,
+        14
+      ],
+      "faces": {
+        "north": {
+          "texture": "#glass",
+          "uv": [
+            2,
+            2,
+            14,
+            11
+          ]
+        },
+        "south": {
+          "texture": "#glass",
+          "uv": [
+            2,
+            2,
+            14,
+            11
+          ]
+        },
+        "east": {
+          "texture": "#glass",
+          "uv": [
+            2,
+            2,
+            14,
+            11
+          ]
+        },
+        "west": {
+          "texture": "#glass",
+          "uv": [
+            2,
+            2,
+            14,
+            11
+          ]
+        },
+        "up": {
+          "texture": "#glass"
+        }
+      }
+    },
+    {
+      "from": [
+        7,
+        5,
+        7
+      ],
+      "to": [
+        9,
+        13,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#crystal",
+          "uv": [
+            7,
+            3,
+            9,
+            11
+          ]
+        },
+        "south": {
+          "texture": "#crystal",
+          "uv": [
+            7,
+            3,
+            9,
+            11
+          ]
+        },
+        "east": {
+          "texture": "#crystal",
+          "uv": [
+            7,
+            3,
+            9,
+            11
+          ]
+        },
+        "west": {
+          "texture": "#crystal",
+          "uv": [
+            7,
+            3,
+            9,
+            11
+          ]
+        },
+        "up": {
+          "texture": "#crystal"
+        }
+      },
+      "rotation": {
+        "origin": [
+          8,
+          5,
+          8
+        ],
+        "axis": "y",
+        "angle": 45
+      }
+    },
+    {
+      "from": [
+        4.5,
+        5,
+        7.5
+      ],
+      "to": [
+        6.5,
+        10,
+        9.5
+      ],
+      "faces": {
+        "north": {
+          "texture": "#crystal",
+          "uv": [
+            4,
+            6,
+            6,
+            11
+          ]
+        },
+        "south": {
+          "texture": "#crystal",
+          "uv": [
+            4,
+            6,
+            6,
+            11
+          ]
+        },
+        "east": {
+          "texture": "#crystal",
+          "uv": [
+            4,
+            6,
+            6,
+            11
+          ]
+        },
+        "west": {
+          "texture": "#crystal",
+          "uv": [
+            4,
+            6,
+            6,
+            11
+          ]
+        },
+        "up": {
+          "texture": "#crystal"
+        }
+      },
+      "rotation": {
+        "origin": [
+          5.5,
+          5,
+          8.5
+        ],
+        "axis": "z",
+        "angle": 22.5
+      }
+    },
+    {
+      "from": [
+        9.5,
+        5,
+        6
+      ],
+      "to": [
+        11.5,
+        9,
+        8
+      ],
+      "faces": {
+        "north": {
+          "texture": "#crystal",
+          "uv": [
+            10,
+            7,
+            12,
+            11
+          ]
+        },
+        "south": {
+          "texture": "#crystal",
+          "uv": [
+            10,
+            7,
+            12,
+            11
+          ]
+        },
+        "east": {
+          "texture": "#crystal",
+          "uv": [
+            10,
+            7,
+            12,
+            11
+          ]
+        },
+        "west": {
+          "texture": "#crystal",
+          "uv": [
+            10,
+            7,
+            12,
+            11
+          ]
+        },
+        "up": {
+          "texture": "#crystal"
+        }
+      },
+      "rotation": {
+        "origin": [
+          10.5,
+          5,
+          7
+        ],
+        "axis": "z",
+        "angle": -22.5
+      }
+    },
+    {
+      "from": [
+        5,
+        14,
+        5
+      ],
+      "to": [
+        11,
+        15,
+        11
+      ],
+      "faces": {
+        "north": {
+          "texture": "#gold",
+          "uv": [
+            5,
+            1,
+            11,
+            2
+          ]
+        },
+        "south": {
+          "texture": "#gold",
+          "uv": [
+            5,
+            1,
+            11,
+            2
+          ]
+        },
+        "east": {
+          "texture": "#gold",
+          "uv": [
+            5,
+            1,
+            11,
+            2
+          ]
+        },
+        "west": {
+          "texture": "#gold",
+          "uv": [
+            5,
+            1,
+            11,
+            2
+          ]
+        },
+        "up": {
+          "texture": "#gold",
+          "uv": [
+            5,
+            5,
+            11,
+            11
+          ]
+        },
+        "down": {
+          "texture": "#gold",
+          "uv": [
+            5,
+            5,
+            11,
+            11
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        7,
+        15,
+        7
+      ],
+      "to": [
+        9,
+        16,
+        9
+      ],
+      "faces": {
+        "north": {
+          "texture": "#rune",
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ]
+        },
+        "south": {
+          "texture": "#rune",
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ]
+        },
+        "east": {
+          "texture": "#rune",
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ]
+        },
+        "west": {
+          "texture": "#rune",
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ]
+        },
+        "up": {
+          "texture": "#rune",
+          "uv": [
+            7,
+            7,
+            9,
+            9
+          ]
+        },
+        "down": {
+          "texture": "#rune"
+        }
+      }
+    }
+  ]
+}

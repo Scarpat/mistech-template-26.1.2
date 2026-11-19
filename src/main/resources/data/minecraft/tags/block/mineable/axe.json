@@ -19,6 +19,12 @@
     "mistech:fractal_log",
     "mistech:fractal_wood",
     "mistech:fractal_planks",
-    "mistech:inscription_table"
+    "mistech:inscription_table",
+    "mistech:extraplanar_barrel",
+    "mistech:extraplanar_tank",
+    "mistech:saci_windmill",
+    "mistech:curupira_stump",
+    "mistech:scroll_printer",
+    "mistech:pattern_shelf"
   ]
 }

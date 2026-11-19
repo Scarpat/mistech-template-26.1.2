@@ -67,7 +67,7 @@ public class StellarObservatoryBlockEntity extends MachineBlockEntity {
         int phaseIndex = phase.index() & 7;
         boolean lens = this.items.get(SLOT_LENS).is(com.mistech.mistechmod.celestial.CelestialContent.STAR_FRAGMENT.get());
         boolean openSky = level.getHeight(Heightmap.Types.MOTION_BLOCKING, pos.getX(), pos.getZ()) <= pos.getY() + 1;
-        boolean night = level.isDarkOutside();
+        boolean night = level.isDarkOutside() || com.mistech.mistechmod.celestial.Celestial.isActive(level, com.mistech.mistechmod.celestial.CelestialEvent.ECLIPSE);
         boolean high = pos.getY() >= HIGH_ALTITUDE;
 
         int sky;

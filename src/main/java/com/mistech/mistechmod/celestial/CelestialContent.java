@@ -34,7 +34,14 @@ public final class CelestialContent {
     /** Força o carregamento da classe (os registros acontecem nos campos estáticos). */
     public static void init() {}
 
+    /** Relógio Astral (Fase 6): o céu vira sinal de comparador. */
+    public static final DeferredBlock<AstralClockBlock> ASTRAL_CLOCK = Mistech.BLOCKS.registerBlock("astral_clock", AstralClockBlock::new,
+            p -> p.mapColor(net.minecraft.world.level.material.MapColor.LAPIS).strength(2.0F, 6.0F)
+                    .sound(net.minecraft.world.level.block.SoundType.AMETHYST).lightLevel(state -> 5).noOcclusion());
+    public static final DeferredItem<net.minecraft.world.item.BlockItem> ASTRAL_CLOCK_ITEM = Mistech.ITEMS.registerSimpleBlockItem("astral_clock",
+            ASTRAL_CLOCK, p -> p.rarity(net.minecraft.world.item.Rarity.UNCOMMON));
+
     public static List<DeferredItem<? extends Item>> creativeItems() {
-        return List.of(LUNAR_BLOOD, STAR_FRAGMENT, PURIFIED_DREAMCATCHER_ITEM);
+        return List.of(LUNAR_BLOOD, STAR_FRAGMENT, PURIFIED_DREAMCATCHER_ITEM, ASTRAL_CLOCK_ITEM);
     }
 }

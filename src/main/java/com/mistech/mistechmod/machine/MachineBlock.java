@@ -46,6 +46,17 @@ public abstract class MachineBlock extends BaseEntityBlock {
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
+    /** Guarda quem colocou a máquina (o mapa astral do dono dá bônus: Fase 6). */
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, net.minecraft.world.entity.@Nullable LivingEntity placer,
+            net.minecraft.world.item.ItemStack stack) {
+        super.setPlacedBy(level, pos, state, placer, stack);
+        if (!level.isClientSide() && placer instanceof net.minecraft.world.entity.player.Player player
+                && level.getBlockEntity(pos) instanceof MachineBlockEntity machine) {
+            machine.setOwner(player.getUUID());
+        }
+    }
+
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return this.type.get().create(pos, state);
@@ -80,6 +91,9 @@ public abstract class MachineBlock extends BaseEntityBlock {
 
     @Override
     protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos pos, Direction direction) {
+        if (level.getBlockEntity(pos) instanceof MachineBlockEntity machine && machine.vigilSignal() >= 0) {
+            return machine.vigilSignal(); // Runa da Vigília engastada: 15 = máquina parada
+        }
         return AbstractContainerMenu.getRedstoneSignalFromBlockEntity(level.getBlockEntity(pos));
     }
 

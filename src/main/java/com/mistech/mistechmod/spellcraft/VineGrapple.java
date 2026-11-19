@@ -87,14 +87,11 @@ public final class VineGrapple {
                     continue;
                 }
                 e.addEffect(new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.SLOWNESS, 80, 5));
-                drawVine(level, aim.point(), e.position().add(0, e.getBbHeight() * 0.5, 0),
-                        e.position().add(0, e.getBbHeight() * 0.5, 0).subtract(aim.point()).normalize(),
-                        e.position().distanceTo(aim.point()), player.tickCount);
+                com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.VINE, 0, null, 30.0F, aim.point(), e.position().add(0, e.getBbHeight() * 0.5, 0));
             }
         }
         level.playSound(null, player.blockPosition(), SoundEvents.GRASS_BREAK, SoundSource.PLAYERS, 1.0F, 1.4F);
-        SpellFx.burst(level, aim.point(), RuneElement.LIFE, 0.3, 20, ParticleTypes.HAPPY_VILLAGER);
-        SpellFx.ring(level, aim.point(), 0.7, SpellFx.dust(RuneElement.LIFE, 1.2F), 12);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.VINE_LATCH, null, 0.0F, aim.point());
         return true;
     }
 
@@ -182,22 +179,7 @@ public final class VineGrapple {
 
     /** O fio: dois fios de folhas trançados, com um pouco de ondulação que diminui quando está esticado. */
     private static void drawVine(ServerLevel level, Vec3 from, Vec3 to, Vec3 dir, double dist, int tick) {
-        Vec3 side = dir.cross(new Vec3(0, 1, 0));
-        side = side.lengthSqr() < 1.0E-4 ? new Vec3(1, 0, 0) : side.normalize();
-        Vec3 up = side.cross(dir).normalize();
-        int steps = Math.max(2, (int) (dist / 0.6));
-        for (int i = 0; i <= steps; i++) {
-            double f = (double) i / steps;
-            Vec3 base = from.add(dir.scale(dist * f));
-            double wave = Math.sin(f * 14.0 + tick * 0.5) * 0.12 * Math.sin(f * Math.PI);
-            double wave2 = Math.cos(f * 14.0 + tick * 0.5) * 0.12 * Math.sin(f * Math.PI);
-            Vec3 a = base.add(side.scale(wave)).add(up.scale(wave2));
-            Vec3 b = base.subtract(side.scale(wave)).subtract(up.scale(wave2));
-            level.sendParticles(SpellFx.dust(RuneElement.LIFE, 1.0F), a.x, a.y, a.z, 1, 0, 0, 0, 0);
-            level.sendParticles(SpellFx.dust(RuneElement.LIFE, 0.7F), b.x, b.y, b.z, 1, 0, 0, 0, 0);
-            if (i % 4 == 0) {
-                level.sendParticles(ParticleTypes.COMPOSTER, a.x, a.y, a.z, 1, 0.05, 0.05, 0.05, 0);
-            }
-        }
+        // o cipó inteiro é desenhado no cliente; dura 3 ticks e é mandado de novo a cada 2, então parece contínuo
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.VINE, tick, null, 3.0F, from, to);
     }
 }

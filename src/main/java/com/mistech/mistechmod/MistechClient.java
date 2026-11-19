@@ -66,6 +66,7 @@ public class MistechClient {
         event.register(MistechMenus.WRITING_TABLE.get(), WritingTableScreen::new);
         event.register(MistechMenus.RUNIC_FURNACE.get(), RunicFurnaceScreen::new);
         event.register(MistechMenus.CONDENSER.get(), CondenserScreen::new);
+        event.register(MistechMenus.COFFEE_MAKER.get(), com.mistech.mistechmod.client.RunicCoffeeMakerScreen::new);
         event.register(MistechMenus.SPATIAL_STORAGE.get(), com.mistech.mistechmod.client.SpatialStorageScreen::new);
         event.register(MistechMenus.RUNE_CONFECTOR.get(), com.mistech.mistechmod.client.RuneConfectorScreen::new);
         event.register(MistechMenus.RUNE_ROLLER.get(), com.mistech.mistechmod.client.RuneRollerScreen::new);
@@ -92,6 +93,23 @@ public class MistechClient {
         event.register(com.mistech.mistechmod.machine.arcane.ArcaneMachines.LIQUEFIER_MENU.get(), com.mistech.mistechmod.purity.client.FluidMachineScreen::new);
         event.register(com.mistech.mistechmod.machine.arcane.ArcaneMachines.EXTRACTOR_MENU.get(), com.mistech.mistechmod.purity.client.FluidMachineScreen::new);
         event.register(com.mistech.mistechmod.machine.arcane.ArcaneMachines.COMPRESSOR_MENU.get(), com.mistech.mistechmod.purity.client.FluidMachineScreen::new);
+        event.register(com.mistech.mistechmod.spellcraft.conjurer.ConjurerContent.MENU.get(), com.mistech.mistechmod.spellcraft.conjurer.client.ConjurerScreen::new);
+        event.register(com.mistech.mistechmod.refining.RefiningContent.WASHER_MENU.get(), com.mistech.mistechmod.refining.client.RefineryScreen::new);
+        event.register(com.mistech.mistechmod.refining.RefiningContent.CRYSTALLIZER_MENU.get(), com.mistech.mistechmod.refining.client.RefineryScreen::new);
+        event.register(com.mistech.mistechmod.refining.RefiningContent.PRISM_MENU.get(), com.mistech.mistechmod.refining.client.RefineryScreen::new);
+        event.register(com.mistech.mistechmod.purity.area.AreaTaintContent.RUE_FILTER_MENU.get(), com.mistech.mistechmod.client.MachineScreen::new);
+        event.register(com.mistech.mistechmod.spellcraft.well.WellContent.WELL_MENU.get(), com.mistech.mistechmod.purity.client.FluidMachineScreen::new);
+        event.register(com.mistech.mistechmod.spellcraft.well.WellContent.SIPHON_MENU.get(), com.mistech.mistechmod.client.MachineScreen::new);
+        event.register(com.mistech.mistechmod.folklore.machine.FolkMachines.WINDMILL_MENU.get(), com.mistech.mistechmod.client.MachineScreen::new);
+        event.register(com.mistech.mistechmod.folklore.machine.FolkMachines.PUMP_MENU.get(), com.mistech.mistechmod.purity.client.FluidMachineScreen::new);
+        event.register(com.mistech.mistechmod.folklore.machine.FolkMachines.LAVA_PUMP_MENU.get(), com.mistech.mistechmod.purity.client.FluidMachineScreen::new);
+        event.register(com.mistech.mistechmod.folklore.machine.FolkMachines.STUMP_MENU.get(), com.mistech.mistechmod.client.MachineScreen::new);
+        event.register(com.mistech.mistechmod.folklore.machine.FolkMachines.STILL_MENU.get(), com.mistech.mistechmod.purity.client.FluidMachineScreen::new);
+        event.register(com.mistech.mistechmod.folklore.machine.FolkMachines.PRINTER_MENU.get(), com.mistech.mistechmod.purity.client.FluidMachineScreen::new);
+        event.register(com.mistech.mistechmod.endgame.EndgameContent.STAR_FORGE_MENU.get(), com.mistech.mistechmod.purity.client.FluidMachineScreen::new);
+        event.register(com.mistech.mistechmod.endgame.EndgameContent.DREAM_REACTOR_MENU.get(), com.mistech.mistechmod.client.MachineScreen::new);
+        event.register(com.mistech.mistechmod.endgame.EndgameContent.CELESTIAL_BATTERY_MENU.get(), com.mistech.mistechmod.client.MachineScreen::new);
+        event.register(com.mistech.mistechmod.endgame.EndgameContent.CELESTIAL_CONJURER_MENU.get(), com.mistech.mistechmod.spellcraft.conjurer.client.ConjurerScreen::new);
     }
 
     /** Desenha o item guardado dentro do Pote de Vidro. */
@@ -99,6 +117,10 @@ public class MistechClient {
     static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(MistechBlockEntities.GLASS_JAR.get(), GlassJarRenderer::new);
         event.registerBlockEntityRenderer(MistechBlockEntities.MAGIC_COMPRESSOR.get(), com.mistech.mistechmod.client.MagicCompressorRenderer::new);
+        event.registerBlockEntityRenderer(MistechBlockEntities.ESSENCE_EXTRACTOR.get(), com.mistech.mistechmod.client.EssenceExtractorRenderer::new);
+        // cristal flutuando na camara da frente: chama roxa (Fornalha Runica) e gelo (Condensador)
+        event.registerBlockEntityRenderer(MistechBlockEntities.RUNIC_FURNACE.get(), com.mistech.mistechmod.client.FloatingCrystalRenderer.Furnace::new);
+        event.registerBlockEntityRenderer(MistechBlockEntities.CONDENSER.get(), com.mistech.mistechmod.client.FloatingCrystalRenderer.Condenser::new);
         event.registerBlockEntityRenderer(com.mistech.mistechmod.husbandry.HusbandryContent.GROWING_POT_BE.get(),
                 com.mistech.mistechmod.husbandry.client.GrowingPotRenderer::new);
         event.registerBlockEntityRenderer(com.mistech.mistechmod.husbandry.HusbandryContent.CREATURE_JAR_BE.get(),
@@ -109,6 +131,8 @@ public class MistechClient {
         event.registerBlockEntityRenderer(MistechBlockEntities.MINER.get(), com.mistech.mistechmod.client.MinerRenderer::new);
         event.registerBlockEntityRenderer(com.mistech.mistechmod.machine.forge.ForgeContent.CRUSHER_FORGE_BE.get(),
                 com.mistech.mistechmod.client.CrusherForgeRenderer::new);
+        event.registerBlockEntityRenderer(com.mistech.mistechmod.folklore.machine.FolkMachines.SACI_WINDMILL_BE.get(),
+                com.mistech.mistechmod.folklore.machine.client.SaciWindmillRenderer::new);
         event.registerEntityRenderer(com.mistech.mistechmod.registry.GnomeContent.GNOME.get(), com.mistech.mistechmod.client.GnomeRenderer::new);
         event.registerEntityRenderer(com.mistech.mistechmod.registry.DreamContent.PISADEIRA.get(), com.mistech.mistechmod.client.PisadeiraRenderer::new);
         event.registerEntityRenderer(com.mistech.mistechmod.registry.RealmContent.GNOME_KING.get(), com.mistech.mistechmod.client.GnomeKingRenderer::new);
@@ -123,6 +147,9 @@ public class MistechClient {
                 com.mistech.mistechmod.client.GoblinQueenModel.LAYER, com.mistech.mistechmod.client.GoblinQueenModel::new, "goblin_queen", "glow", 0.9F, 1.0F));
         event.registerBlockEntityRenderer(com.mistech.mistechmod.spellcraft.SpellcraftContent.ARCANE_CHARGER_BE.get(),
                 com.mistech.mistechmod.spellcraft.client.ArcaneChargerRenderer::new);
+        event.registerBlockEntityRenderer(com.mistech.mistechmod.spellcraft.conjurer.ConjurerContent.RUNIC_CONJURER_BE.get(),
+                com.mistech.mistechmod.spellcraft.conjurer.client.ConjurerRenderer::new);
+        registerCelestialConjurerRenderer(event);
         // Rituais Tier I
         event.registerBlockEntityRenderer(com.mistech.mistechmod.registry.RitualContent.IMPURE_ALTAR_BE.get(),
                 context -> new com.mistech.mistechmod.client.FloatingItemRenderer<>(context, 1.1F));
@@ -163,6 +190,21 @@ public class MistechClient {
                 return java.util.Set.of(com.mistech.mistechmod.spatial.SpatialAnchorBlock.COLOR);
             }
         }), com.mistech.mistechmod.registry.SpatialContent.SPATIAL_ANCHOR.get());
+        // Condutos: a runa do miolo (camada 0) na cor do que ele leva
+        event.register(java.util.List.of(new net.minecraft.client.color.block.BlockTintSource() {
+            @Override
+            public int color(net.minecraft.world.level.block.state.BlockState state) {
+                return 0xFF000000 | com.mistech.mistechmod.conduit.ConduitCarry.ALL.color;
+            }
+
+            @Override
+            public int colorInWorld(net.minecraft.world.level.block.state.BlockState state, net.minecraft.client.renderer.block.BlockAndTintGetter level,
+                    net.minecraft.core.BlockPos pos) {
+                return level.getBlockEntity(pos) instanceof com.mistech.mistechmod.conduit.RunicConduitBlockEntity be
+                        ? 0xFF000000 | be.carry().color : 0xFF000000 | com.mistech.mistechmod.conduit.ConduitCarry.ALL.color;
+            }
+        }), com.mistech.mistechmod.conduit.ConduitContent.BLOCKS.values().stream().map(net.neoforged.neoforge.registries.DeferredBlock::get)
+                .toArray(net.minecraft.world.level.block.Block[]::new));
     }
 
     @SubscribeEvent
@@ -171,6 +213,8 @@ public class MistechClient {
                 Minecraft.getInstance().setScreen(new AstrologyScreen(payload.tablePos())));
         event.register(com.mistech.mistechmod.celestial.CelestialSyncPayload.TYPE, (payload, context) ->
                 com.mistech.mistechmod.celestial.CelestialClient.handle(payload));
+        event.register(com.mistech.mistechmod.purity.area.AreaTaintPayload.TYPE, (payload, context) ->
+                com.mistech.mistechmod.purity.area.client.AreaTaintClient.handle(payload));
         event.register(com.mistech.mistechmod.network.OpenAnchorsPayload.TYPE, (payload, context) ->
                 Minecraft.getInstance().setScreen(new com.mistech.mistechmod.client.AnchorScreen(payload)));
         event.register(com.mistech.mistechmod.network.OpenTarotPayload.TYPE, (payload, context) ->
@@ -374,5 +418,12 @@ public class MistechClient {
                     new Material(Identifier.fromNamespaceAndPath(Mistech.MODID, "block/molten_" + molten.metal + "_flow")),
                     null, null, null), molten.source, molten.flowing);
         }
+    }
+
+    /** O Conjurador Celeste usa o mesmo renderer do Rúnico (o cristal ativo gira em cima). */
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    private static void registerCelestialConjurerRenderer(net.neoforged.neoforge.client.event.EntityRenderersEvent.RegisterRenderers event) {
+        event.registerBlockEntityRenderer((net.minecraft.world.level.block.entity.BlockEntityType) com.mistech.mistechmod.endgame.EndgameContent.CELESTIAL_CONJURER_BE.get(),
+                context -> new com.mistech.mistechmod.spellcraft.conjurer.client.ConjurerRenderer((net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Context) context));
     }
 }

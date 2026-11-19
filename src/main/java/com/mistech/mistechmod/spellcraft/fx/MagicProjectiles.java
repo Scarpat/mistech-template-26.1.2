@@ -50,6 +50,7 @@ public final class MagicProjectiles {
         float spin;
         float bodySize;
         boolean blockBody;
+        boolean bare;
         int age;
 
         Shot(ServerLevel level, ServerPlayer owner, RuneElement element, Vec3 pos, Vec3 velocity, double range, double hitRadius,
@@ -78,6 +79,15 @@ public final class MagicProjectiles {
         Shot shot = new Shot(level, owner, element, start, dir.normalize().scale(speed), range, 0.35 + size * 0.3, trail, onHit, onImpact);
         shot.body = Vfx.item(level, start, Vfx.tinted(VfxContent.VFX_ORB.get(), element.color()), Vfx.centeredItem(size), 0, true);
         shot.bodySize = size;
+        NEW.add(shot);
+        return shot;
+    }
+
+    /** Sem corpo nem rastro no servidor: a aparência inteira é do cliente (efeitos oníricos, ver {@link DreamFx}). */
+    public static Shot bare(ServerLevel level, ServerPlayer owner, RuneElement element, Vec3 start, Vec3 dir, double speed, double range,
+                            double hitRadius, Consumer<LivingEntity> onHit, Consumer<Vec3> onImpact) {
+        Shot shot = new Shot(level, owner, element, start, dir.normalize().scale(speed), range, hitRadius, null, onHit, onImpact);
+        shot.bare = true;
         NEW.add(shot);
         return shot;
     }
@@ -138,7 +148,7 @@ public final class MagicProjectiles {
         }
         // rastro ao longo do trecho
         int n = Math.max(2, (int) (from.distanceTo(end) / 0.35));
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n && !s.bare; i++) {
             Vec3 p = from.add(end.subtract(from).scale(i / (double) n));
             s.level.sendParticles(VfxContent.mote(s.element.color()), p.x, p.y, p.z, 1, 0.04, 0.04, 0.04, 0.0);
             if (s.trail != null && i % 2 == 0) {

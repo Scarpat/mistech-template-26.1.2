@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ore_refining",
+  "stage": "washing",
+  "ingredient": "#c:ores/orichalcum",
+  "result": {
+    "id": "mistech:orichalcum_clump",
+    "count": 3
+  },
+  "byproducts": [
+    {
+      "item": {
+        "id": "mistech:tainted_residue"
+      },
+      "chance": 0.1
+    }
+  ]
+}

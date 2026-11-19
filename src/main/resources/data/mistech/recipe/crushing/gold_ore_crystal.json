@@ -1,0 +1,8 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "mistech:gold_ore_crystal",
+  "result": {
+    "id": "mistech:gold_dust",
+    "count": 1
+  }
+}

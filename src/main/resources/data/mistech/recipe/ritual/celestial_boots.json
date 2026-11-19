@@ -1,0 +1,19 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:pure_orichalcum_boots",
+  "ingredients": [
+    "mistech:celestial_ingot",
+    "mistech:celestial_ingot",
+    "mistech:star_fragment",
+    "mistech:space_rune"
+  ],
+  "essence": 6,
+  "duration": 600,
+  "condition": "night",
+  "min_tier": 3,
+  "result": {
+    "id": "mistech:celestial_boots"
+  },
+  "effect": "astral",
+  "copy_components": true
+}

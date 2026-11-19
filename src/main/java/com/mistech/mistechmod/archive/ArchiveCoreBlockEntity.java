@@ -1,5 +1,7 @@
 package com.mistech.mistechmod.archive;
 
+import org.jspecify.annotations.Nullable;
+
 import java.util.UUID;
 
 import net.minecraft.core.BlockPos;
@@ -37,6 +39,103 @@ public class ArchiveCoreBlockEntity extends BaseContainerBlockEntity {
         }
     };
     private boolean powered;
+
+    // ----- fila de fabricação (Fase 8) -----
+    /** FE do Núcleo gastos a cada vez que um golem faz um passo de um trabalho. */
+    public static final int JOB_ENERGY = 200;
+    /** Um golem que pegou um trabalho e não voltou em tanto tempo perde a vez. */
+    public static final int CLAIM_TIMEOUT = 2400;
+    private final java.util.List<com.mistech.mistechmod.archive.craft.CraftJob> jobs = new java.util.ArrayList<>();
+    private record Claim(UUID job, long time) {}
+    private final java.util.Map<UUID, Claim> claims = new java.util.HashMap<>();
+
+    public java.util.List<com.mistech.mistechmod.archive.craft.CraftJob> jobs() {
+        return java.util.Collections.unmodifiableList(this.jobs);
+    }
+
+    public void enqueue(java.util.List<com.mistech.mistechmod.archive.craft.CraftJob> list) {
+        this.jobs.addAll(list);
+        this.setChanged();
+    }
+
+    /** Já tem trabalho na fila para essa saída? */
+    public boolean queued(net.neoforged.neoforge.transfer.item.ItemResource output) {
+        for (var job : this.jobs) {
+            if (net.neoforged.neoforge.transfer.item.ItemResource.of(job.pattern.output()).equals(output)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /** Tira da fila os trabalhos dessa saída. @return quantos tirou */
+    public int cancel(net.neoforged.neoforge.transfer.item.ItemResource output) {
+        int before = this.jobs.size();
+        this.jobs.removeIf(job -> net.neoforged.neoforge.transfer.item.ItemResource.of(job.pattern.output()).equals(output));
+        this.setChanged();
+        return before - this.jobs.size();
+    }
+
+    /** Um golem pega um passo do primeiro trabalho do tipo que {@code can} aceitar. Paga o FE do passo. */
+    public com.mistech.mistechmod.archive.craft.@Nullable CraftJob claim(UUID worker, boolean crafting,
+            java.util.function.Predicate<com.mistech.mistechmod.archive.craft.CraftJob> can) {
+        this.release(worker);
+        if (!this.powered || this.energy.getAmountAsInt() < JOB_ENERGY) {
+            return null;
+        }
+        for (var job : this.jobs) {
+            if (job.pattern.crafting() == crafting && job.free() > 0 && can.test(job)) {
+                job.claimed++;
+                this.claims.put(worker, new Claim(job.id, this.level == null ? 0 : this.level.getGameTime()));
+                this.energy.set(this.energy.getAmountAsInt() - JOB_ENERGY);
+                return job;
+            }
+        }
+        return null;
+    }
+
+    private com.mistech.mistechmod.archive.craft.@Nullable CraftJob job(UUID id) {
+        for (var job : this.jobs) {
+            if (job.id.equals(id)) {
+                return job;
+            }
+        }
+        return null;
+    }
+
+    /** O golem terminou o passo ({@code done}) ou desistiu. */
+    public void finish(UUID worker, boolean done) {
+        Claim claim = this.claims.remove(worker);
+        if (claim == null) {
+            return;
+        }
+        var job = this.job(claim.job());
+        if (job == null) {
+            return;
+        }
+        job.claimed = Math.max(0, job.claimed - 1);
+        if (done) {
+            job.remaining--;
+            if (job.remaining <= 0) {
+                this.jobs.remove(job);
+            }
+        }
+        this.setChanged();
+    }
+
+    public void release(UUID worker) {
+        this.finish(worker, false);
+    }
+
+    private void expireClaims(long now) {
+        java.util.List<UUID> old = new java.util.ArrayList<>();
+        this.claims.forEach((worker, claim) -> {
+            if (now - claim.time() > CLAIM_TIMEOUT) {
+                old.add(worker);
+            }
+        });
+        old.forEach(this::release);
+    }
 
     public ArchiveCoreBlockEntity(BlockPos pos, BlockState state) {
         super(ArchiveContent.CORE_BE.get(), pos, state);
@@ -85,6 +184,9 @@ public class ArchiveCoreBlockEntity extends BaseContainerBlockEntity {
                     }
                 }
             }
+        }
+        if (level.getGameTime() % 200 == 0 && !core.claims.isEmpty()) {
+            core.expireClaims(level.getGameTime());
         }
         if (wasPowered != core.powered) {
             core.setChanged();
@@ -148,6 +250,8 @@ public class ArchiveCoreBlockEntity extends BaseContainerBlockEntity {
         this.items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
         ContainerHelper.loadAllItems(input, this.items);
         this.energy.deserialize(input);
+        this.jobs.clear();
+        this.jobs.addAll(input.read("CraftJobs", com.mistech.mistechmod.archive.craft.CraftJob.CODEC.listOf()).orElse(java.util.List.of()));
     }
 
     @Override
@@ -155,5 +259,8 @@ public class ArchiveCoreBlockEntity extends BaseContainerBlockEntity {
         super.saveAdditional(output);
         ContainerHelper.saveAllItems(output, this.items);
         this.energy.serialize(output);
+        if (!this.jobs.isEmpty()) {
+            output.store("CraftJobs", com.mistech.mistechmod.archive.craft.CraftJob.CODEC.listOf(), java.util.List.copyOf(this.jobs));
+        }
     }
 }

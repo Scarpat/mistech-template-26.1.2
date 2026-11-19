@@ -3,6 +3,7 @@
   "textures": {
     "particle": "minecraft:block/amethyst_block",
     "clay": "minecraft:block/amethyst_block",
-    "base": "minecraft:block/polished_blackstone"
+    "base": "minecraft:block/polished_blackstone",
+    "face": "mistech:block/collector_statue_face"
   }
 }

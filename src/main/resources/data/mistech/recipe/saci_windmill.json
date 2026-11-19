@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "WWW",
+    "RJR",
+    "PCP"
+  ],
+  "key": {
+    "W": "#minecraft:planks",
+    "R": "mistech:air_rune",
+    "J": "mistech:glass_jar",
+    "P": "minecraft:copper_ingot",
+    "C": "mistech:runic_battery"
+  },
+  "result": {
+    "id": "mistech:saci_windmill",
+    "count": 1
+  }
+}

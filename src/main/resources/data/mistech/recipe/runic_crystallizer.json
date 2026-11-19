@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "GLG",
+    "PCP",
+    "OMO"
+  ],
+  "key": {
+    "G": "#c:glass_blocks",
+    "L": "mistech:light_rune",
+    "P": "mistech:pure_magic_shard",
+    "C": "mistech:crystallizer",
+    "O": "mistech:orichalcum_ingot",
+    "M": "mistech:mithril_ingot"
+  },
+  "result": {
+    "id": "mistech:runic_crystallizer",
+    "count": 1
+  }
+}

@@ -319,7 +319,9 @@ public class GuideBookScreen extends Screen {
                 continue;
             }
             int px = left + (side == 0 ? LEFT_X : RIGHT_X);
+            this.pageBottom = top + TEXT_Y + PH;
             pages.get(index).render(graphics, px, top + TEXT_Y, mouseX, mouseY);
+            this.pageBottom = Integer.MAX_VALUE;
             {
                 String number = String.valueOf(index + 1);
                 graphics.text(this.font, number, px + PW / 2 - this.font.width(number) / 2, top + NAV_Y + 2, DIM, false);
@@ -381,13 +383,38 @@ public class GuideBookScreen extends Screen {
         return py + 14;
     }
 
+    /** Fundo da página sendo desenhada; o texto que passaria daqui é encolhido para caber. */
+    private int pageBottom = Integer.MAX_VALUE;
+
     private int wrapped(GuiGraphicsExtractor graphics, Component text, int px, int y, int color) {
         List<FormattedCharSequence> lines = this.font.split(text, PW);
-        for (FormattedCharSequence line : lines) {
-            graphics.text(this.font, line, px, y, color, false);
-            y += LINE;
+        if (y + lines.size() * LINE <= pageBottom) {
+            for (FormattedCharSequence line : lines) {
+                graphics.text(this.font, line, px, y, color, false);
+                y += LINE;
+            }
+            return y;
         }
-        return y;
+        // não cabe: diminui a letra até caber (mínimo 60%)
+        float scale = 1.0F;
+        while (scale > 0.6F) {
+            scale -= 0.05F;
+            lines = this.font.split(text, (int) (PW / scale));
+            if (y + lines.size() * LINE * scale <= pageBottom) {
+                break;
+            }
+        }
+        Matrix3x2fStack pose = graphics.pose();
+        pose.pushMatrix();
+        pose.translate(px, y);
+        pose.scale(scale, scale);
+        int ly = 0;
+        for (FormattedCharSequence line : lines) {
+            graphics.text(this.font, line, 0, ly, color, false);
+            ly += LINE;
+        }
+        pose.popMatrix();
+        return y + Math.round(ly * scale);
     }
 
     /** Desenha um item (com quantidade) e registra tooltip se o mouse estiver em cima. */

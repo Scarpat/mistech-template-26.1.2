@@ -232,6 +232,9 @@ public class MinerBlockEntity extends MachineBlockEntity {
             }
             BlockPos targetPos = cursor.immutable();
             List<ItemStack> drops = this.process(level, MiningHelper.drops(level, targetPos, target, tool()), target);
+            for (ItemStack drop : drops) {
+                drop.grow(this.bonusCount(level.getRandom())); // engaste: Runa da Sorte
+            }
             if (!MiningHelper.insertAll(barrel, drops)) {
                 this.status = STATUS_FULL;
                 return false;

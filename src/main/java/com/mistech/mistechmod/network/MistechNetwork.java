@@ -47,6 +47,7 @@ public final class MistechNetwork {
         registrar.playToClient(OpenGuidePayload.TYPE, OpenGuidePayload.STREAM_CODEC);
         registrar.playToClient(com.mistech.mistechmod.celestial.CelestialSyncPayload.TYPE, com.mistech.mistechmod.celestial.CelestialSyncPayload.STREAM_CODEC);
         registrar.playToClient(ConfectorRecipesPayload.TYPE, ConfectorRecipesPayload.STREAM_CODEC);
+        registrar.playToClient(com.mistech.mistechmod.purity.area.AreaTaintPayload.TYPE, com.mistech.mistechmod.purity.area.AreaTaintPayload.STREAM_CODEC);
         registrar.playToServer(StaffScrollPayload.TYPE, StaffScrollPayload.STREAM_CODEC, (payload, context) -> {
             if (context.player() instanceof ServerPlayer player) {
                 if (com.mistech.mistechmod.spellcraft.SpellFocusItem.is(player.getMainHandItem())

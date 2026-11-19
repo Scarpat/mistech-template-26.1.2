@@ -28,6 +28,12 @@
     "mistech:mithril_bow",
     "mistech:adamantine_bow",
     "mistech:orichalcum_bow",
-    "mistech:pure_orichalcum_bow"
+    "mistech:pure_orichalcum_bow",
+    "mistech:celestial_sword",
+    "mistech:celestial_axe",
+    "mistech:celestial_spear",
+    "mistech:celestial_pickaxe",
+    "mistech:celestial_shovel",
+    "mistech:celestial_hoe"
   ]
 }

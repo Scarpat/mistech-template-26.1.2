@@ -67,6 +67,8 @@ public final class MistechBlockEntities {
             BLOCK_ENTITY_TYPES.register("gnome_bicycle", () -> new BlockEntityType<>(com.mistech.mistechmod.machine.GnomeBicycleBlockEntity::new, GnomeContent.GNOME_BICYCLE.get()));
     public static final Supplier<BlockEntityType<com.mistech.mistechmod.block.KettleBlockEntity>> KETTLE =
             BLOCK_ENTITY_TYPES.register("kettle", () -> new BlockEntityType<>(com.mistech.mistechmod.block.KettleBlockEntity::new, Mistech.KETTLE.get()));
+    public static final Supplier<BlockEntityType<com.mistech.mistechmod.block.RunicCoffeeMakerBlockEntity>> RUNIC_COFFEE_MAKER =
+            BLOCK_ENTITY_TYPES.register("runic_coffee_maker", () -> new BlockEntityType<>(com.mistech.mistechmod.block.RunicCoffeeMakerBlockEntity::new, Mistech.RUNIC_COFFEE_MAKER.get()));
 
     // ----- Máquinas II -----
     public static final Supplier<BlockEntityType<com.mistech.mistechmod.machine.RunicCrusherBlockEntity>> RUNIC_CRUSHER =

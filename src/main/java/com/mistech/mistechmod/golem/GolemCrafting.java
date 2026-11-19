@@ -44,6 +44,36 @@ public final class GolemCrafting {
         return null;
     }
 
+    /** Todas as receitas de mesa que fazem {@code wanted} (na ordem do jogo). */
+    public static List<ResourceKey<Recipe<?>>> findAll(ServerLevel level, ItemStack wanted) {
+        List<ResourceKey<Recipe<?>>> list = new java.util.ArrayList<>();
+        for (RecipeHolder<CraftingRecipe> holder : level.recipeAccess().recipeMap().byType(RecipeType.CRAFTING)) {
+            CraftingRecipe recipe = holder.value();
+            if (recipe.isSpecial()) {
+                continue;
+            }
+            CraftingInput input = sampleInput(recipe);
+            if (input == null) {
+                continue;
+            }
+            ItemStack out = recipe.assemble(input);
+            if (!out.isEmpty() && out.is(wanted.getItem())) {
+                list.add(holder.id());
+            }
+        }
+        return list;
+    }
+
+    /** O que a receita faz (com a quantidade), ou vazio. */
+    public static ItemStack result(ServerLevel level, @Nullable ResourceKey<Recipe<?>> key) {
+        CraftingRecipe recipe = get(level, key);
+        if (recipe == null) {
+            return ItemStack.EMPTY;
+        }
+        CraftingInput input = sampleInput(recipe);
+        return input == null ? ItemStack.EMPTY : recipe.assemble(input);
+    }
+
     @SuppressWarnings("unchecked")
     public static @Nullable CraftingRecipe get(ServerLevel level, @Nullable ResourceKey<Recipe<?>> key) {
         if (key == null) {
@@ -75,7 +105,7 @@ public final class GolemCrafting {
     }
 
     /** Ingredientes por posição (receita com forma: largura × altura; sem forma: em sequência). */
-    private static @Nullable List<Optional<Ingredient>> slots(CraftingRecipe recipe) {
+    public static @Nullable List<Optional<Ingredient>> slots(CraftingRecipe recipe) {
         if (recipe instanceof ShapedRecipe shaped) {
             return shaped.getIngredients();
         }
@@ -86,7 +116,7 @@ public final class GolemCrafting {
         return list.isEmpty() || list.size() > 9 ? null : list;
     }
 
-    private static CraftingInput input(CraftingRecipe recipe, List<ItemStack> items) {
+    public static CraftingInput input(CraftingRecipe recipe, List<ItemStack> items) {
         if (recipe instanceof ShapedRecipe shaped) {
             return CraftingInput.of(shaped.getWidth(), shaped.getHeight(), items);
         }

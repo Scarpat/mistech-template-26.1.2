@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "EME",
+    "RBR",
+    "EME"
+  ],
+  "key": {
+    "E": "minecraft:ender_pearl",
+    "M": "#c:ingots/mithril",
+    "R": "mistech:space_rune",
+    "B": "mistech:spatial_barrel"
+  },
+  "result": {
+    "id": "mistech:extraplanar_barrel",
+    "count": 2
+  }
+}

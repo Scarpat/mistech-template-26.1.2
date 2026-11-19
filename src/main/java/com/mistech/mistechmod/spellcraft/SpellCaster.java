@@ -120,7 +120,7 @@ public final class SpellCaster {
         ManaService.spend(player, cost);
         if (focused) {
             UtilitySpells.ARCANE_FOCUS.remove(player.getUUID());
-            SpellFx.burst(level, player.position().add(0, 1.0, 0), com.mistech.mistechmod.item.RuneElement.ARCANE, 0.3, 30, net.minecraft.core.particles.ParticleTypes.ENCHANT);
+            com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.MACHINE_BOOST, null, 0.0F, player.position().add(0, 0.6, 0)); // a engrenagem do Foco Arcano solta
         }
         if (spell != Spells.ECHO) {
             UtilitySpells.LAST_CAST.put(player.getUUID(), spell.id());
@@ -129,8 +129,10 @@ public final class SpellCaster {
             player.hurtServer(level, level.damageSources().magic(), bloodCost(spell));
             level.sendParticles(net.minecraft.core.particles.ParticleTypes.DAMAGE_INDICATOR, player.getX(), player.getY() + 1.0, player.getZ(), 6, 0.3, 0.5, 0.3, 0.1);
         }
-        SpellFx.cast(level, player, spell.element());
-        SpellVisuals.onCast(level, player, spell);
+        if (!com.mistech.mistechmod.spellcraft.fx.DreamFx.owns(spell)) {
+            SpellFx.cast(level, player, spell.element());
+            SpellVisuals.onCast(level, player, spell);
+        }
         if (resonance != null) {
             Resonance.announce(level, player, resonance);
             Resonance.extra(level, player, resonance);
@@ -161,7 +163,9 @@ public final class SpellCaster {
             Spells.FOCUS_POWER.set(1.0);
         }
         ManaService.spend(player, cost);
-        SpellVisuals.onPulse(player.level(), player, spell);
+        if (!com.mistech.mistechmod.spellcraft.fx.DreamFx.owns(spell)) {
+            SpellVisuals.onPulse(player.level(), player, spell);
+        }
         return true;
     }
 

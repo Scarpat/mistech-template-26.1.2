@@ -56,7 +56,7 @@ public class RunicCrusherBlockEntity extends MachineBlockEntity {
             ItemStack maxResult = recipe.result().create();
             maxResult.grow(1 + (recipe.runeBonus() && this.hasRune(Mistech.EARTH_RUNE.get()) ? 1 : 0));
             int cost = this.energyStep(ENERGY_PER_TICK);
-            if (this.canOutput(maxResult) && this.hasEnergy(cost)) {
+            if (this.canOutputProduct(maxResult) && this.hasEnergy(cost)) {
                 working = true;
                 this.drainEnergy(cost);
                 this.progress += this.workStep();
@@ -83,7 +83,7 @@ public class RunicCrusherBlockEntity extends MachineBlockEntity {
             this.countRuneOp(RUNE_OPS_PER_USE);
         }
         input.shrink(1);
-        this.insertOutput(result);
+        this.insertProduct(level, result);
         level.playSound(null, pos, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 0.4F, 0.8F + level.getRandom().nextFloat() * 0.4F);
     }
 

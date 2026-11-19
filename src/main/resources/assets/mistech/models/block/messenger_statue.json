@@ -3,6 +3,7 @@
   "textures": {
     "particle": "mistech:block/mithril_block",
     "clay": "mistech:block/mithril_block",
-    "base": "minecraft:block/polished_blackstone"
+    "base": "minecraft:block/polished_blackstone",
+    "face": "mistech:block/messenger_statue_face"
   }
 }

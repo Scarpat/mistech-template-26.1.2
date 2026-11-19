@@ -3,6 +3,7 @@
   "textures": {
     "particle": "mistech:block/orichalcum_block",
     "clay": "mistech:block/orichalcum_block",
-    "base": "minecraft:block/polished_blackstone"
+    "base": "minecraft:block/polished_blackstone",
+    "face": "mistech:block/keeper_statue_face"
   }
 }

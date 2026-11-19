@@ -1,0 +1,8 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "mistech:adamantine_clump",
+  "result": {
+    "id": "mistech:adamantine_dust",
+    "count": 1
+  }
+}

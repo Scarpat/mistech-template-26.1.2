@@ -1,0 +1,21 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:runic_conjurer",
+  "ingredients": [
+    "mistech:celestial_ingot",
+    "mistech:celestial_ingot",
+    "mistech:blank_spell_crystal",
+    "mistech:arcane_rune",
+    "mistech:star_fragment",
+    "mistech:time_rune"
+  ],
+  "essence": 8,
+  "duration": 600,
+  "condition": "night",
+  "min_tier": 3,
+  "result": {
+    "id": "mistech:celestial_conjurer"
+  },
+  "effect": "astral",
+  "copy_components": true
+}

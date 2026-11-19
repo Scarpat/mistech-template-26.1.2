@@ -19,6 +19,7 @@ public final class SpellNetwork {
         registrar.playToClient(OpenFocusPayload.TYPE, OpenFocusPayload.STREAM_CODEC);
         registrar.playToClient(VinePayload.TYPE, VinePayload.STREAM_CODEC);
         registrar.playToClient(com.mistech.mistechmod.spellcraft.fx.ScreenFxPayload.TYPE, com.mistech.mistechmod.spellcraft.fx.ScreenFxPayload.STREAM_CODEC);
+        registrar.playToClient(com.mistech.mistechmod.spellcraft.fx.DreamFxPayload.TYPE, com.mistech.mistechmod.spellcraft.fx.DreamFxPayload.STREAM_CODEC);
         registrar.playToServer(FocusSlotPayload.TYPE, FocusSlotPayload.STREAM_CODEC, (payload, context) -> {
             if (context.player() instanceof ServerPlayer player) {
                 SpellFocusItem.assign(player, payload.hand(), payload.slot(), payload.spellId());
@@ -26,7 +27,11 @@ public final class SpellNetwork {
         });
         registrar.playToServer(InscribePayload.TYPE, InscribePayload.STREAM_CODEC, (payload, context) -> {
             if (context.player() instanceof ServerPlayer player) {
-                InscriptionService.tryInscribe(player, payload.tablePos(), payload.spellId());
+                if (payload.crystal()) {
+                    InscriptionService.tryEngrave(player, payload.tablePos(), payload.spellId());
+                } else {
+                    InscriptionService.tryInscribe(player, payload.tablePos(), payload.spellId());
+                }
             }
         });
     }

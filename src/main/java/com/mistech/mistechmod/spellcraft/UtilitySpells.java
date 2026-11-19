@@ -46,7 +46,7 @@ final class UtilitySpells {
             return false;
         }
         player.sendOverlayMessage(Component.translatable("item.mistech.arcane_rune.charged", moved).withColor(RuneElement.ARCANE.color()));
-        SpellFx.helix(level, player, RuneElement.ARCANE, 12, 2.0, ParticleTypes.ELECTRIC_SPARK);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.RECHARGE, player, 0.0F, player.position());
         level.playSound(null, player.blockPosition(), SoundEvents.BEACON_POWER_SELECT, SoundSource.PLAYERS, 0.8F, 1.6F);
         return true;
     }
@@ -62,9 +62,9 @@ final class UtilitySpells {
         int ticks = (int) Math.round(1200 * Spells.pw(player, RuneElement.ARCANE));
         SpellFx.later(level, ticks, () -> com.mistech.mistechmod.machine.GnomeBoost.setActive(level, pos, false));
         for (int t = 0; t < ticks; t += 20) {
-            SpellFx.later(level, t, () -> level.sendParticles(ParticleTypes.ELECTRIC_SPARK, pos.getX() + 0.5, pos.getY() + 1.1, pos.getZ() + 0.5, 4, 0.4, 0.2, 0.4, 0.05));
+            SpellFx.later(level, t, () -> com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.MACHINE_BOOST, null, 0.0F, Vec3.atCenterOf(pos)));
         }
-        SpellFx.ring(level, Vec3.atCenterOf(pos), 3.0, SpellFx.dust(RuneElement.ARCANE, 1.4F), 40);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.MACHINE_BOOST, null, 1.0F, Vec3.atCenterOf(pos));
         level.playSound(null, pos, SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, 0.8F, 1.8F);
         return true;
     }
@@ -74,7 +74,7 @@ final class UtilitySpells {
         ARCANE_FOCUS.add(player.getUUID());
         UUID id = player.getUUID();
         SpellFx.later(level, 600, () -> ARCANE_FOCUS.remove(id));
-        SpellFx.contractingRing(level, player.position().add(0, 1.0, 0), RuneElement.ARCANE, 2.5, 8, ParticleTypes.ENCHANT);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.ARCANE_FOCUS, player, 0.0F, player.position());
         player.sendOverlayMessage(Component.translatable("message.mistech.spell.arcane_focus").withColor(RuneElement.ARCANE.color()));
         level.playSound(null, player.blockPosition(), SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.PLAYERS, 1.0F, 0.6F);
         return true;
@@ -87,7 +87,7 @@ final class UtilitySpells {
         var ender = player.getEnderChestInventory();
         ender.setActiveChest(null);
         player.openMenu(new SimpleMenuProvider((id, inv, p) -> ChestMenu.threeRows(id, inv, ender), Component.translatable("spell.mistech.rift")));
-        SpellFx.contractingRing(level, player.position().add(0, 1.0, 0), RuneElement.SPACE, 1.5, 8, ParticleTypes.PORTAL);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.RIFT, 0, player, 0.0F, player.getEyePosition().add(player.getLookAngle().multiply(1, 0, 1).normalize().scale(1.3)).subtract(0, 0.3, 0), player.getLookAngle());
         level.playSound(null, player.blockPosition(), SoundEvents.ENDER_CHEST_OPEN, SoundSource.PLAYERS, 1.0F, 0.8F);
         return true;
     }
@@ -105,7 +105,7 @@ final class UtilitySpells {
             return false;
         }
         level.setBlockAndUpdate(pos, SpellcraftContent.LIGHT_ORB.get().defaultBlockState());
-        SpellFx.projectile(level, player.getEyePosition(), Vec3.atCenterOf(pos), RuneElement.LIGHT, ParticleTypes.END_ROD, () -> {});
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.LIGHT_ORB, null, 0.0F, Vec3.atCenterOf(pos));
         level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 1.0F, 1.8F);
         return true;
     }
@@ -118,10 +118,13 @@ final class UtilitySpells {
         int ticks = Spells.dur(player, RuneElement.VIGIL, 400);
         for (LivingEntity e : level.getEntitiesOfClass(LivingEntity.class, player.getBoundingBox().inflate(32), e -> e != player && e.isAlive())) {
             e.addEffect(new MobEffectInstance(MobEffects.GLOWING, ticks, 0));
+            if (n < 24) {
+                com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.VIGIL_MARK, e, 0.0F, e.position());
+            }
             n++;
         }
         player.sendOverlayMessage(Component.translatable("message.mistech.spell.vigil", n).withColor(RuneElement.VIGIL.color()));
-        SpellFx.expandingRing(level, player.position(), RuneElement.VIGIL, 12.0, 10, ParticleTypes.END_ROD);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.VIGIL, player, 0.0F, player.position());
         level.playSound(null, player.blockPosition(), SoundEvents.SCULK_CLICKING, SoundSource.PLAYERS, 1.0F, 1.0F);
         return true;
     }
@@ -161,7 +164,7 @@ final class UtilitySpells {
             }
         }
         player.sendOverlayMessage(Component.translatable("message.mistech.spell.coin." + key).withColor(RuneElement.LUCK.color()));
-        level.sendParticles(ParticleTypes.HAPPY_VILLAGER, player.getX(), player.getY() + 2.2, player.getZ(), 20, 0.4, 0.3, 0.4, 0.05);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.COIN, player, key.equals("bad") ? 0.0F : 1.0F, player.position());
         level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 1.0F, 1.2F);
         return true;
     }
@@ -172,13 +175,13 @@ final class UtilitySpells {
         int hit = Spells.areaEffects(level, player, player.position(), Spells.rad(player, RuneElement.SOUL, 8.0), t -> {
             t.hurtServer(level, level.damageSources().indirectMagic(player, player), (float) (7.0 * w));
             Vec3 from = t.position().add(0, t.getBbHeight() * 0.5, 0);
-            SpellFx.projectile(level, from, player.position().add(0, 1.0, 0), RuneElement.SOUL, ParticleTypes.SOUL, () -> {});
+            com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.SOUL_TAKE, player, 0.0F, from);
         });
         player.heal((float) (Math.min(8, hit) * 1.0 * w));
         if (hit > 0) {
             player.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 600, Math.min(3, hit / 2)));
         }
-        SpellFx.contractingRing(level, player.position(), RuneElement.SOUL, 8.0, 10, ParticleTypes.SOUL_FIRE_FLAME);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.SOUL_HARVEST, player, 8.0F, player.position());
         level.playSound(null, player.blockPosition(), SoundEvents.SOUL_ESCAPE.value(), SoundSource.PLAYERS, 1.5F, 0.7F);
         return true;
     }
@@ -199,7 +202,7 @@ final class UtilitySpells {
         } finally {
             Spells.FOCUS_POWER.set(before);
         }
-        SpellFx.risingRing(level, player.position(), RuneElement.ECHO, 1.2, 8, 2.0);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.ECHO, player, 0.0F, player.position());
         level.playSound(null, player.blockPosition(), SoundEvents.SCULK_SHRIEKER_SHRIEK, SoundSource.PLAYERS, 0.4F, 1.6F);
         return true;
     }

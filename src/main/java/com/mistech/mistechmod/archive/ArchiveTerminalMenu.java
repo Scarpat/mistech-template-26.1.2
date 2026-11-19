@@ -3,6 +3,8 @@ package com.mistech.mistechmod.archive;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import net.minecraft.network.chat.Component;
 import java.util.Optional;
 import java.util.function.Predicate;
 
@@ -51,9 +53,16 @@ public class ArchiveTerminalMenu extends AbstractContainerMenu {
     private List<ArchiveNetwork.Entry> lastSent = null;
     private boolean lastPowered;
     private int ticks;
+    private List<ItemStack> lastCraftables = null;
+    private List<ArchiveNetwork.Entry> lastQueued = null;
+    private int lastJobs = -1;
     // cliente
     public List<ArchiveNetwork.Entry> entries = List.of();
     public boolean powered = true;
+    /** Aba Fabricar (Fase 8). */
+    public List<ItemStack> craftables = List.of();
+    public List<ArchiveNetwork.Entry> queued = List.of();
+    public int jobs;
 
     /** Cliente. */
     public ArchiveTerminalMenu(int id, Inventory inventory) {
@@ -115,11 +124,82 @@ public class ArchiveTerminalMenu extends AbstractContainerMenu {
             }
         }
         boolean powered = net != null;
+        if (this.ticks % 20 == 1 || this.lastCraftables == null) {
+            this.syncCraft(serverPlayer);
+        }
         if (!list.equals(this.lastSent) || powered != this.lastPowered) {
             this.lastSent = list;
             this.lastPowered = powered;
             PacketDistributor.sendToPlayer(serverPlayer, new ArchiveNetwork.SyncPayload(this.containerId, list, powered));
         }
+    }
+
+    /** Manda a lista de fabricáveis e a fila (só quando muda). */
+    private void syncCraft(ServerPlayer player) {
+        ArchiveCoreBlockEntity core = this.core();
+        List<ItemStack> craftables = new ArrayList<>();
+        Map<ItemResource, Long> queued = new java.util.LinkedHashMap<>();
+        int jobs = 0;
+        if (core != null && this.coreLevel != null) {
+            for (var p : com.mistech.mistechmod.archive.craft.CraftingPlanner.patterns(this.coreLevel, core.getBlockPos()).values()) {
+                craftables.add(p.get(0).output().copyWithCount(1));
+            }
+            for (var job : core.jobs()) {
+                queued.merge(ItemResource.of(job.pattern.output()), (long) job.remaining * job.pattern.output().getCount(), Long::sum);
+                jobs++;
+            }
+        }
+        List<ArchiveNetwork.Entry> q = new ArrayList<>();
+        queued.forEach((r, n) -> q.add(new ArchiveNetwork.Entry(r, n)));
+        boolean same = this.lastCraftables != null && this.lastCraftables.size() == craftables.size() && q.equals(this.lastQueued)
+                && jobs == this.lastJobs;
+        if (same) {
+            for (int i = 0; i < craftables.size(); i++) {
+                if (!ItemStack.matches(craftables.get(i), this.lastCraftables.get(i))) {
+                    same = false;
+                    break;
+                }
+            }
+        }
+        if (!same) {
+            this.lastCraftables = craftables;
+            this.lastQueued = q;
+            this.lastJobs = jobs;
+            PacketDistributor.sendToPlayer(player, new ArchiveNetwork.CraftSyncPayload(this.containerId, craftables, q, jobs));
+        }
+    }
+
+    /** Pedido da aba Fabricar: planeja; se faltar algo, diz o quê. */
+    public void handleCraft(ItemResource resource, int count, boolean cancel) {
+        ArchiveCoreBlockEntity core = this.core();
+        if (core == null || this.coreLevel == null || resource.isEmpty() || !core.isPowered()) {
+            return;
+        }
+        Component name = resource.toStack().getHoverName();
+        if (cancel) {
+            int n = core.cancel(resource);
+            this.player.sendSystemMessage(Component.translatable("message.mistech.archive.craft_cancelled", n, name)
+                    .withStyle(net.minecraft.ChatFormatting.GRAY));
+        } else {
+            var plan = com.mistech.mistechmod.archive.craft.CraftWork.request(this.coreLevel, core, resource, count);
+            if (plan.ok()) {
+                this.player.sendSystemMessage(Component.translatable("message.mistech.archive.craft_queued", count, name, plan.jobs().size())
+                        .withStyle(net.minecraft.ChatFormatting.GOLD));
+            } else {
+                net.minecraft.network.chat.MutableComponent line = Component.translatable("message.mistech.archive.craft_missing", count, name)
+                        .withStyle(net.minecraft.ChatFormatting.RED);
+                int shown = 0;
+                for (var e : plan.missing().entrySet()) {
+                    if (shown++ >= 6) {
+                        line.append(Component.literal(" ..."));
+                        break;
+                    }
+                    line.append(Component.literal("\n  " + e.getValue() + "× ")).append(e.getKey().toStack().getHoverName());
+                }
+                this.player.sendSystemMessage(line);
+            }
+        }
+        this.lastCraftables = null;
     }
 
     private void resync() {

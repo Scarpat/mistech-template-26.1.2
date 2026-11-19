@@ -1,0 +1,98 @@
+{
+  "type": "silentgear:simple",
+  "parent": "silentgear:empty",
+  "crafting": {
+    "can_salvage": true,
+    "categories": [
+      "metal",
+      "endgame"
+    ],
+    "gear_type_blacklist": [],
+    "ingredient": "#c:ingots/celestial",
+    "part_substitutes": {}
+  },
+  "display": {
+    "color": "#FF9FD8FF",
+    "equippable": {
+      "always_use_tint": true,
+      "asset_id": "silentgear:generic_shiny",
+      "compound_asset_id": "silentgear:generic_shiny",
+      "equip_sound": "minecraft:item.armor.equip_netherite"
+    },
+    "main_texture_type": "HIGH_CONTRAST",
+    "name": {
+      "translate": "material.mistech.celestial"
+    },
+    "name_prefix": ""
+  },
+  "properties": {
+    "silentgear:main": {
+      "armor": 30.0,
+      "armor/boots": 5,
+      "armor/chestplate": 11,
+      "armor/helmet": 5,
+      "armor/leggings": 9,
+      "armor_durability": 64.0,
+      "armor_toughness": 26.0,
+      "attack_damage": 9.0,
+      "attack_speed": 0.0,
+      "charging_value": 1.4,
+      "draw_speed": 0.0,
+      "durability": 3600.0,
+      "enchantment_value": 30.0,
+      "harvest_speed": 16.0,
+      "harvest_tier": {
+        "incorrect_blocks_for_tool": "minecraft:incorrect_for_netherite_tool",
+        "level_hint": "4",
+        "name": "netherite"
+      },
+      "knockback_resistance": 0.2,
+      "magic_armor": 24.0,
+      "magic_damage": 14.0,
+      "projectile_accuracy": 1.3,
+      "projectile_speed": 1.25,
+      "ranged_damage": 5.0,
+      "rarity": 140.0,
+      "traits": [
+        {
+          "conditions": [],
+          "level": 4,
+          "trait": "silentgear:stellar"
+        },
+        {
+          "conditions": [],
+          "level": 3,
+          "trait": "silentgear:lustrous"
+        },
+        {
+          "conditions": [],
+          "level": 2,
+          "trait": "silentgear:holy"
+        }
+      ]
+    },
+    "silentgear:rod": {
+      "durability": {
+        "operation": "MULTIPLY_TOTAL",
+        "value": 0.1
+      },
+      "magic_damage": {
+        "operation": "MULTIPLY_TOTAL",
+        "value": 0.15
+      },
+      "rarity": 140.0,
+      "traits": [
+        {
+          "conditions": [],
+          "level": 2,
+          "trait": "silentgear:stellar"
+        },
+        {
+          "conditions": [],
+          "level": 2,
+          "trait": "silentgear:lustrous"
+        }
+      ]
+    }
+  }
+}

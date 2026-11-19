@@ -94,12 +94,17 @@ public class ArcaneFurnaceBlockEntity extends MachineBlockEntity {
                 if (lanePowered && extra > 0 && level.getRandom().nextFloat() < ORE_BONUS) {
                     made.grow(1);
                 }
+                made.grow(this.bonusCount(level.getRandom())); // engastes: Terra, Eco, Sorte
+                int room = made.getMaxStackSize() - (out.isEmpty() ? 0 : out.getCount());
+                if (made.getCount() > room) {
+                    net.minecraft.world.Containers.dropItemStack(level, pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, made.split(made.getCount() - room));
+                }
                 if (out.isEmpty()) {
                     this.items.set(LANES + lane, made);
                 } else {
                     out.grow(made.getCount());
                 }
-                this.storedXp += recipe.experience() * (lanePowered ? XP_BONUS : 1.0F);
+                this.storedXp += recipe.experience() * (lanePowered ? XP_BONUS : 1.0F) * this.xpMultiplier();
             }
             if (this.laneProgress[lane] * (long) Math.max(1, shownTotal) >= (long) shownProgress * this.laneTotal[lane]) {
                 shownProgress = this.laneProgress[lane];

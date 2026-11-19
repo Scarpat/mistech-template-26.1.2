@@ -371,6 +371,9 @@ public class ImpureAltarBlockEntity extends SingleItemBlockEntity implements com
             com.mistech.mistechmod.purity.Taint.add(player, recipe.essence());
         }
 
+        // e macula o lugar (Fase 4)
+        com.mistech.mistechmod.purity.area.AreaTaint.add(level, this.worldPosition, com.mistech.mistechmod.Config.areaTaintRitual());
+
         int tierBefore = this.tier();
         RitualActions.run(recipe.action(), level, this.worldPosition, this, player);
 

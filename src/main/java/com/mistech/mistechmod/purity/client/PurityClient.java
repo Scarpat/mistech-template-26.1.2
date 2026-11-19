@@ -68,6 +68,13 @@ public final class PurityClient {
         // marca do limite do early game (20)
         int floor = x + Math.round(BAR_W * Taint.EARLY_FLOOR / Taint.MAX);
         graphics.fill(floor, y - 1, floor + 1, y + 4, 0xFFFFFFFF);
+        // Mácula do lugar (chunk onde você está)
+        float place = com.mistech.mistechmod.purity.area.client.AreaTaintClient.here();
+        if (place >= 0.5F) {
+            Component line = Component.translatable("hud.mistech.area_taint", Taint.describe(place));
+            int lw = minecraft.font.width(line);
+            graphics.text(minecraft.font, line, graphics.guiWidth() / 2 - lw / 2, y - 21, 0xFFFFFFFF, true);
+        }
     }
 
     /** Propriedade "mistech:taint" para o modelo do Pêndulo (range_dispatch): Mácula do jogador local. */

@@ -48,10 +48,11 @@ public class EssenceExtractorBlock extends BaseEntityBlock {
     /** Ligado: tem energia e está enchendo (as rachaduras pulsam em roxo e laranja). */
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
 
-    private static final VoxelShape SHAPE = Shapes.join(Shapes.block(),
-            Shapes.or(Block.box(0, 0, 4, 16, 3, 12), Block.box(4, 0, 0, 12, 3, 16),
-                    Block.box(2, 0, 2, 14, 3, 14), Block.box(2, 4, 2, 14, 16, 14)),
-            BooleanOp.ONLY_FIRST);
+    /** Cadinho: base, bojo, aro e boca aberta em cima (a essência fica dentro da boca). */
+    private static final VoxelShape SHAPE = Shapes.join(
+            Shapes.or(Block.box(3, 0, 3, 13, 1.5, 13), Block.box(2, 1.5, 2, 14, 3, 14), Block.box(1, 3, 1, 15, 4.5, 15),
+                    Block.box(0.5, 4.5, 0.5, 15.5, 11, 15.5), Block.box(1, 11, 1, 15, 14.5, 15), Block.box(1.5, 14.5, 1.5, 14.5, 16, 14.5)),
+            Block.box(3.5, 12, 3.5, 12.5, 16, 12.5), net.minecraft.world.phys.shapes.BooleanOp.ONLY_FIRST);
 
     public EssenceExtractorBlock(BlockBehaviour.Properties properties) {
         super(properties);
@@ -123,14 +124,17 @@ public class EssenceExtractorBlock extends BaseEntityBlock {
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         int lvl = state.getValue(LEVEL);
-        if (state.getValue(LIT) && random.nextInt(4) == 0) {
-            // brasas de magma saindo das rachaduras
-            level.addParticle(random.nextBoolean() ? ParticleTypes.SMALL_FLAME : ParticleTypes.WITCH,
-                    pos.getX() + random.nextDouble(), pos.getY() + 0.2 + random.nextDouble() * 0.6, pos.getZ() + random.nextDouble(),
-                    0.0, 0.01, 0.0);
+        if (state.getValue(LIT) && random.nextInt(6) == 0) {
+            // lágrimas da obsidiana chorosa escorrendo do bojo
+            Direction side = Direction.Plane.HORIZONTAL.getRandomDirection(random);
+            double along = 0.15 + random.nextDouble() * 0.7;
+            level.addParticle(ParticleTypes.DRIPPING_OBSIDIAN_TEAR,
+                    pos.getX() + 0.5 + side.getStepX() * 0.5 + (side.getStepZ() != 0 ? along - 0.5 : 0.0),
+                    pos.getY() + 0.3 + random.nextDouble() * 0.35,
+                    pos.getZ() + 0.5 + side.getStepZ() * 0.5 + (side.getStepX() != 0 ? along - 0.5 : 0.0), 0.0, 0.0, 0.0);
         }
         if (lvl > 0 && random.nextInt(3) == 0) {
-            double y = pos.getY() + 0.35 + lvl * 0.19;
+            double y = pos.getY() + (12.0 + lvl * 1.2) / 16.0;
             level.addParticle(ParticleTypes.PORTAL, pos.getX() + 0.25 + random.nextDouble() * 0.5, y,
                     pos.getZ() + 0.25 + random.nextDouble() * 0.5, 0.0, 0.2, 0.0);
         }

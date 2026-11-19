@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PAP",
+    "LWL",
+    "OTO"
+  ],
+  "key": {
+    "P": "minecraft:paper",
+    "A": "mistech:arcane_rune",
+    "L": "minecraft:lapis_block",
+    "W": "mistech:writing_table",
+    "O": "#minecraft:planks",
+    "T": "mistech:runic_tank"
+  },
+  "result": {
+    "id": "mistech:scroll_printer",
+    "count": 1
+  }
+}

@@ -66,6 +66,11 @@ public class LiquefierBlockEntity extends MachineBlockEntity implements ArcaneMa
     }
 
     @Override
+    protected float taintPerMinute() {
+        return com.mistech.mistechmod.Config.areaTaintEssenceMachines();
+    }
+
+    @Override
     protected void tick(ServerLevel level, BlockPos pos, BlockState state) {
         this.fillContainers();
         ItemStack solid = this.items.get(SLOT_SOLID);

@@ -20,12 +20,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.component.ItemContainerContents;
 
 /**
- * Runas engastadas no equipamento revestido (Adamantina: 3, Oricalco: 6, Oricalco Puro: 8).
+ * Runas engastadas no equipamento revestido (Adamantina: 3, Oricalco: 6, Oricalco Puro: 8, Celeste: 10).
  * A runa vai inteira para a peça (componente {@code mistech:gear_runes}) e volta com os usos que tinha ao ser tirada.
  * Runa Selada conta como 1,5 runa.
  */
 public final class GearRunes {
-    public static final int MAX_SLOTS = 8;
+    public static final int MAX_SLOTS = 10;
     public static final double SEALED_WEIGHT = 1.5;
 
     private static final EquipmentSlot[] ARMOR = {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};

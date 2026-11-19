@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "III",
+    "III",
+    "III"
+  ],
+  "key": {
+    "I": "mistech:celestial_ingot"
+  },
+  "result": {
+    "id": "mistech:celestial_block",
+    "count": 1
+  }
+}

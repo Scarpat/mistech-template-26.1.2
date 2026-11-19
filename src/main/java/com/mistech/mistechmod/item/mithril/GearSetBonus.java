@@ -57,6 +57,7 @@ public final class GearSetBonus {
     public static final double ADAMANTINE_HEALTH = 4.0;
     public static final double ORICHALCUM_HEALTH = 6.0;
     public static final double PURE_HEALTH = 8.0;
+    public static final double CELESTIAL_HEALTH = 12.0;
     public static final float BULWARK_MULTIPLIER = 0.85F;
     public static final float ASTRAL_NIGHT_DAMAGE = 1.15F;
     public static final float SOLAR_UNDEAD_DAMAGE = 1.5F;
@@ -79,7 +80,7 @@ public final class GearSetBonus {
         if (!MithrilEvents.hasFullSet(entity)) {
             return null;
         }
-        GearTier lowest = GearTier.PURE_ORICHALCUM;
+        GearTier lowest = GearTier.CELESTIAL;
         for (EquipmentSlot slot : ARMOR) {
             GearTier tier = MithrilGear.tier(entity.getItemBySlot(slot));
             if (tier.ordinal() < lowest.ordinal()) {
@@ -103,6 +104,7 @@ public final class GearSetBonus {
             case ADAMANTINE -> ADAMANTINE_HEALTH;
             case ORICHALCUM -> ORICHALCUM_HEALTH;
             case PURE_ORICHALCUM -> PURE_HEALTH;
+            case CELESTIAL -> CELESTIAL_HEALTH;
         };
     }
 
@@ -116,7 +118,7 @@ public final class GearSetBonus {
         }
         GearTier tier = setTier(player);
         setModifier(player, Attributes.MAX_HEALTH, SET_HEALTH, healthFor(tier));
-        boolean solar = tier == GearTier.PURE_ORICHALCUM;
+        boolean solar = tier != null && tier.atLeast(GearTier.PURE_ORICHALCUM);
         setModifier(player, Attributes.MAX_ABSORPTION, SET_ABSORPTION, solar ? SOLAR_SHIELD : 0.0);
         if (player.getHealth() > player.getMaxHealth()) {
             player.setHealth(player.getMaxHealth());
@@ -127,6 +129,9 @@ public final class GearSetBonus {
         boolean night = level.isDarkOutside();
         if (tier.atLeast(GearTier.ORICHALCUM) && night) {
             refresh(player, MobEffects.NIGHT_VISION, 0, 320, 220);
+        }
+        if (tier.atLeast(GearTier.CELESTIAL) && night) {
+            refresh(player, MobEffects.RESISTANCE, 0, 100, 50); // Celeste: a noite protege
         }
         if (solar) {
             if (!night) {
@@ -203,7 +208,7 @@ public final class GearSetBonus {
                 if (tier.atLeast(GearTier.ORICHALCUM) && level.isDarkOutside()) {
                     amount *= ASTRAL_NIGHT_DAMAGE;
                 }
-                if (tier == GearTier.PURE_ORICHALCUM && target.is(EntityTypeTags.UNDEAD)) {
+                if (tier.atLeast(GearTier.PURE_ORICHALCUM) && target.is(EntityTypeTags.UNDEAD)) {
                     amount *= SOLAR_UNDEAD_DAMAGE;
                     level.sendParticles(ParticleTypes.END_ROD, target.getX(), target.getY() + target.getBbHeight() * 0.6, target.getZ(),
                             6, 0.25, 0.3, 0.25, 0.04);

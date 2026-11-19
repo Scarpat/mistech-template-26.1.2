@@ -115,10 +115,12 @@ public final class ArchiveContent {
         List<DeferredItem<? extends Item>> list = new ArrayList<>(List.of(ARCHIVE_CORE_ITEM, ARCHIVE_TERMINAL_ITEM, ARCHIVE_RELAY_ITEM,
                 ARCHIVE_SEAL_ITEM, ARCHIVE_PORT_ITEM, ARCHIVE_MIRROR));
         list.addAll(SCROLLS);
+        list.addAll(com.mistech.mistechmod.archive.craft.CraftContent.creativeItems());
         return list;
     }
 
     public static void register(IEventBus modEventBus) {
+        com.mistech.mistechmod.archive.craft.CraftContent.init();
         BLOCK_ENTITIES.register(modEventBus);
         COMPONENTS.register(modEventBus);
         MENUS.register(modEventBus);

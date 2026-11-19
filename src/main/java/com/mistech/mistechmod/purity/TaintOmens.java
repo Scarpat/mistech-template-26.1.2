@@ -72,7 +72,7 @@ public final class TaintOmens {
                 com.mistech.mistechmod.celestial.CelestialContent.PURIFIED_DREAMCATCHER.get())).orElse(false)) {
             return false; // Apanha Sonho Purificado
         }
-        return player.getRandom().nextFloat() < pisadeiraChance(Taint.stage(player));
+        return player.getRandom().nextFloat() < pisadeiraChance(com.mistech.mistechmod.purity.area.AreaTaint.omenStage(player));
     }
 
     @SubscribeEvent
@@ -85,7 +85,7 @@ public final class TaintOmens {
         if (com.mistech.mistechmod.celestial.Celestial.isBlessed(player)) {
             return;
         }
-        float chance = evilEyeChance(Taint.stage(player)) * (level.isDarkOutside() ? 1.5F : 1.0F);
+        float chance = evilEyeChance(com.mistech.mistechmod.purity.area.AreaTaint.omenStage(player)) * (level.isDarkOutside() ? 1.5F : 1.0F);
         if (chance <= 0 || player.getRandom().nextFloat() >= chance) {
             return;
         }

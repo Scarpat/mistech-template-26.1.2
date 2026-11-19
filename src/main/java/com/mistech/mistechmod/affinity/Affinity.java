@@ -128,7 +128,7 @@ public final class Affinity {
 
     /** Poder de magia: 1 + 10% por nível de afinidade do elemento (nível 7 = ×1,7). */
     public static double power(Player player, RuneElement element) {
-        return 1.0 + 0.10 * effectiveLevel(player, element);
+        return (1.0 + 0.10 * effectiveLevel(player, element)) * com.mistech.mistechmod.purity.area.AreaTaint.spellPower(player, element);
     }
 
     public static int level(int points) {

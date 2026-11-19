@@ -106,22 +106,22 @@ public final class Spells {
     }
 
     public static final Spell FIRE_SPARK = add("fire_spark", RuneElement.FIRE, 1, 8, 10, false,
-            (l, p) -> bolt(l, p, 24, 5.0F, RuneElement.FIRE, ParticleTypes.FLAME, SoundEvents.FIRECHARGE_USE, t -> t.igniteForSeconds(4.0F)));
+            (l, p) -> dreamBolt(l, p, 24, 5.0F, RuneElement.FIRE, SoundEvents.FIRECHARGE_USE, com.mistech.mistechmod.spellcraft.fx.DreamFx.MOTH_LAUNCH, com.mistech.mistechmod.spellcraft.fx.DreamFx.MOTH_HIT,
+                    t -> t.igniteForSeconds(4.0F)));
     public static final Spell ICE_SHARD = add("ice_shard", RuneElement.ICE, 1, 8, 10, false,
-            (l, p) -> bolt(l, p, 24, 5.0F, RuneElement.ICE, ParticleTypes.SNOWFLAKE, SoundEvents.GLASS_BREAK, Blocks.PACKED_ICE.defaultBlockState(), 0.35F, t -> {
+            (l, p) -> dreamBolt(l, p, 24, 5.0F, RuneElement.ICE, SoundEvents.GLASS_BREAK, com.mistech.mistechmod.spellcraft.fx.DreamFx.SHARD_LAUNCH, com.mistech.mistechmod.spellcraft.fx.DreamFx.SHARD_HIT, t -> {
                 t.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 60, 1));
                 t.setTicksFrozen(Math.max(t.getTicksFrozen(), t.getTicksRequiredToFreeze() + 40));
             }));
     public static final Spell WATER_BOLT = add("water_bolt", RuneElement.WATER, 1, 8, 12, false,
-            (l, p) -> bolt(l, p, 20, 4.0F, RuneElement.WATER, ParticleTypes.SPLASH, SoundEvents.PLAYER_SPLASH, t -> {
+            (l, p) -> dreamBolt(l, p, 20, 4.0F, RuneElement.WATER, SoundEvents.PLAYER_SPLASH, com.mistech.mistechmod.spellcraft.fx.DreamFx.FISH_LAUNCH, com.mistech.mistechmod.spellcraft.fx.DreamFx.FISH_HIT, t -> {
                 Vec3 look = p(l, t);
                 t.push(look.x * 0.9, 0.3, look.z * 0.9);
                 t.hurtMarked = true;
             }));
     /** Pedregulho: carregada. Quanto mais carga, mais dano e arremesso. */
     public static final Spell BOULDER = add("boulder", RuneElement.EARTH, 1, 10, 12, false,
-            (l, p) -> bolt(l, p, 22, 4.0F, RuneElement.EARTH, new BlockParticleOption(ParticleTypes.BLOCK, Blocks.STONE.defaultBlockState()),
-                    SoundEvents.STONE_BREAK, Blocks.COBBLESTONE.defaultBlockState(), (float) (0.5 + 0.6 * Spells.CHARGE.get()), t -> {
+            (l, p) -> dreamBolt(l, p, 22, 4.0F, RuneElement.EARTH, SoundEvents.STONE_BREAK, com.mistech.mistechmod.spellcraft.fx.DreamFx.HEAD_LAUNCH, com.mistech.mistechmod.spellcraft.fx.DreamFx.HEAD_HIT, t -> {
                         Vec3 look = p(l, t);
                         t.push(look.x * 0.6, 0.25, look.z * 0.6);
                         t.hurtMarked = true;
@@ -133,9 +133,7 @@ public final class Spells {
     public static final Spell STONE_SKIN = add("stone_skin", RuneElement.EARTH, 2, 22, 300, false, (l, p) -> {
         p.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, dur(p, RuneElement.EARTH, 400), 1));
         p.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, dur(p, RuneElement.EARTH, 400), 0));
-        l.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.STONE.defaultBlockState()), p.getX(), p.getY() + 1.0, p.getZ(), 60, 0.5, 0.9, 0.5, 0.1);
-        SpellFx.helix(l, p, RuneElement.EARTH, 12, 2.0, new BlockParticleOption(ParticleTypes.BLOCK, Blocks.STONE.defaultBlockState()));
-        SpellFx.expandingRing(l, p.position(), RuneElement.EARTH, 2.5, 5, new BlockParticleOption(ParticleTypes.BLOCK, Blocks.DIRT.defaultBlockState()));
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.STONE_SKIN, p, 0.0F, p.position());
         l.playSound(null, p.blockPosition(), SoundEvents.STONE_PLACE, SoundSource.PLAYERS, 1.0F, 0.7F);
         return true;
     });
@@ -143,9 +141,7 @@ public final class Spells {
     public static final Spell SHADOW_VEIL = add("shadow_veil", RuneElement.DARKNESS, 2, 25, 300, false, (l, p) -> {
         p.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, dur(p, RuneElement.DARKNESS, 300), 0));
         p.addEffect(new MobEffectInstance(MobEffects.SPEED, dur(p, RuneElement.DARKNESS, 300), 0));
-        SpellFx.contractingRing(l, p.position(), RuneElement.DARKNESS, 3.0, 8, ParticleTypes.LARGE_SMOKE);
-        SpellFx.burst(l, p.position().add(0, 1.0, 0), RuneElement.DARKNESS, 0.25, 40, ParticleTypes.SQUID_INK);
-        l.sendParticles(ParticleTypes.LARGE_SMOKE, p.getX(), p.getY() + 1.0, p.getZ(), 30, 0.4, 0.8, 0.4, 0.02);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.VEIL, p, 0.0F, p.position());
         l.playSound(null, p.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 0.6F, 0.6F);
         return true;
     });
@@ -154,19 +150,16 @@ public final class Spells {
     public static final Spell FIRE_BURST = add("fire_burst", RuneElement.FIRE, 3, 35, 60, false, Spells::fireBurst);
     public static final Spell WIND_STEP = add("wind_step", RuneElement.AIR, 3, 15, 60, false, Spells::windStep);
     public static final Spell DARK_DRAIN = add("dark_drain", RuneElement.DARKNESS, 3, 35, 60, false,
-            (l, p) -> bolt(l, p, 20, 6.0F, RuneElement.DARKNESS, ParticleTypes.SOUL, SoundEvents.WITHER_HURT, t -> {
+            (l, p) -> dreamBolt(l, p, 20, 6.0F, RuneElement.DARKNESS, SoundEvents.WITHER_HURT, com.mistech.mistechmod.spellcraft.fx.DreamFx.MOUTH_LAUNCH, com.mistech.mistechmod.spellcraft.fx.DreamFx.MOUTH_HIT, t -> {
                 p.heal((float) (3.0 * pw(p, RuneElement.DARKNESS)));
-                Vec3 from = t.position().add(0, t.getBbHeight() * 0.5, 0);
-                SpellFx.later(l, 4, () -> SpellFx.projectile(l, from, p.position().add(0, 1.0, 0), RuneElement.DARKNESS, ParticleTypes.SOUL, () -> {}));
+                com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.FEED, p, 0.0F, t.position().add(0, t.getBbHeight() * 0.5, 0));
             }));
     public static final Spell TIME_SLOW = add("time_slow", RuneElement.TIME, 3, 9, 100, false, (l, p) -> {
         int hit = areaEffects(l, p, p.position(), rad(p, RuneElement.TIME, 8.0), t -> {
             t.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 30, 3));
             t.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 30, 0));
         });
-        SpellFx.expandingRing(l, p.position(), RuneElement.TIME, 8.0, 8, ParticleTypes.REVERSE_PORTAL);
-        SpellFx.contractingRing(l, p.position(), RuneElement.TIME, 5.0, 8, ParticleTypes.END_ROD);
-        l.sendParticles(ParticleTypes.REVERSE_PORTAL, p.getX(), p.getY() + 1.0, p.getZ(), 40, 4.0, 0.6, 4.0, 0.02);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.TIME_PULSE, p, (float) rad(p, RuneElement.TIME, 8.0), p.position());
         l.playSound(null, p.blockPosition(), SoundEvents.BEACON_DEACTIVATE, SoundSource.PLAYERS, 0.5F, 0.6F);
         return true;
     }).channeled(10);
@@ -176,22 +169,23 @@ public final class Spells {
     public static final Spell SPARK_ARC = add("spark_arc", RuneElement.ENERGY, 1, 8, 14, false, Spells::sparkArc);
     public static final Spell GLIMMER = add("glimmer", RuneElement.LIGHT, 1, 8, 100, false, (l, p) -> {
         double r = rad(p, RuneElement.LIGHT, 12.0);
-        areaEffects(l, p, p.position(), r, t -> t.addEffect(new MobEffectInstance(MobEffects.GLOWING, dur(p, RuneElement.LIGHT, 200), 0)));
-        SpellFx.expandingRing(l, p.position(), RuneElement.LIGHT, r, 8, ParticleTypes.END_ROD);
-        l.sendParticles(ParticleTypes.GLOW, p.getX(), p.getY() + 1.0, p.getZ(), 30, 1.0, 0.8, 1.0, 0.0);
+        areaEffects(l, p, p.position(), r, t -> {
+            t.addEffect(new MobEffectInstance(MobEffects.GLOWING, dur(p, RuneElement.LIGHT, 200), 0));
+            com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.GLIMMER_MARK, t, 0.0F, t.position());
+        });
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.GLIMMER, p, (float) r, p.position());
         l.playSound(null, p.blockPosition(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 0.8F, 1.6F);
         return true;
     });
     public static final Spell GLOOM = add("gloom", RuneElement.DARKNESS, 1, 8, 40, false,
-            (l, p) -> bolt(l, p, 18, 3.0F, RuneElement.DARKNESS, ParticleTypes.SMOKE, SoundEvents.ENDERMAN_STARE, t -> {
+            (l, p) -> dreamBolt(l, p, 18, 3.0F, RuneElement.DARKNESS, SoundEvents.ENDERMAN_STARE, com.mistech.mistechmod.spellcraft.fx.DreamFx.EYE_LAUNCH, com.mistech.mistechmod.spellcraft.fx.DreamFx.EYE_HIT, t -> {
                 t.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, dur(p, RuneElement.DARKNESS, 60), 0));
                 t.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, dur(p, RuneElement.DARKNESS, 60), 1));
             }));
     public static final Spell QUICKEN = add("quicken", RuneElement.TIME, 1, 10, 160, false, (l, p) -> {
         p.addEffect(new MobEffectInstance(MobEffects.SPEED, dur(p, RuneElement.TIME, 200), 0));
         p.addEffect(new MobEffectInstance(MobEffects.HASTE, dur(p, RuneElement.TIME, 200), 0));
-        SpellFx.contractingRing(l, p.position(), RuneElement.TIME, 2.5, 6, ParticleTypes.END_ROD);
-        l.sendParticles(ParticleTypes.REVERSE_PORTAL, p.getX(), p.getY() + 1.0, p.getZ(), 25, 0.4, 0.8, 0.4, 0.05);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.QUICKEN, p, 0.0F, p.position());
         l.playSound(null, p.blockPosition(), SoundEvents.BEACON_ACTIVATE, SoundSource.PLAYERS, 0.5F, 1.8F);
         return true;
     });
@@ -208,7 +202,7 @@ public final class Spells {
             t.setDeltaMovement(n.x * f, 0.3, n.z * f);
             t.hurtMarked = true;
         }
-        SpellFx.projectile(l, end, from, RuneElement.SPACE, ParticleTypes.PORTAL, () -> {});
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.PULL, 0, p, 0.0F, end, from);
         l.playSound(null, p.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 0.5F, 1.6F);
         return true;
     });
@@ -218,8 +212,7 @@ public final class Spells {
             t.hurtServer(l, l.damageSources().indirectMagic(p, p), (float) (3.0 * pw(p, RuneElement.FIRE)));
             t.igniteForSeconds(5.0F);
         });
-        SpellFx.expandingRing(l, p.position(), RuneElement.FIRE, r, 8, ParticleTypes.FLAME);
-        SpellFx.burst(l, p.position().add(0, 0.5, 0), RuneElement.FIRE, 0.3, 40, ParticleTypes.FLAME);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.CIRANDA, p, (float) r, p.position());
         l.playSound(null, p.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 1.0F, 0.8F);
         return true;
     });
@@ -230,8 +223,8 @@ public final class Spells {
             t.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, dur(p, RuneElement.ICE, 80), 2));
             t.setTicksFrozen(Math.max(t.getTicksFrozen(), t.getTicksRequiredToFreeze() + 60));
         });
-        SpellFx.expandingRing(l, p.position(), RuneElement.ICE, r, 8, ParticleTypes.SNOWFLAKE);
-        SpellFx.burst(l, p.position().add(0, 0.5, 0), RuneElement.ICE, 0.35, 50, ParticleTypes.SNOWFLAKE);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.FROST_NOVA, p, (float) r, p.position());
+        com.mistech.mistechmod.spellcraft.fx.Vfx.flash(l, p.position(), 8, 0xBFEFFF, 6);
         l.playSound(null, p.blockPosition(), SoundEvents.GLASS_BREAK, SoundSource.PLAYERS, 1.0F, 0.7F);
         return true;
     });
@@ -240,16 +233,14 @@ public final class Spells {
         p.hurtMarked = true;
         p.resetFallDistance();
         p.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 120, 0));
-        SpellFx.column(l, p.position(), RuneElement.AIR, 3.0, 6, ParticleTypes.CLOUD);
-        SpellFx.burst(l, p.position().add(0, 0.3, 0), RuneElement.AIR, 0.3, 30, ParticleTypes.CLOUD);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.UPDRAFT, p, 0.0F, p.position());
         l.playSound(null, p.blockPosition(), SoundEvents.BREEZE_WIND_CHARGE_BURST.value(), SoundSource.PLAYERS, 1.0F, 1.2F);
         return true;
     });
     public static final Spell FORESIGHT = add("foresight", RuneElement.TIME, 2, 22, 300, false, (l, p) -> {
         p.addEffect(new MobEffectInstance(MobEffects.SPEED, dur(p, RuneElement.TIME, 240), 1));
         p.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, dur(p, RuneElement.TIME, 240), 0));
-        SpellFx.helix(l, p, RuneElement.TIME, 14, 2.0, ParticleTypes.END_ROD);
-        SpellFx.contractingRing(l, p.position(), RuneElement.TIME, 3.0, 8, ParticleTypes.REVERSE_PORTAL);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.FORESIGHT, p, 0.0F, p.position());
         l.playSound(null, p.blockPosition(), SoundEvents.BEACON_POWER_SELECT, SoundSource.PLAYERS, 0.8F, 1.4F);
         return true;
     });
@@ -262,12 +253,9 @@ public final class Spells {
         BlockPos c = p.blockPosition();
         for (int i = 0; i < 6; i++) {
             BlockPos pos = c.offset(l.getRandom().nextInt(5) - 2, l.getRandom().nextInt(3) - 1, l.getRandom().nextInt(5) - 2);
-            if (net.minecraft.world.item.BoneMealItem.growCrop(meal, l, pos)) {
-                l.sendParticles(ParticleTypes.HAPPY_VILLAGER, pos.getX() + 0.5, pos.getY() + 0.6, pos.getZ() + 0.5, 5, 0.3, 0.3, 0.3, 0.0);
-            }
+            net.minecraft.world.item.BoneMealItem.growCrop(meal, l, pos);
         }
-        SpellFx.helix(l, p, RuneElement.LIFE, 10, 1.6, ParticleTypes.HAPPY_VILLAGER);
-        l.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.OAK_LEAVES.defaultBlockState()), p.getX(), p.getY() + 1.0, p.getZ(), 15, 0.5, 0.7, 0.5, 0.05);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.BLOOM, p, 0.0F, p.position());
         l.playSound(null, p.blockPosition(), SoundEvents.BONE_MEAL_USE, SoundSource.PLAYERS, 0.8F, 1.3F);
         return true;
     });
@@ -288,7 +276,7 @@ public final class Spells {
             item.setNoPickUpDelay();
             n++;
         }
-        SpellFx.contractingRing(l, p.position(), RuneElement.SPACE, r, 8, ParticleTypes.PORTAL);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.TELEKINESIS, p, (float) r, p.position());
         l.playSound(null, p.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 0.4F, 1.9F);
         return true;
     });
@@ -306,8 +294,9 @@ public final class Spells {
             target.clearFire();
             target.setTicksFrozen(0);
         }
-        SpellFx.expandingRing(l, p.position(), RuneElement.WATER, r, 8, ParticleTypes.SPLASH);
-        SpellFx.helix(l, p, RuneElement.WATER, 14, 2.0, ParticleTypes.BUBBLE_POP);
+        // limpa a Mácula do lugar (Fase 4)
+        com.mistech.mistechmod.purity.area.AreaTaint.clean(l, p.blockPosition(), 0, com.mistech.mistechmod.Config.areaTaintPurify());
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.PURIFY, p, (float) r, p.position());
         l.playSound(null, p.blockPosition(), SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.PLAYERS, 1.0F, 1.8F);
         return true;
     });
@@ -334,15 +323,13 @@ public final class Spells {
     public static final Spell THUNDERSTORM = add("thunderstorm", RuneElement.ENERGY, 5, 90, 400, true, Spells::thunderstorm).ritual(50);
     public static final Spell TIME_STOP = add("time_stop", RuneElement.TIME, 5, 120, 600, true, (l, p) -> {
         int hit = areaEffects(l, p, p.position(), rad(p, RuneElement.TIME, 10.0), t -> {
+            com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.TIME_MARK, t, dur(p, RuneElement.TIME, 100), t.position());
             t.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, dur(p, RuneElement.TIME, 100), 6));
             t.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, dur(p, RuneElement.TIME, 100), 4));
             t.addEffect(new MobEffectInstance(MobEffects.GLOWING, dur(p, RuneElement.TIME, 100), 0));
         });
-        SpellFx.expandingRing(l, p.position(), RuneElement.TIME, 10.0, 8, ParticleTypes.END_ROD);
-        SpellFx.expandingRing(l, p.position().add(0, 1.2, 0), RuneElement.TIME, 10.0, 12, null);
-        SpellFx.burst(l, p.position().add(0, 1.0, 0), RuneElement.TIME, 0.5, 80, ParticleTypes.END_ROD);
-        SpellFx.column(l, p.position(), RuneElement.TIME, 5.0, 10, ParticleTypes.REVERSE_PORTAL);
-        l.sendParticles(ParticleTypes.END_ROD, p.getX(), p.getY() + 1.0, p.getZ(), 120, 5.0, 1.0, 5.0, 0.01);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(l, com.mistech.mistechmod.spellcraft.fx.DreamFx.TIME_STOP, p, (float) rad(p, RuneElement.TIME, 10.0), p.position());
+        com.mistech.mistechmod.spellcraft.fx.Vfx.flash(l, p.position(), 24, 0xE8C66A, 10);
         l.playSound(null, p.blockPosition(), SoundEvents.BEACON_DEACTIVATE, SoundSource.PLAYERS, 1.5F, 0.4F);
         return true;
     });
@@ -369,7 +356,7 @@ public final class Spells {
     public static final Spell LUCKY_COIN = add("lucky_coin", RuneElement.LUCK, 2, 20, 600, false, UtilitySpells::luckyCoin);
     public static final Spell ECHO = add("echo", RuneElement.ECHO, 3, 30, 200, false, UtilitySpells::echo);
     public static final Spell VOID_TOUCH = add("void_touch", RuneElement.VOID, 3, 30, 60, false,
-            (l, p) -> bolt(l, p, 20, 9.0F, RuneElement.VOID, ParticleTypes.REVERSE_PORTAL, SoundEvents.ENDERMAN_HURT, t -> {
+            (l, p) -> dreamBolt(l, p, 20, 9.0F, RuneElement.VOID, SoundEvents.ENDERMAN_HURT, com.mistech.mistechmod.spellcraft.fx.DreamFx.VOID_LAUNCH, com.mistech.mistechmod.spellcraft.fx.DreamFx.VOID_HIT, t -> {
                 t.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 120, 1));
                 t.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 20, 0));
             }));
@@ -490,6 +477,36 @@ public final class Spells {
         return true;
     }
 
+    /**
+     * Projétil com efeito onírico: a regra é a mesma do {@link #bolt}, mas o servidor não desenha nada; o cliente
+     * recebe o lançamento ({@code launchFx}) e o impacto ({@code hitFx}) e anima tudo sozinho.
+     */
+    static boolean dreamBolt(ServerLevel level, ServerPlayer player, double range, float damage, RuneElement element, SoundEvent sound,
+                             int launchFx, int hitFx, Consumer<LivingEntity> onHit) {
+        Aim aim = aim(level, player, range);
+        Vec3 start = player.getEyePosition().add(player.getLookAngle().scale(0.8)).subtract(0, 0.25, 0);
+        Vec3 end = aim != null ? aim.point() : player.getEyePosition().add(player.getLookAngle().scale(range));
+        Vec3 dir = end.subtract(start);
+        if (dir.lengthSqr() < 1.0E-4) {
+            dir = player.getLookAngle();
+        }
+        float dmg = (float) (damage * pw(player, element));
+        double speed = 1.6;
+        int id = com.mistech.mistechmod.spellcraft.fx.DreamFx.newId();
+        LivingEntity[] struck = new LivingEntity[1];
+        level.playSound(null, player.blockPosition(), sound, SoundSource.PLAYERS, 0.6F, 1.6F);
+        com.mistech.mistechmod.spellcraft.fx.MagicProjectiles.bare(level, player, element, start, dir, speed, range + 2, 0.5, target -> {
+            target.hurtServer(level, level.damageSources().indirectMagic(player, player), dmg);
+            onHit.accept(target);
+            struck[0] = target;
+        }, at -> {
+            com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, hitFx, id, struck[0], 0.0F, at, Vec3.ZERO);
+            level.playSound(null, BlockPos.containing(at), sound, SoundSource.PLAYERS, 0.8F, 1.3F);
+        });
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, launchFx, id, player, (float) (range + 2), start, dir.normalize().scale(speed));
+        return true;
+    }
+
     static List<LivingEntity> around(ServerLevel level, ServerPlayer player, Vec3 center, double radius) {
         return level.getEntitiesOfClass(LivingEntity.class, new AABB(center, center).inflate(radius, Math.max(2.0, radius / 2), radius),
                 e -> e != player && e.isAlive() && !e.isSpectator() && !friendly(player, e) && e.position().distanceTo(center) <= radius + 0.5);
@@ -526,7 +543,7 @@ public final class Spells {
         Vec3 from = player.getEyePosition().add(player.getLookAngle().scale(0.6));
         if (first == null) {
             Vec3 end = from.add(player.getLookAngle().scale(6));
-            SpellFx.projectile(level, from, end, RuneElement.ENERGY, ParticleTypes.ELECTRIC_SPARK, () -> {});
+            com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.STITCH, 0, null, 1.0F, from, end);
             level.playSound(null, player.blockPosition(), SoundEvents.LIGHTNING_BOLT_IMPACT, SoundSource.PLAYERS, 0.3F, 2.0F);
             return true;
         }
@@ -537,8 +554,7 @@ public final class Spells {
             hit.add(current);
             Vec3 target = current.position().add(0, current.getBbHeight() * 0.5, 0);
             current.hurtServer(level, level.damageSources().indirectMagic(player, player), (float) (3.5 * pw(player, RuneElement.ENERGY)));
-            SpellFx.lightning(level, origin, target, RuneElement.ENERGY);
-            SpellFx.burst(level, target, RuneElement.ENERGY, 0.2, 12, ParticleTypes.ELECTRIC_SPARK);
+            com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.STITCH, i * 3, null, 1.0F, origin, target);
             origin = target;
             LivingEntity next = null;
             double best = 36.0;
@@ -565,7 +581,7 @@ public final class Spells {
             target.push(flat.x * 1.8, 0.45, flat.z * 1.8);
             target.hurtMarked = true;
         }
-        SpellFx.gust(level, player.getEyePosition().subtract(0, 0.3, 0), look, RuneElement.AIR);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.GUST, 0, player, 8.0F, player.getEyePosition().subtract(0, 0.3, 0), look);
         level.playSound(null, player.blockPosition(), SoundEvents.BREEZE_WIND_CHARGE_BURST.value(), SoundSource.PLAYERS, 1.0F, 1.2F);
         return true;
     }
@@ -574,15 +590,13 @@ public final class Spells {
         Aim aim = aim(level, player, 24);
         Vec3 start = player.getEyePosition().subtract(0, 0.25, 0);
         Vec3 end = aim != null ? aim.point() : player.getEyePosition().add(player.getLookAngle().scale(24));
-        SpellFx.lightning(level, start, end, RuneElement.ENERGY);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.STITCH, 0, null, 1.7F, start, end);
         level.playSound(null, player.blockPosition(), SoundEvents.LIGHTNING_BOLT_IMPACT, SoundSource.PLAYERS, 0.6F, 1.8F);
         if (aim == null || aim.entity() == null) {
-            SpellFx.burst(level, end, RuneElement.ENERGY, 0.3, 24, ParticleTypes.ELECTRIC_SPARK);
             return true;
         }
         LivingEntity first = aim.entity();
         first.hurtServer(level, level.damageSources().indirectMagic(player, player), (float) (6.0 * pw(player, RuneElement.ENERGY)));
-        SpellFx.burst(level, end, RuneElement.ENERGY, 0.3, 24, ParticleTypes.ELECTRIC_SPARK);
         List<LivingEntity> hit = new ArrayList<>(List.of(first));
         LivingEntity from = first;
         for (int i = 0; i < 3; i++) {
@@ -601,8 +615,7 @@ public final class Spells {
             }
             Vec3 a = current.position().add(0, current.getBbHeight() * 0.5, 0);
             Vec3 b = next.position().add(0, next.getBbHeight() * 0.5, 0);
-            SpellFx.lightning(level, a, b, RuneElement.ENERGY);
-            SpellFx.burst(level, b, RuneElement.ENERGY, 0.2, 14, ParticleTypes.ELECTRIC_SPARK);
+            com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.STITCH, 4 + i * 3, null, 1.2F, a, b);
             next.hurtServer(level, level.damageSources().indirectMagic(player, player), (float) (4.0 * pw(player, RuneElement.ENERGY)));
             hit.add(next);
             from = next;
@@ -617,10 +630,7 @@ public final class Spells {
         for (Player other : level.getEntitiesOfClass(Player.class, player.getBoundingBox().inflate(6.0), e -> e != player && e.isAlive() && e.isAlliedTo(player))) {
             other.heal((float) (4.0 * w));
         }
-        SpellFx.helix(level, player, RuneElement.WATER, 14, 2.0, ParticleTypes.BUBBLE_POP);
-        SpellFx.expandingRing(level, player.position(), RuneElement.WATER, 3.0, 6, ParticleTypes.FALLING_WATER);
-        level.sendParticles(ParticleTypes.HAPPY_VILLAGER, player.getX(), player.getY() + 1.0, player.getZ(), 30, 0.5, 0.8, 0.5, 0.0);
-        level.sendParticles(ParticleTypes.FALLING_WATER, player.getX(), player.getY() + 2.4, player.getZ(), 30, 0.6, 0.1, 0.6, 0.0);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.MEND, player, 0.0F, player.position());
         level.playSound(null, player.blockPosition(), SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.PLAYERS, 1.0F, 1.4F);
         return true;
     }
@@ -636,10 +646,7 @@ public final class Spells {
                 target.hurtServer(level, level.damageSources().indirectMagic(player, player), (float) (10.0 * w));
             }
         }
-        SpellFx.column(level, player.position(), RuneElement.LIGHT, 5.0, 8, ParticleTypes.END_ROD);
-        SpellFx.expandingRing(level, player.position(), RuneElement.LIGHT, 8.0, 8, ParticleTypes.END_ROD);
-        SpellFx.burst(level, player.position().add(0, 1.0, 0), RuneElement.LIGHT, 0.45, 60, ParticleTypes.END_ROD);
-        level.sendParticles(ParticleTypes.GLOW, player.getX(), player.getY() + 1.0, player.getZ(), 40, 4.0, 1.0, 4.0, 0.0);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.HALO, player, 8.0F, player.position());
         level.playSound(null, player.blockPosition(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 1.2F, 1.0F);
         return true;
     }
@@ -667,12 +674,7 @@ public final class Spells {
         }
         player.teleportTo(dest.x, dest.y, dest.z);
         player.resetFallDistance();
-        SpellFx.line(level, from.add(0, 1, 0), player.position().add(0, 1, 0), SpellFx.dust(RuneElement.SPACE, 1.1F), 0.4);
-        SpellFx.line(level, from.add(0, 1.2, 0), player.position().add(0, 1.2, 0), ParticleTypes.PORTAL, 0.8);
-        SpellFx.sigil(level, from, RuneElement.SPACE, 1.2);
-        SpellFx.burst(level, from.add(0, 1, 0), RuneElement.SPACE, 0.4, 40, ParticleTypes.PORTAL);
-        SpellFx.burst(level, player.position().add(0, 1, 0), RuneElement.SPACE, 0.35, 40, ParticleTypes.REVERSE_PORTAL);
-        SpellFx.expandingRing(level, player.position(), RuneElement.SPACE, 2.5, 5, ParticleTypes.PORTAL);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.BLINK, 0, player, 0.0F, from, dest);
         level.playSound(null, BlockPos.containing(from), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1.0F, 1.2F);
         level.playSound(null, player.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1.0F, 1.2F);
         return true;
@@ -685,16 +687,15 @@ public final class Spells {
         double radius = rad(player, RuneElement.FIRE, 4.0);
         float damage = (float) (9.0 * pw(player, RuneElement.FIRE));
         level.playSound(null, player.blockPosition(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 1.0F, 0.8F);
-        SpellFx.projectile(level, start, c, RuneElement.FIRE, ParticleTypes.FLAME, () -> {
+        int flight = Math.max(3, Math.min(14, (int) (c.distanceTo(start) / 1.8)));
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.COCOON, 0, player, flight, start, c);
+        SpellFx.later(level, flight, () -> {
             for (LivingEntity target : around(level, player, c, radius)) {
                 target.hurtServer(level, level.damageSources().indirectMagic(player, player), damage);
                 target.igniteForSeconds(6.0F);
             }
-            SpellFx.expandingRing(level, c, RuneElement.FIRE, 4.0, 6, ParticleTypes.FLAME);
-            SpellFx.burst(level, c, RuneElement.FIRE, 0.55, 90, ParticleTypes.FLAME);
-            SpellFx.burst(level, c, RuneElement.FIRE, 0.3, 30, ParticleTypes.LAVA);
-            SpellFx.burst(level, c, RuneElement.FIRE, 0.2, 20, ParticleTypes.LARGE_SMOKE);
-            level.sendParticles(ParticleTypes.EXPLOSION, c.x, c.y + 0.3, c.z, 3, 0.8, 0.3, 0.8, 0.0);
+            com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.COCOON_HIT, null, (float) radius, c);
+            com.mistech.mistechmod.spellcraft.fx.Vfx.shake(level, c, 18, 0.25F, 8);
             level.playSound(null, BlockPos.containing(c), SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS, 1.0F, 1.1F);
         });
         return true;
@@ -706,16 +707,7 @@ public final class Spells {
         player.hurtMarked = true;
         player.resetFallDistance();
         player.addEffect(new MobEffectInstance(MobEffects.SLOW_FALLING, 80, 0));
-        SpellFx.burst(level, player.position().add(0, 0.3, 0), RuneElement.AIR, 0.35, 30, ParticleTypes.CLOUD);
-        for (int t = 1; t <= 10; t++) {
-            SpellFx.later(level, t, () -> {
-                if (player.isAlive()) {
-                    Vec3 pos = player.position().add(0, 0.8, 0);
-                    level.sendParticles(ParticleTypes.CLOUD, pos.x, pos.y, pos.z, 4, 0.3, 0.3, 0.3, 0.02);
-                    SpellFx.ring(level, pos, 0.7, SpellFx.dust(RuneElement.AIR, 1.0F), 10);
-                }
-            });
-        }
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.WIND_STEP, 0, player, 0.0F, player.position(), look);
         level.playSound(null, player.blockPosition(), SoundEvents.BREEZE_WIND_CHARGE_BURST.value(), SoundSource.PLAYERS, 1.0F, 1.4F);
         return true;
     }
@@ -735,12 +727,10 @@ public final class Spells {
             BlockPos pos = center.offset(level.getRandom().nextInt(radius * 2 + 1) - radius, level.getRandom().nextInt(3) - 1,
                     level.getRandom().nextInt(radius * 2 + 1) - radius);
             if (net.minecraft.world.item.BoneMealItem.growCrop(meal, level, pos)) {
-                level.sendParticles(ParticleTypes.HAPPY_VILLAGER, pos.getX() + 0.5, pos.getY() + 0.6, pos.getZ() + 0.5, 6, 0.3, 0.3, 0.3, 0.0);
+
             }
         }
-        SpellFx.helix(level, player, RuneElement.LIFE, 14, 2.0, ParticleTypes.HAPPY_VILLAGER);
-        SpellFx.expandingRing(level, player.position(), RuneElement.LIFE, rad(player, RuneElement.LIFE, 5.0), 7, ParticleTypes.COMPOSTER);
-        level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.OAK_LEAVES.defaultBlockState()), player.getX(), player.getY() + 1.0, player.getZ(), 30, 0.6, 0.8, 0.6, 0.1);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.SPROUT, player, (float) rad(player, RuneElement.LIFE, 5.0), player.position());
         level.playSound(null, player.blockPosition(), SoundEvents.BONE_MEAL_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
         return true;
     }
@@ -755,20 +745,9 @@ public final class Spells {
             target.hurtServer(level, level.damageSources().indirectMagic(player, player), (float) (2.0 * w));
             target.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, dur(player, RuneElement.LIFE, 80), 6));
             target.addEffect(new MobEffectInstance(MobEffects.JUMP_BOOST, dur(player, RuneElement.LIFE, 80), 128));
-            Vec3 at = target.position();
-            for (int t = 0; t < 6; t++) {
-                int step = t;
-                SpellFx.later(level, t, () -> {
-                    for (int k = 0; k < 6; k++) {
-                        double a = Math.PI * 2 * k / 6 + step * 0.5;
-                        level.sendParticles(SpellFx.dust(RuneElement.LIFE, 1.2F), at.x + Math.cos(a) * 0.5, at.y + step * 0.35, at.z + Math.sin(a) * 0.5, 1, 0, 0, 0, 0);
-                    }
-                });
-            }
+            com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.THORN_BIND, target, dur(player, RuneElement.LIFE, 80), target.position());
         }
-        SpellFx.expandingRing(level, c, RuneElement.LIFE, radius, 6, ParticleTypes.COMPOSTER);
-        SpellFx.sigil(level, c, RuneElement.LIFE, Math.min(radius, 3.0));
-        level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.OAK_LOG.defaultBlockState()), c.x, c.y + 0.2, c.z, 50, radius * 0.5, 0.2, radius * 0.5, 0.15);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.THORNS, null, (float) radius, c);
         level.playSound(null, BlockPos.containing(c), SoundEvents.GRASS_BREAK, SoundSource.PLAYERS, 1.2F, 0.6F);
         return true;
     }
@@ -784,32 +763,7 @@ public final class Spells {
         for (int i = 0; i < count; i++) {
             Vec3 target = i == 0 ? c : c.add((level.getRandom().nextDouble() - 0.5) * 8.0, 0, (level.getRandom().nextDouble() - 0.5) * 8.0);
             int delay = 22 + i * 7;
-            SpellFx.sigil(level, target, RuneElement.FIRE, 2.2);
-            SpellFx.expandingRing(level, target, RuneElement.FIRE, radius, 6, ParticleTypes.SMALL_FLAME);
-            // o meteoro de verdade: bloco de magma em brasa caindo e girando
-            float rock = (float) (1.4 + charge * 1.0);
-            SpellFx.later(level, delay - 11, () -> {
-                Vec3 top = target.add(-5.5, 22, 3.3);
-                var body = com.mistech.mistechmod.spellcraft.fx.Vfx.block(level, top, Blocks.MAGMA_BLOCK.defaultBlockState(),
-                        com.mistech.mistechmod.spellcraft.fx.Vfx.centered(rock, rock, rock, new org.joml.Quaternionf()), 12, true);
-                for (int k = 1; k <= 10; k++) {
-                    double f = k / 10.0;
-                    Vec3 p2 = top.add(target.subtract(top).scale(f));
-                    SpellFx.later(level, k, () -> com.mistech.mistechmod.spellcraft.fx.Vfx.move(body, p2));
-                }
-                com.mistech.mistechmod.spellcraft.fx.Vfx.animate(level, body, 1, 10, com.mistech.mistechmod.spellcraft.fx.Vfx.centered(rock, rock, rock,
-                        new org.joml.Quaternionf().rotateX(2.5F).rotateZ(1.2F)));
-            });
-            for (int t = 0; t < 10; t++) {
-                int step = t;
-                SpellFx.later(level, delay - 10 + t, () -> {
-                    double y = 22.0 * (1.0 - (step + 1) / 10.0);
-                    Vec3 pos = target.add(-y * 0.25, y, y * 0.15);
-                    level.sendParticles(SpellFx.dust(RuneElement.FIRE, 2.4F), pos.x, pos.y, pos.z, 6, 0.35, 0.35, 0.35, 0);
-                    level.sendParticles(ParticleTypes.FLAME, pos.x, pos.y, pos.z, 8, 0.4, 0.4, 0.4, 0.03);
-                    level.sendParticles(ParticleTypes.LARGE_SMOKE, pos.x, pos.y + 0.8, pos.z, 3, 0.3, 0.3, 0.3, 0.01);
-                });
-            }
+            com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.SUN_FALL, 0, null, delay, target, new Vec3(1.4 + charge, radius, 0));
             SpellFx.later(level, delay, () -> {
                 for (LivingEntity victim : around(level, player, target, radius)) {
                     victim.hurtServer(level, level.damageSources().indirectMagic(player, player), damage);
@@ -821,15 +775,8 @@ public final class Spells {
                         victim.hurtMarked = true;
                     }
                 }
-                SpellFx.burst(level, target.add(0, 0.5, 0), RuneElement.FIRE, 0.7, 120, ParticleTypes.FLAME);
-                SpellFx.burst(level, target.add(0, 0.5, 0), RuneElement.FIRE, 0.4, 40, ParticleTypes.LAVA);
-                SpellFx.burst(level, target.add(0, 0.5, 0), RuneElement.FIRE, 0.25, 30, ParticleTypes.LARGE_SMOKE);
-                SpellFx.expandingRing(level, target, RuneElement.FIRE, radius, 5, ParticleTypes.FLAME);
-                level.sendParticles(ParticleTypes.EXPLOSION_EMITTER, target.x, target.y + 0.5, target.z, 1, 0, 0, 0, 0);
                 com.mistech.mistechmod.spellcraft.fx.Vfx.shake(level, target, 40, 0.8F, 16);
                 com.mistech.mistechmod.spellcraft.fx.Vfx.flash(level, target, 24, 0xFF7A20, 8);
-                com.mistech.mistechmod.spellcraft.fx.Vfx.spikes(level, target, Blocks.MAGMA_BLOCK.defaultBlockState(), 10, radius * 0.7, 1.6, 30);
-                SpellVisuals.flames(level, target, 12, radius, 40);
                 level.playSound(null, BlockPos.containing(target), SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS, 1.6F, 0.7F);
             });
         }
@@ -844,20 +791,7 @@ public final class Spells {
             target.setTicksFrozen(Math.max(target.getTicksFrozen(), target.getTicksRequiredToFreeze() + 40));
         }
         Vec3 c = player.position();
-        SpellFx.expandingRing(level, c, RuneElement.ICE, 7.0, 6, ParticleTypes.SNOWFLAKE);
-        for (int t = 0; t < 8; t++) {
-            SpellFx.later(level, t, () -> {
-                for (int i = 0; i < 22; i++) {
-                    double a = level.getRandom().nextDouble() * Math.PI * 2;
-                    double r = Math.sqrt(level.getRandom().nextDouble()) * 7.0;
-                    Vec3 pos = c.add(Math.cos(a) * r, 2.5 + level.getRandom().nextDouble() * 2.0, Math.sin(a) * r);
-                    level.sendParticles(ParticleTypes.SNOWFLAKE, pos.x, pos.y, pos.z, 0, 0.4, -0.5, 0.2, 0.25);
-                    if (i % 3 == 0) {
-                        level.sendParticles(SpellFx.dust(RuneElement.ICE, 1.0F), pos.x, pos.y, pos.z, 0, 0.3, -0.5, 0.1, 0.2);
-                    }
-                }
-            });
-        }
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.BLIZZARD, player, (float) rad(player, RuneElement.ICE, 7.0), c);
         level.playSound(null, player.blockPosition(), SoundEvents.POWDER_SNOW_STEP, SoundSource.PLAYERS, 1.0F, 0.6F);
         return true;
     }
@@ -870,22 +804,8 @@ public final class Spells {
             target.hurtMarked = true;
         }
         Vec3 c = player.position();
-        BlockParticleOption dirt = new BlockParticleOption(ParticleTypes.BLOCK, Blocks.DIRT.defaultBlockState());
-        BlockParticleOption stone = new BlockParticleOption(ParticleTypes.BLOCK, Blocks.STONE.defaultBlockState());
-        SpellFx.expandingRing(level, c, RuneElement.EARTH, 6.0, 8, dirt);
-        // rachaduras: 8 linhas que se abrem do centro para fora
-        for (int line = 0; line < 8; line++) {
-            double a = Math.PI * 2 * line / 8 + 0.2;
-            for (int step = 1; step <= 6; step++) {
-                int st = step;
-                SpellFx.later(level, step, () -> {
-                    Vec3 pos = c.add(Math.cos(a) * st, 0.2, Math.sin(a) * st);
-                    level.sendParticles(stone, pos.x, pos.y, pos.z, 6, 0.2, 0.1, 0.2, 0.15);
-                    level.sendParticles(SpellFx.dust(RuneElement.EARTH, 1.2F), pos.x, pos.y + 0.2, pos.z, 3, 0.15, 0.2, 0.15, 0);
-                });
-            }
-        }
-        level.sendParticles(dirt, c.x, c.y + 0.3, c.z, 70, 3.0, 0.2, 3.0, 0.2);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.QUAKE, player, (float) rad(player, RuneElement.EARTH, 6.0), c);
+        com.mistech.mistechmod.spellcraft.fx.Vfx.shake(level, c, 16, 0.35F, 10);
         level.playSound(null, player.blockPosition(), SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS, 0.5F, 0.5F);
         return true;
     }
@@ -893,17 +813,8 @@ public final class Spells {
     private static boolean thunderstorm(ServerLevel level, ServerPlayer player) {
         Aim aim = aim(level, player, 48);
         Vec3 center = aim != null ? aim.point() : player.getEyePosition().add(player.getLookAngle().scale(32));
-        SpellFx.sigil(level, center, RuneElement.ENERGY, 4.0);
-        SpellFx.expandingRing(level, center, RuneElement.ENERGY, 7.0, 8, ParticleTypes.ELECTRIC_SPARK);
-        for (int t = 0; t < 14; t++) {
-            SpellFx.later(level, t, () -> {
-                for (int i = 0; i < 10; i++) {
-                    double a = level.getRandom().nextDouble() * Math.PI * 2;
-                    double r = Math.sqrt(level.getRandom().nextDouble()) * 6.0;
-                    level.sendParticles(ParticleTypes.LARGE_SMOKE, center.x + Math.cos(a) * r, center.y + 12, center.z + Math.sin(a) * r, 1, 0.3, 0.2, 0.3, 0.01);
-                }
-            });
-        }
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.STORM_WEB, null, 7.0F, center);
+        com.mistech.mistechmod.spellcraft.fx.Vfx.flash(level, center, 30, 0xFFF6A0, 6);
         int bolts = Math.max(5, 2 + Affinity.effectiveLevel(player, RuneElement.ENERGY));
         for (int i = 0; i < bolts; i++) {
             LightningBolt bolt = EntityType.LIGHTNING_BOLT.create(level, EntitySpawnReason.TRIGGERED);
@@ -916,10 +827,10 @@ public final class Spells {
                 bolt.setCause(player);
                 int delay = i * 2;
                 Vec3 spot = new Vec3(center.x + ox, y, center.z + oz);
+                com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.NEEDLE_FALL, 0, null, 1.4F, spot, new Vec3(delay, 0, 0));
                 SpellFx.later(level, delay, () -> {
                     level.addFreshEntity(bolt);
-                    SpellFx.burst(level, spot.add(0, 0.5, 0), RuneElement.ENERGY, 0.5, 40, ParticleTypes.ELECTRIC_SPARK);
-                    SpellFx.ring(level, spot.add(0, 0.2, 0), 1.6, SpellFx.dust(RuneElement.ENERGY, 1.4F), 20);
+
                 });
             }
         }

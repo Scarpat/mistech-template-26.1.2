@@ -1,0 +1,1 @@
+{"parent": "minecraft:block/orientable", "textures": {"top": "mistech:block/sc_top", "front": "mistech:block/sc_front_on", "side": "mistech:block/sc_side"}}

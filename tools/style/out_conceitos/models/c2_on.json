@@ -1,0 +1,128 @@
+{
+ "parent": "minecraft:block/block",
+ "render_type": "minecraft:cutout",
+ "textures": {
+  "particle": "mistech:block/c2_side",
+  "front": "mistech:block/c2_front",
+  "side": "mistech:block/c2_side",
+  "top": "mistech:block/c2_top",
+  "gs": "mistech:block/c2_glow_side",
+  "gf": "mistech:block/c2_glow_front"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    0
+   ],
+   "to": [
+    16,
+    16,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#front",
+     "cullface": "north"
+    },
+    "south": {
+     "texture": "#side",
+     "cullface": "south"
+    },
+    "east": {
+     "texture": "#side",
+     "cullface": "east"
+    },
+    "west": {
+     "texture": "#side",
+     "cullface": "west"
+    },
+    "up": {
+     "texture": "#top",
+     "cullface": "up"
+    },
+    "down": {
+     "texture": "#top",
+     "cullface": "down"
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    0,
+    -0.01
+   ],
+   "to": [
+    16,
+    16,
+    -0.01
+   ],
+   "shade": false,
+   "light_emission": 15,
+   "faces": {
+    "north": {
+     "texture": "#gf"
+    }
+   }
+  },
+  {
+   "from": [
+    0,
+    0,
+    16.01
+   ],
+   "to": [
+    16,
+    16,
+    16.01
+   ],
+   "shade": false,
+   "light_emission": 15,
+   "faces": {
+    "south": {
+     "texture": "#gs"
+    }
+   }
+  },
+  {
+   "from": [
+    16.01,
+    0,
+    0
+   ],
+   "to": [
+    16.01,
+    16,
+    16
+   ],
+   "shade": false,
+   "light_emission": 15,
+   "faces": {
+    "east": {
+     "texture": "#gs"
+    }
+   }
+  },
+  {
+   "from": [
+    -0.01,
+    0,
+    0
+   ],
+   "to": [
+    -0.01,
+    16,
+    16
+   ],
+   "shade": false,
+   "light_emission": 15,
+   "faces": {
+    "west": {
+     "texture": "#gs"
+    }
+   }
+  }
+ ]
+}

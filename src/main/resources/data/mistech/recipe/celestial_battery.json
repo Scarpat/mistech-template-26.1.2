@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ISI",
+    "VAV",
+    "ISI"
+  ],
+  "key": {
+    "I": "mistech:celestial_ingot",
+    "S": "mistech:star_fragment",
+    "V": "mistech:void_rune",
+    "A": "mistech:advanced_runic_battery"
+  },
+  "result": {
+    "id": "mistech:celestial_battery",
+    "count": 1
+  }
+}

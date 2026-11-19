@@ -73,6 +73,7 @@ public class MagicCompressorBlockEntity extends BlockEntity implements com.miste
             return;
         }
         compressor.progress += com.mistech.mistechmod.machine.GnomeBoost.isBoosted(level, pos) ? 30 : 20;
+        com.mistech.mistechmod.purity.area.AreaTaint.add(serverLevel, pos, com.mistech.mistechmod.Config.areaTaintEssenceMachines() / 60.0F);
         serverLevel.sendParticles(ParticleTypes.WITCH, pos.getX() + 0.5, pos.getY() + 1.05, pos.getZ() + 0.5,
                 4, 0.12, 0.05, 0.12, 0.0);
         if (compressor.progress >= com.mistech.mistechmod.Config.compressorTicks()) {

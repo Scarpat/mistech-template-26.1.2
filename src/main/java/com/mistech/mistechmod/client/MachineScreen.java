@@ -13,6 +13,7 @@ import net.minecraft.client.renderer.RenderPipelines;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.ItemStack;
 
 /**
  * Tela genérica das máquinas (Triturador, geradores, Colheitadeira, Plantadeira).
@@ -39,9 +40,102 @@ public class MachineScreen extends MysticContainerScreen<MachineMenu> {
         this.config = new MachineConfigPanel(this.menu, this.theme());
     }
 
-    /** Abas de configuração (redstone, lados, melhorias) à direita da tela. */
+    /** Abas de configuração (redstone, lados, melhorias) à direita da tela e a coluna de engastes à esquerda. */
     public java.util.List<net.minecraft.client.renderer.Rect2i> configAreas() {
-        return this.config == null ? java.util.List.of() : this.config.areas(this.leftPos, this.topPos, this.imageWidth);
+        java.util.List<net.minecraft.client.renderer.Rect2i> list = new java.util.ArrayList<>(
+                this.config == null ? java.util.List.of() : this.config.areas(this.leftPos, this.topPos, this.imageWidth));
+        net.minecraft.client.renderer.Rect2i sockets = this.socketArea();
+        if (sockets != null) {
+            list.add(sockets);
+        }
+        return list;
+    }
+
+    // ----- engastes (coluna à esquerda) -----
+
+    /** Retângulo da coluna de engastes, ou null se a máquina não tem. */
+    private net.minecraft.client.renderer.Rect2i socketArea() {
+        int n = this.layout.socketCount();
+        if (n == 0) {
+            return null;
+        }
+        int x = this.leftPos + com.mistech.mistechmod.machine.socket.MachineSockets.SLOT_X - 6;
+        int y = this.topPos + com.mistech.mistechmod.machine.socket.MachineSockets.SLOT_Y - 13;
+        return new net.minecraft.client.renderer.Rect2i(x, y, 26, 18 * n + 18);
+    }
+
+    private java.util.List<com.mistech.mistechmod.item.RuneElement> clientSocketed() {
+        java.util.List<com.mistech.mistechmod.item.RuneElement> list = new java.util.ArrayList<>();
+        for (int i = this.layout.firstSocket; i < this.layout.size(); i++) {
+            com.mistech.mistechmod.item.RuneElement e = com.mistech.mistechmod.item.RuneElement.ofRune(this.menu.getSlot(i).getItem());
+            if (e != null) {
+                list.add(e);
+            }
+        }
+        return list;
+    }
+
+    private void extractSocketPanel(GuiGraphicsExtractor graphics) {
+        net.minecraft.client.renderer.Rect2i r = this.socketArea();
+        if (r == null) {
+            return;
+        }
+        GuiThemes.Theme theme = this.theme();
+        int border = 0xFF000000 | (theme.accent() & 0xFFFFFF);
+        graphics.fill(r.getX(), r.getY(), r.getX() + r.getWidth() + 2, r.getY() + r.getHeight(), border);
+        graphics.fill(r.getX() + 1, r.getY() + 1, r.getX() + r.getWidth() + 2, r.getY() + r.getHeight() - 1, 0xF0000000 | (theme.well() & 0xFFFFFF));
+        // gema no topo da coluna
+        int gx = r.getX() + r.getWidth() / 2, gy = r.getY() + 6;
+        int glow = 0xFF000000 | (theme.glow() & 0xFFFFFF);
+        graphics.fill(gx - 1, gy - 3, gx + 1, gy + 3, glow);
+        graphics.fill(gx - 3, gy - 1, gx + 3, gy + 1, glow);
+        boolean cancelled = com.mistech.mistechmod.machine.socket.MachineSockets.cancelled(this.clientSocketed());
+        for (int i = this.layout.firstSocket; i < this.layout.size(); i++) {
+            MachineLayout.SlotSpec spec = this.layout.slots.get(i);
+            int x = this.leftPos + spec.x(), y = this.topPos + spec.y();
+            graphics.fill(x - 1, y - 1, x + 17, y + 17, 0xFF000000 | (theme.accent() & 0xFFFFFF));
+            graphics.fill(x, y, x + 16, y + 16, 0xFF000000 | (theme.well() & 0xFFFFFF));
+            ItemStack stack = this.menu.getSlot(i).getItem();
+            com.mistech.mistechmod.item.RuneElement e = com.mistech.mistechmod.item.RuneElement.ofRune(stack);
+            if (e != null) {
+                boolean works = com.mistech.mistechmod.machine.socket.MachineSockets.applies(e, this.layout.sockets)
+                        && !(cancelled && (e == com.mistech.mistechmod.item.RuneElement.FIRE || e == com.mistech.mistechmod.item.RuneElement.ICE));
+                int c = works ? (0xFF000000 | e.color()) : 0xFF555555;
+                graphics.fill(x - 1, y + 17, x + 17, y + 18, c);
+            }
+        }
+    }
+
+    private boolean extractSocketTooltip(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
+        if (this.layout.socketCount() == 0 || this.hoveredSlot == null || this.hoveredSlot.index < this.layout.firstSocket
+                || this.hoveredSlot.index >= this.layout.size()) {
+            return false;
+        }
+        List<Component> lines = new ArrayList<>();
+        ItemStack stack = this.hoveredSlot.getItem();
+        com.mistech.mistechmod.item.RuneElement e = com.mistech.mistechmod.item.RuneElement.ofRune(stack);
+        if (e == null) {
+            lines.add(Component.translatable("gui.mistech.socket.empty"));
+            lines.add(Component.translatable("gui.mistech.socket.empty.help").withStyle(net.minecraft.ChatFormatting.GRAY));
+            lines.add(Component.translatable("gui.mistech.socket.category." + this.layout.sockets.category().id()).withStyle(net.minecraft.ChatFormatting.DARK_GRAY));
+        } else {
+            lines.add(stack.getHoverName().copy().withColor(e.color()));
+            boolean cancelled = com.mistech.mistechmod.machine.socket.MachineSockets.cancelled(this.clientSocketed())
+                    && (e == com.mistech.mistechmod.item.RuneElement.FIRE || e == com.mistech.mistechmod.item.RuneElement.ICE);
+            if (cancelled) {
+                lines.add(Component.translatable("gui.mistech.socket.cancelled").withStyle(net.minecraft.ChatFormatting.RED));
+            } else if (com.mistech.mistechmod.machine.socket.MachineSockets.applies(e, this.layout.sockets)) {
+                lines.add(Component.translatable(com.mistech.mistechmod.machine.socket.MachineSockets.effectKey(e)).withStyle(net.minecraft.ChatFormatting.GREEN));
+            } else {
+                lines.add(Component.translatable("gui.mistech.socket.no_effect").withStyle(net.minecraft.ChatFormatting.GRAY));
+            }
+            if (stack.isDamageableItem()) {
+                lines.add(Component.translatable("gui.mistech.socket.uses", stack.getMaxDamage() - stack.getDamageValue(), stack.getMaxDamage())
+                        .withStyle(net.minecraft.ChatFormatting.DARK_GRAY));
+            }
+        }
+        graphics.setTooltipForNextFrame(this.font, lines, Optional.empty(), mouseX, mouseY);
+        return true;
     }
 
     @Override
@@ -57,6 +151,10 @@ public class MachineScreen extends MysticContainerScreen<MachineMenu> {
         if (this.config != null && this.config.isInside(mx, my, this.leftPos, this.topPos, this.imageWidth)) {
             return false;
         }
+        net.minecraft.client.renderer.Rect2i sockets = this.socketArea();
+        if (sockets != null && sockets.contains((int) mx, (int) my)) {
+            return false;
+        }
         return super.hasClickedOutside(mx, my, xo, yo);
     }
 
@@ -66,7 +164,18 @@ public class MachineScreen extends MysticContainerScreen<MachineMenu> {
         int x = this.leftPos, y = this.topPos;
         graphics.blit(RenderPipelines.GUI_TEXTURED, this.texture, x, y, 0.0F, 0.0F, this.imageWidth, this.imageHeight, 256, 256);
         this.extractMysticAmbient(graphics);
+        this.extractSocketPanel(graphics);
 
+        // dicas: ícone apagado nos espaços vazios
+        for (var e : this.layout.hints.entrySet()) {
+            int i = e.getKey();
+            if (i < this.menu.slots.size() && !this.menu.getSlot(i).hasItem()) {
+                MachineLayout.SlotSpec spec = this.layout.slots.get(i);
+                int sx = x + spec.x(), sy = y + spec.y();
+                graphics.item(e.getValue().icon().get(), sx, sy);
+                graphics.fill(sx, sy, sx + 16, sy + 16, (this.theme().well() & 0x00FFFFFF) | 0xB0000000);
+            }
+        }
         if (this.layout.arrowX >= 0) {
             int arrow = Math.round(MachineLayout.ARROW_W * this.menu.progress());
             if (arrow > 0) {
@@ -95,8 +204,12 @@ public class MachineScreen extends MysticContainerScreen<MachineMenu> {
     protected void extractLabels(GuiGraphicsExtractor graphics, int mouseX, int mouseY) {
         super.extractLabels(graphics, mouseX, mouseY);
         List<Component> lines = this.layout.infoLines.apply(this.menu);
-        for (int i = 0; i < lines.size(); i++) {
-            graphics.text(this.font, lines.get(i), this.layout.infoX, this.layout.infoY + i * 11, this.textColor(), false);
+        if (this.layout.infoW > 0) {
+            this.boxedInfo(graphics, lines);
+        } else {
+            for (int i = 0; i < lines.size(); i++) {
+                graphics.text(this.font, lines.get(i), this.layout.infoX, this.layout.infoY + i * 11, this.textColor(), false);
+            }
         }
         if (this.menu.boosted()) {
             // selo do gnomo: chapeuzinho vermelho com um brilho dourado
@@ -111,6 +224,36 @@ public class MachineScreen extends MysticContainerScreen<MachineMenu> {
         }
     }
 
+    /** Info dentro da caixa do layout: quebra as linhas e diminui a letra (até 60%) para não invadir espaços e medidores. */
+    private void boxedInfo(GuiGraphicsExtractor graphics, List<Component> lines) {
+        int w = this.layout.infoW, h = this.layout.infoH > 0 ? this.layout.infoH : 60;
+        float scale = 1.0F;
+        List<net.minecraft.util.FormattedCharSequence> wrapped = new java.util.ArrayList<>();
+        while (true) {
+            wrapped.clear();
+            for (Component line : lines) {
+                wrapped.addAll(this.font.split(line, (int) (w / scale)));
+            }
+            if (wrapped.size() * 10 * scale <= h || scale <= 0.6F) {
+                break;
+            }
+            scale -= 0.05F;
+        }
+        org.joml.Matrix3x2fStack pose = graphics.pose();
+        pose.pushMatrix();
+        pose.translate(this.layout.infoX, this.layout.infoY);
+        pose.scale(scale, scale);
+        int y = 0;
+        for (net.minecraft.util.FormattedCharSequence line : wrapped) {
+            if ((y + 9) * scale > h + 1) {
+                break;
+            }
+            graphics.text(this.font, line, 0, y, this.textColor(), false);
+            y += 10;
+        }
+        pose.popMatrix();
+    }
+
     @Override
     public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float partialTick) {
         super.extractRenderState(graphics, mouseX, mouseY, partialTick);
@@ -118,6 +261,23 @@ public class MachineScreen extends MysticContainerScreen<MachineMenu> {
             this.config.draw(graphics, this.font, this.leftPos, this.topPos, this.imageWidth, mouseX, mouseY);
             if (this.config.tooltip(graphics, this.font, mouseX, mouseY)) {
                 return;
+            }
+        }
+        if (this.extractSocketTooltip(graphics, mouseX, mouseY)) {
+            return;
+        }
+        if (this.menu.getCarried().isEmpty()) {
+            for (var e : this.layout.hints.entrySet()) {
+                int i = e.getKey();
+                if (i < this.menu.slots.size() && !this.menu.getSlot(i).hasItem()) {
+                    MachineLayout.SlotSpec spec = this.layout.slots.get(i);
+                    if (this.isHovering(spec.x(), spec.y(), 16, 16, mouseX, mouseY)) {
+                        graphics.setTooltipForNextFrame(this.font, List.of(Component.translatable(e.getValue().key()),
+                                Component.translatable(e.getValue().key() + ".more").withStyle(net.minecraft.ChatFormatting.GRAY)),
+                                Optional.empty(), mouseX, mouseY);
+                        return;
+                    }
+                }
             }
         }
         if (this.isHovering(MachineLayout.BAR_X, MachineLayout.BAR_Y, MachineLayout.BAR_W, MachineLayout.BAR_H, mouseX, mouseY)) {

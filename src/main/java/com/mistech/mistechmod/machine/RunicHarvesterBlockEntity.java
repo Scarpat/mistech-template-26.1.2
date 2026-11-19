@@ -44,7 +44,7 @@ public class RunicHarvesterBlockEntity extends FarmMachineBlockEntity {
 
     @Override
     protected void tick(ServerLevel level, BlockPos pos, BlockState state) {
-        boolean working = !this.outputFull() && this.hasEnergy(ENERGY_PER_HARVEST);
+        boolean working = !this.outputBlocked() && this.hasEnergy(ENERGY_PER_HARVEST);
         if (working && this.stepReady()) {
             BlockPos column = this.nextColumn(pos, state);
             // de cima para baixo: cana/bambu/cacto caem na ordem certa
@@ -55,7 +55,7 @@ public class RunicHarvesterBlockEntity extends FarmMachineBlockEntity {
                     if (this.hasRune(Mistech.SPACE_RUNE.get())) {
                         this.countRuneOp(RUNE_OPS_PER_USE);
                     }
-                    if (!this.hasEnergy(ENERGY_PER_HARVEST) || this.outputFull()) {
+                    if (!this.hasEnergy(ENERGY_PER_HARVEST) || this.outputBlocked()) {
                         break;
                     }
                 }
@@ -111,7 +111,7 @@ public class RunicHarvesterBlockEntity extends FarmMachineBlockEntity {
     /** Guarda na saída; o que não couber cai no chão onde foi colhido. */
     private void store(ServerLevel level, BlockPos target, List<ItemStack> drops) {
         for (ItemStack drop : drops) {
-            ItemStack rest = this.insertOutput(drop);
+            ItemStack rest = this.insertProduct(level, drop);
             if (!rest.isEmpty()) {
                 Block.popResource(level, target, rest);
             }

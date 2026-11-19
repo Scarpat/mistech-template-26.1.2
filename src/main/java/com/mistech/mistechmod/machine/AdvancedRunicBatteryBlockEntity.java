@@ -55,6 +55,25 @@ public class AdvancedRunicBatteryBlockEntity extends RunicBatteryBlockEntity {
         super(MistechBlockEntities.ADVANCED_RUNIC_BATTERY.get(), pos, state, MachineLayouts.ADVANCED_RUNIC_BATTERY, MAX_IO, MAX_IO);
     }
 
+    /** Para baterias maiores (Bateria Celeste, Fase 9). */
+    protected AdvancedRunicBatteryBlockEntity(net.minecraft.world.level.block.entity.BlockEntityType<?> type, BlockPos pos, BlockState state,
+            MachineLayout layout, int io) {
+        super(type, pos, state, layout, io, io);
+    }
+
+    /** FE/t trocados com cada gerador ou máquina ligada. */
+    protected int perLink() {
+        return PER_LINK;
+    }
+
+    protected int pullRange() {
+        return PULL_RANGE;
+    }
+
+    protected int pushRange() {
+        return PUSH_RANGE;
+    }
+
     /** Todas as faces recebem e entregam. */
     @Override
     public EnergyHandler handlerFor(@Nullable Direction side) {
@@ -79,7 +98,7 @@ public class AdvancedRunicBatteryBlockEntity extends RunicBatteryBlockEntity {
             if (source == null) {
                 continue;
             }
-            int moved = EnergyHandlerUtil.move(source, this.energy, PER_LINK, null);
+            int moved = EnergyHandlerUtil.move(source, this.energy, this.perLink(), null);
             if (moved > 0) {
                 this.pulledThisTick += moved;
                 anyLink = true;
@@ -99,7 +118,7 @@ public class AdvancedRunicBatteryBlockEntity extends RunicBatteryBlockEntity {
             if (target == null) {
                 continue;
             }
-            int moved = EnergyHandlerUtil.move(this.energy, target, PER_LINK, null);
+            int moved = EnergyHandlerUtil.move(this.energy, target, this.perLink(), null);
             if (moved > 0) {
                 out += moved;
                 anyLink = true;
@@ -128,8 +147,8 @@ public class AdvancedRunicBatteryBlockEntity extends RunicBatteryBlockEntity {
         this.generators.clear();
         this.machines.clear();
         Set<BlockPos> seenMachines = new HashSet<>();
-        for (BlockPos p : BlockPos.betweenClosed(center.offset(-PUSH_RANGE, -PUSH_RANGE, -PUSH_RANGE),
-                center.offset(PUSH_RANGE, PUSH_RANGE, PUSH_RANGE))) {
+        for (BlockPos p : BlockPos.betweenClosed(center.offset(-this.pushRange(), -this.pushRange(), -this.pushRange()),
+                center.offset(this.pushRange(), this.pushRange(), this.pushRange()))) {
             if (p.equals(center) || !level.isLoaded(p)) {
                 continue;
             }
@@ -151,7 +170,7 @@ public class AdvancedRunicBatteryBlockEntity extends RunicBatteryBlockEntity {
             if (accepts || this.knownMachines.contains(at)) {
                 seenMachines.add(at);
                 this.machines.add(link);
-            } else if (withinCube(center, at, PULL_RANGE) && canExtract(handler)) {
+            } else if (withinCube(center, at, this.pullRange()) && canExtract(handler)) {
                 this.generators.add(link);
             }
         }

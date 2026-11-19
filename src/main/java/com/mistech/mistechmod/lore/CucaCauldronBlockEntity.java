@@ -71,16 +71,45 @@ public class CucaCauldronBlockEntity extends BlockEntity {
     }
 
     private void merge(MobEffectInstance e) {
+        mergeInto(this.effects, e);
+    }
+
+    /** Regra da Cuca: efeito igual soma a duração (até 8 min) e fica com o nível maior. */
+    public static void mergeInto(List<MobEffectInstance> effects, MobEffectInstance e) {
         Holder<MobEffect> type = e.getEffect();
-        for (int i = 0; i < this.effects.size(); i++) {
-            MobEffectInstance old = this.effects.get(i);
+        for (int i = 0; i < effects.size(); i++) {
+            MobEffectInstance old = effects.get(i);
             if (old.getEffect().equals(type)) {
                 int duration = e.getEffect().value().isInstantenous() ? 1 : Math.min(MAX_DURATION, old.getDuration() + e.getDuration());
-                this.effects.set(i, new MobEffectInstance(type, duration, Math.max(old.getAmplifier(), e.getAmplifier())));
+                effects.set(i, new MobEffectInstance(type, duration, Math.max(old.getAmplifier(), e.getAmplifier())));
                 return;
             }
         }
-        this.effects.add(new MobEffectInstance(type, e.getDuration(), e.getAmplifier()));
+        effects.add(new MobEffectInstance(type, e.getDuration(), e.getAmplifier()));
+    }
+
+    /** Poção da Cuca feita de uma vez (Alambique de Poções, Fase 7): mesmas regras do caldeirão. Vazio se não tiver efeito. */
+    public static ItemStack brew(List<PotionContents> potions, boolean empowered) {
+        List<MobEffectInstance> effects = new ArrayList<>();
+        for (PotionContents contents : potions) {
+            for (MobEffectInstance e : contents.getAllEffects()) {
+                mergeInto(effects, e);
+            }
+        }
+        if (effects.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+        if (empowered) {
+            for (int i = 0; i < effects.size(); i++) {
+                MobEffectInstance e = effects.get(i);
+                effects.set(i, new MobEffectInstance(e.getEffect(), e.getDuration(), Math.min(4, e.getAmplifier() + 1)));
+            }
+        }
+        int color = PotionContents.getColorOptional(effects).orElse(0x3a8a3a);
+        ItemStack out = new ItemStack(Items.POTION);
+        out.set(net.minecraft.core.component.DataComponents.POTION_CONTENTS,
+                new PotionContents(Optional.empty(), Optional.of(color), List.copyOf(effects), Optional.of("cuca")));
+        return out;
     }
 
     public boolean empower() {

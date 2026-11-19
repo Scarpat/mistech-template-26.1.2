@@ -1,0 +1,795 @@
+{
+  "multipart": [
+    {
+      "when": {
+        "facing": "north"
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker"
+      }
+    },
+    {
+      "when": {
+        "facing": "east"
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "facing": "south"
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "facing": "west"
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "north"
+          },
+          {
+            "jar0": "1"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_1"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "east"
+          },
+          {
+            "jar0": "1"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_1",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "south"
+          },
+          {
+            "jar0": "1"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_1",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "west"
+          },
+          {
+            "jar0": "1"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_1",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "north"
+          },
+          {
+            "jar0": "2"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_2"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "east"
+          },
+          {
+            "jar0": "2"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_2",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "south"
+          },
+          {
+            "jar0": "2"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_2",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "west"
+          },
+          {
+            "jar0": "2"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_2",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "north"
+          },
+          {
+            "jar0": "3"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_3"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "east"
+          },
+          {
+            "jar0": "3"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_3",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "south"
+          },
+          {
+            "jar0": "3"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_3",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "west"
+          },
+          {
+            "jar0": "3"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_3",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "north"
+          },
+          {
+            "jar0": "4"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_4"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "east"
+          },
+          {
+            "jar0": "4"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_4",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "south"
+          },
+          {
+            "jar0": "4"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_4",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "west"
+          },
+          {
+            "jar0": "4"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid0_4",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "north"
+          },
+          {
+            "jar1": "1"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_1"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "east"
+          },
+          {
+            "jar1": "1"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_1",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "south"
+          },
+          {
+            "jar1": "1"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_1",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "west"
+          },
+          {
+            "jar1": "1"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_1",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "north"
+          },
+          {
+            "jar1": "2"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_2"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "east"
+          },
+          {
+            "jar1": "2"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_2",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "south"
+          },
+          {
+            "jar1": "2"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_2",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "west"
+          },
+          {
+            "jar1": "2"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_2",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "north"
+          },
+          {
+            "jar1": "3"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_3"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "east"
+          },
+          {
+            "jar1": "3"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_3",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "south"
+          },
+          {
+            "jar1": "3"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_3",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "west"
+          },
+          {
+            "jar1": "3"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_3",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "north"
+          },
+          {
+            "jar1": "4"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_4"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "east"
+          },
+          {
+            "jar1": "4"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_4",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "south"
+          },
+          {
+            "jar1": "4"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_4",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "west"
+          },
+          {
+            "jar1": "4"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid1_4",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "north"
+          },
+          {
+            "jar2": "1"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_1"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "east"
+          },
+          {
+            "jar2": "1"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_1",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "south"
+          },
+          {
+            "jar2": "1"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_1",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "west"
+          },
+          {
+            "jar2": "1"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_1",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "north"
+          },
+          {
+            "jar2": "2"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_2"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "east"
+          },
+          {
+            "jar2": "2"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_2",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "south"
+          },
+          {
+            "jar2": "2"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_2",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "west"
+          },
+          {
+            "jar2": "2"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_2",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "north"
+          },
+          {
+            "jar2": "3"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_3"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "east"
+          },
+          {
+            "jar2": "3"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_3",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "south"
+          },
+          {
+            "jar2": "3"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_3",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "west"
+          },
+          {
+            "jar2": "3"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_3",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "north"
+          },
+          {
+            "jar2": "4"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_4"
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "east"
+          },
+          {
+            "jar2": "4"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_4",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "south"
+          },
+          {
+            "jar2": "4"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_4",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "AND": [
+          {
+            "facing": "west"
+          },
+          {
+            "jar2": "4"
+          }
+        ]
+      },
+      "apply": {
+        "model": "mistech:block/runic_coffee_maker_liquid2_4",
+        "y": 270
+      }
+    }
+  ]
+}

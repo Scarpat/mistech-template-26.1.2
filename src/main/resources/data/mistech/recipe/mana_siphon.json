@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CEC",
+    "RTR",
+    "BBB"
+  ],
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "E": "mistech:energy_rune",
+    "R": "mistech:arcane_rune",
+    "T": "mistech:glass_jar",
+    "B": "minecraft:polished_blackstone"
+  },
+  "result": {
+    "id": "mistech:mana_siphon",
+    "count": 1
+  }
+}

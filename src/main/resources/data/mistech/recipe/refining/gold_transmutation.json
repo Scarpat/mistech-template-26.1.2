@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ore_refining",
+  "stage": "transmutation",
+  "ingredient": "#c:ores/gold",
+  "result": {
+    "id": "mistech:gold_dust",
+    "count": 5
+  },
+  "byproducts": [
+    {
+      "item": {
+        "id": "mistech:orichalcum_dust"
+      },
+      "chance": 0.05
+    }
+  ]
+}

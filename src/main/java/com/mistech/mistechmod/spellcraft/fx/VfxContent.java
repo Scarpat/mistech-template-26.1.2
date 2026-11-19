@@ -48,6 +48,10 @@ public final class VfxContent {
     /** Onda de choque deitada no chão: abre até o raio dado na velocidade x. */
     public static final DeferredHolder<ParticleType<?>, ParticleType<ColorParticleOption>> WAVE = PARTICLES.register("wave", VfxContent::colored);
 
+    /** Só carrega as texturas dos efeitos oníricos (dream_*); as partículas são criadas direto no cliente. */
+    public static final DeferredHolder<ParticleType<?>, net.minecraft.core.particles.SimpleParticleType> DREAM =
+            PARTICLES.register("dream", () -> new net.minecraft.core.particles.SimpleParticleType(false));
+
     /** Itens de exibição (tingidos pela cor do elemento via custom_model_data). */
     public static final DeferredItem<Item> VFX_CIRCLE = Mistech.ITEMS.registerSimpleItem("vfx_circle");
     public static final DeferredItem<Item> VFX_RING = Mistech.ITEMS.registerSimpleItem("vfx_ring");

@@ -1,0 +1,64 @@
+{
+  "variants": {
+    "facing=north,mode=0": {
+      "model": "mistech:block/astral_clock_moon"
+    },
+    "facing=north,mode=1": {
+      "model": "mistech:block/astral_clock_event"
+    },
+    "facing=north,mode=2": {
+      "model": "mistech:block/astral_clock_day"
+    },
+    "facing=north,mode=3": {
+      "model": "mistech:block/astral_clock_taint"
+    },
+    "facing=east,mode=0": {
+      "model": "mistech:block/astral_clock_moon",
+      "y": 90
+    },
+    "facing=east,mode=1": {
+      "model": "mistech:block/astral_clock_event",
+      "y": 90
+    },
+    "facing=east,mode=2": {
+      "model": "mistech:block/astral_clock_day",
+      "y": 90
+    },
+    "facing=east,mode=3": {
+      "model": "mistech:block/astral_clock_taint",
+      "y": 90
+    },
+    "facing=south,mode=0": {
+      "model": "mistech:block/astral_clock_moon",
+      "y": 180
+    },
+    "facing=south,mode=1": {
+      "model": "mistech:block/astral_clock_event",
+      "y": 180
+    },
+    "facing=south,mode=2": {
+      "model": "mistech:block/astral_clock_day",
+      "y": 180
+    },
+    "facing=south,mode=3": {
+      "model": "mistech:block/astral_clock_taint",
+      "y": 180
+    },
+    "facing=west,mode=0": {
+      "model": "mistech:block/astral_clock_moon",
+      "y": 270
+    },
+    "facing=west,mode=1": {
+      "model": "mistech:block/astral_clock_event",
+      "y": 270
+    },
+    "facing=west,mode=2": {
+      "model": "mistech:block/astral_clock_day",
+      "y": 270
+    },
+    "facing=west,mode=3": {
+      "model": "mistech:block/astral_clock_taint",
+      "y": 270
+    }
+  }
+}

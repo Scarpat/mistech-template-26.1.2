@@ -18,7 +18,7 @@ import net.minecraft.world.level.Level;
 public final class ArchiveRegistry {
     public static final double RANGE = 16.0;
 
-    public enum Kind { CORE, RELAY, SEAL }
+    public enum Kind { CORE, RELAY, SEAL, SHELF }
 
     private static final Map<Level, Map<Kind, Set<BlockPos>>> MAP = new WeakHashMap<>();
 
@@ -80,6 +80,18 @@ public final class ArchiveRegistry {
             }
         }
         return best;
+    }
+
+    /** Estantes de Padrões dentro do alcance do Núcleo (Fase 8). */
+    public static synchronized Set<BlockPos> shelvesOf(Level level, BlockPos core) {
+        Set<BlockPos> nodes = reach(level, core);
+        Set<BlockPos> result = new HashSet<>();
+        for (BlockPos shelf : set(level, Kind.SHELF)) {
+            if (inReach(nodes, shelf)) {
+                result.add(shelf);
+            }
+        }
+        return result;
     }
 
     /** Selos dentro do alcance do Núcleo. */

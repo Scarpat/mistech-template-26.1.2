@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CCC",
+    "CIC",
+    "CCC"
+  ],
+  "key": {
+    "C": "mistech:runic_conduit",
+    "I": "mistech:mithril_ingot"
+  },
+  "result": {
+    "id": "mistech:mithril_conduit",
+    "count": 8
+  }
+}

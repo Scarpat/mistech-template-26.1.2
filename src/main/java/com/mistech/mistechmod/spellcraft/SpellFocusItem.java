@@ -219,7 +219,7 @@ public class SpellFocusItem extends Item {
             }
             RITUAL_DONE.remove(serverPlayer.getUUID());
             RITUAL_START.put(serverPlayer.getUUID(), serverPlayer.position());
-            if (spell.kind() == Spell.Kind.CHARGE) {
+            if (spell.kind() == Spell.Kind.CHARGE && !com.mistech.mistechmod.spellcraft.fx.DreamFx.ownsPrep(spell)) {
                 com.mistech.mistechmod.spellcraft.fx.Vfx.circle(serverPlayer.level(), serverPlayer.position(), spell.element(), 1.5, spell.castTicks() + 40);
             }
             serverPlayer.startUsingItem(hand);
@@ -258,10 +258,18 @@ public class SpellFocusItem extends Item {
             }
             case CHARGE -> {
                 double factor = Math.min(1.0, elapsed / (double) spell.castTicks());
+                boolean dream = com.mistech.mistechmod.spellcraft.fx.DreamFx.ownsPrep(spell);
                 if (elapsed % 2 == 0) {
-                    SpellFx.gather(player.level(), player, spell.element(), factor);
+                    if (dream) {
+                        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(player.level(), com.mistech.mistechmod.spellcraft.fx.DreamFx.CHARGE, spell.element().ordinal(), player, (float) factor, player.position(), net.minecraft.world.phys.Vec3.ZERO);
+                    } else {
+                        SpellFx.gather(player.level(), player, spell.element(), factor);
+                    }
                 }
-                if (elapsed == spell.castTicks()) {
+                if (elapsed == spell.castTicks() && dream) {
+                    player.level().playSound(null, player.blockPosition(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 1.0F, 1.6F);
+                    com.mistech.mistechmod.spellcraft.fx.DreamFx.send(player.level(), com.mistech.mistechmod.spellcraft.fx.DreamFx.CHARGE_FULL, spell.element().ordinal(), player, 1.0F, player.position(), net.minecraft.world.phys.Vec3.ZERO);
+                } else if (elapsed == spell.castTicks()) {
                     player.level().playSound(null, player.blockPosition(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 1.0F, 1.6F);
                     SpellFx.ring(player.level(), player.position().add(0, 1.0, 0), 1.0, SpellFx.dust(spell.element(), 1.6F), 24);
                     com.mistech.mistechmod.spellcraft.fx.Vfx.flare(player.level(), player.position().add(0, 1.2, 0), spell.element(), 1.6F, 8);
@@ -275,7 +283,11 @@ public class SpellFocusItem extends Item {
                     player.stopUsingItem();
                     return;
                 }
-                SpellFx.ritualRise(player.level(), player, spell.element(), elapsed, spell.castTicks());
+                if (!com.mistech.mistechmod.spellcraft.fx.DreamFx.ownsPrep(spell)) {
+                    SpellFx.ritualRise(player.level(), player, spell.element(), elapsed, spell.castTicks());
+                } else if (elapsed == 1) {
+                    com.mistech.mistechmod.spellcraft.fx.DreamFx.send(player.level(), com.mistech.mistechmod.spellcraft.fx.DreamFx.RITUAL, spell.element().ordinal(), player, spell.castTicks(), player.position(), net.minecraft.world.phys.Vec3.ZERO);
+                }
                 if (elapsed >= spell.castTicks()) {
                     RITUAL_DONE.add(player.getUUID());
                     SpellCaster.tryCast(player, spell, manaMult(stack, spell.element()), this.focus.cooldownMult(), 0.0, powerMult(stack, spell.element()));

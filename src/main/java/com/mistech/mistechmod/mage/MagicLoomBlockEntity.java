@@ -40,7 +40,7 @@ public class MagicLoomBlockEntity extends com.mistech.mistechmod.machine.Machine
         if (input.is(Mistech.HEMP_FIBER.get()) && input.getCount() >= FIBERS) {
             ItemStack result = new ItemStack(MageContent.MAGIC_CLOTH.get(), this.airRune() ? 2 : 1);
             int cost = this.energyStep(ENERGY_PER_TICK);
-            if (this.canOutput(result) && this.hasEnergy(cost)) {
+            if (this.canOutputProduct(result) && this.hasEnergy(cost)) {
                 working = true;
                 this.drainEnergy(cost);
                 this.progress += this.workStep();
@@ -50,7 +50,7 @@ public class MagicLoomBlockEntity extends com.mistech.mistechmod.machine.Machine
                     if (this.airRune()) {
                         this.countRuneOp(RUNE_OPS_PER_USE);
                     }
-                    this.insertOutput(result);
+                    this.insertProduct(level, result);
                     level.playSound(null, pos, SoundEvents.UI_LOOM_TAKE_RESULT, SoundSource.BLOCKS, 0.6F, 0.9F + level.getRandom().nextFloat() * 0.2F);
                 }
                 this.setChanged();

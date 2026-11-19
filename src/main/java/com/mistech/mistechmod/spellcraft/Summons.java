@@ -88,6 +88,18 @@ public final class Summons {
         mob.setGlowingTag(true);
         LIVE.put(mob.getUUID(), new Entry(owner.getUUID(), level.getGameTime() + durationTicks, group));
         level.addFreshEntity(mob);
+        // invocações com efeito onírico próprio (ver DreamFx)
+        int dream = mob.getType() == SpellcraftContent.SHADOW_WOLF.get() ? com.mistech.mistechmod.spellcraft.fx.DreamFx.PUDDLE : mob.getType() == SpellcraftContent.PHOENIX.get() ? com.mistech.mistechmod.spellcraft.fx.DreamFx.EGG
+                : mob.getType() == SpellcraftContent.SPIRIT_GUARDIAN.get() ? com.mistech.mistechmod.spellcraft.fx.DreamFx.CANDLE
+                : mob.getType() == SpellcraftContent.WOOD_GUARDIAN.get() ? com.mistech.mistechmod.spellcraft.fx.DreamFx.POD
+                : mob.getType() == SpellcraftContent.STONE_GOLEM.get() ? com.mistech.mistechmod.spellcraft.fx.DreamFx.GOLEM_RISE : 0;
+        if (dream == com.mistech.mistechmod.spellcraft.fx.DreamFx.GOLEM_RISE) {
+            com.mistech.mistechmod.spellcraft.fx.Vfx.shake(level, at, 16, 0.3F, 10);
+        }
+        if (dream != 0) {
+            com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, dream, mob, 0.0F, at);
+            return;
+        }
         SpellFx.burst(level, at.add(0, 0.8, 0), element, 0.25, 30, ParticleTypes.POOF);
         SpellFx.risingRing(level, at, element, 1.0, 8, 2.0);
         com.mistech.mistechmod.spellcraft.fx.Vfx.circle(level, at, element, 1.6, 24);
@@ -239,15 +251,16 @@ public final class Summons {
         Anchor anchor = ANCHORS.remove(player.getUUID());
         if (anchor == null || !anchor.dim().equals(level.dimension())) {
             ANCHORS.put(player.getUUID(), new Anchor(level.dimension(), player.position()));
-            SpellFx.sigil(level, player.position(), RuneElement.SPACE, 1.2);
+            com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.ANCHOR_SET, null, 0.0F, player.position());
             player.sendOverlayMessage(Component.translatable("message.mistech.anchor.set").withColor(RuneElement.SPACE.color()));
             level.playSound(null, player.blockPosition(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 1.0F, 0.6F);
             return true;
         }
-        SpellFx.burst(level, player.position().add(0, 1.0, 0), RuneElement.SPACE, 0.3, 40, ParticleTypes.PORTAL);
+        Vec3 left = player.position();
         player.teleportTo(anchor.pos().x, anchor.pos().y, anchor.pos().z);
         player.resetFallDistance();
-        SpellFx.burst(level, anchor.pos().add(0, 1.0, 0), RuneElement.SPACE, 0.3, 40, ParticleTypes.PORTAL);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.BLINK, 0, player, 0.0F, left, anchor.pos());
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.BLINK, 0, player, 0.0F, anchor.pos(), anchor.pos()); // para quem só vê a chegada
         player.sendOverlayMessage(Component.translatable("message.mistech.anchor.back").withColor(RuneElement.SPACE.color()));
         level.playSound(null, player.blockPosition(), SoundEvents.ENDERMAN_TELEPORT, SoundSource.PLAYERS, 1.0F, 1.0F);
         return true;
@@ -261,12 +274,13 @@ public final class Summons {
             player.sendOverlayMessage(Component.translatable("message.mistech.rewind.nothing").withStyle(net.minecraft.ChatFormatting.RED));
             return false;
         }
-        SpellFx.contractingRing(level, player.position(), RuneElement.TIME, 3.0, 8, ParticleTypes.REVERSE_PORTAL);
+        Vec3 now = player.position();
         player.teleportTo(past.pos().x, past.pos().y, past.pos().z);
         player.resetFallDistance();
         player.setHealth(Math.max(player.getHealth(), Math.min(player.getMaxHealth(), past.health())));
         player.clearFire();
-        SpellFx.burst(level, past.pos().add(0, 1.0, 0), RuneElement.TIME, 0.3, 40, ParticleTypes.REVERSE_PORTAL);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.REWIND, 0, player, 0.0F, now, past.pos());
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.REWIND, 0, player, 0.0F, past.pos(), past.pos());
         level.playSound(null, player.blockPosition(), SoundEvents.BEACON_DEACTIVATE, SoundSource.PLAYERS, 1.0F, 1.5F);
         history.clear();
         return true;

@@ -307,8 +307,15 @@ public class SanctuaryFontBlockEntity extends SingleItemBlockEntity implements c
                     if (level.getBlockState(p).is(PurityContent.TAINTED_SOIL.get())) {
                         TaintedSoilBlock.cleanse(level, p.immutable());
                         cleaned++;
+                    } else if (level.dimension() == Level.OVERWORLD
+                            && level.getBlockState(p).is(com.mistech.mistechmod.registry.RealmContent.WITHERED_GRASS.get())) {
+                        // Grama Murcha da Mácula do lugar volta a ser grama (a do Reino dos Gnomos fica)
+                        level.setBlock(p, net.minecraft.world.level.block.Blocks.GRASS_BLOCK.defaultBlockState(), Block.UPDATE_ALL);
+                        cleaned++;
                     }
                 }
+                // e zera a Mácula do lugar num raio de 2 chunks (Fase 4)
+                com.mistech.mistechmod.purity.area.AreaTaint.clean(level, pos, 2, Taint.MAX);
                 if (starter != null) {
                     starter.sendSystemMessage(Component.translatable("message.mistech.sanctuary.consecrated", cleaned).withStyle(ChatFormatting.GOLD));
                 }

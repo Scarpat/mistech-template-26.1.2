@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "mistech:block/extraplanar_barrel",
+      "x": 180
+    },
+    "facing=up": {
+      "model": "mistech:block/extraplanar_barrel"
+    },
+    "facing=north": {
+      "model": "mistech:block/extraplanar_barrel",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "mistech:block/extraplanar_barrel",
+      "x": 90,
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mistech:block/extraplanar_barrel",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east": {
+      "model": "mistech:block/extraplanar_barrel",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

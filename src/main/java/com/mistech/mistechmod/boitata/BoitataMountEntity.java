@@ -69,6 +69,10 @@ import net.minecraft.world.phys.Vec3;
 public class BoitataMountEntity extends TamableAnimal {
     public static final int BABY = 0, YOUNG = 1, ADULT = 2;
     public static final int YOUNG_AT = 24000, ADULT_AT = 72000;
+    /** Ticks entre duas Brasas (se foi alimentado). */
+    public static final int EMBER_TICKS = 12_000;
+    private boolean emberFed;
+    private int emberTimer;
     public static final float[] SCALE = {0.4F, 0.8F, 1.25F};
     public static final double[] HEALTH = {20.0, 50.0, 120.0};
     public static final double FLY_SPEED = 0.9;
@@ -295,6 +299,13 @@ public class BoitataMountEntity extends TamableAnimal {
                 rider.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 60, 0, true, false, true));
             }
             this.breathTick(server, rider);
+            // Brasa do Boitatá: 1 a cada 10 min, se foi alimentado desde a última
+            if (this.isTame() && this.emberFed && ++this.emberTimer >= EMBER_TICKS) {
+                this.emberTimer = 0;
+                this.emberFed = false;
+                this.spawnAtLocation(server, new ItemStack(com.mistech.mistechmod.folklore.FolkloreContent.BOITATA_EMBER.get()));
+                server.sendParticles(ParticleTypes.LAVA, this.getX(), this.getY() + 0.5, this.getZ(), 8, 0.3, 0.3, 0.3, 0.0);
+            }
             if (this.tickCount % 4 == 0) {
                 server.sendParticles(ParticleTypes.SMALL_FLAME, this.getX(), this.getY() + this.getBbHeight() * 0.8, this.getZ(), 1,
                         0.3 * this.size(), 0.1, 0.3 * this.size(), 0.0);
@@ -439,8 +450,17 @@ public class BoitataMountEntity extends TamableAnimal {
             if (!this.level().isClientSide()) {
                 boolean useful = this.growth() < ADULT_AT || this.getHealth() < this.getMaxHealth();
                 if (!useful) {
-                    return InteractionResult.FAIL;
+                    // adulto e sem ferimento: a comida vira a próxima Brasa (Fase 7)
+                    if (!this.isTame() || this.emberFed) {
+                        return InteractionResult.FAIL;
+                    }
+                    this.emberFed = true;
+                    held.consume(1, player);
+                    this.playSound(SoundEvents.GENERIC_EAT.value(), 1.0F, 0.7F);
+                    player.sendOverlayMessage(Component.translatable("message.mistech.boitata_mount.ember_fed"));
+                    return InteractionResult.SUCCESS;
                 }
+                this.emberFed = true;
                 this.setGrowth(this.growth() + food);
                 this.heal(food / 300.0F);
                 held.consume(1, player);
@@ -578,6 +598,8 @@ public class BoitataMountEntity extends TamableAnimal {
         super.addAdditionalSaveData(output);
         output.putInt("Growth", this.growth());
         output.putInt("Command", this.command);
+        output.putBoolean("EmberFed", this.emberFed);
+        output.putInt("EmberTimer", this.emberTimer);
         if (!this.armor().isEmpty()) {
             output.store("BodyArmor", ItemStack.CODEC, this.armor());
         }
@@ -588,6 +610,8 @@ public class BoitataMountEntity extends TamableAnimal {
         super.readAdditionalSaveData(input);
         this.setGrowth(input.getIntOr("Growth", 0));
         this.command = input.getIntOr("Command", this.isOrderedToSit() ? COMMAND_STAY : COMMAND_FOLLOW);
+        this.emberFed = input.getBooleanOr("EmberFed", false);
+        this.emberTimer = input.getIntOr("EmberTimer", 0);
         this.setArmor(input.read("BodyArmor", ItemStack.CODEC).orElse(ItemStack.EMPTY));
         this.appliedStage = -1;
     }

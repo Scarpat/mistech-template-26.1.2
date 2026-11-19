@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "minecraft:paper",
+    "minecraft:paper",
+    "minecraft:lapis_lazuli",
+    "minecraft:redstone"
+  ],
+  "result": {
+    "id": "mistech:pattern_scroll",
+    "count": 2
+  }
+}

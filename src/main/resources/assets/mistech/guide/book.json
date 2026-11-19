@@ -5093,6 +5093,54 @@
               "text": "guide.mistech.translocation_orb.1"
             }
           ]
+        },
+        {
+          "id": "celestial_gear",
+          "icon": "mistech:celestial_chestplate",
+          "name": "guide.mistech.entry.celestial_gear",
+          "deps": [
+            "pure_orichalcum_gear",
+            "star_forge"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:celestial_helmet",
+              "mistech:celestial_chestplate",
+              "mistech:celestial_leggings",
+              "mistech:celestial_boots",
+              "mistech:celestial_sword",
+              "mistech:celestial_spear",
+              "mistech:celestial_pickaxe",
+              "mistech:celestial_axe",
+              "mistech:celestial_shovel",
+              "mistech:celestial_hoe"
+            ]
+          },
+          "x": 16.0,
+          "y": 3,
+          "pages": [
+            {
+              "type": "ritual",
+              "catalyst": "mistech:pure_orichalcum_chestplate",
+              "ingredients": [
+                "mistech:celestial_ingot",
+                "mistech:celestial_ingot",
+                "mistech:star_fragment",
+                "mistech:space_rune"
+              ],
+              "essence": 6,
+              "result": "mistech:celestial_chestplate",
+              "min_tier": 3,
+              "condition": "night",
+              "title": "guide.mistech.ritual.celestial_gear",
+              "text": "guide.mistech.celestial_gear.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.celestial_gear.2"
+            }
+          ]
         }
       ]
     },
@@ -6188,6 +6236,254 @@
               "text": "guide.mistech.arcane_ruins.3"
             }
           ]
+        },
+        {
+          "id": "runic_conjurer",
+          "icon": "mistech:runic_conjurer",
+          "name": "guide.mistech.entry.runic_conjurer",
+          "deps": [
+            "arcane_charger",
+            "inscription_table",
+            "impure_magic_block",
+            "realm_ores"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:runic_conjurer"
+            ]
+          },
+          "x": 8.0,
+          "y": 0.5,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "mistech:mithril_ingot",
+                "minecraft:amethyst_cluster",
+                "mistech:mithril_ingot",
+                "mistech:energy_rune",
+                "mistech:arcane_charger",
+                "mistech:energy_rune",
+                "mistech:mithril_ingot",
+                "mistech:impure_magic_block",
+                "mistech:mithril_ingot"
+              ],
+              "result": "mistech:runic_conjurer",
+              "text": "guide.mistech.runic_conjurer.recipe"
+            },
+            {
+              "type": "crafting",
+              "grid": [
+                "minecraft:amethyst_shard",
+                "minecraft:amethyst_shard",
+                "minecraft:amethyst_shard",
+                "minecraft:amethyst_shard",
+                "mistech:impure_magic_shard",
+                "minecraft:quartz",
+                "",
+                "",
+                ""
+              ],
+              "result": "mistech:blank_spell_crystal",
+              "count": 2,
+              "shapeless": true,
+              "text": "guide.mistech.runic_conjurer.crystal_recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_conjurer.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_conjurer.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_conjurer.3"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_conjurer.4"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_conjurer.5"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_conjurer.6"
+            }
+          ]
+        },
+        {
+          "id": "mana_well",
+          "icon": "mistech:mana_well",
+          "name": "guide.mistech.entry.mana_well",
+          "deps": [
+            "arcane_charger",
+            "pure_generator"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:mana_well"
+            ]
+          },
+          "x": 8.0,
+          "y": 1.5,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "mistech:pure_magic_shard",
+                "mistech:arcane_rune",
+                "mistech:pure_magic_shard",
+                "mistech:orichalcum_ingot",
+                "minecraft:chiseled_quartz_block",
+                "mistech:orichalcum_ingot",
+                "mistech:pure_magic_shard",
+                "mistech:arcane_charger",
+                "mistech:pure_magic_shard"
+              ],
+              "result": "mistech:mana_well",
+              "text": "guide.mistech.mana_well.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.mana_well.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.mana_well.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.mana_well.3"
+            }
+          ]
+        },
+        {
+          "id": "mana_siphon",
+          "icon": "mistech:mana_siphon",
+          "name": "guide.mistech.entry.mana_siphon",
+          "deps": [
+            "mana_well"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:mana_siphon"
+            ]
+          },
+          "x": 9.6,
+          "y": 1.0,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "minecraft:copper_ingot",
+                "mistech:energy_rune",
+                "minecraft:copper_ingot",
+                "mistech:arcane_rune",
+                "mistech:glass_jar",
+                "mistech:arcane_rune",
+                "minecraft:polished_blackstone",
+                "minecraft:polished_blackstone",
+                "minecraft:polished_blackstone"
+              ],
+              "result": "mistech:mana_siphon",
+              "text": "guide.mistech.mana_siphon.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.mana_siphon.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.mana_siphon.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.mana_siphon.3"
+            }
+          ]
+        },
+        {
+          "id": "scroll_printer",
+          "icon": "mistech:scroll_printer",
+          "name": "guide.mistech.entry.scroll_printer",
+          "deps": [
+            "spell_scrolls",
+            "pure_generator"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:scroll_printer"
+            ]
+          },
+          "x": 3.2,
+          "y": 2.0,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "minecraft:paper",
+                "mistech:arcane_rune",
+                "minecraft:paper",
+                "minecraft:lapis_block",
+                "mistech:writing_table",
+                "minecraft:lapis_block",
+                "#minecraft:planks",
+                "mistech:runic_tank",
+                "#minecraft:planks"
+              ],
+              "result": "mistech:scroll_printer",
+              "text": "guide.mistech.scroll_printer.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.scroll_printer.1"
+            }
+          ]
+        },
+        {
+          "id": "celestial_conjurer",
+          "icon": "mistech:celestial_conjurer",
+          "name": "guide.mistech.entry.celestial_conjurer",
+          "deps": [
+            "runic_conjurer",
+            "star_forge"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:celestial_conjurer"
+            ]
+          },
+          "x": 9.6,
+          "y": 0.5,
+          "pages": [
+            {
+              "type": "ritual",
+              "catalyst": "mistech:runic_conjurer",
+              "ingredients": [
+                "mistech:celestial_ingot",
+                "mistech:celestial_ingot",
+                "mistech:blank_spell_crystal",
+                "mistech:arcane_rune",
+                "mistech:star_fragment",
+                "mistech:time_rune"
+              ],
+              "essence": 8,
+              "result": "mistech:celestial_conjurer",
+              "min_tier": 3,
+              "condition": "night",
+              "title": "guide.mistech.ritual.celestial_conjurer",
+              "text": "guide.mistech.celestial_conjurer.1"
+            }
+          ]
         }
       ]
     },
@@ -6525,6 +6821,84 @@
                 "P": "mistech:astral_pillar"
               },
               "text": "guide.mistech.astral_pillar.2"
+            }
+          ]
+        },
+        {
+          "id": "sky_machines",
+          "icon": "mistech:star_fragment",
+          "name": "guide.mistech.entry.sky_machines",
+          "deps": [
+            "constellations",
+            "celestial_events"
+          ],
+          "task": {
+            "type": "read"
+          },
+          "x": 8.0,
+          "y": 2.0,
+          "pages": [
+            {
+              "type": "text",
+              "text": "guide.mistech.sky_machines.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.sky_machines.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.sky_machines.3"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.sky_machines.4"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.sky_machines.5"
+            }
+          ]
+        },
+        {
+          "id": "astral_clock",
+          "icon": "mistech:astral_clock",
+          "name": "guide.mistech.entry.astral_clock",
+          "deps": [
+            "sky_machines"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:astral_clock"
+            ]
+          },
+          "x": 9.6,
+          "y": 2.5,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "minecraft:lapis_lazuli",
+                "mistech:time_rune",
+                "minecraft:lapis_lazuli",
+                "minecraft:clock",
+                "minecraft:comparator",
+                "minecraft:clock",
+                "minecraft:lapis_lazuli",
+                "minecraft:quartz",
+                "minecraft:lapis_lazuli"
+              ],
+              "result": "mistech:astral_clock",
+              "text": "guide.mistech.astral_clock.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.astral_clock.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.astral_clock.2"
             }
           ]
         }
@@ -7535,6 +7909,138 @@
             {
               "type": "text",
               "text": "guide.mistech.archive_mirror.1"
+            }
+          ]
+        },
+        {
+          "id": "archive_autocraft",
+          "icon": "mistech:pattern_shelf",
+          "name": "guide.mistech.entry.archive_autocraft",
+          "deps": [
+            "archive_network",
+            "golem_crafter"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:pattern_shelf"
+            ]
+          },
+          "x": 8.0,
+          "y": 2.0,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "minecraft:paper",
+                "minecraft:paper",
+                "minecraft:lapis_lazuli",
+                "minecraft:redstone",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "result": "mistech:pattern_scroll",
+              "text": "guide.mistech.archive_autocraft.scroll"
+            },
+            {
+              "type": "crafting",
+              "grid": [
+                "#minecraft:planks",
+                "#minecraft:planks",
+                "#minecraft:planks",
+                "minecraft:lapis_lazuli",
+                "mistech:archive_relay",
+                "minecraft:lapis_lazuli",
+                "#minecraft:planks",
+                "#minecraft:planks",
+                "#minecraft:planks"
+              ],
+              "result": "mistech:pattern_shelf",
+              "text": "guide.mistech.archive_autocraft.shelf"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.archive_autocraft.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.archive_autocraft.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.archive_autocraft.3"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.archive_autocraft.4"
+            }
+          ]
+        },
+        {
+          "id": "runic_conduit",
+          "icon": "mistech:runic_conduit",
+          "name": "guide.mistech.entry.runic_conduit",
+          "deps": [
+            "runic_tank"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:runic_conduit"
+            ]
+          },
+          "x": 4.8,
+          "y": 1.0,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "minecraft:copper_ingot",
+                "mistech:arcane_rune",
+                "minecraft:copper_ingot",
+                "minecraft:glass_pane",
+                "minecraft:glass_pane",
+                "minecraft:glass_pane",
+                "minecraft:copper_ingot",
+                "mistech:arcane_rune",
+                "minecraft:copper_ingot"
+              ],
+              "result": "mistech:runic_conduit",
+              "text": "guide.mistech.runic_conduit.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_conduit.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_conduit.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_conduit.3"
+            },
+            {
+              "type": "crafting",
+              "grid": [
+                "mistech:runic_conduit",
+                "mistech:runic_conduit",
+                "mistech:runic_conduit",
+                "mistech:runic_conduit",
+                "mistech:mithril_ingot",
+                "mistech:runic_conduit",
+                "mistech:runic_conduit",
+                "mistech:runic_conduit",
+                "mistech:runic_conduit"
+              ],
+              "result": "mistech:mithril_conduit"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_conduit.4"
             }
           ]
         }
@@ -8551,6 +9057,376 @@
             {
               "type": "text",
               "text": "guide.mistech.stellar_observatory.2"
+            }
+          ]
+        },
+        {
+          "id": "machine_sockets",
+          "icon": "mistech:time_rune",
+          "name": "guide.mistech.entry.machine_sockets",
+          "deps": [
+            "machine_config"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:fire_rune",
+              "mistech:earth_rune",
+              "mistech:time_rune",
+              "mistech:air_rune"
+            ]
+          },
+          "x": 6.4,
+          "y": 4.0,
+          "pages": [
+            {
+              "type": "text",
+              "text": "guide.mistech.machine_sockets.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.machine_sockets.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.machine_sockets.3"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.machine_sockets.4"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.machine_sockets.5"
+            }
+          ]
+        },
+        {
+          "id": "essence_washer",
+          "icon": "mistech:essence_washer",
+          "name": "guide.mistech.entry.essence_washer",
+          "deps": [
+            "arcane_crusher",
+            "impure_essence"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:essence_washer"
+            ]
+          },
+          "x": 6.4,
+          "y": 5.5,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "minecraft:iron_ingot",
+                "#c:glass_blocks",
+                "minecraft:iron_ingot",
+                "mistech:water_rune",
+                "mistech:runic_tank",
+                "mistech:water_rune",
+                "minecraft:iron_ingot",
+                "mistech:runic_crusher",
+                "minecraft:iron_ingot"
+              ],
+              "result": "mistech:essence_washer",
+              "text": "guide.mistech.essence_washer.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.essence_washer.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.essence_washer.2"
+            }
+          ]
+        },
+        {
+          "id": "runic_crystallizer",
+          "icon": "mistech:runic_crystallizer",
+          "name": "guide.mistech.entry.runic_crystallizer",
+          "deps": [
+            "essence_washer",
+            "crystallizer"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:runic_crystallizer"
+            ]
+          },
+          "x": 8.0,
+          "y": 5.5,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "#c:glass_blocks",
+                "mistech:light_rune",
+                "#c:glass_blocks",
+                "mistech:pure_magic_shard",
+                "mistech:crystallizer",
+                "mistech:pure_magic_shard",
+                "mistech:orichalcum_ingot",
+                "mistech:mithril_ingot",
+                "mistech:orichalcum_ingot"
+              ],
+              "result": "mistech:runic_crystallizer",
+              "text": "guide.mistech.runic_crystallizer.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.runic_crystallizer.1"
+            }
+          ]
+        },
+        {
+          "id": "astral_prism",
+          "icon": "mistech:astral_prism",
+          "name": "guide.mistech.entry.astral_prism",
+          "deps": [
+            "runic_crystallizer",
+            "astral_pillar",
+            "altar_tier2"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:astral_prism"
+            ]
+          },
+          "x": 9.6,
+          "y": 5.5,
+          "pages": [
+            {
+              "type": "ritual",
+              "catalyst": "mistech:runic_crystallizer",
+              "ingredients": [
+                "mistech:star_fragment",
+                "mistech:star_fragment",
+                "mistech:space_rune",
+                "mistech:light_rune",
+                "mistech:orichalcum_ingot",
+                "mistech:orichalcum_ingot"
+              ],
+              "essence": 6,
+              "result": "mistech:astral_prism",
+              "title": "guide.mistech.entry.astral_prism",
+              "condition": "clear_night",
+              "min_tier": 2,
+              "text": "guide.mistech.astral_prism.ritual"
+            },
+            {
+              "type": "multiblock",
+              "pattern": [
+                "P000P",
+                "00000",
+                "00N00",
+                "00000",
+                "P000P"
+              ],
+              "key": {
+                "P": "mistech:astral_pillar",
+                "N": "mistech:astral_prism"
+              },
+              "text": "guide.mistech.astral_prism.legend"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.astral_prism.1"
+            }
+          ]
+        },
+        {
+          "id": "star_forge",
+          "icon": "mistech:star_forge",
+          "name": "guide.mistech.entry.star_forge",
+          "deps": [
+            "astral_prism",
+            "crusher_forge",
+            "tier3_rituals"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:celestial_ingot"
+            ]
+          },
+          "x": 11.2,
+          "y": 5.5,
+          "pages": [
+            {
+              "type": "ritual",
+              "catalyst": "mistech:crusher_forge",
+              "ingredients": [
+                "mistech:astral_prism",
+                "mistech:star_fragment",
+                "mistech:star_fragment",
+                "mistech:star_fragment",
+                "mistech:star_fragment",
+                "mistech:space_rune",
+                "mistech:time_rune"
+              ],
+              "essence": 8,
+              "result": "mistech:star_forge",
+              "min_tier": 3,
+              "condition": "clear_night",
+              "title": "guide.mistech.ritual.star_forge"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.star_forge.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.star_forge.2"
+            },
+            {
+              "type": "multiblock",
+              "pattern": [
+                "O0B0O",
+                "00000",
+                "B0F0B",
+                "00000",
+                "O0B0O"
+              ],
+              "key": {
+                "F": "mistech:star_forge",
+                "O": "mistech:mithril_obelisk",
+                "B": "mistech:orichalcum_brazier"
+              },
+              "text": "guide.mistech.star_forge.legend"
+            }
+          ]
+        },
+        {
+          "id": "celestial_core",
+          "icon": "mistech:celestial_core",
+          "name": "guide.mistech.entry.celestial_core",
+          "deps": [
+            "star_forge",
+            "machine_sockets"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:celestial_core"
+            ]
+          },
+          "x": 12.8,
+          "y": 4.5,
+          "pages": [
+            {
+              "type": "ritual",
+              "catalyst": "mistech:celestial_block",
+              "ingredients": [
+                "mistech:time_rune",
+                "mistech:space_rune",
+                "mistech:echo_rune",
+                "mistech:star_fragment"
+              ],
+              "essence": 8,
+              "result": "mistech:celestial_core",
+              "min_tier": 3,
+              "condition": "night",
+              "title": "guide.mistech.ritual.celestial_core",
+              "text": "guide.mistech.celestial_core.1"
+            }
+          ]
+        },
+        {
+          "id": "celestial_battery",
+          "icon": "mistech:celestial_battery",
+          "name": "guide.mistech.entry.celestial_battery",
+          "deps": [
+            "star_forge",
+            "advanced_runic_battery"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:celestial_battery"
+            ]
+          },
+          "x": 12.8,
+          "y": 6.5,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "mistech:celestial_ingot",
+                "mistech:star_fragment",
+                "mistech:celestial_ingot",
+                "mistech:void_rune",
+                "mistech:advanced_runic_battery",
+                "mistech:void_rune",
+                "mistech:celestial_ingot",
+                "mistech:star_fragment",
+                "mistech:celestial_ingot"
+              ],
+              "result": "mistech:celestial_battery",
+              "text": "guide.mistech.celestial_battery.1"
+            }
+          ]
+        },
+        {
+          "id": "dream_reactor",
+          "icon": "mistech:dream_reactor",
+          "name": "guide.mistech.entry.dream_reactor",
+          "deps": [
+            "impure_reactor",
+            "dream_fragments",
+            "tier3_rituals"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:dream_reactor"
+            ]
+          },
+          "x": 11.2,
+          "y": 2.09,
+          "pages": [
+            {
+              "type": "ritual",
+              "catalyst": "mistech:impure_reactor",
+              "ingredients": [
+                "mistech:memory_shard",
+                "mistech:memory_shard",
+                "mistech:memory_shard",
+                "mistech:memory_shard",
+                "mistech:purified_dreamcatcher",
+                "mistech:time_rune"
+              ],
+              "essence": 8,
+              "result": "mistech:dream_reactor",
+              "min_tier": 3,
+              "condition": "night",
+              "title": "guide.mistech.ritual.dream_reactor"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.dream_reactor.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.dream_reactor.2"
+            },
+            {
+              "type": "multiblock",
+              "pattern": [
+                "WWW",
+                "WR0",
+                "WWW"
+              ],
+              "key": {
+                "R": "mistech:dream_reactor",
+                "W": "mistech:cloud_wool"
+              },
+              "text": "guide.mistech.dream_reactor.legend"
             }
           ]
         }
@@ -9823,6 +10699,77 @@
               "text": "guide.mistech.celestial.aurora"
             }
           ]
+        },
+        {
+          "id": "area_taint",
+          "icon": "mistech:withered_grass",
+          "name": "guide.mistech.entry.area_taint",
+          "deps": [
+            "tainted_soil",
+            "dowsing_pendulum"
+          ],
+          "task": {
+            "type": "read"
+          },
+          "x": 4.8,
+          "y": 3.0,
+          "pages": [
+            {
+              "type": "text",
+              "text": "guide.mistech.area_taint.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.area_taint.2"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.area_taint.3"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.area_taint.4"
+            }
+          ]
+        },
+        {
+          "id": "rue_filter",
+          "icon": "mistech:rue_filter",
+          "name": "guide.mistech.entry.rue_filter",
+          "deps": [
+            "area_taint",
+            "rue"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:rue_filter"
+            ]
+          },
+          "x": 6.4,
+          "y": 3.2,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "mistech:rue_leaf",
+                "mistech:coarse_salt",
+                "mistech:rue_leaf",
+                "mistech:air_rune",
+                "minecraft:cauldron",
+                "mistech:air_rune",
+                "mistech:rue_leaf",
+                "minecraft:copper_ingot",
+                "mistech:rue_leaf"
+              ],
+              "result": "mistech:rue_filter",
+              "text": "guide.mistech.rue_filter.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.rue_filter.1"
+            }
+          ]
         }
       ]
     },
@@ -10451,6 +11398,239 @@
             {
               "type": "text",
               "text": "guide.mistech.mapinguari.2"
+            }
+          ]
+        },
+        {
+          "id": "saci_windmill",
+          "icon": "mistech:saci_windmill",
+          "name": "guide.mistech.entry.saci_windmill",
+          "deps": [
+            "saci",
+            "ash_generator"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:saci_windmill"
+            ]
+          },
+          "x": 4.8,
+          "y": -0.25,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "#minecraft:planks",
+                "#minecraft:planks",
+                "#minecraft:planks",
+                "mistech:air_rune",
+                "mistech:glass_jar",
+                "mistech:air_rune",
+                "minecraft:copper_ingot",
+                "mistech:runic_battery",
+                "minecraft:copper_ingot"
+              ],
+              "result": "mistech:saci_windmill",
+              "text": "guide.mistech.saci_windmill.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.saci_windmill.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.saci_windmill.2"
+            }
+          ]
+        },
+        {
+          "id": "curupira_stump",
+          "icon": "mistech:curupira_stump",
+          "name": "guide.mistech.entry.curupira_stump",
+          "deps": [
+            "curupira",
+            "farming_machines"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:curupira_stump"
+            ]
+          },
+          "x": 6.4,
+          "y": 2.0,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "#minecraft:saplings",
+                "minecraft:iron_axe",
+                "#minecraft:saplings",
+                "#minecraft:logs",
+                "mistech:runic_harvester",
+                "#minecraft:logs",
+                "#minecraft:logs",
+                "#minecraft:logs",
+                "#minecraft:logs"
+              ],
+              "result": "mistech:curupira_stump",
+              "text": "guide.mistech.curupira_stump.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.curupira_stump.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.curupira_stump.2"
+            }
+          ]
+        },
+        {
+          "id": "boitata_ember",
+          "icon": "mistech:boitata_ember",
+          "name": "guide.mistech.entry.boitata_ember",
+          "deps": [
+            "boitata",
+            "igneous_boiler"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:boitata_ember"
+            ]
+          },
+          "x": 8.0,
+          "y": 3.75,
+          "pages": [
+            {
+              "type": "spotlight",
+              "item": "mistech:boitata_ember",
+              "text": "guide.mistech.boitata_ember.1"
+            }
+          ]
+        },
+        {
+          "id": "potion_still",
+          "icon": "mistech:potion_still",
+          "name": "guide.mistech.entry.potion_still",
+          "deps": [
+            "cuca"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:potion_still"
+            ]
+          },
+          "x": 8.0,
+          "y": 4.75,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "minecraft:copper_ingot",
+                "#c:glass_blocks",
+                "minecraft:copper_ingot",
+                "minecraft:copper_ingot",
+                "minecraft:brewing_stand",
+                "minecraft:copper_ingot",
+                "minecraft:iron_ingot",
+                "minecraft:furnace",
+                "minecraft:iron_ingot"
+              ],
+              "result": "mistech:potion_still",
+              "text": "guide.mistech.potion_still.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.potion_still.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.potion_still.2"
+            }
+          ]
+        },
+        {
+          "id": "iara_pump",
+          "icon": "mistech:iara_pump",
+          "name": "guide.mistech.entry.iara_pump",
+          "deps": [
+            "iara"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:iara_pump"
+            ]
+          },
+          "x": 6.4,
+          "y": 6.75,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "minecraft:prismarine_shard",
+                "minecraft:bucket",
+                "minecraft:prismarine_shard",
+                "mistech:water_rune",
+                "mistech:runic_tank",
+                "mistech:water_rune",
+                "minecraft:copper_block",
+                "minecraft:copper_block",
+                "minecraft:copper_block"
+              ],
+              "result": "mistech:iara_pump",
+              "text": "guide.mistech.iara_pump.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.iara_pump.1"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.iara_pump.2"
+            }
+          ]
+        },
+        {
+          "id": "boitata_pump",
+          "icon": "mistech:boitata_pump",
+          "name": "guide.mistech.entry.boitata_pump",
+          "deps": [
+            "iara_pump",
+            "boitata"
+          ],
+          "task": {
+            "type": "item",
+            "items": [
+              "mistech:boitata_pump"
+            ]
+          },
+          "x": 8.0,
+          "y": 6.75,
+          "pages": [
+            {
+              "type": "crafting",
+              "grid": [
+                "minecraft:netherite_scrap",
+                "minecraft:bucket",
+                "minecraft:netherite_scrap",
+                "mistech:fire_rune",
+                "mistech:runic_tank",
+                "mistech:fire_rune",
+                "minecraft:polished_blackstone_bricks",
+                "minecraft:polished_blackstone_bricks",
+                "minecraft:polished_blackstone_bricks"
+              ],
+              "result": "mistech:boitata_pump",
+              "text": "guide.mistech.boitata_pump.recipe"
+            },
+            {
+              "type": "text",
+              "text": "guide.mistech.boitata_pump.1"
             }
           ]
         }
@@ -11267,7 +12447,7 @@
           {
             "id": "cachaca",
             "x": 9.6,
-            "y": 1.02
+            "y": 0.95
           },
           {
             "id": "murky_tree",
@@ -11389,7 +12569,7 @@
           {
             "id": "gnome_bicycle",
             "x": 11.2,
-            "y": 5.22
+            "y": 5.19
           },
           {
             "id": "condenser",
@@ -11399,7 +12579,7 @@
           {
             "id": "arcane_network",
             "x": 12.8,
-            "y": 8.53
+            "y": 8.51
           },
           {
             "id": "essence_extractor",
@@ -11409,42 +12589,67 @@
           {
             "id": "impure_essence",
             "x": 9.6,
-            "y": 7.03
+            "y": 6.95
           },
           {
             "id": "gnomes",
             "x": 9.6,
-            "y": 2.02
+            "y": 1.95
           },
           {
             "id": "gnome_staff",
             "x": 11.2,
-            "y": 1.82
+            "y": 1.75
           },
           {
             "id": "murky_bow",
             "x": 9.6,
-            "y": 3.02
+            "y": 2.95
           },
           {
             "id": "rune_arrows",
             "x": 11.2,
-            "y": 6.22
+            "y": 6.19
           },
           {
             "id": "spell_scrolls",
             "x": 12.8,
-            "y": 1.82
+            "y": 1.75
           },
           {
             "id": "inscription_table",
             "x": 14.4,
-            "y": 4.83
+            "y": 4.79
           },
           {
             "id": "apprentice_tome",
             "x": 14.4,
-            "y": 1.82
+            "y": 1.75
+          },
+          {
+            "id": "spell_casting",
+            "x": 16.0,
+            "y": 0.75
+          },
+          {
+            "id": "staves",
+            "x": 16.0,
+            "y": 1.75
+          },
+          {
+            "id": "arcane_charger",
+            "x": 17.6,
+            "y": 1.75
+          },
+          {
+            "id": "element_tomes",
+            "x": 16.0,
+            "y": 2.75
+          },
+          {
+            "id": "arcane_ruins",
+            "x": 17.6,
+            "y": 0.75
           },
           {
             "id": "runic_crusher",
@@ -11460,7 +12665,7 @@
           {
             "id": "runic_upgrades",
             "x": 9.6,
-            "y": 8.17
+            "y": 8.1
           },
           {
             "id": "ash_generator",
@@ -11475,7 +12680,7 @@
           {
             "id": "farming_machines",
             "x": 9.6,
-            "y": 4.02
+            "y": 3.95
           },
           {
             "id": "tunneler",
@@ -11485,7 +12690,12 @@
           {
             "id": "gnome_boost",
             "x": 11.2,
-            "y": 3.4
+            "y": 3.36
+          },
+          {
+            "id": "machine_sockets",
+            "x": 9.6,
+            "y": 4.95
           },
           {
             "id": "clay_golem",
@@ -11496,7 +12706,7 @@
           {
             "id": "familiars",
             "x": 11.2,
-            "y": 7.22
+            "y": 7.19
           },
           {
             "id": "golem_runes",
@@ -11534,29 +12744,29 @@
           {
             "id": "impure_essence",
             "x": 0.0,
-            "y": 7.91
+            "y": 7.07
           },
           {
             "id": "incense_holder",
             "x": 0.0,
-            "y": 8.91
+            "y": 8.07
           }
         ],
         "entries": [
           {
             "id": "fairy_incense",
             "x": 16.0,
-            "y": 8.01
+            "y": 6.96
           },
           {
             "id": "magic_smoke",
             "x": 6.4,
-            "y": 1.46
+            "y": 1.88
           },
           {
             "id": "rune_roller",
             "x": 8.0,
-            "y": 1.21
+            "y": 1.63
           },
           {
             "id": "arcane_furnace",
@@ -11571,54 +12781,54 @@
           {
             "id": "magic_compressor",
             "x": 1.6,
-            "y": 7.91,
+            "y": 8.26,
             "size": "big"
           },
           {
             "id": "arcane_compressor",
             "x": 11.2,
-            "y": 6.0
+            "y": 7.0
           },
           {
             "id": "liquefier",
             "x": 3.2,
-            "y": 5.29
+            "y": 5.63
           },
           {
             "id": "magic_incense",
             "x": 3.2,
-            "y": 6.29
+            "y": 6.63
           },
           {
             "id": "magic_residue",
             "x": 4.8,
-            "y": 3.62
+            "y": 3.96
           },
           {
             "id": "impure_chalk",
             "x": 6.4,
-            "y": 2.46
+            "y": 2.88
           },
           {
             "id": "impure_magic_block",
             "x": 6.4,
-            "y": 6.96
+            "y": 7.38
           },
           {
             "id": "dreams",
             "x": 6.4,
-            "y": 3.46
+            "y": 3.88
           },
           {
             "id": "gnome_realm",
             "x": 8.0,
-            "y": 3.21,
+            "y": 3.63,
             "size": "big"
           },
           {
             "id": "realm_ores",
             "x": 9.6,
-            "y": 2.88
+            "y": 3.29
           },
           {
             "id": "metal_blocks",
@@ -11628,7 +12838,7 @@
           {
             "id": "dream_layers",
             "x": 9.6,
-            "y": 3.88
+            "y": 4.29
           },
           {
             "id": "common_dream",
@@ -11638,171 +12848,186 @@
           {
             "id": "nightmare",
             "x": 12.8,
-            "y": 5.0
+            "y": 4.88
           },
           {
             "id": "goblin_village",
             "x": 14.4,
-            "y": 4.33
+            "y": 4.21
           },
           {
             "id": "goblin_crowns",
             "x": 16.0,
-            "y": 3.01
+            "y": 2.96
           },
           {
             "id": "deep_dream",
             "x": 14.4,
-            "y": 5.33
+            "y": 5.21
           },
           {
             "id": "lucid_dreamcatcher",
             "x": 16.0,
-            "y": 4.01
+            "y": 3.96
           },
           {
             "id": "spatial_dreamcatcher",
             "x": 16.0,
-            "y": 5.01
+            "y": 4.96
           },
           {
             "id": "rem_sleep",
             "x": 16.0,
-            "y": 6.01
+            "y": 5.96
           },
           {
             "id": "the_dreamer",
             "x": 17.6,
-            "y": 5.01,
+            "y": 4.96,
             "size": "big"
+          },
+          {
+            "id": "runic_conjurer",
+            "x": 11.2,
+            "y": 6.0
           },
           {
             "id": "guide_stone",
             "x": 3.2,
-            "y": 7.29
+            "y": 7.63
           },
           {
             "id": "guide_stone_projection",
             "x": 4.8,
-            "y": 4.62
+            "y": 4.96
           },
           {
             "id": "astrology_field",
             "x": 4.8,
-            "y": 5.62
+            "y": 5.96
           },
           {
             "id": "astrology_table",
             "x": 6.4,
-            "y": 5.71,
+            "y": 6.13,
             "size": "big"
           },
           {
             "id": "constellations",
             "x": 8.0,
-            "y": 5.46
+            "y": 5.88
           },
           {
             "id": "tarot_circle",
             "x": 8.0,
-            "y": 6.46
+            "y": 6.88
           },
           {
             "id": "tarot_table",
             "x": 9.6,
-            "y": 6.13,
+            "y": 6.54,
             "size": "big"
           },
           {
             "id": "tarot_cards",
             "x": 11.2,
-            "y": 7.0
+            "y": 8.0
           },
           {
             "id": "arcane_plane",
             "x": 12.8,
-            "y": 7.0
+            "y": 7.88
           },
           {
             "id": "the_fool",
             "x": 14.4,
-            "y": 6.33
+            "y": 7.21
           },
           {
             "id": "the_magician",
             "x": 16.0,
-            "y": 7.01
+            "y": 7.96
           },
           {
             "id": "the_high_priestess",
             "x": 17.6,
-            "y": 7.01
+            "y": 7.96
           },
           {
             "id": "gnome_hat",
             "x": 3.2,
-            "y": 8.29
+            "y": 8.63
           },
           {
             "id": "mystic_robe",
             "x": 4.8,
-            "y": 6.62
+            "y": 6.96
           },
           {
             "id": "comfy_pants",
             "x": 4.8,
-            "y": 7.62
+            "y": 7.96
           },
           {
             "id": "slippers",
             "x": 6.4,
-            "y": 7.96
+            "y": 8.38
           },
           {
             "id": "magic_loom",
             "x": 4.8,
-            "y": 8.62
+            "y": 8.96
           },
           {
             "id": "spatial_barrel",
             "x": 3.2,
-            "y": 9.54,
+            "y": 9.88,
             "size": "big"
           },
           {
             "id": "runic_tank",
             "x": 4.8,
-            "y": 10.62
+            "y": 10.96
           },
           {
             "id": "carryable_barrel",
             "x": 4.8,
-            "y": 11.62
+            "y": 11.96
           },
           {
             "id": "rune_confector",
             "x": 6.4,
-            "y": 8.96
+            "y": 9.38
           },
           {
             "id": "archive_core",
             "x": 11.2,
-            "y": 8.0
+            "y": 9.0
           },
           {
             "id": "archive_terminal",
             "x": 12.8,
-            "y": 8.0
+            "y": 8.88
           },
           {
             "id": "archive_network",
             "x": 14.4,
-            "y": 7.33
+            "y": 8.21
           },
           {
             "id": "archive_mirror",
             "x": 14.4,
-            "y": 8.33
+            "y": 9.21
+          },
+          {
+            "id": "archive_autocraft",
+            "x": 16.0,
+            "y": 8.96
+          },
+          {
+            "id": "runic_conduit",
+            "x": 6.4,
+            "y": 10.38
           },
           {
             "id": "arcane_crusher",
@@ -11812,22 +13037,27 @@
           {
             "id": "crusher_forge",
             "x": 12.8,
-            "y": 3.43
+            "y": 3.42
           },
           {
             "id": "runic_battery",
             "x": 6.4,
-            "y": 4.46
+            "y": 4.88
           },
           {
             "id": "advanced_runic_battery",
             "x": 8.0,
-            "y": 4.46
+            "y": 4.88
           },
           {
             "id": "miner",
             "x": 4.8,
-            "y": 9.62
+            "y": 9.96
+          },
+          {
+            "id": "essence_washer",
+            "x": 12.8,
+            "y": 5.88
           },
           {
             "id": "golem_messenger",
@@ -11837,23 +13067,23 @@
           {
             "id": "golem_keeper",
             "x": 14.4,
-            "y": 9.33
+            "y": 10.21
           },
           {
             "id": "accessory_bases",
             "x": 3.2,
-            "y": 10.79,
+            "y": 11.13,
             "size": "big"
           },
           {
             "id": "rings",
             "x": 4.8,
-            "y": 12.62
+            "y": 12.96
           },
           {
             "id": "amulets",
             "x": 4.8,
-            "y": 13.62
+            "y": 13.96
           }
         ]
       },
@@ -11934,7 +13164,7 @@
           {
             "id": "celestial_events",
             "x": 6.4,
-            "y": 3.92
+            "y": 3.79
           },
           {
             "id": "impure_heart",
@@ -11944,12 +13174,12 @@
           {
             "id": "awakened_heart",
             "x": 6.4,
-            "y": 5.92
+            "y": 5.79
           },
           {
             "id": "mithril_gear",
             "x": 6.4,
-            "y": 4.92
+            "y": 4.79
           },
           {
             "id": "spatial_anchor",
@@ -11959,28 +13189,53 @@
           {
             "id": "runic_artifacts",
             "x": 8.0,
-            "y": 3.02,
+            "y": 2.88,
             "size": "big"
           },
           {
             "id": "frost_skates",
             "x": 9.6,
-            "y": 1.47
+            "y": 1.45
           },
           {
             "id": "storm_gauntlet",
             "x": 9.6,
-            "y": 2.47
+            "y": 2.45
+          },
+          {
+            "id": "mana_well",
+            "x": 11.2,
+            "y": 15.45
+          },
+          {
+            "id": "mana_siphon",
+            "x": 12.8,
+            "y": 15.45
+          },
+          {
+            "id": "scroll_printer",
+            "x": 11.2,
+            "y": 16.45
           },
           {
             "id": "natal_chart",
             "x": 6.4,
-            "y": 6.92
+            "y": 6.79
           },
           {
             "id": "astral_pillar",
             "x": 8.0,
-            "y": 5.27
+            "y": 5.13
+          },
+          {
+            "id": "sky_machines",
+            "x": 8.0,
+            "y": 1.63
+          },
+          {
+            "id": "astral_clock",
+            "x": 9.6,
+            "y": 0.2
           },
           {
             "id": "pocket_battery",
@@ -11990,17 +13245,22 @@
           {
             "id": "experience_generator",
             "x": 8.0,
-            "y": 4.27
+            "y": 4.13
           },
           {
             "id": "impure_reactor",
             "x": 6.4,
-            "y": 7.92
+            "y": 7.79
           },
           {
             "id": "igneous_boiler",
             "x": 11.2,
-            "y": 11.72
+            "y": 11.45
+          },
+          {
+            "id": "runic_crystallizer",
+            "x": 9.6,
+            "y": 14.7
           },
           {
             "id": "taint",
@@ -12015,7 +13275,7 @@
           {
             "id": "seeking_pendulum",
             "x": 6.4,
-            "y": 12.42
+            "y": 12.29
           },
           {
             "id": "rue",
@@ -12035,17 +13295,27 @@
           {
             "id": "distiller",
             "x": 6.4,
-            "y": 13.42
+            "y": 14.29
           },
           {
             "id": "crystallizer",
             "x": 8.0,
-            "y": 15.27
+            "y": 16.13
           },
           {
             "id": "pure_generator",
             "x": 9.6,
-            "y": 13.72
+            "y": 15.7
+          },
+          {
+            "id": "area_taint",
+            "x": 6.4,
+            "y": 13.29
+          },
+          {
+            "id": "rue_filter",
+            "x": 8.0,
+            "y": 15.13
           },
           {
             "id": "folklore_intro",
@@ -12056,103 +13326,113 @@
           {
             "id": "werewolf",
             "x": 6.4,
-            "y": 10.42
+            "y": 10.29
           },
           {
             "id": "silver_dagger",
             "x": 8.0,
-            "y": 6.27
+            "y": 6.13
           },
           {
             "id": "ancestral_forest",
             "x": 6.4,
-            "y": 11.42
+            "y": 11.29
           },
           {
             "id": "matinta_pereira",
             "x": 8.0,
-            "y": 11.27
+            "y": 11.13
           },
           {
             "id": "cuca",
             "x": 9.6,
-            "y": 12.72
+            "y": 12.7
           },
           {
             "id": "caipora",
             "x": 8.0,
-            "y": 12.27
+            "y": 12.13
           },
           {
             "id": "iara",
             "x": 8.0,
-            "y": 13.27
+            "y": 13.13
           },
           {
             "id": "mapinguari",
             "x": 8.0,
-            "y": 14.27
+            "y": 14.13
+          },
+          {
+            "id": "potion_still",
+            "x": 11.2,
+            "y": 12.45
+          },
+          {
+            "id": "iara_pump",
+            "x": 9.6,
+            "y": 13.7
           },
           {
             "id": "beyond_intro",
             "x": 6.4,
-            "y": 9.17,
+            "y": 9.04,
             "size": "big"
           },
           {
             "id": "echo_collector",
             "x": 8.0,
-            "y": 7.27
+            "y": 7.13
           },
           {
             "id": "echo_compass",
             "x": 9.6,
-            "y": 5.72
+            "y": 5.7
           },
           {
             "id": "runic_note_block",
             "x": 9.6,
-            "y": 6.72
+            "y": 6.7
           },
           {
             "id": "pale_sentinel",
             "x": 8.0,
-            "y": 8.27
+            "y": 8.13
           },
           {
             "id": "pale_chalk",
             "x": 9.6,
-            "y": 7.72
+            "y": 7.7
           },
           {
             "id": "eyeblossom_incense",
             "x": 9.6,
-            "y": 8.72
+            "y": 8.7
           },
           {
             "id": "igneous_essence",
             "x": 8.0,
-            "y": 9.27
+            "y": 9.13
           },
           {
             "id": "piglin_pact",
             "x": 9.6,
-            "y": 9.72
+            "y": 9.7
           },
           {
             "id": "runic_strider",
             "x": 9.6,
-            "y": 10.72
+            "y": 10.7
           },
           {
             "id": "blaze_generator",
             "x": 9.6,
-            "y": 11.72
+            "y": 11.7
           },
           {
             "id": "portal_anchor",
             "x": 8.0,
-            "y": 10.27
+            "y": 10.13
           }
         ]
       },
@@ -12165,74 +13445,74 @@
           {
             "id": "pipe",
             "x": 0.0,
-            "y": 6.79
+            "y": 7.63
           },
           {
             "id": "gnome_staff",
             "x": 0.0,
-            "y": 7.79
+            "y": 8.62
           },
           {
             "id": "impure_altar",
             "x": 0.0,
-            "y": 8.79
+            "y": 9.62
           },
           {
             "id": "awakened_heart",
             "x": 0.0,
-            "y": 9.79
+            "y": 10.62
           },
           {
             "id": "mithril_gear",
             "x": 0.0,
-            "y": 10.79
+            "y": 11.62
           },
           {
             "id": "crystallizer",
             "x": 0.0,
-            "y": 11.79
+            "y": 12.62
           },
           {
             "id": "folklore_intro",
             "x": 0.0,
-            "y": 13.44
+            "y": 14.3
           },
           {
             "id": "bottled_lightning",
             "x": 0.0,
-            "y": 14.44
+            "y": 15.3
           },
           {
             "id": "echo_collector",
             "x": 0.0,
-            "y": 15.44
+            "y": 16.3
           },
           {
             "id": "pale_sentinel",
             "x": 0.0,
-            "y": 16.54
+            "y": 17.38
           },
           {
             "id": "vigil_rune",
             "x": 0.0,
-            "y": 17.54
+            "y": 18.38
           },
           {
             "id": "igneous_essence",
             "x": 0.0,
-            "y": 18.54
+            "y": 19.38
           },
           {
             "id": "impure_tools",
             "x": 0.0,
-            "y": 19.54
+            "y": 20.38
           }
         ],
         "entries": [
           {
             "id": "runic_pipe",
             "x": 1.6,
-            "y": 6.79
+            "y": 7.63
           },
           {
             "id": "runic_hookah",
@@ -12252,7 +13532,7 @@
           {
             "id": "altar_tier2",
             "x": 1.6,
-            "y": 8.79,
+            "y": 9.62,
             "size": "big"
           },
           {
@@ -12263,12 +13543,12 @@
           {
             "id": "adamantine_gear",
             "x": 1.6,
-            "y": 10.04
+            "y": 10.88
           },
           {
             "id": "rune_anvil",
             "x": 3.2,
-            "y": 11.0
+            "y": 12.0
           },
           {
             "id": "translocation_orb",
@@ -12283,17 +13563,17 @@
           {
             "id": "volcanic_hammer",
             "x": 3.2,
-            "y": 12.0
+            "y": 13.0
           },
           {
             "id": "tide_mask",
             "x": 3.2,
-            "y": 13.0
+            "y": 14.0
           },
           {
             "id": "beacon_crown",
             "x": 3.2,
-            "y": 14.0
+            "y": 15.0
           },
           {
             "id": "void_magnet",
@@ -12318,63 +13598,78 @@
           {
             "id": "transmission_pylon",
             "x": 3.2,
-            "y": 15.0
+            "y": 16.0
+          },
+          {
+            "id": "astral_prism",
+            "x": 3.2,
+            "y": 11.0
           },
           {
             "id": "sanctuary",
             "x": 1.6,
-            "y": 11.29,
+            "y": 12.12,
             "size": "big"
           },
           {
             "id": "sanctuary_blessings",
             "x": 3.2,
-            "y": 16.0
+            "y": 17.0
           },
           {
             "id": "sanctuary_rituals",
             "x": 3.2,
-            "y": 17.0
+            "y": 18.0
           },
           {
             "id": "sanctuary_sky",
             "x": 3.2,
-            "y": 18.0
+            "y": 19.0
           },
           {
             "id": "saci",
             "x": 1.6,
-            "y": 13.54
+            "y": 14.38
           },
           {
             "id": "raven",
             "x": 1.6,
-            "y": 12.54
+            "y": 13.38
           },
           {
             "id": "curupira",
             "x": 4.8,
-            "y": 14.23
+            "y": 15.15
+          },
+          {
+            "id": "saci_windmill",
+            "x": 3.2,
+            "y": 20.0
+          },
+          {
+            "id": "curupira_stump",
+            "x": 6.4,
+            "y": 15.15
           },
           {
             "id": "silence_seal",
             "x": 1.6,
-            "y": 14.54
+            "y": 15.38
           },
           {
             "id": "echoling",
             "x": 1.6,
-            "y": 15.54
+            "y": 16.38
           },
           {
             "id": "pale_heart",
             "x": 1.6,
-            "y": 16.54
+            "y": 17.38
           },
           {
             "id": "infernal_tools",
             "x": 1.6,
-            "y": 17.54
+            "y": 18.38
           }
         ]
       },
@@ -12474,38 +13769,43 @@
           {
             "id": "altar_tier3",
             "x": 3.2,
-            "y": 2.0,
+            "y": 1.46,
             "size": "big"
           },
           {
             "id": "tier3_rituals",
             "x": 4.8,
-            "y": 4.59
+            "y": 4.32
           },
           {
             "id": "orichalcum_gear",
             "x": 6.4,
-            "y": 4.59
+            "y": 3.32
           },
           {
             "id": "pure_orichalcum_gear",
             "x": 8.0,
-            "y": 3.39
+            "y": 1.14
+          },
+          {
+            "id": "celestial_gear",
+            "x": 9.6,
+            "y": 2.73
           },
           {
             "id": "cloud_broom",
             "x": 8.0,
-            "y": 4.39
+            "y": 2.14
           },
           {
             "id": "shadow_cloak",
             "x": 8.0,
-            "y": 2.36
+            "y": 0.14
           },
           {
             "id": "tide_spear",
             "x": 8.0,
-            "y": 5.39
+            "y": 3.14
           },
           {
             "id": "gear_bows",
@@ -12515,12 +13815,17 @@
           {
             "id": "arcane_crossbow",
             "x": 3.2,
-            "y": 4.0
+            "y": 3.46
+          },
+          {
+            "id": "celestial_conjurer",
+            "x": 8.0,
+            "y": 5.14
           },
           {
             "id": "arcana_bond",
             "x": 9.6,
-            "y": 3.39
+            "y": 1.14
           },
           {
             "id": "mage_robes",
@@ -12530,17 +13835,37 @@
           {
             "id": "astral_pocket_battery",
             "x": 6.4,
-            "y": 1.83
+            "y": 0.29
           },
           {
             "id": "ethereal_network",
             "x": 4.8,
-            "y": 1.83
+            "y": 1.29
           },
           {
             "id": "stellar_observatory",
             "x": 8.0,
-            "y": 6.39
+            "y": 4.14
+          },
+          {
+            "id": "star_forge",
+            "x": 6.4,
+            "y": 4.32
+          },
+          {
+            "id": "celestial_core",
+            "x": 8.0,
+            "y": 6.14
+          },
+          {
+            "id": "celestial_battery",
+            "x": 8.0,
+            "y": 7.14
+          },
+          {
+            "id": "dream_reactor",
+            "x": 6.4,
+            "y": 5.32
           },
           {
             "id": "headless_mule",
@@ -12555,17 +13880,27 @@
           {
             "id": "boitata_armor",
             "x": 3.2,
-            "y": 8.5
+            "y": 7.96
           },
           {
             "id": "boitata_egg",
             "x": 4.8,
-            "y": 5.59
+            "y": 5.32
           },
           {
             "id": "boitata_mount_gear",
             "x": 6.4,
-            "y": 5.59
+            "y": 6.32
+          },
+          {
+            "id": "boitata_ember",
+            "x": 3.2,
+            "y": 8.96
+          },
+          {
+            "id": "boitata_pump",
+            "x": 3.2,
+            "y": 9.96
           },
           {
             "id": "guardian",
@@ -12580,7 +13915,7 @@
           {
             "id": "primordial_heart",
             "x": 3.2,
-            "y": 11.5,
+            "y": 11.21,
             "size": "big"
           }
         ]
@@ -12720,7 +14055,7 @@
           {
             "id": "cachaca",
             "x": 9.6,
-            "y": 0.95
+            "y": 0.75
           },
           {
             "id": "murky_tree",
@@ -12832,7 +14167,7 @@
           {
             "id": "gnome_bicycle",
             "x": 11.2,
-            "y": 4.65
+            "y": 4.55
           },
           {
             "id": "condenser",
@@ -12842,7 +14177,7 @@
           {
             "id": "arcane_network",
             "x": 12.8,
-            "y": 7.81
+            "y": 7.76
           },
           {
             "id": "essence_extractor",
@@ -12852,42 +14187,67 @@
           {
             "id": "impure_essence",
             "x": 9.6,
-            "y": 6.0
+            "y": 5.79
           },
           {
             "id": "gnomes",
             "x": 9.6,
-            "y": 1.95
+            "y": 1.75
           },
           {
             "id": "gnome_staff",
             "x": 11.2,
-            "y": 1.64
+            "y": 1.43
           },
           {
             "id": "murky_bow",
             "x": 9.6,
-            "y": 2.95
+            "y": 2.75
           },
           {
             "id": "rune_arrows",
             "x": 11.2,
-            "y": 5.65
+            "y": 5.55
           },
           {
             "id": "spell_scrolls",
             "x": 12.8,
-            "y": 1.64
+            "y": 1.43
           },
           {
             "id": "inscription_table",
             "x": 14.4,
-            "y": 4.31
+            "y": 4.2
           },
           {
             "id": "apprentice_tome",
             "x": 14.4,
-            "y": 1.64
+            "y": 1.43
+          },
+          {
+            "id": "spell_casting",
+            "x": 16.0,
+            "y": 0.43
+          },
+          {
+            "id": "staves",
+            "x": 16.0,
+            "y": 1.43
+          },
+          {
+            "id": "arcane_charger",
+            "x": 17.6,
+            "y": 1.43
+          },
+          {
+            "id": "element_tomes",
+            "x": 16.0,
+            "y": 2.43
+          },
+          {
+            "id": "arcane_ruins",
+            "x": 17.6,
+            "y": 0.43
           },
           {
             "id": "runic_crusher",
@@ -12903,7 +14263,7 @@
           {
             "id": "runic_upgrades",
             "x": 9.6,
-            "y": 7.15
+            "y": 6.95
           },
           {
             "id": "ash_generator",
@@ -12918,7 +14278,7 @@
           {
             "id": "farming_machines",
             "x": 9.6,
-            "y": 3.95
+            "y": 3.75
           },
           {
             "id": "tunneler",
@@ -12928,7 +14288,12 @@
           {
             "id": "gnome_boost",
             "x": 11.2,
-            "y": 2.78
+            "y": 2.67
+          },
+          {
+            "id": "machine_sockets",
+            "x": 9.6,
+            "y": 4.75
           },
           {
             "id": "clay_golem",
@@ -12939,7 +14304,7 @@
           {
             "id": "familiars",
             "x": 11.2,
-            "y": 6.65
+            "y": 6.55
           },
           {
             "id": "golem_runes",
@@ -12977,44 +14342,44 @@
           {
             "id": "runic_furnace",
             "x": 0.0,
-            "y": 2.66
+            "y": 2.67
           },
           {
             "id": "realm_ores",
             "x": 0.0,
-            "y": 4.19
+            "y": 4.31
           },
           {
             "id": "essence_extractor",
             "x": 0.0,
-            "y": 5.19
+            "y": 5.31
           },
           {
             "id": "impure_essence",
             "x": 0.0,
-            "y": 6.41
+            "y": 6.31
           },
           {
             "id": "incense_holder",
             "x": 0.0,
-            "y": 7.41
+            "y": 7.31
           },
           {
             "id": "runic_crusher",
             "x": 0.0,
-            "y": 8.41
+            "y": 8.31
           },
           {
             "id": "golem_runes",
             "x": 0.0,
-            "y": 9.41
+            "y": 9.31
           }
         ],
         "entries": [
           {
             "id": "magic_smoke",
             "x": 6.4,
-            "y": 0.52
+            "y": 0.97
           },
           {
             "id": "rune_roller",
@@ -13024,146 +14389,151 @@
           {
             "id": "arcane_furnace",
             "x": 1.6,
-            "y": 2.66
+            "y": 2.67
           },
           {
             "id": "arcane_extractor",
             "x": 1.6,
-            "y": 3.66
+            "y": 3.67
           },
           {
             "id": "magic_compressor",
             "x": 1.6,
-            "y": 6.41,
+            "y": 6.42,
             "size": "big"
           },
           {
             "id": "arcane_compressor",
             "x": 3.2,
-            "y": 2.81
+            "y": 2.53
           },
           {
             "id": "liquefier",
             "x": 3.2,
-            "y": 4.16
+            "y": 4.53
           },
           {
             "id": "magic_incense",
             "x": 3.2,
-            "y": 5.16
+            "y": 5.53
           },
           {
             "id": "magic_residue",
             "x": 4.8,
-            "y": 2.16
+            "y": 2.5
           },
           {
             "id": "impure_chalk",
             "x": 6.4,
-            "y": 1.52
+            "y": 1.97
           },
           {
             "id": "impure_magic_block",
             "x": 6.4,
-            "y": 4.52
+            "y": 4.97
+          },
+          {
+            "id": "runic_conjurer",
+            "x": 8.0,
+            "y": 5.0
           },
           {
             "id": "guide_stone",
             "x": 3.2,
-            "y": 6.16
+            "y": 6.53
           },
           {
             "id": "guide_stone_projection",
             "x": 4.8,
-            "y": 4.16
+            "y": 4.5
           },
           {
             "id": "astrology_field",
             "x": 4.8,
-            "y": 5.16
+            "y": 5.5
           },
           {
             "id": "astrology_table",
             "x": 6.4,
-            "y": 5.77,
+            "y": 6.22,
             "size": "big"
           },
           {
             "id": "constellations",
             "x": 8.0,
-            "y": 5.25
+            "y": 6.0
           },
           {
             "id": "tarot_circle",
             "x": 8.0,
-            "y": 6.25
+            "y": 7.0
           },
           {
             "id": "tarot_table",
             "x": 9.6,
-            "y": 6.25,
+            "y": 7.0,
             "size": "big"
           },
           {
             "id": "tarot_cards",
             "x": 11.2,
-            "y": 6.25
+            "y": 7.0
           },
           {
             "id": "gnome_hat",
             "x": 3.2,
-            "y": 7.16
+            "y": 7.53
           },
           {
             "id": "mystic_robe",
             "x": 4.8,
-            "y": 6.16
+            "y": 6.5
           },
           {
             "id": "comfy_pants",
             "x": 4.8,
-            "y": 7.16
+            "y": 7.5
           },
           {
             "id": "slippers",
             "x": 6.4,
-            "y": 7.02
+            "y": 7.47
           },
           {
             "id": "magic_loom",
             "x": 4.8,
-            "y": 8.16
+            "y": 8.5
           },
           {
             "id": "spatial_barrel",
             "x": 3.2,
-            "y": 8.41,
+            "y": 8.78,
             "size": "big"
           },
           {
             "id": "runic_tank",
             "x": 4.8,
-            "y": 10.16
+            "y": 10.5
           },
           {
             "id": "carryable_barrel",
             "x": 4.8,
-            "y": 11.16
+            "y": 11.5
           },
           {
             "id": "rune_confector",
             "x": 6.4,
-            "y": 8.02
+            "y": 8.47
           },
           {
             "id": "archive_core",
             "x": 4.8,
-            "y": 3.16
+            "y": 3.5
           },
           {
             "id": "archive_terminal",
             "x": 6.4,
-            "y": 3.52
+            "y": 3.97
           },
           {
             "id": "archive_network",
@@ -13176,19 +14546,29 @@
             "y": 4.0
           },
           {
+            "id": "archive_autocraft",
+            "x": 9.6,
+            "y": 3.0
+          },
+          {
+            "id": "runic_conduit",
+            "x": 6.4,
+            "y": 9.47
+          },
+          {
             "id": "arcane_crusher",
             "x": 1.6,
-            "y": 5.16
+            "y": 5.17
           },
           {
             "id": "crusher_forge",
             "x": 4.8,
-            "y": 1.16
+            "y": 1.5
           },
           {
             "id": "runic_battery",
             "x": 6.4,
-            "y": 2.52
+            "y": 2.97
           },
           {
             "id": "advanced_runic_battery",
@@ -13198,33 +14578,38 @@
           {
             "id": "miner",
             "x": 4.8,
-            "y": 9.16
+            "y": 9.5
+          },
+          {
+            "id": "essence_washer",
+            "x": 3.2,
+            "y": 3.53
           },
           {
             "id": "golem_messenger",
             "x": 1.6,
-            "y": 7.66
+            "y": 7.67
           },
           {
             "id": "golem_keeper",
             "x": 8.0,
-            "y": 7.25
+            "y": 8.0
           },
           {
             "id": "accessory_bases",
             "x": 3.2,
-            "y": 9.66,
+            "y": 10.03,
             "size": "big"
           },
           {
             "id": "rings",
             "x": 4.8,
-            "y": 12.16
+            "y": 12.5
           },
           {
             "id": "amulets",
             "x": 4.8,
-            "y": 13.16
+            "y": 13.5
           }
         ]
       },
@@ -13300,7 +14685,7 @@
           {
             "id": "celestial_events",
             "x": 6.4,
-            "y": 2.57
+            "y": 2.38
           },
           {
             "id": "impure_heart",
@@ -13310,38 +14695,63 @@
           {
             "id": "awakened_heart",
             "x": 6.4,
-            "y": 4.57
+            "y": 4.38
           },
           {
             "id": "mithril_gear",
             "x": 6.4,
-            "y": 3.57
+            "y": 3.38
           },
           {
             "id": "runic_artifacts",
             "x": 8.0,
-            "y": 2.46,
+            "y": 2.39,
             "size": "big"
           },
           {
             "id": "frost_skates",
             "x": 9.6,
-            "y": 2.21
+            "y": 2.1
           },
           {
             "id": "storm_gauntlet",
             "x": 9.6,
-            "y": 3.21
+            "y": 3.1
+          },
+          {
+            "id": "mana_well",
+            "x": 11.2,
+            "y": 14.02
+          },
+          {
+            "id": "mana_siphon",
+            "x": 12.8,
+            "y": 14.02
+          },
+          {
+            "id": "scroll_printer",
+            "x": 11.2,
+            "y": 15.02
           },
           {
             "id": "natal_chart",
             "x": 6.4,
-            "y": 5.57
+            "y": 5.38
           },
           {
             "id": "astral_pillar",
             "x": 8.0,
-            "y": 4.71
+            "y": 4.64
+          },
+          {
+            "id": "sky_machines",
+            "x": 8.0,
+            "y": 1.14
+          },
+          {
+            "id": "astral_clock",
+            "x": 9.6,
+            "y": 0.85
           },
           {
             "id": "pocket_battery",
@@ -13351,12 +14761,17 @@
           {
             "id": "experience_generator",
             "x": 8.0,
-            "y": 3.71
+            "y": 3.64
           },
           {
             "id": "impure_reactor",
             "x": 6.4,
-            "y": 6.57
+            "y": 6.38
+          },
+          {
+            "id": "runic_crystallizer",
+            "x": 9.6,
+            "y": 13.35
           },
           {
             "id": "taint",
@@ -13371,7 +14786,7 @@
           {
             "id": "seeking_pendulum",
             "x": 6.4,
-            "y": 11.07
+            "y": 10.88
           },
           {
             "id": "rue",
@@ -13391,17 +14806,27 @@
           {
             "id": "distiller",
             "x": 6.4,
-            "y": 12.07
+            "y": 12.88
           },
           {
             "id": "crystallizer",
             "x": 8.0,
-            "y": 12.96
+            "y": 13.64
           },
           {
             "id": "pure_generator",
             "x": 9.6,
-            "y": 12.71
+            "y": 14.35
+          },
+          {
+            "id": "area_taint",
+            "x": 6.4,
+            "y": 11.88
+          },
+          {
+            "id": "rue_filter",
+            "x": 8.0,
+            "y": 12.64
           },
           {
             "id": "folklore_intro",
@@ -13412,47 +14837,57 @@
           {
             "id": "werewolf",
             "x": 6.4,
-            "y": 9.07
+            "y": 8.88
           },
           {
             "id": "silver_dagger",
             "x": 8.0,
-            "y": 5.71
+            "y": 5.64
           },
           {
             "id": "ancestral_forest",
             "x": 6.4,
-            "y": 10.07
+            "y": 9.88
           },
           {
             "id": "matinta_pereira",
             "x": 8.0,
-            "y": 8.96
+            "y": 8.64
           },
           {
             "id": "cuca",
             "x": 9.6,
-            "y": 8.71
+            "y": 8.35
           },
           {
             "id": "caipora",
             "x": 8.0,
-            "y": 9.96
+            "y": 9.64
           },
           {
             "id": "iara",
             "x": 8.0,
-            "y": 10.96
+            "y": 10.64
           },
           {
             "id": "mapinguari",
             "x": 8.0,
-            "y": 11.96
+            "y": 11.64
+          },
+          {
+            "id": "potion_still",
+            "x": 11.2,
+            "y": 8.02
+          },
+          {
+            "id": "iara_pump",
+            "x": 9.6,
+            "y": 10.35
           },
           {
             "id": "beyond_intro",
             "x": 6.4,
-            "y": 7.82,
+            "y": 7.63,
             "size": "big"
           }
         ]
@@ -13466,49 +14901,49 @@
           {
             "id": "pipe",
             "x": 0.0,
-            "y": 5.7
+            "y": 6.53
           },
           {
             "id": "gnome_staff",
             "x": 0.0,
-            "y": 6.7
+            "y": 7.53
           },
           {
             "id": "impure_altar",
             "x": 0.0,
-            "y": 7.7
+            "y": 8.53
           },
           {
             "id": "awakened_heart",
             "x": 0.0,
-            "y": 8.7
+            "y": 9.53
           },
           {
             "id": "mithril_gear",
             "x": 0.0,
-            "y": 9.7
+            "y": 10.53
           },
           {
             "id": "crystallizer",
             "x": 0.0,
-            "y": 10.7
+            "y": 11.53
           },
           {
             "id": "folklore_intro",
             "x": 0.0,
-            "y": 12.16
+            "y": 13.02
           },
           {
             "id": "bottled_lightning",
             "x": 0.0,
-            "y": 13.16
+            "y": 14.02
           }
         ],
         "entries": [
           {
             "id": "runic_pipe",
             "x": 1.6,
-            "y": 5.7
+            "y": 6.53
           },
           {
             "id": "runic_hookah",
@@ -13528,7 +14963,7 @@
           {
             "id": "altar_tier2",
             "x": 1.6,
-            "y": 7.7,
+            "y": 8.53,
             "size": "big"
           },
           {
@@ -13539,12 +14974,12 @@
           {
             "id": "adamantine_gear",
             "x": 1.6,
-            "y": 8.95
+            "y": 9.78
           },
           {
             "id": "rune_anvil",
             "x": 3.2,
-            "y": 9.0
+            "y": 10.0
           },
           {
             "id": "wind_boots",
@@ -13554,17 +14989,17 @@
           {
             "id": "volcanic_hammer",
             "x": 3.2,
-            "y": 10.0
+            "y": 11.0
           },
           {
             "id": "tide_mask",
             "x": 3.2,
-            "y": 11.0
+            "y": 12.0
           },
           {
             "id": "beacon_crown",
             "x": 3.2,
-            "y": 12.0
+            "y": 13.0
           },
           {
             "id": "void_magnet",
@@ -13584,43 +15019,58 @@
           {
             "id": "transmission_pylon",
             "x": 3.2,
-            "y": 13.0
+            "y": 14.0
+          },
+          {
+            "id": "astral_prism",
+            "x": 3.2,
+            "y": 9.0
           },
           {
             "id": "sanctuary",
             "x": 1.6,
-            "y": 10.2,
+            "y": 11.03,
             "size": "big"
           },
           {
             "id": "sanctuary_blessings",
             "x": 3.2,
-            "y": 14.0
+            "y": 15.0
           },
           {
             "id": "sanctuary_rituals",
             "x": 3.2,
-            "y": 15.0
+            "y": 16.0
           },
           {
             "id": "sanctuary_sky",
             "x": 3.2,
-            "y": 16.0
+            "y": 17.0
           },
           {
             "id": "saci",
             "x": 1.6,
-            "y": 12.45
+            "y": 13.28
           },
           {
             "id": "raven",
             "x": 1.6,
-            "y": 11.45
+            "y": 12.28
           },
           {
             "id": "curupira",
             "x": 4.8,
-            "y": 12.58
+            "y": 13.49
+          },
+          {
+            "id": "saci_windmill",
+            "x": 3.2,
+            "y": 18.0
+          },
+          {
+            "id": "curupira_stump",
+            "x": 6.4,
+            "y": 13.49
           }
         ]
       },
@@ -13700,38 +15150,43 @@
           {
             "id": "altar_tier3",
             "x": 3.2,
-            "y": 2.0,
+            "y": 1.4,
             "size": "big"
           },
           {
             "id": "tier3_rituals",
             "x": 4.8,
-            "y": 4.58
+            "y": 4.28
           },
           {
             "id": "orichalcum_gear",
             "x": 6.4,
-            "y": 4.58
+            "y": 3.28
           },
           {
             "id": "pure_orichalcum_gear",
             "x": 8.0,
-            "y": 3.38
+            "y": 1.11
+          },
+          {
+            "id": "celestial_gear",
+            "x": 9.6,
+            "y": 2.7
           },
           {
             "id": "cloud_broom",
             "x": 8.0,
-            "y": 4.38
+            "y": 2.11
           },
           {
             "id": "shadow_cloak",
             "x": 8.0,
-            "y": 2.34
+            "y": 0.11
           },
           {
             "id": "tide_spear",
             "x": 8.0,
-            "y": 5.38
+            "y": 3.11
           },
           {
             "id": "gear_bows",
@@ -13741,7 +15196,12 @@
           {
             "id": "arcane_crossbow",
             "x": 3.2,
-            "y": 4.0
+            "y": 3.4
+          },
+          {
+            "id": "celestial_conjurer",
+            "x": 8.0,
+            "y": 5.11
           },
           {
             "id": "mage_robes",
@@ -13751,17 +15211,37 @@
           {
             "id": "astral_pocket_battery",
             "x": 6.4,
-            "y": 1.83
+            "y": 0.23
           },
           {
             "id": "ethereal_network",
             "x": 4.8,
-            "y": 1.83
+            "y": 1.23
           },
           {
             "id": "stellar_observatory",
             "x": 8.0,
-            "y": 6.38
+            "y": 4.11
+          },
+          {
+            "id": "star_forge",
+            "x": 6.4,
+            "y": 4.28
+          },
+          {
+            "id": "celestial_core",
+            "x": 8.0,
+            "y": 6.11
+          },
+          {
+            "id": "celestial_battery",
+            "x": 8.0,
+            "y": 7.11
+          },
+          {
+            "id": "dream_reactor",
+            "x": 6.4,
+            "y": 5.28
           },
           {
             "id": "headless_mule",
@@ -13776,17 +15256,27 @@
           {
             "id": "boitata_armor",
             "x": 3.2,
-            "y": 8.5
+            "y": 7.9
           },
           {
             "id": "boitata_egg",
             "x": 4.8,
-            "y": 5.58
+            "y": 5.28
           },
           {
             "id": "boitata_mount_gear",
             "x": 6.4,
-            "y": 5.58
+            "y": 6.28
+          },
+          {
+            "id": "boitata_ember",
+            "x": 3.2,
+            "y": 8.9
+          },
+          {
+            "id": "boitata_pump",
+            "x": 3.2,
+            "y": 9.9
           }
         ]
       },

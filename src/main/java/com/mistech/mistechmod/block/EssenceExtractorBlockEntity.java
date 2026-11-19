@@ -26,6 +26,13 @@ public class EssenceExtractorBlockEntity extends BlockEntity implements com.mist
 
     private int progress;
 
+    // Cliente: progresso recebido do servidor (para a essencia subir aos poucos) e rotacao suave do olho
+    public int clientProgress;
+    public int clientTicksPerLevel = TICKS_PER_LEVEL;
+    public long clientSyncTime;
+    public float eyeYaw, eyePitch = 35.0F;
+    public double eyeClock;
+
     private final SimpleEnergyHandler energy = new SimpleEnergyHandler(CAPACITY, MAX_INPUT_PER_TICK, 0) {
         @Override
         protected void onEnergyChanged(int previousAmount) {
@@ -53,6 +60,9 @@ public class EssenceExtractorBlockEntity extends BlockEntity implements com.mist
         }
         extractor.energy.set(extractor.energy.getAmountAsInt() - ENERGY_PER_TICK);
         extractor.progress++;
+        if (level instanceof net.minecraft.server.level.ServerLevel server) {
+            com.mistech.mistechmod.purity.area.AreaTaint.add(server, pos, com.mistech.mistechmod.Config.areaTaintEssenceMachines() / 1200.0F);
+        }
         // Impulso de Gnomo: +50% (1 tick extra a cada 2), gastando a energia desse tick extra
         if (com.mistech.mistechmod.machine.GnomeBoost.extraStep(level, pos)
                 && extractor.energy.getAmountAsInt() >= ENERGY_PER_TICK) {
@@ -63,6 +73,9 @@ public class EssenceExtractorBlockEntity extends BlockEntity implements com.mist
             extractor.progress = 0;
             level.setBlock(pos, state.setValue(EssenceExtractorBlock.LEVEL, current + 1), Block.UPDATE_ALL);
             level.playSound(null, pos, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 0.7F, 0.6F);
+        } else if (level.getGameTime() % 20 == 0) {
+            // manda o progresso para o cliente 1x por segundo; entre um envio e outro o renderer interpola
+            level.sendBlockUpdated(pos, state, state, Block.UPDATE_CLIENTS);
         }
         extractor.setChanged();
     }
@@ -72,6 +85,39 @@ public class EssenceExtractorBlockEntity extends BlockEntity implements com.mist
         super.loadAdditional(input);
         this.progress = input.getIntOr("Progress", 0);
         this.energy.deserialize(input);
+        if (this.level != null && this.level.isClientSide()) {
+            this.clientProgress = this.progress;
+            this.clientTicksPerLevel = Math.max(1, input.getIntOr("TicksPerLevel", TICKS_PER_LEVEL));
+            this.clientSyncTime = this.level.getGameTime();
+        }
+    }
+
+    @Override
+    public net.minecraft.nbt.CompoundTag getUpdateTag(net.minecraft.core.HolderLookup.Provider registries) {
+        net.minecraft.nbt.CompoundTag tag = this.saveWithoutMetadata(registries);
+        tag.putInt("TicksPerLevel", com.mistech.mistechmod.Config.extractorTicksPerLevel());
+        return tag;
+    }
+
+    @Override
+    public net.minecraft.network.protocol.Packet<net.minecraft.network.protocol.game.ClientGamePacketListener> getUpdatePacket() {
+        return net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    /** Fração do nível atual já enchida (0..1), estimada no cliente entre os envios do servidor. */
+    public float clientFillFraction(float partialTicks) {
+        if (this.level == null) {
+            return 0.0F;
+        }
+        BlockState state = this.getBlockState();
+        if (!state.hasProperty(EssenceExtractorBlock.LEVEL) || state.getValue(EssenceExtractorBlock.LEVEL) >= EssenceExtractorBlock.MAX_LEVEL) {
+            return 0.0F;
+        }
+        float p = this.clientProgress;
+        if (state.getValue(EssenceExtractorBlock.LIT)) {
+            p += Math.min(40.0F, this.level.getGameTime() - this.clientSyncTime + partialTicks);
+        }
+        return Math.max(0.0F, Math.min(1.0F, p / this.clientTicksPerLevel));
     }
 
     @Override

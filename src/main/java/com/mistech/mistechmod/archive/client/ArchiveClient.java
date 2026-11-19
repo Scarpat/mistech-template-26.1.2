@@ -30,5 +30,13 @@ public final class ArchiveClient {
                 menu.powered = payload.powered();
             }
         });
+        event.register(ArchiveNetwork.CraftSyncPayload.TYPE, (payload, context) -> {
+            var player = Minecraft.getInstance().player;
+            if (player != null && player.containerMenu instanceof ArchiveTerminalMenu menu && menu.containerId == payload.containerId()) {
+                menu.craftables = payload.craftables();
+                menu.queued = payload.queued();
+                menu.jobs = payload.jobs();
+            }
+        });
     }
 }

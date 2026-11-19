@@ -45,8 +45,17 @@ public abstract class FarmMachineBlockEntity extends MachineBlockEntity {
     public net.minecraft.world.phys.AABB workArea() {
         int radius = this.level != null && this.level.isClientSide() && this.clientRadius >= 0 ? this.clientRadius : this.radius();
         BlockPos center = this.areaCenter(this.worldPosition, this.getBlockState(), radius);
-        return new net.minecraft.world.phys.AABB(center.getX() - radius, this.worldPosition.getY() - 1, center.getZ() - radius,
-                center.getX() + radius + 1, this.worldPosition.getY() + 2, center.getZ() + radius + 1);
+        return new net.minecraft.world.phys.AABB(center.getX() - radius, this.worldPosition.getY() - this.areaBelow(), center.getZ() - radius,
+                center.getX() + radius + 1, this.worldPosition.getY() + 1 + this.areaAbove(), center.getZ() + radius + 1);
+    }
+
+    /** Altura da área mostrada: blocos abaixo e acima da máquina. */
+    protected int areaBelow() {
+        return 1;
+    }
+
+    protected int areaAbove() {
+        return 1;
     }
 
     /** Centro da área: logo à frente da máquina. */
@@ -67,7 +76,20 @@ public abstract class FarmMachineBlockEntity extends MachineBlockEntity {
         int dx = this.cursor % side - radius;
         int dz = this.cursor / side - radius;
         this.cursor++;
-        return new BlockPos(center.getX() + dx, pos.getY(), center.getZ() + dz);
+        BlockPos column = new BlockPos(center.getX() + dx, pos.getY(), center.getZ() + dz);
+        if (this.socketActive(com.mistech.mistechmod.item.RuneElement.CLOUD) && this.level != null) {
+            // Runa das Nuvens engastada: rega a terra arada da coluna
+            for (int dy = -2; dy <= 0; dy++) {
+                BlockPos soil = column.above(dy);
+                BlockState there = this.level.getBlockState(soil);
+                if (there.getBlock() instanceof net.minecraft.world.level.block.FarmlandBlock
+                        && there.getValue(net.minecraft.world.level.block.FarmlandBlock.MOISTURE) < net.minecraft.world.level.block.FarmlandBlock.MAX_MOISTURE) {
+                    this.level.setBlock(soil, there.setValue(net.minecraft.world.level.block.FarmlandBlock.MOISTURE,
+                            net.minecraft.world.level.block.FarmlandBlock.MAX_MOISTURE), net.minecraft.world.level.block.Block.UPDATE_CLIENTS);
+                }
+            }
+        }
+        return column;
     }
 
     /** Anda o relógio; true quando é hora de olhar a próxima coluna. */

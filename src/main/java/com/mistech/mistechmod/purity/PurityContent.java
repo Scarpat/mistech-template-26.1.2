@@ -93,6 +93,12 @@ public final class PurityContent {
                     .copyOnDeath()
                     .build());
 
+    /** Mácula do lugar (0–100), guardada em cada chunk (Fase 4). Ver {@link com.mistech.mistechmod.purity.area.AreaTaint}. */
+    public static final Supplier<AttachmentType<Float>> AREA_TAINT = ATTACHMENTS.register("area_taint",
+            () -> AttachmentType.builder(() -> 0.0F)
+                    .serialize(Codec.FLOAT.fieldOf("taint"))
+                    .build());
+
     // ----- componentes -----
     /** Runa selada no Santuário: não gasta usos, mas só funciona para quem não está Corrompido. */
     public static final DeferredHolder<net.minecraft.core.component.DataComponentType<?>, net.minecraft.core.component.DataComponentType<Boolean>> SEALED =

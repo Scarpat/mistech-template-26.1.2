@@ -65,7 +65,10 @@ public final class MultiblockPlans {
         Block b = state.getBlock();
         return b instanceof WritingTableBlock || b instanceof ImpureAltarBlock || state.is(Mistech.ASTROLOGY_TABLE.get())
                 || state.is(PurityContent.SANCTUARY_FONT.get()) || state.is(Mistech.IMPURE_MAGIC_BLOCK.get())
-                || state.is(com.mistech.mistechmod.machine.forge.ForgeContent.CRUSHER_FORGE.get());
+                || state.is(com.mistech.mistechmod.machine.forge.ForgeContent.CRUSHER_FORGE.get())
+                || state.is(com.mistech.mistechmod.refining.RefiningContent.ASTRAL_PRISM.get())
+                || state.is(com.mistech.mistechmod.endgame.EndgameContent.STAR_FORGE.get())
+                || state.is(com.mistech.mistechmod.endgame.EndgameContent.DREAM_REACTOR.get());
     }
 
     public static List<Plan> plans(Level level, BlockPos anchor) {
@@ -95,6 +98,28 @@ public final class MultiblockPlans {
                 pieces.add(block(part.pos(), part.block()));
             }
             list.add(new Plan(Component.translatable("block.mistech.crusher_forge"), pieces));
+        } else if (state.is(com.mistech.mistechmod.refining.RefiningContent.ASTRAL_PRISM.get())) {
+            List<Piece> pieces = new ArrayList<>();
+            for (var part : com.mistech.mistechmod.refining.AstralPrismStructure.pieces(anchor)) {
+                ItemStack icon = switch (part.kind()) {
+                    case LAPIS -> new ItemStack(Blocks.LAPIS_BLOCK);
+                    case PILLAR -> new ItemStack(Mistech.ASTRAL_PILLAR_ITEM.get());
+                    case GLASS -> new ItemStack(Blocks.GLASS);
+                };
+                Component name = switch (part.kind()) {
+                    case LAPIS -> Blocks.LAPIS_BLOCK.getName();
+                    case PILLAR -> Mistech.ASTRAL_PILLAR.get().getName();
+                    case GLASS -> Blocks.GLASS.getName();
+                };
+                pieces.add(new Piece(part.pos().immutable(), (l, p) -> com.mistech.mistechmod.refining.AstralPrismStructure.matches(l, part),
+                        icon, name, false));
+            }
+            list.add(new Plan(Component.translatable("block.mistech.astral_prism"), pieces));
+        } else if (state.is(com.mistech.mistechmod.endgame.EndgameContent.STAR_FORGE.get())) {
+            list.add(endgame("block.mistech.star_forge", com.mistech.mistechmod.endgame.EndgameStructures.forge(anchor)));
+        } else if (state.is(com.mistech.mistechmod.endgame.EndgameContent.DREAM_REACTOR.get())) {
+            list.add(endgame("block.mistech.dream_reactor", com.mistech.mistechmod.endgame.EndgameStructures.reactor(anchor,
+                    state.getValue(com.mistech.mistechmod.machine.MachineBlock.FACING))));
         } else if (state.is(Mistech.IMPURE_MAGIC_BLOCK.get())) {
             list.add(astralPillar(anchor));
             list.add(miner(anchor));
@@ -103,6 +128,25 @@ public final class MultiblockPlans {
     }
 
     // ----- peças -----
+
+    private static Plan endgame(String title, List<com.mistech.mistechmod.endgame.EndgameStructures.Part> parts) {
+        List<Piece> pieces = new ArrayList<>();
+        for (var part : parts) {
+            Block icon = switch (part.kind()) {
+                case FORGE_FLOOR -> com.mistech.mistechmod.registry.OreContent.ORICHALCUM_BLOCK.get();
+                case OBELISK -> AltarContent.MITHRIL_OBELISK.get();
+                case BRAZIER -> AltarContent.ORICHALCUM_BRAZIER.get();
+                case GLASS -> Blocks.GLASS;
+                case STAR_STONE -> com.mistech.mistechmod.registry.DreamRealmContent.STAR_STONE.get();
+                case CLOUD_WOOL -> com.mistech.mistechmod.registry.DreamRealmContent.CLOUD_WOOL.get();
+            };
+            Component name = part.kind() == com.mistech.mistechmod.endgame.EndgameStructures.Kind.FORGE_FLOOR
+                    ? Component.translatable("multiblock.mistech.piece.forge_floor") : icon.getName();
+            pieces.add(new Piece(part.pos().immutable(), (l, p) -> com.mistech.mistechmod.endgame.EndgameStructures.matches(l, part),
+                    new ItemStack(icon), name, false));
+        }
+        return new Plan(Component.translatable(title), pieces);
+    }
 
     private static Piece block(BlockPos pos, Block block) {
         return new Piece(pos.immutable(), (l, p) -> l.getBlockState(p).is(block), new ItemStack(block), block.getName(), false);

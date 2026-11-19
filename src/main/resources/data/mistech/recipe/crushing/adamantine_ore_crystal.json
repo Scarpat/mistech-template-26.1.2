@@ -1,0 +1,8 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "mistech:adamantine_ore_crystal",
+  "result": {
+    "id": "mistech:adamantine_dust",
+    "count": 1
+  }
+}

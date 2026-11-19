@@ -1,0 +1,8 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "mistech:orichalcum_ore_crystal",
+  "result": {
+    "id": "mistech:orichalcum_dust",
+    "count": 1
+  }
+}

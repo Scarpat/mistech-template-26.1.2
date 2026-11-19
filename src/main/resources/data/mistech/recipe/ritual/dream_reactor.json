@@ -1,0 +1,20 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:impure_reactor",
+  "ingredients": [
+    "mistech:memory_shard",
+    "mistech:memory_shard",
+    "mistech:memory_shard",
+    "mistech:memory_shard",
+    "mistech:purified_dreamcatcher",
+    "mistech:time_rune"
+  ],
+  "essence": 8,
+  "duration": 600,
+  "condition": "night",
+  "min_tier": 3,
+  "result": {
+    "id": "mistech:dream_reactor"
+  },
+  "effect": "astral"
+}

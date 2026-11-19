@@ -137,6 +137,10 @@ public final class MithrilContent {
     public static final GearSet PURE_ORICHALCUM = new GearSet(GearTier.PURE_ORICHALCUM, 20.0F, 12.0F, 30,
             Map.of(ArmorType.BOOTS, 5, ArmorType.LEGGINGS, 9, ArmorType.CHESTPLATE, 11, ArmorType.HELMET, 5, ArmorType.BODY, 26),
             10.0F, 0.4F, Rarity.EPIC);
+    /** Celeste (Fase 9, altar Tier III sobre o oricalco puro + 2 Lingotes Celestes): 10 engastes, runas ×1,75. */
+    public static final GearSet CELESTIAL = new GearSet(GearTier.CELESTIAL, 24.0F, 14.0F, 32,
+            Map.of(ArmorType.BOOTS, 6, ArmorType.LEGGINGS, 9, ArmorType.CHESTPLATE, 12, ArmorType.HELMET, 6, ArmorType.BODY, 28),
+            12.0F, 0.5F, Rarity.EPIC);
 
     /** Bigorna Rúnica: engasta runas no equipamento. */
     public static final DeferredBlock<RuneAnvilBlock> RUNE_ANVIL = Mistech.BLOCKS.registerBlock("rune_anvil", RuneAnvilBlock::new,
@@ -153,6 +157,7 @@ public final class MithrilContent {
         list.addAll(ADAMANTINE.items());
         list.addAll(ORICHALCUM.items());
         list.addAll(PURE_ORICHALCUM.items());
+        list.addAll(CELESTIAL.items());
         return list;
     }
 

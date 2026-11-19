@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "PPP",
+    "LRL",
+    "PPP"
+  ],
+  "key": {
+    "P": "#minecraft:planks",
+    "L": "minecraft:lapis_lazuli",
+    "R": "mistech:archive_relay"
+  },
+  "result": {
+    "id": "mistech:pattern_shelf",
+    "count": 1
+  }
+}

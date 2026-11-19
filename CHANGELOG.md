@@ -1,5 +1,71 @@
 # Mistech — Changelog
 
+## Nov 19, 2026 — Magic × tech: Conjurer, machine sockets, ore refining, endgame, dream spell effects
+
+Everything since commit `dcddb97` (Oct 23). Compiles; **most of it is not yet tested in-game** (the dream spell effects pilot was tested and approved). Area Taint and machine owners only apply to machines placed from now on in existing worlds.
+
+### Runic Conjurer — spells as automation
+- **Blank Spell Crystal** (4 amethyst shards + Impure Magic Fragment + quartz → 2) and **Spell Crystal**: engrave a spell you know on the **Inscription Table** (new *Crystal* mode; costs 5× the spell's mana, keeps 75% of your power). Sneak + use (or crystal + water bucket) clears it.
+- **Runic Conjurer**: casts the crystal's spell on its own — turret (Spark, Ice Shard, Boulder, Discharge… range 12), area (Frost Nova, Earthquake, Blizzard…), farm (Bloom, Sprout), support (Healing Tide, Stone Skin, Holy Light, Purify), logistics (Telekinesis, Pull) and utility (Recharge, Arcane Impulse, Light Orb, Updraft, Vigilant Gaze → comparator alarm). Costs mana × 40 FE per cast plus essence from tier 3; auto or redstone-pulse mode. Never hits players, pets, golems or summons; kills count loot and XP for the owner.
+- **Celestial Conjurer** (T3 ritual): two crystals that alternate, ×1.25 power, ×0.75 recharge.
+
+### Machine sockets
+- Every machine screen gets a **socket column** (1–3 sockets). Socketed runes add effects: Fire smelts the output, Earth/Echo/Luck give extra output, Soul doubles XP, Time +25% speed, Arcane −20% FE, Ice/Vapor remove the speed-upgrade energy penalty, Water/Life +30% speed on fluid/area machines, Cloud waters farmland, Air pulls items from the ground and speeds auto I/O, Energy +50% I/O, Vigil drives a comparator when the machine stops, Magma/Darkness/Light boost generators, **Space** sends output to an Extraplanar channel (rename the rune on an anvil), **Void** destroys overflow.
+- Socketed runes wear 1 use every 4 min of work (sealed runes don't).
+
+### Ore refining chain (up to 5× / 6×)
+- **Essence Washer**: ore → 3 Impregnated Clumps (100 mB Impure Essence; chance of Tainted Residue).
+- **Runic Crystallizer**: ore → 4 Ore Crystals (250 mB Purified Essence, needs sunlight; a socketed Light Rune keeps it at 75% at night).
+- **Astral Prism** (multiblock, T2 night ritual): ore → 5 dusts in batches of 8, only at night; moon phase and weather change the speed. With a Celestial Core: 6 dusts.
+- Iron, gold, copper, mithril, adamantine, orichalcum; iron/gold/copper sometimes give Mithril/Orichalcum/Adamantine dust.
+
+### Area Taint
+- Every chunk now has its own **Taint** (0–100). Impure Reactor, Essence Washer, extractors/compressors, Impure Altar rituals and impure spells raise it; it spreads above 50 and fades in sunlight below 20.
+- Effects by band: personal Taint while standing there, slower crops, withered grass and Tainted Soil, extra monster spawns, purple fog, slower machines, stronger impure spells.
+- Cleaning: new **Rue Filter** (−2/min in 3×3 chunks), Purified Generator, Purify spell, Soil Consecration. See it with the Amethyst Pendulum (sneak = points to the worst chunk), Jade or `/mistech area_taint`.
+
+### Mana ↔ energy
+- **Mana Well**: FE + Purified Essence → mana. A 6-block aura refills players and staff reserves; right-click refills you (30 s cooldown); it also stores liquid mana you can bottle as **Mana Potions** (+100 mana).
+- **Arcane Siphon**: hold right-click to drain your mana into FE (15 FE per point, 2× when Corrupted); a Mana Potion gives 1,500 FE at once.
+
+### Sky & machines
+- Celestial events and your completed constellations now boost machines (e.g. Blood Moon: Impure Reactor +50%; Silver Moon: Astral Prism ×1.5 and cleans Taint; Star Shower: Observatory ×2; Aurora doubles Luck/Echo sockets). Machines remember who placed them.
+- **Astral Clock**: comparator signal for moon phase, current event, day/night or local Taint.
+
+### Folklore machines
+- **Saci Windmill** (wind generator, 20–150 FE/t by height and weather; pay it tobacco or it plays pranks), **Iara Pump** (pulls fluid sources in a 16-block radius; endless water in rivers/oceans or next to an infinite pool), **Boitatá Pump** (lava; endless in the Nether), **Curupira Stump** (fells whole trees and replants; paid in cachaça), **Potion Still** (brews 8 potions at a time; automatic Cuca's Brew), **Scroll Printer** (copies spell scrolls).
+- **Boitatá Ember**: dropped by Boitatás or produced by a well-fed adult mount; ×3 Igneous Boiler catalyst that doesn't burn lava.
+
+### Logistics & storage
+- **Runic Conduits**: one pipe for items, fluids and energy; set each end to deliver / pull / off and choose what each conduit carries. Tiers: **Runic, Mithril, Adamantine, Orichalcum** (up to 64 items, 16,000 mB and 128,000 FE/t per end).
+- **Extraplanar Barrel** and **Extraplanar Tank**: blocks with the same code share their contents across any distance and dimension (sneak + empty hands sets the code).
+- **Archive autocrafting**: **Pattern Scrolls** (crafting or machine processing, priorities, multiple recipes) on a **Pattern Shelf**; the Archive Table's ⚒ tab requests items and plans the whole chain. Artisan golems craft, Messenger golems carry items to machines, Keepers request what's missing.
+- Every Mistech block with an inventory or energy now exposes it to pipes, and machine sides default to input + output.
+
+### Endgame — Celestial tier
+- **Star Forge** (5×5 multiblock, T3 ritual): mithril + adamantine + orichalcum molten metal + Purified Essence + Star Fragment + 500,000 FE → **Celestial Ingot**; only at night and in clean chunks.
+- **Dream Reactor** (3×3×3 multiblock): burns Dream Fragments, Dream Dust and Memory Shards for 2,000 FE/t; ×2 while you sleep nearby; may spawn nightmares.
+- **Celestial Battery**: 10M FE, wirelessly drains generators and powers machines around it.
+- **Celestial Core**: makes a machine's socketed runes permanent.
+- **Celestial gear**: upgrade Pure Orichalcum pieces (T3 ritual) — 5M FE, 10 rune sockets, runes ×1.75; set bonus +12 health, solar shield, Resistance at night. SilentGear `celestial` material.
+
+### Spell effects reworked
+- All 72 spells now have **dreamlike, surreal effects** instead of stretched blocks and generic particles: ember moths for Fire, staring eyes and shadow hands for Darkness, porcelain masks and mirror shards for Ice, fish swimming in the air for Water, waking stone heads for Earth, paper birds for Air, needle-and-thread lightning for Energy, wheels of eyes for Light, roman numerals and hourglasses for Time, starry eyelids for Space, a breathing garden for Life, and more. Charging and ritual casts have their own build-up per element; the Runic Conjurer uses them too.
+
+### Other additions
+- **Runic Coffee Maker**: 3 lines at once (coffee, belladonna, mushroom), fills its own water, stores up to 16 doses per line; you pick which drink fills each cup.
+- **Crops with their own models**: hemp grows ~2 blocks tall, tobacco flowers, coffee bushes ripen green → yellow → red, rue grows in tufts, the mandrake's face pokes out of the soil.
+- **Runic Furnace** and **Condenser** redesigned with a floating crystal (flame / ice) that spins while they work. The **Essence Extractor** has the End Eye that follows you again.
+- Rune Anvil now has 10 slots (5×2) for Celestial gear.
+
+### Fixes
+- Celestial gear crash (rune slots above 8).
+- Curupira Stump finds trunks above/below its level.
+- Machine screen text no longer overflows (auto-wrap and shrink); empty slots show a hint icon and tooltip.
+- Missing item capability on the Runic Furnace, Condenser, Incense Holder and Confector, and missing energy capability on the Igneous Boiler and Impure Reactor.
+
+---
+
 ## Oct 23, 2026 — Spellcraft, Crusher Forge, machine upgrades, Dream Rifts
 
 Everything since commit `071dafb` (Oct 16). Compiles; **not yet tested in-game**. New structures only generate in new worlds or unexplored chunks. The Create recipes are data-only (no Create build for 26.1 exists yet).

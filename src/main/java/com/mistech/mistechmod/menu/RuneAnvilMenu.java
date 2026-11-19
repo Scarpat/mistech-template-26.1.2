@@ -27,9 +27,9 @@ import net.minecraft.world.item.ItemStack;
  */
 public class RuneAnvilMenu extends AbstractContainerMenu {
     public static final int GEAR_X = 26, GEAR_Y = 35;
-    public static final int RUNE_X0 = 72, RUNE_Y0 = 24, RUNE_STEP = 22;
+    public static final int RUNE_X0 = 70, RUNE_Y0 = 24, RUNE_STEP = 20, RUNE_ROW = 22, RUNE_COLS = 5;
 
-    private static final int CONTAINER_SLOTS = 1 + GearRunes.MAX_SLOTS; // 9
+    private static final int CONTAINER_SLOTS = 1 + GearRunes.MAX_SLOTS; // 11
     private static final int INV_START = CONTAINER_SLOTS;
     private static final int INV_END = INV_START + 27;
     private static final int HOTBAR_END = INV_END + 9;
@@ -65,7 +65,7 @@ public class RuneAnvilMenu extends AbstractContainerMenu {
             }
         });
         for (int i = 0; i < GearRunes.MAX_SLOTS; i++) {
-            this.addSlot(new RuneSlot(i, RUNE_X0 + (i % 4) * RUNE_STEP, RUNE_Y0 + (i / 4) * RUNE_STEP));
+            this.addSlot(new RuneSlot(i, RUNE_X0 + (i % RUNE_COLS) * RUNE_STEP, RUNE_Y0 + (i / RUNE_COLS) * RUNE_ROW));
         }
         this.addStandardInventorySlots(inventory, 8, 84);
     }

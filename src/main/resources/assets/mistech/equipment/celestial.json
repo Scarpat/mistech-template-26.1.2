@@ -1,0 +1,19 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "mistech:celestial"
+      }
+    ],
+    "humanoid_baby": [
+      {
+        "texture": "mistech:celestial"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "mistech:celestial"
+      }
+    ]
+  }
+}

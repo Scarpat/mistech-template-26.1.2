@@ -1,0 +1,138 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "particle": "mistech:block/dream_reactor_shell",
+    "shell": "mistech:block/dream_reactor_shell",
+    "eye": "mistech:block/dream_reactor_eye",
+    "star": "mistech:block/star_stone"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "north": {
+          "texture": "#eye",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#shell",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "east": {
+          "texture": "#shell",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "west": {
+          "texture": "#shell",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "up": {
+          "texture": "#shell",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "down": {
+          "texture": "#shell",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        -0.01,
+        15,
+        -0.01
+      ],
+      "to": [
+        16.01,
+        16.01,
+        16.01
+      ],
+      "faces": {
+        "north": {
+          "texture": "#star",
+          "uv": [
+            -0.010000000000001563,
+            -0.010000000000001563,
+            16.01,
+            1
+          ]
+        },
+        "south": {
+          "texture": "#star",
+          "uv": [
+            -0.01,
+            -0.010000000000001563,
+            16.01,
+            1
+          ]
+        },
+        "east": {
+          "texture": "#star",
+          "uv": [
+            -0.010000000000001563,
+            -0.010000000000001563,
+            16.01,
+            1
+          ]
+        },
+        "west": {
+          "texture": "#star",
+          "uv": [
+            -0.01,
+            -0.010000000000001563,
+            16.01,
+            1
+          ]
+        },
+        "up": {
+          "texture": "#star",
+          "uv": [
+            -0.01,
+            -0.01,
+            16.01,
+            16.01
+          ]
+        }
+      }
+    }
+  ]
+}

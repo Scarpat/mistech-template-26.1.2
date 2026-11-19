@@ -3,6 +3,7 @@
   "textures": {
     "particle": "minecraft:block/polished_blackstone",
     "clay": "minecraft:block/polished_blackstone",
-    "base": "minecraft:block/gilded_blackstone"
+    "base": "minecraft:block/gilded_blackstone",
+    "face": "mistech:block/crafter_statue_face"
   }
 }

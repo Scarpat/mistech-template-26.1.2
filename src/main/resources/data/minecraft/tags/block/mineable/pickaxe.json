@@ -72,6 +72,27 @@
     "mistech:arcane_crusher",
     "mistech:liquefier",
     "mistech:crusher_forge",
-    "mistech:arcane_charger"
+    "mistech:arcane_charger",
+    "mistech:runic_coffee_maker",
+    "mistech:runic_conjurer",
+    "mistech:essence_washer",
+    "mistech:runic_crystallizer",
+    "mistech:astral_prism",
+    "mistech:rue_filter",
+    "mistech:mana_well",
+    "mistech:mana_siphon",
+    "mistech:astral_clock",
+    "mistech:iara_pump",
+    "mistech:potion_still",
+    "mistech:star_forge",
+    "mistech:dream_reactor",
+    "mistech:celestial_battery",
+    "mistech:celestial_conjurer",
+    "mistech:celestial_block",
+    "mistech:boitata_pump",
+    "mistech:runic_conduit",
+    "mistech:mithril_conduit",
+    "mistech:adamantine_conduit",
+    "mistech:orichalcum_conduit"
   ]
 }

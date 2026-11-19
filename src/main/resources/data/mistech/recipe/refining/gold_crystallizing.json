@@ -1,0 +1,23 @@
+{
+  "type": "mistech:ore_refining",
+  "stage": "crystallizing",
+  "ingredient": "#c:ores/gold",
+  "result": {
+    "id": "mistech:gold_ore_crystal",
+    "count": 4
+  },
+  "byproducts": [
+    {
+      "item": {
+        "id": "mistech:magic_residue"
+      },
+      "chance": 0.15
+    },
+    {
+      "item": {
+        "id": "mistech:orichalcum_dust"
+      },
+      "chance": 0.05
+    }
+  ]
+}

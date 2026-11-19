@@ -1,0 +1,8 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "mistech:mithril_ore_crystal",
+  "result": {
+    "id": "mistech:mithril_dust",
+    "count": 1
+  }
+}

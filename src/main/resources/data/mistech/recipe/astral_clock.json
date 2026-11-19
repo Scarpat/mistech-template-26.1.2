@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "LTL",
+    "CRC",
+    "LQL"
+  ],
+  "key": {
+    "L": "minecraft:lapis_lazuli",
+    "T": "mistech:time_rune",
+    "C": "minecraft:clock",
+    "R": "minecraft:comparator",
+    "Q": "minecraft:quartz"
+  },
+  "result": {
+    "id": "mistech:astral_clock",
+    "count": 1
+  }
+}

@@ -34,6 +34,8 @@ public class ArchiveTerminalScreen extends MysticContainerScreen<ArchiveTerminal
     private EditBox search;
     private int scroll;
     private static int sort;
+    /** Aba Fabricar (Fase 8): a grade mostra o que os padrões fazem. */
+    private static boolean craftMode;
     private static String lastSearch = "";
 
     public ArchiveTerminalScreen(ArchiveTerminalMenu menu, Inventory inventory, Component title) {
@@ -58,6 +60,11 @@ public class ArchiveTerminalScreen extends MysticContainerScreen<ArchiveTerminal
             b.setMessage(Component.literal(SORTS[sort]));
         }).bounds(this.leftPos + 170, this.topPos + 4, 16, 13).tooltip(net.minecraft.client.gui.components.Tooltip.create(
                 Component.translatable("screen.mistech.archive.sort"))).build());
+        this.addRenderableWidget(Button.builder(Component.literal("⚒"), b -> {
+            craftMode = !craftMode;
+            this.scroll = 0;
+        }).bounds(this.leftPos + ArchiveTerminalMenu.CRAFT_X - 18, this.topPos + ArchiveTerminalMenu.CRAFT_Y + 18, 14, 14).tooltip(net.minecraft.client.gui.components.Tooltip.create(
+                Component.translatable("screen.mistech.archive.craft_tab"))).build());
         this.addRenderableWidget(Button.builder(Component.literal("×"), b -> this.send(ArchiveTerminalMenu.CLEAR_GRID, ItemStack.EMPTY))
                 .bounds(this.leftPos + ArchiveTerminalMenu.CRAFT_X - 18, this.topPos + ArchiveTerminalMenu.CRAFT_Y, 14, 14)
                 .tooltip(net.minecraft.client.gui.components.Tooltip.create(Component.translatable("screen.mistech.archive.clear"))).build());
@@ -67,11 +74,35 @@ public class ArchiveTerminalScreen extends MysticContainerScreen<ArchiveTerminal
         ClientPacketDistributor.sendToServer(new ArchiveNetwork.ActionPayload(this.menu.containerId, action, stack));
     }
 
-    /** As entradas que passam na busca, já ordenadas. */
+    /** Na fila (itens) para esse tipo. */
+    private long queuedFor(net.neoforged.neoforge.transfer.item.ItemResource r) {
+        for (ArchiveNetwork.Entry e : this.menu.queued) {
+            if (e.resource().equals(r)) {
+                return e.count();
+            }
+        }
+        return 0;
+    }
+
+    /** As entradas que passam na busca, já ordenadas. Na aba Fabricar: os fabricáveis (contagem = quanto tem guardado). */
     private List<ArchiveNetwork.Entry> visible() {
         String q = this.search == null ? "" : this.search.getValue().trim().toLowerCase(Locale.ROOT);
         List<ArchiveNetwork.Entry> list = new ArrayList<>();
-        for (ArchiveNetwork.Entry e : this.menu.entries) {
+        List<ArchiveNetwork.Entry> source = this.menu.entries;
+        if (craftMode) {
+            source = new ArrayList<>();
+            for (ItemStack stack : this.menu.craftables) {
+                var r = net.neoforged.neoforge.transfer.item.ItemResource.of(stack);
+                long have = 0;
+                for (ArchiveNetwork.Entry e : this.menu.entries) {
+                    if (e.resource().equals(r)) {
+                        have = e.count();
+                    }
+                }
+                source.add(new ArchiveNetwork.Entry(r, have));
+            }
+        }
+        for (ArchiveNetwork.Entry e : source) {
             if (q.isEmpty() || matches(e, q)) {
                 list.add(e);
             }
@@ -147,7 +178,12 @@ public class ArchiveTerminalScreen extends MysticContainerScreen<ArchiveTerminal
             int cy = gy + ((i - first) / ArchiveTerminalMenu.COLS) * 18 + 1;
             ItemStack stack = list.get(i).resource().toStack();
             graphics.item(stack, cx, cy);
-            graphics.itemDecorations(this.font, stack, cx, cy, shortCount(list.get(i).count()));
+            if (craftMode) {
+                long queued = this.queuedFor(list.get(i).resource());
+                graphics.itemDecorations(this.font, stack, cx, cy, queued > 0 ? "§e" + shortCount(queued) : "");
+            } else {
+                graphics.itemDecorations(this.font, stack, cx, cy, shortCount(list.get(i).count()));
+            }
             if (i == hovered) {
                 graphics.fill(cx, cy, cx + 16, cy + 16, HOVER);
             }
@@ -165,6 +201,10 @@ public class ArchiveTerminalScreen extends MysticContainerScreen<ArchiveTerminal
             graphics.fill(px - 1, py - 1, px + 17, py + 17, FRAME);
             graphics.fill(px, py, px + 16, py + 16, DARK);
         }
+        if (craftMode) {
+            graphics.fill(gx - 1, gy - 1, gx + gw + 1, gy, 0xFFF0C870);
+            graphics.fill(gx - 1, gy + gh, gx + gw + 1, gy + gh + 1, 0xFFF0C870);
+        }
         if (!this.menu.powered) {
             graphics.fill(gx, gy, gx + gw, gy + gh, 0xA0000000);
         }
@@ -176,10 +216,20 @@ public class ArchiveTerminalScreen extends MysticContainerScreen<ArchiveTerminal
         graphics.text(this.font, this.title, 8, 6, this.labelColor(), false);
         graphics.text(this.font, this.playerInventoryTitle, this.inventoryLabelX, this.inventoryLabelY, this.textColor(), false);
         graphics.text(this.font, "→", ArchiveTerminalMenu.RESULT_X - 20, ArchiveTerminalMenu.RESULT_Y + 4, this.textColor(), false);
-        int types = this.menu.entries.size();
-        long total = this.menu.entries.stream().mapToLong(ArchiveNetwork.Entry::count).sum();
-        graphics.text(this.font, Component.translatable("screen.mistech.archive.count", types, shortCount(total)),
-                ArchiveTerminalMenu.RESULT_X - 6, ArchiveTerminalMenu.CRAFT_Y + 44, this.textColor(), false);
+        if (craftMode) {
+            graphics.text(this.font, Component.translatable("screen.mistech.archive.jobs", this.menu.jobs),
+                    ArchiveTerminalMenu.RESULT_X - 6, ArchiveTerminalMenu.CRAFT_Y + 44, 0xFFF0C870, false);
+            if (this.menu.craftables.isEmpty()) {
+                Component none = Component.translatable("screen.mistech.archive.no_patterns");
+                graphics.text(this.font, none, ArchiveTerminalMenu.GRID_X + (ArchiveTerminalMenu.COLS * 18 - this.font.width(none)) / 2,
+                        ArchiveTerminalMenu.GRID_Y + 40, 0xFFB0A0D0, false);
+            }
+        } else {
+            int types = this.menu.entries.size();
+            long total = this.menu.entries.stream().mapToLong(ArchiveNetwork.Entry::count).sum();
+            graphics.text(this.font, Component.translatable("screen.mistech.archive.count", types, shortCount(total)),
+                    ArchiveTerminalMenu.RESULT_X - 6, ArchiveTerminalMenu.CRAFT_Y + 44, this.textColor(), false);
+        }
         if (!this.menu.powered) {
             Component off = Component.translatable("screen.mistech.archive.offline");
             graphics.text(this.font, off, ArchiveTerminalMenu.GRID_X + (ArchiveTerminalMenu.COLS * 18 - this.font.width(off)) / 2,
@@ -201,6 +251,13 @@ public class ArchiveTerminalScreen extends MysticContainerScreen<ArchiveTerminal
             List<Component> lines = new ArrayList<>(getTooltipFromItem(this.minecraft, stack));
             lines.add(Component.translatable("screen.mistech.archive.stored", String.format(Locale.ROOT, "%,d", e.count()))
                     .withStyle(ChatFormatting.LIGHT_PURPLE));
+            if (craftMode) {
+                long queued = this.queuedFor(e.resource());
+                if (queued > 0) {
+                    lines.add(Component.translatable("screen.mistech.archive.queued", queued).withStyle(ChatFormatting.YELLOW));
+                }
+                lines.add(Component.translatable("screen.mistech.archive.craft_help").withStyle(ChatFormatting.GRAY));
+            }
             graphics.setTooltipForNextFrame(this.font, lines, Optional.empty(), mouseX, mouseY);
         }
     }
@@ -211,6 +268,16 @@ public class ArchiveTerminalScreen extends MysticContainerScreen<ArchiveTerminal
         if (cell >= 0 && (event.button() == 0 || event.button() == 1)) {
             List<ArchiveNetwork.Entry> list = this.visible();
             boolean right = event.button() == 1;
+            if (craftMode) {
+                if (cell < list.size()) {
+                    ItemStack proto = list.get(cell).resource().toStack();
+                    boolean shift = hasShiftDown();
+                    boolean cancel = shift && right;
+                    int count = shift ? 64 : right ? 16 : 1;
+                    ClientPacketDistributor.sendToServer(new ArchiveNetwork.CraftRequestPayload(this.menu.containerId, proto, count, cancel));
+                }
+                return true;
+            }
             if (!this.menu.getCarried().isEmpty()) {
                 this.send(right ? ArchiveTerminalMenu.PUT_ONE : ArchiveTerminalMenu.PUT_ALL, ItemStack.EMPTY);
             } else if (cell < list.size()) {

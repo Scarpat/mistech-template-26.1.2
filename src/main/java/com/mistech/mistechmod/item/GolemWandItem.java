@@ -46,6 +46,10 @@ public class GolemWandItem extends Item {
                 || level.getCapability(Capabilities.Fluid.BLOCK, pos, null) != null) {
             return true;
         }
+        // qualquer bloco com inventário (Estante de Padrões, baús de outros mods sem capability...)
+        if (level.getBlockEntity(pos) instanceof net.minecraft.world.Container) {
+            return true;
+        }
         for (BlockPos at : BlockPos.betweenClosed(pos.offset(-1, -1, -1), pos.offset(1, 1, 1))) {
             if (level.getFluidState(at).isSource()) {
                 return true;

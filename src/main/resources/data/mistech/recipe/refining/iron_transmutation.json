@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ore_refining",
+  "stage": "transmutation",
+  "ingredient": "#c:ores/iron",
+  "result": {
+    "id": "mistech:iron_dust",
+    "count": 5
+  },
+  "byproducts": [
+    {
+      "item": {
+        "id": "mistech:mithril_dust"
+      },
+      "chance": 0.05
+    }
+  ]
+}

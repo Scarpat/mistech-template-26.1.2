@@ -17,7 +17,7 @@ import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
 
-/** Tela da Bigorna Rúnica: peça à esquerda, 8 engastes (os que a peça não tem ficam trancados). */
+/** Tela da Bigorna Rúnica: peça à esquerda, 10 engastes (os que a peça não tem ficam trancados). */
 public class RuneAnvilScreen extends MysticContainerScreen<RuneAnvilMenu> {
     private static final Identifier TEXTURE = Identifier.fromNamespaceAndPath(Mistech.MODID, "textures/gui/container/rune_anvil.png");
 
@@ -34,8 +34,8 @@ public class RuneAnvilScreen extends MysticContainerScreen<RuneAnvilMenu> {
 
         int capacity = this.menu.capacity();
         for (int i = 0; i < GearRunes.MAX_SLOTS; i++) {
-            int sx = x + RuneAnvilMenu.RUNE_X0 + (i % 4) * RuneAnvilMenu.RUNE_STEP;
-            int sy = y + RuneAnvilMenu.RUNE_Y0 + (i / 4) * RuneAnvilMenu.RUNE_STEP;
+            int sx = x + RuneAnvilMenu.RUNE_X0 + (i % RuneAnvilMenu.RUNE_COLS) * RuneAnvilMenu.RUNE_STEP;
+            int sy = y + RuneAnvilMenu.RUNE_Y0 + (i / RuneAnvilMenu.RUNE_COLS) * RuneAnvilMenu.RUNE_ROW;
             if (i >= capacity) {
                 // engaste trancado
                 graphics.fill(sx, sy, sx + 16, sy + 16, 0xE0100A18);

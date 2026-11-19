@@ -92,7 +92,7 @@ public final class GearAbilities {
             if (stack.is(ItemTags.AXES) && state.is(BlockTags.LOGS)) {
                 fellTree(server, player, stack, pos);
             } else if ((stack.is(ItemTags.PICKAXES) || stack.is(ItemTags.SHOVELS)) && stack.getDestroySpeed(state) > 1.0F) {
-                int radius = tier == GearTier.PURE_ORICHALCUM ? 2 : 1;
+                int radius = tier.atLeast(GearTier.PURE_ORICHALCUM) ? 2 : 1;
                 mineArea(server, player, stack, state, pos, radius);
             }
         } finally {
@@ -249,7 +249,7 @@ public final class GearAbilities {
         float base = (float) player.getAttributeValue(Attributes.ATTACK_DAMAGE);
 
         // onda
-        float waveDamage = base * (tier == GearTier.PURE_ORICHALCUM ? WAVE_FRACTION_PURE : WAVE_FRACTION);
+        float waveDamage = base * (tier.atLeast(GearTier.PURE_ORICHALCUM) ? WAVE_FRACTION_PURE : WAVE_FRACTION);
         List<LivingEntity> around = level.getEntitiesOfClass(LivingEntity.class, target.getBoundingBox().inflate(WAVE_RADIUS, 1.0, WAVE_RADIUS),
                 e -> e != player && e != target && e.isAlive() && canHit(player, e));
         if (!around.isEmpty()) {
@@ -266,7 +266,7 @@ public final class GearAbilities {
         }
 
         // raio de luz
-        if (tier == GearTier.PURE_ORICHALCUM && level.getGameTime() >= RAY_READY.getOrDefault(player.getUUID(), 0L)
+        if (tier.atLeast(GearTier.PURE_ORICHALCUM) && level.getGameTime() >= RAY_READY.getOrDefault(player.getUUID(), 0L)
                 && MithrilGear.isCharged(weapon)) {
             RAY_READY.put(player.getUUID(), level.getGameTime() + RAY_COOLDOWN);
             lightRay(level, player, target);

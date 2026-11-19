@@ -88,6 +88,22 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
     private GolemRoute route = GolemRoute.EMPTY;
     private int rrSource, rrTarget;
     private @Nullable BlockPos target;
+
+    // ----- Estante de Padrões (Fase 8): trabalho de processamento do Mensageiro (não é salvo; o Núcleo solta a vez sozinho)
+    static final int JOB_IDLE = 0, JOB_DELIVER = 1, JOB_WAIT = 2, JOB_RETURN = 3;
+    int jobPhase;
+    ItemStack jobOutput = ItemStack.EMPTY;
+    @Nullable BlockPos jobMachine;
+    int jobWait, jobFails;
+    boolean jobDone;
+    long lastCraftRequest = -10_000;
+
+    /** A origem é uma Estante de Padrões (Artesão e Mensageiro pegam trabalhos do Arquivo). */
+    boolean shelfSource() {
+        return this.source != null && (this.kind() == GolemKind.CRAFTER || this.kind() == GolemKind.MESSENGER)
+                && this.level().isLoaded(this.source)
+                && this.level().getBlockState(this.source).getBlock() instanceof com.mistech.mistechmod.archive.craft.PatternShelfBlock;
+    }
     private ItemStack filter = ItemStack.EMPTY;
     private final List<RuneElement> runes = new ArrayList<>();
     private @Nullable ResourceKey<Recipe<?>> recipe;
@@ -374,7 +390,7 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
     public boolean hasRoute() {
         return switch (this.kind()) {
             case COLLECTOR, KEEPER -> this.target != null;
-            default -> this.source != null && this.target != null;
+            default -> this.source != null && (this.target != null || this.shelfSource());
         };
     }
 
@@ -663,6 +679,14 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
             }
             ItemStack got = net.extractStack(r, want);
             if (got.isEmpty()) {
+                // sem o item no Arquivo: pede para fabricar (Fase 8), no máximo uma vez a cada 30 s
+                if (level.getGameTime() - this.lastCraftRequest > 600 && !core.queued(r)
+                        && com.mistech.mistechmod.archive.craft.CraftingPlanner.patterns(level, core.getBlockPos()).containsKey(r)) {
+                    this.lastCraftRequest = level.getGameTime();
+                    if (com.mistech.mistechmod.archive.craft.CraftWork.request(level, core, r, want).ok()) {
+                        level.sendParticles(ParticleTypes.ENCHANT, this.getX(), this.getY() + 1.6, this.getZ(), 10, 0.3, 0.2, 0.3, 0.5);
+                    }
+                }
                 continue;
             }
             try (Transaction tx = Transaction.openRoot()) {
@@ -1042,6 +1066,118 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
             }
         }
 
+        /** Fase 8: Artesão faz trabalhos de mesa na Estante; Mensageiro leva entradas às máquinas e traz a saída. */
+        private void tickShelf(ServerLevel level) {
+            WorkGolemEntity g = this.golem;
+            BlockPos shelf = g.source();
+            if (g.kind() == GolemKind.CRAFTER) {
+                if (this.approach(shelf) && this.ready()) {
+                    if (!g.getCarried().isEmpty()) {
+                        com.mistech.mistechmod.archive.craft.CraftWork.returnToShelf(level, g.getUUID(), shelf, g.getCarried(), false);
+                        g.setCarried(ItemStack.EMPTY);
+                    }
+                    com.mistech.mistechmod.archive.craft.CraftWork.craftAtShelf(level, g.getUUID(), shelf);
+                    g.mood = 0;
+                }
+                return;
+            }
+            switch (g.jobPhase) {
+                case JOB_DELIVER -> {
+                    if (g.jobMachine == null) {
+                        g.jobPhase = JOB_RETURN;
+                        return;
+                    }
+                    if (this.approach(g.jobMachine) && this.ready()) {
+                        ResourceHandler<ItemResource> handler = g.handlerAt(g.jobMachine, Direction.UP);
+                        ItemStack carried = g.getCarried();
+                        if (handler != null && !carried.isEmpty()) {
+                            try (Transaction tx = Transaction.openRoot()) {
+                                int put = ResourceHandlerUtil.insertStacking(handler, ItemResource.of(carried), carried.getCount(), tx);
+                                tx.commit();
+                                carried.shrink(put);
+                                g.setCarried(carried.isEmpty() ? ItemStack.EMPTY : carried);
+                            }
+                        }
+                        if (g.getCarried().isEmpty()) {
+                            g.jobPhase = JOB_WAIT;
+                            g.jobWait = 0;
+                            g.mood = 0;
+                        } else if (++g.jobFails >= 10) {
+                            g.jobDone = false;
+                            g.jobPhase = JOB_RETURN;
+                            g.mood = 1;
+                        }
+                    }
+                }
+                case JOB_WAIT -> {
+                    if (g.jobMachine == null || g.jobOutput.isEmpty()) {
+                        g.jobPhase = JOB_RETURN;
+                        return;
+                    }
+                    if (this.approach(g.jobMachine) && this.ready()) {
+                        ItemResource out = ItemResource.of(g.jobOutput);
+                        int have = g.getCarried().isEmpty() ? 0 : g.getCarried().getCount();
+                        int want = g.jobOutput.getCount() - have;
+                        for (Direction side : new Direction[] {Direction.DOWN, Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST, Direction.UP}) {
+                            if (want <= 0) {
+                                break;
+                            }
+                            ResourceHandler<ItemResource> handler = g.handlerAt(g.jobMachine, side);
+                            if (handler == null) {
+                                continue;
+                            }
+                            try (Transaction tx = Transaction.openRoot()) {
+                                int got = handler.extract(out, want, tx);
+                                tx.commit();
+                                if (got > 0) {
+                                    have += got;
+                                    want -= got;
+                                    g.setCarried(out.toStack(have));
+                                }
+                            }
+                        }
+                        g.jobWait += g.cooldown();
+                        if (want <= 0) {
+                            g.jobDone = true;
+                            g.jobPhase = JOB_RETURN;
+                        } else if (g.jobWait > 1200) {
+                            g.jobDone = have > 0;
+                            g.jobPhase = JOB_RETURN;
+                            g.mood = 1;
+                        }
+                    }
+                }
+                case JOB_RETURN -> {
+                    if (this.approach(shelf) && this.ready()) {
+                        com.mistech.mistechmod.archive.craft.CraftWork.returnToShelf(level, g.getUUID(), shelf, g.getCarried(), g.jobDone);
+                        g.setCarried(ItemStack.EMPTY);
+                        g.jobPhase = JOB_IDLE;
+                        g.jobMachine = null;
+                        g.jobOutput = ItemStack.EMPTY;
+                    }
+                }
+                default -> {
+                    if (!g.getCarried().isEmpty()) {
+                        g.jobDone = false;
+                        g.jobPhase = JOB_RETURN;
+                        return;
+                    }
+                    if (this.approach(shelf) && this.ready()) {
+                        var delivery = com.mistech.mistechmod.archive.craft.CraftWork.claimProcessing(level, g.getUUID(), shelf);
+                        if (delivery != null) {
+                            g.setCarried(delivery.input());
+                            g.jobMachine = delivery.job().pattern.machine().orElse(null);
+                            g.jobOutput = delivery.job().pattern.output().copy();
+                            g.jobPhase = JOB_DELIVER;
+                            g.jobFails = 0;
+                            g.jobDone = false;
+                        }
+                        g.mood = 0;
+                    }
+                }
+            }
+        }
+
         private boolean ready() {
             if (--this.cooldown > 0) {
                 return false;
@@ -1058,6 +1194,10 @@ public class WorkGolemEntity extends PathfinderMob implements RoutedGolem {
             }
             if (g.fluidMode()) {
                 this.tickFluid(level);
+                return;
+            }
+            if (g.shelfSource()) {
+                this.tickShelf(level);
                 return;
             }
             boolean carrying = !g.getCarried().isEmpty();

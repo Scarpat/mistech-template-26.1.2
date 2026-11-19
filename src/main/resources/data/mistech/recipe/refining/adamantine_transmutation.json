@@ -1,0 +1,10 @@
+{
+  "type": "mistech:ore_refining",
+  "stage": "transmutation",
+  "ingredient": "#c:ores/adamantine",
+  "result": {
+    "id": "mistech:adamantine_dust",
+    "count": 5
+  },
+  "byproducts": []
+}

@@ -1,0 +1,8 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "mistech:copper_clump",
+  "result": {
+    "id": "mistech:copper_dust",
+    "count": 1
+  }
+}

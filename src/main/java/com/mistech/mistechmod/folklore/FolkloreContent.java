@@ -52,6 +52,8 @@ public final class FolkloreContent {
     public static final DeferredItem<SilverIncenseItem> SILVER_INCENSE = Mistech.ITEMS.registerItem("silver_incense", SilverIncenseItem::new);
     public static final DeferredItem<Item> BOITATA_SCALE = Mistech.ITEMS.registerSimpleItem("boitata_scale", p -> p.rarity(Rarity.RARE).fireResistant());
     public static final DeferredItem<Item> BOITATA_EYE = Mistech.ITEMS.registerSimpleItem("boitata_eye", p -> p.rarity(Rarity.EPIC).fireResistant());
+    /** Brasa do Boitatá (Fase 7): catalisador ×3 da Caldeira Ígnea, que dispensa a lava enquanto queima. */
+    public static final DeferredItem<Item> BOITATA_EMBER = Mistech.ITEMS.registerSimpleItem("boitata_ember", p -> p.rarity(Rarity.RARE).fireResistant());
 
     // ----- Licantropia (salva, mantida ao morrer) -----
     public static final Supplier<AttachmentType<Boolean>> LYCANTHROPY = ATTACHMENTS.register("lycanthropy",
@@ -63,7 +65,7 @@ public final class FolkloreContent {
     private FolkloreContent() {}
 
     public static List<DeferredItem<? extends Item>> creativeItems() {
-        return List.of(SACI_JAR, WEREWOLF_FANG, SILVER_INCENSE, BOITATA_SCALE, BOITATA_EYE);
+        return List.of(SACI_JAR, WEREWOLF_FANG, SILVER_INCENSE, BOITATA_SCALE, BOITATA_EYE, BOITATA_EMBER);
     }
 
     public static void register(IEventBus modEventBus) {

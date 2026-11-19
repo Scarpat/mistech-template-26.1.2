@@ -1,0 +1,17 @@
+{
+  "type": "mistech:ore_refining",
+  "stage": "crystallizing",
+  "ingredient": "#c:ores/adamantine",
+  "result": {
+    "id": "mistech:adamantine_ore_crystal",
+    "count": 4
+  },
+  "byproducts": [
+    {
+      "item": {
+        "id": "mistech:magic_residue"
+      },
+      "chance": 0.15
+    }
+  ]
+}

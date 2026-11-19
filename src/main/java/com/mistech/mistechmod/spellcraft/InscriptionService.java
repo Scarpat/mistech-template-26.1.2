@@ -65,6 +65,49 @@ public final class InscriptionService {
         player.level().playSound(null, tablePos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 0.8F, 1.2F);
     }
 
+    // ------------------------------------------------------------------ Cristal de Feitiço (Conjurador Rúnico)
+
+    /** Mana que gravar o cristal desta magia custa (de uma vez). */
+    public static int engraveMana(Spell spell) {
+        return spell.mana() * com.mistech.mistechmod.Config.conjurerEngraveMana();
+    }
+
+    /** A magia pode ir para um Cristal? (conhecida, compatível com o Conjurador e com a afinidade para lançar) */
+    public static boolean canEngrave(Player player, Spell spell) {
+        return SpellBook.of(player).knows(spell.id()) && com.mistech.mistechmod.spellcraft.conjurer.BlockCasts.compatible(spell.id())
+                && spell.hasAffinity(player);
+    }
+
+    /** Tem o cristal vazio e a mana? (vale no cliente e no servidor) */
+    public static boolean canAffordEngrave(Player player, Spell spell) {
+        if (player.hasInfiniteMaterials()) {
+            return true;
+        }
+        return AstrologyService.countItem(player, com.mistech.mistechmod.spellcraft.conjurer.ConjurerContent.BLANK_SPELL_CRYSTAL.get()) >= 1
+                && ManaService.get(player) >= engraveMana(spell);
+    }
+
+    public static void tryEngrave(ServerPlayer player, BlockPos tablePos, String spellId) {
+        Spell spell = Spells.byId(spellId);
+        if (spell == null || player.distanceToSqr(tablePos.getCenter()) > MAX_DISTANCE_SQR
+                || !player.level().getBlockState(tablePos).is(SpellcraftContent.INSCRIPTION_TABLE.get())) {
+            return;
+        }
+        if (!canEngrave(player, spell) || !canAffordEngrave(player, spell)) {
+            return;
+        }
+        if (!player.hasInfiniteMaterials()) {
+            ManaService.set(player, ManaService.get(player) - engraveMana(spell));
+            take(player, new Spell.Cost(() -> com.mistech.mistechmod.spellcraft.conjurer.ConjurerContent.BLANK_SPELL_CRYSTAL.get(), 1));
+        }
+        float power = (float) (com.mistech.mistechmod.affinity.Affinity.power(player, spell.element()) * com.mistech.mistechmod.Config.conjurerPower());
+        player.getInventory().placeItemBackInInventory(com.mistech.mistechmod.spellcraft.conjurer.SpellCrystalItem.of(spell, power, player));
+        player.sendOverlayMessage(Component.translatable("message.mistech.spell.engraved",
+                Component.translatable(spell.nameKey()).withColor(spell.element().color())));
+        player.level().playSound(null, tablePos, SoundEvents.AMETHYST_BLOCK_RESONATE, SoundSource.BLOCKS, 1.0F, 1.2F);
+        player.level().playSound(null, tablePos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 0.8F, 0.9F);
+    }
+
     private static void take(Player player, Spell.Cost cost) {
         Inventory inventory = player.getInventory();
         int left = cost.count();

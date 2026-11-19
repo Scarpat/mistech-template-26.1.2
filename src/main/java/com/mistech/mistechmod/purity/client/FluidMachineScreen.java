@@ -23,6 +23,11 @@ public class FluidMachineScreen extends MachineScreen {
 
     private static final int LAVA = 0xFFD8501A, LAVA_TOP = 0xFFFFB347;
     private static final int XP = 0xFF4FA82A, XP_TOP = 0xFFC8FF5A;
+    private static final int WATER = 0xFF2F5FD0, WATER_TOP = 0xFF8FB8FF;
+    private static final int MANA = 0xFF2A7AE8, MANA_TOP = 0xFF9FE8FF;
+    private static final int MITHRIL = 0xFF4FA8D8, MITHRIL_TOP = 0xFFB8ECFF;
+    private static final int ADAMANTINE = 0xFFB8283A, ADAMANTINE_TOP = 0xFFFF8A8A;
+    private static final int ORICHALCUM = 0xFFE0861A, ORICHALCUM_TOP = 0xFFFFD27A;
 
     private record Gauge(int x, int info, int capacity, int color, int top, String name, String unit) {
         Gauge(int x, int info, int capacity, int color, int top, String name) {
@@ -49,6 +54,36 @@ public class FluidMachineScreen extends MachineScreen {
             this.gauges = List.of(new Gauge(gx, 1, com.mistech.mistechmod.machine.arcane.LiquefierBlockEntity.TANK, IMPURE, IMPURE_TOP, "block.mistech.impure_essence"));
         } else if (name.equals("arcane_compressor")) {
             this.gauges = List.of(new Gauge(gx, 1, com.mistech.mistechmod.machine.arcane.ArcaneCompressorBlockEntity.TANK, IMPURE, IMPURE_TOP, "block.mistech.impure_essence"));
+        } else if (name.equals("essence_washer")) {
+            this.gauges = List.of(new Gauge(gx, 1, com.mistech.mistechmod.refining.RefineryBlockEntity.TANK, IMPURE, IMPURE_TOP, "block.mistech.impure_essence"));
+        } else if (name.equals("runic_crystallizer")) {
+            this.gauges = List.of(new Gauge(gx, 1, com.mistech.mistechmod.refining.RefineryBlockEntity.TANK, PURE, PURE_TOP, "block.mistech.purified_essence"));
+        } else if (name.equals("astral_prism")) {
+            this.gauges = List.of(new Gauge(PurityLayouts.DISTILLER_IMPURE_X, 0, com.mistech.mistechmod.refining.AstralPrismBlockEntity.TANK, PURE, PURE_TOP,
+                    "block.mistech.purified_essence"));
+        } else if (name.equals("mana_well")) {
+            this.gauges = List.of(new Gauge(gx, 1, com.mistech.mistechmod.spellcraft.well.ManaWellBlockEntity.TANK, PURE, PURE_TOP, "block.mistech.purified_essence"),
+                    new Gauge(8, 3, com.mistech.mistechmod.spellcraft.well.ManaWellBlockEntity.MANA_TANK, MANA, MANA_TOP, "gui.mistech.mana_well.liquid"));
+        } else if (name.equals("iara_pump")) {
+            this.gauges = List.of(new Gauge(gx, 1, com.mistech.mistechmod.folklore.machine.IaraPumpBlockEntity.TANK, WATER, WATER_TOP, "gui.mistech.iara_pump.tank"));
+        } else if (name.equals("boitata_pump")) {
+            this.gauges = List.of(new Gauge(gx, 1, com.mistech.mistechmod.folklore.machine.IaraPumpBlockEntity.TANK, LAVA, LAVA_TOP, "block.minecraft.lava"));
+        } else if (name.equals("potion_still")) {
+            this.gauges = List.of(new Gauge(gx, 1, com.mistech.mistechmod.folklore.machine.PotionStillBlockEntity.TANK, WATER, WATER_TOP, "block.minecraft.water"));
+        } else if (name.equals("scroll_printer")) {
+            this.gauges = List.of(new Gauge(gx, 0, com.mistech.mistechmod.folklore.machine.ScrollPrinterBlockEntity.TANK, PURE, PURE_TOP, "block.mistech.purified_essence"));
+        } else if (name.equals("star_forge")) {
+            int tank = com.mistech.mistechmod.endgame.StarForgeBlockEntity.TANK;
+            this.gauges = List.of(
+                    new Gauge(com.mistech.mistechmod.endgame.EndgameContent.FORGE_GAUGE_MITHRIL, 0, tank, MITHRIL, MITHRIL_TOP, "block.mistech.molten_mithril"),
+                    new Gauge(com.mistech.mistechmod.endgame.EndgameContent.FORGE_GAUGE_ADAMANTINE, 1, tank, ADAMANTINE, ADAMANTINE_TOP, "block.mistech.molten_adamantine"),
+                    new Gauge(com.mistech.mistechmod.endgame.EndgameContent.FORGE_GAUGE_ORICHALCUM, 2, tank, ORICHALCUM, ORICHALCUM_TOP, "block.mistech.molten_orichalcum"),
+                    new Gauge(com.mistech.mistechmod.endgame.EndgameContent.FORGE_GAUGE_ESSENCE, 3, tank, PURE, PURE_TOP, "block.mistech.purified_essence"));
+        } else if (name.equals("runic_conjurer") || name.equals("celestial_conjurer")) {
+            int tank = com.mistech.mistechmod.spellcraft.conjurer.RunicConjurerBlockEntity.TANK;
+            this.gauges = List.of(
+                    new Gauge(PurityLayouts.DISTILLER_IMPURE_X, 0, tank, IMPURE, IMPURE_TOP, "block.mistech.impure_essence"),
+                    new Gauge(PurityLayouts.DISTILLER_PURE_X, 1, tank, PURE, PURE_TOP, "block.mistech.purified_essence"));
         } else if (name.equals("distiller")) {
             this.gauges = List.of(
                     new Gauge(PurityLayouts.DISTILLER_IMPURE_X, 0, DistillerBlockEntity.TANK, IMPURE, IMPURE_TOP, "block.mistech.impure_essence"),
@@ -68,6 +103,10 @@ public class FluidMachineScreen extends MachineScreen {
             if (h > 0) {
                 graphics.fill(x, bottom - h, x + PurityLayouts.GAUGE_W, bottom, g.color());
                 graphics.fill(x, bottom - h, x + PurityLayouts.GAUGE_W, bottom - h + 1, g.top());
+            }
+            // várias barras (Forja Estelar): uma tampa da cor do fluido diz qual é qual
+            if (this.gauges.size() > 2) {
+                graphics.fill(x, this.topPos + PurityLayouts.GAUGE_Y - 3, x + PurityLayouts.GAUGE_W, this.topPos + PurityLayouts.GAUGE_Y - 1, g.top());
             }
             // marcas de 1.000 mB
             for (int mb = 1000; mb < g.capacity(); mb += 1000) {

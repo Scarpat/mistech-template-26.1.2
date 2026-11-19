@@ -1,0 +1,298 @@
+{
+ "parent": "minecraft:block/block",
+ "render_type": "minecraft:cutout",
+ "textures": {
+  "particle": "minecraft:block/anvil",
+  "a_body": "minecraft:block/anvil",
+  "top": "mistech:block/p1_top",
+  "neck": "mistech:block/p1_neck",
+  "glow": "mistech:block/p1_glow"
+ },
+ "elements": [
+  {
+   "__comment": "Anvil base",
+   "from": [
+    2,
+    0,
+    2
+   ],
+   "to": [
+    14,
+    4,
+    14
+   ],
+   "faces": {
+    "down": {
+     "uv": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "texture": "#a_body",
+     "rotation": 180,
+     "cullface": "down"
+    },
+    "up": {
+     "uv": [
+      2,
+      2,
+      14,
+      14
+     ],
+     "texture": "#a_body",
+     "rotation": 180
+    },
+    "north": {
+     "uv": [
+      2,
+      12,
+      14,
+      16
+     ],
+     "texture": "#a_body"
+    },
+    "south": {
+     "uv": [
+      2,
+      12,
+      14,
+      16
+     ],
+     "texture": "#a_body"
+    },
+    "west": {
+     "uv": [
+      0,
+      2,
+      4,
+      14
+     ],
+     "texture": "#a_body",
+     "rotation": 90
+    },
+    "east": {
+     "uv": [
+      4,
+      2,
+      0,
+      14
+     ],
+     "texture": "#a_body",
+     "rotation": 270
+    }
+   }
+  },
+  {
+   "__comment": "Lower narrow portion",
+   "from": [
+    4,
+    4,
+    3
+   ],
+   "to": [
+    12,
+    5,
+    13
+   ],
+   "faces": {
+    "up": {
+     "uv": [
+      4,
+      3,
+      12,
+      13
+     ],
+     "texture": "#a_body",
+     "rotation": 180
+    },
+    "north": {
+     "uv": [
+      4,
+      11,
+      12,
+      12
+     ],
+     "texture": "#a_body"
+    },
+    "south": {
+     "uv": [
+      4,
+      11,
+      12,
+      12
+     ],
+     "texture": "#a_body"
+    },
+    "west": {
+     "uv": [
+      4,
+      3,
+      5,
+      13
+     ],
+     "texture": "#a_body",
+     "rotation": 90
+    },
+    "east": {
+     "uv": [
+      5,
+      3,
+      4,
+      13
+     ],
+     "texture": "#a_body",
+     "rotation": 270
+    }
+   }
+  },
+  {
+   "__comment": "Wider section beneath top portion",
+   "from": [
+    6,
+    5,
+    4
+   ],
+   "to": [
+    10,
+    10,
+    12
+   ],
+   "faces": {
+    "north": {
+     "texture": "#neck",
+     "uv": [
+      6,
+      4,
+      10,
+      9
+     ]
+    },
+    "south": {
+     "texture": "#neck",
+     "uv": [
+      6,
+      4,
+      10,
+      9
+     ]
+    },
+    "west": {
+     "texture": "#neck",
+     "uv": [
+      6,
+      4,
+      10,
+      9
+     ]
+    },
+    "east": {
+     "texture": "#neck",
+     "uv": [
+      6,
+      4,
+      10,
+      9
+     ]
+    }
+   }
+  },
+  {
+   "__comment": "Anvil top",
+   "from": [
+    3,
+    10,
+    0
+   ],
+   "to": [
+    13,
+    16,
+    16
+   ],
+   "faces": {
+    "down": {
+     "uv": [
+      3,
+      0,
+      13,
+      16
+     ],
+     "texture": "#a_body",
+     "rotation": 180
+    },
+    "up": {
+     "texture": "#top",
+     "uv": [
+      3,
+      0,
+      13,
+      16
+     ]
+    },
+    "north": {
+     "uv": [
+      3,
+      0,
+      13,
+      6
+     ],
+     "texture": "#a_body"
+    },
+    "south": {
+     "uv": [
+      3,
+      0,
+      13,
+      6
+     ],
+     "texture": "#a_body"
+    },
+    "west": {
+     "uv": [
+      10,
+      0,
+      16,
+      16
+     ],
+     "texture": "#a_body",
+     "rotation": 90
+    },
+    "east": {
+     "uv": [
+      16,
+      0,
+      10,
+      16
+     ],
+     "texture": "#a_body",
+     "rotation": 270
+    }
+   }
+  },
+  {
+   "from": [
+    3,
+    16.01,
+    0
+   ],
+   "to": [
+    13,
+    16.01,
+    16
+   ],
+   "faces": {
+    "up": {
+     "texture": "#glow",
+     "uv": [
+      3,
+      0,
+      13,
+      16
+     ]
+    }
+   },
+   "shade": false,
+   "light_emission": 15
+  }
+ ]
+}

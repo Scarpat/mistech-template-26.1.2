@@ -39,12 +39,16 @@ public class InscriptionScreen extends Screen {
     private static final int RED = 0xFFA02020;
 
     private static int lastSelected;
+    private static boolean lastCrystal;
 
     private final BlockPos tablePos;
     private int selected = lastSelected;
     private int scroll;
     private RuneElement filter;
     private Button inscribeButton;
+    private Button modeButton;
+    /** Modo Cristal: grava um Cristal de Feitiço para o Conjurador Rúnico em vez de inscrever um pergaminho. */
+    private boolean crystal = lastCrystal;
 
     public InscriptionScreen(BlockPos tablePos) {
         super(Component.translatable("screen.mistech.inscription"));
@@ -85,10 +89,19 @@ public class InscriptionScreen extends Screen {
         this.inscribeButton = this.addRenderableWidget(Button.builder(Component.translatable("screen.mistech.inscription.inscribe"), b -> {
             Spell spell = this.current();
             if (spell != null) {
-                ClientPacketDistributor.sendToServer(new InscribePayload(this.tablePos, spell.id()));
+                ClientPacketDistributor.sendToServer(new InscribePayload(this.tablePos, spell.id(), this.crystal));
             }
         }).bounds(x + PANEL_W - 96, y + PANEL_H - 26, 86, 18).build());
+        this.modeButton = this.addRenderableWidget(Button.builder(this.modeLabel(), b -> {
+            this.crystal = !this.crystal;
+            b.setMessage(this.modeLabel());
+            this.refresh();
+        }).bounds(listX(), y + PANEL_H - 24, LIST_W, 16).build());
         this.refresh();
+    }
+
+    private Component modeLabel() {
+        return Component.translatable(this.crystal ? "screen.mistech.inscription.mode.crystal" : "screen.mistech.inscription.mode.scroll");
     }
 
     private void refresh() {
@@ -96,8 +109,13 @@ public class InscriptionScreen extends Screen {
         Spell spell = this.current();
         if (this.inscribeButton != null) {
             this.inscribeButton.visible = spell != null;
-            this.inscribeButton.active = player != null && spell != null
-                    && InscriptionService.canInscribe(player, spell) && InscriptionService.canAfford(player, spell);
+            this.inscribeButton.setMessage(Component.translatable(this.crystal ? "screen.mistech.inscription.engrave" : "screen.mistech.inscription.inscribe"));
+            this.inscribeButton.active = player != null && spell != null && (this.crystal
+                    ? InscriptionService.canEngrave(player, spell) && InscriptionService.canAffordEngrave(player, spell)
+                    : InscriptionService.canInscribe(player, spell) && InscriptionService.canAfford(player, spell));
+        }
+        if (this.modeButton != null) {
+            this.modeButton.visible = !this.allKnown().isEmpty();
         }
     }
 
@@ -120,6 +138,7 @@ public class InscriptionScreen extends Screen {
     @Override
     public void removed() {
         lastSelected = this.selected;
+        lastCrystal = this.crystal;
         super.removed();
     }
 
@@ -234,7 +253,8 @@ public class InscriptionScreen extends Screen {
             }
             MysticUi.spellTile(graphics, spell, lx, ry, ROW_H, !spell.hasAffinity(player), false, index);
             Component name = Component.translatable(spell.nameKey());
-            graphics.text(this.font, this.font.plainSubstrByWidth(name.getString(), LIST_W - ROW_H - 6), lx + ROW_H + 3, ry + 5, 0xFFFFFFFF, true);
+            boolean usable = !this.crystal || com.mistech.mistechmod.spellcraft.conjurer.BlockCasts.compatible(spell.id());
+            graphics.text(this.font, this.font.plainSubstrByWidth(name.getString(), LIST_W - ROW_H - 6), lx + ROW_H + 3, ry + 5, usable ? 0xFFFFFFFF : 0xFF8A8A8A, true);
         }
         if (known.size() > ROWS) {
             int barH = ROWS * ROW_H;
@@ -263,15 +283,25 @@ public class InscriptionScreen extends Screen {
         dy += 4 * 9 + 4;
 
         boolean affinity = spell.hasAffinity(player);
-        graphics.text(this.font, Component.translatable("screen.mistech.inscription.requires", spell.requiredLevel(),
+        Component req = Component.translatable("screen.mistech.inscription.requires", spell.requiredLevel(),
                 spell.requirementName(),
-                Affinity.effectiveLevel(player, spell.element())), dx, dy, affinity ? GREEN : RED, false);
+                Affinity.effectiveLevel(player, spell.element()));
+        if (this.font.width(req) <= dw) {
+            graphics.text(this.font, req, dx, dy, affinity ? GREEN : RED, false);
+        } else {
+            graphics.text(this.font, this.font.plainSubstrByWidth(req.getString(), dw - this.font.width("...")) + "...", dx, dy, affinity ? GREEN : RED, false);
+            if (mouseX >= dx && mouseX < dx + dw && mouseY >= dy - 1 && mouseY < dy + 9) {
+                graphics.setTooltipForNextFrame(this.font, req, mouseX, mouseY);
+            }
+        }
         dy += 10;
         graphics.text(this.font, Component.translatable(spell.channelTicks() > 0 ? "screen.mistech.inscription.mana_channel" : "screen.mistech.inscription.mana", ManaService.cost(player, spell.mana()),
                 (int) ManaService.max(player)), dx, dy, 0xFF1B5E8A, false);
         dy += 14;
 
-        if (spell.worldOnly()) {
+        if (this.crystal) {
+            this.drawCrystalCost(graphics, player, spell, dx, dy, dw, mouseX, mouseY);
+        } else if (spell.worldOnly()) {
             graphics.textWithWordWrap(this.font, Component.translatable("screen.mistech.inscription.world_only"), dx, dy, dw, 0xFF8A5A00, false);
         } else {
             boolean xp = player.hasInfiniteMaterials() || player.experienceLevel >= spell.xpLevels();
@@ -296,6 +326,35 @@ public class InscriptionScreen extends Screen {
                     x + 10 + LIST_W + 14, y + PANEL_H - 22, xp ? GREEN : RED, false);
         }
         super.extractRenderState(graphics, mouseX, mouseY, a);
+    }
+
+    /** Modo Cristal: para que a magia serve no Conjurador, o cristal vazio, a mana e o poder que ficará gravado. */
+    private void drawCrystalCost(GuiGraphicsExtractor graphics, LocalPlayer player, Spell spell, int dx, int dy, int dw, int mouseX, int mouseY) {
+        var mode = com.mistech.mistechmod.spellcraft.conjurer.BlockCasts.mode(spell.id());
+        if (mode == null) {
+            graphics.textWithWordWrap(this.font, Component.translatable("screen.mistech.inscription.crystal_incompatible"), dx, dy, dw, RED, false);
+            return;
+        }
+        // uma linha curta com o modo; o texto completo aparece ao passar o mouse
+        Component use = Component.translatable("tooltip.mistech.spell_crystal.use." + mode.id());
+        graphics.text(this.font, Component.translatable("screen.mistech.inscription.crystal_use." + mode.id()), dx, dy, TEXT, false);
+        if (mouseX >= dx && mouseX < dx + dw && mouseY >= dy - 1 && mouseY < dy + 9) {
+            graphics.setTooltipForNextFrame(this.font, this.font.split(use, 180), mouseX, mouseY);
+        }
+        dy += 12;
+        ItemStack blank = new ItemStack(com.mistech.mistechmod.spellcraft.conjurer.ConjurerContent.BLANK_SPELL_CRYSTAL.get());
+        boolean has = player.hasInfiniteMaterials() || AstrologyService.countItem(player, blank.getItem()) >= 1;
+        MysticUi.inset(graphics, dx - 1, dy - 1, 18, 18, MysticUi.SLOT);
+        graphics.item(blank, dx, dy);
+        graphics.fill(dx, dy + 18, dx + 16, dy + 19, has ? GREEN : RED);
+        if (mouseX >= dx && mouseX < dx + 16 && mouseY >= dy && mouseY < dy + 16) {
+            graphics.setTooltipForNextFrame(this.font, blank, mouseX, mouseY);
+        }
+        int mana = InscriptionService.engraveMana(spell);
+        boolean enough = player.hasInfiniteMaterials() || ManaService.get(player) >= mana;
+        graphics.text(this.font, Component.translatable("screen.mistech.inscription.crystal_mana", mana), dx + 22, dy, enough ? GREEN : RED, false);
+        int power = (int) Math.round(Affinity.power(player, spell.element()) * com.mistech.mistechmod.Config.conjurerPower() * 100);
+        graphics.text(this.font, Component.translatable("screen.mistech.inscription.crystal_power", power), dx + 22, dy + 10, 0xFF1B5E8A, false);
     }
 
     private static String roman(int tier) {

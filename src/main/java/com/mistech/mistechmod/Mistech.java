@@ -188,7 +188,7 @@ public class Mistech {
 
     // Condensador: energia + água/lava encostada -> gelo, gelo compacto, gelo azul, obsidiana
     public static final DeferredBlock<CondenserBlock> CONDENSER = BLOCKS.registerBlock("condenser", CondenserBlock::new,
-            p -> p.mapColor(MapColor.ICE).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.METAL)
+            p -> p.mapColor(MapColor.ICE).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.METAL).noOcclusion()
                     .lightLevel(state -> state.getValue(CondenserBlock.LIT) ? 6 : 0));
     public static final DeferredItem<BlockItem> CONDENSER_ITEM = ITEMS.registerSimpleBlockItem("condenser", CONDENSER);
 
@@ -264,7 +264,7 @@ public class Mistech {
     // Fornalha Rúnica: sem combustível, 25% mais rápida que a comum
     public static final DeferredBlock<RunicFurnaceBlock> RUNIC_FURNACE = BLOCKS.registerBlock("runic_furnace",
             RunicFurnaceBlock::new,
-            p -> p.mapColor(MapColor.STONE).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.STONE)
+            p -> p.mapColor(MapColor.STONE).requiresCorrectToolForDrops().strength(3.5F).sound(SoundType.STONE).noOcclusion()
                     .lightLevel(state -> state.getValue(RunicFurnaceBlock.LIT) ? 13 : 0));
     public static final DeferredItem<BlockItem> RUNIC_FURNACE_ITEM = ITEMS.registerSimpleBlockItem("runic_furnace", RUNIC_FURNACE);
 
@@ -298,6 +298,12 @@ public class Mistech {
             p -> p.mapColor(MapColor.COLOR_ORANGE).strength(1.5F).sound(SoundType.COPPER).noOcclusion()
                     .lightLevel(state -> 2));
     public static final DeferredItem<BlockItem> KETTLE_ITEM = ITEMS.registerSimpleBlockItem("kettle", KETTLE);
+    // Cafeteira Rúnica: a Chaleira avançada (se enche de água, 4 tanques, torra + mói + passa o café sozinha)
+    public static final DeferredBlock<com.mistech.mistechmod.block.RunicCoffeeMakerBlock> RUNIC_COFFEE_MAKER = BLOCKS.registerBlock("runic_coffee_maker",
+            com.mistech.mistechmod.block.RunicCoffeeMakerBlock::new,
+            p -> p.mapColor(MapColor.COLOR_ORANGE).strength(2.0F).sound(SoundType.COPPER).noOcclusion()
+                    .lightLevel(state -> state.getValue(com.mistech.mistechmod.block.RunicCoffeeMakerBlock.WORKING) ? 6 : 2));
+    public static final DeferredItem<BlockItem> RUNIC_COFFEE_MAKER_ITEM = ITEMS.registerSimpleBlockItem("runic_coffee_maker", RUNIC_COFFEE_MAKER);
     // Xícara: 3 argilas em forma de pote = Xícara Crua; assada na fornalha = Xícara. Cabe meia garrafa (a Chaleira enche 6)
     public static final DeferredItem<Item> RAW_CUP = ITEMS.registerSimpleItem("raw_cup");
     public static final DeferredItem<Item> CUP = ITEMS.registerSimpleItem("cup");
@@ -422,6 +428,7 @@ public class Mistech {
                 output.accept(ASH_BLOCK_ITEM.get());
                 output.accept(SPATIAL_BARREL_ITEM.get());
                 output.accept(RUNIC_TANK_ITEM.get());
+                com.mistech.mistechmod.extraplanar.ExtraplanarContent.creativeItems().forEach(item -> output.accept(item.get()));
                 output.accept(CARRYABLE_BARREL.get());
                 for (DyeColor color : DyeColor.values()) {
                     output.accept(writingTableStack(color));
@@ -488,7 +495,14 @@ public class Mistech {
                 com.mistech.mistechmod.archive.ArchiveContent.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.golem.GolemRegistry.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.machine.arcane.ArcaneMachines.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.spellcraft.conjurer.ConjurerContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.refining.RefiningContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.purity.area.AreaTaintContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.spellcraft.well.WellContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.folklore.machine.FolkMachines.creativeItems().forEach(item -> output.accept(item.get()));
                 com.mistech.mistechmod.machine.forge.ForgeContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.endgame.EndgameContent.creativeItems().forEach(item -> output.accept(item.get()));
+                com.mistech.mistechmod.conduit.ConduitContent.creativeItems().forEach(item -> output.accept(item.get()));
                 output.accept(com.mistech.mistechmod.registry.MistechWear.GNOME_HAT.get());
                 output.accept(com.mistech.mistechmod.registry.MistechWear.MYSTIC_ROBE.get());
                 output.accept(com.mistech.mistechmod.registry.MistechWear.COMFY_PANTS.get());
@@ -545,6 +559,7 @@ public class Mistech {
                 output.accept(COFFEE_POWDER.get());
                 output.accept(GRINDER.get());
                 output.accept(KETTLE_ITEM.get());
+                output.accept(RUNIC_COFFEE_MAKER_ITEM.get());
                 output.accept(RAW_CUP.get());
                 output.accept(CUP.get());
                 output.accept(COFFEE_CUP.get());
@@ -598,6 +613,7 @@ public class Mistech {
         com.mistech.mistechmod.registry.DreamRiftContent.register(modEventBus);
         com.mistech.mistechmod.registry.OreContent.init();
         com.mistech.mistechmod.registry.SpatialContent.register(modEventBus);
+        com.mistech.mistechmod.extraplanar.ExtraplanarContent.register(modEventBus);
         com.mistech.mistechmod.registry.MithrilContent.register(modEventBus);
         com.mistech.mistechmod.registry.AltarContent.register(modEventBus);
         com.mistech.mistechmod.registry.GoblinContent.register(modEventBus);
@@ -627,8 +643,16 @@ public class Mistech {
         com.mistech.mistechmod.golem.GolemRegistry.register(modEventBus);
         com.mistech.mistechmod.tarot.TarotContent.register(modEventBus);
         com.mistech.mistechmod.machine.arcane.ArcaneMachines.register(modEventBus);
+        com.mistech.mistechmod.spellcraft.conjurer.ConjurerContent.register(modEventBus);
+        com.mistech.mistechmod.refining.RefiningContent.register(modEventBus);
+        com.mistech.mistechmod.purity.area.AreaTaintContent.register(modEventBus);
+        com.mistech.mistechmod.spellcraft.well.WellContent.register(modEventBus);
+        com.mistech.mistechmod.folklore.machine.FolkMachines.register(modEventBus);
         com.mistech.mistechmod.item.scroll.ScrollCaseContent.init();
         com.mistech.mistechmod.machine.forge.ForgeContent.register(modEventBus);
+        com.mistech.mistechmod.endgame.EndgameContent.register(modEventBus);
+        com.mistech.mistechmod.conduit.ConduitContent.init();
+        com.mistech.mistechmod.machine.CapabilityFallback.register(modEventBus);
         com.mistech.mistechmod.event.MurkySaplingModifier.register(modEventBus);
         MistechBlockEntities.register(modEventBus);
         MistechMenus.register(modEventBus);

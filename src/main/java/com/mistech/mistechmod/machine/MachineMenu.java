@@ -51,7 +51,8 @@ public class MachineMenu extends AbstractContainerMenu {
 
                 @Override
                 public int getMaxStackSize() {
-                    return spec.kind() == MachineLayout.Kind.RUNE || spec.kind() == MachineLayout.Kind.FILTER ? 1 : super.getMaxStackSize();
+                    return spec.kind() == MachineLayout.Kind.RUNE || spec.kind() == MachineLayout.Kind.FILTER
+                            || spec.kind() == MachineLayout.Kind.SOCKET ? 1 : super.getMaxStackSize();
                 }
 
                 @Override
@@ -179,8 +180,8 @@ public class MachineMenu extends AbstractContainerMenu {
             }
         } else {
             boolean moved = false;
-            // runa, combustível e entrada, nessa ordem
-            for (MachineLayout.Kind kind : new MachineLayout.Kind[] {MachineLayout.Kind.RUNE, MachineLayout.Kind.FUEL, MachineLayout.Kind.INPUT}) {
+            // runa, engaste, combustível e entrada, nessa ordem
+            for (MachineLayout.Kind kind : new MachineLayout.Kind[] {MachineLayout.Kind.RUNE, MachineLayout.Kind.SOCKET, MachineLayout.Kind.FUEL, MachineLayout.Kind.INPUT}) {
                 for (int i = 0; i < this.machineSlots && !stack.isEmpty(); i++) {
                     if (this.layout.kind(i) == kind && this.layout.accepts(i, stack)
                             && this.moveItemStackTo(stack, i, i + 1, false)) {

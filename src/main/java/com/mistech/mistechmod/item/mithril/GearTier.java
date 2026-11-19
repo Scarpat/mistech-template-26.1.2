@@ -11,13 +11,16 @@ import net.minecraft.ChatFormatting;
  * <li>Adamantina (altar Tier II): 3 engastes de runa.</li>
  * <li>Oricalco (altar Tier III): 6 engastes, vínculo com constelação, fortalece Sol/Lua/Ascendente.</li>
  * <li>Oricalco Puro (Santuário): 8 engastes, vínculo com constelação, Sol bem mais forte, vínculo com o Tarô (futuro).</li>
+ * <li>Celeste (Fase 9): 10 engastes, runas ×1,75, Resistência à noite.</li>
  * </ul>
  */
 public enum GearTier {
     MITHRIL("mithril", 200_000, 4_000, 0, false, 0.0, 0.0, false, 1.0, 0x7FD8FF, ChatFormatting.AQUA),
     ADAMANTINE("adamantine", 400_000, 6_000, 3, false, 0.0, 0.0, false, 1.0, 0xE8576A, ChatFormatting.RED),
     ORICHALCUM("orichalcum", 1_000_000, 10_000, 6, true, 0.10, 0.10, false, 1.25, 0xFFB04A, ChatFormatting.GOLD),
-    PURE_ORICHALCUM("pure_orichalcum", 2_000_000, 20_000, 8, true, 0.25, 0.125, true, 1.5, 0xFFF1B8, ChatFormatting.YELLOW);
+    PURE_ORICHALCUM("pure_orichalcum", 2_000_000, 20_000, 8, true, 0.25, 0.125, true, 1.5, 0xFFF1B8, ChatFormatting.YELLOW),
+    /** Celeste (Fase 9, altar Tier III sobre o oricalco puro + Lingote Celeste): 10 engastes, tudo do puro e mais. */
+    CELESTIAL("celestial", 5_000_000, 50_000, 10, true, 0.30, 0.20, true, 1.75, 0x9FD8FF, ChatFormatting.LIGHT_PURPLE);
 
     private final String id;
     private final int capacity;

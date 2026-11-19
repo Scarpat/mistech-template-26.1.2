@@ -46,6 +46,11 @@ public class ArcaneExtractorBlockEntity extends MachineBlockEntity implements Ar
     }
 
     @Override
+    protected float taintPerMinute() {
+        return com.mistech.mistechmod.Config.areaTaintEssenceMachines();
+    }
+
+    @Override
     protected void tick(ServerLevel level, BlockPos pos, BlockState state) {
         this.fillContainers();
         int cost = this.energyStep(FE_PER_TICK);

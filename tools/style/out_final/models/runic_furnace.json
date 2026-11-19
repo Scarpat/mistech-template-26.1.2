@@ -1,0 +1,50 @@
+{
+ "parent": "minecraft:block/block",
+ "render_type": "minecraft:cutout",
+ "textures": {
+  "particle": "mistech:block/runic_furnace_front",
+  "front": "mistech:block/runic_furnace_front",
+  "side": "mistech:block/runic_furnace_side",
+  "top": "mistech:block/runic_furnace_top"
+ },
+ "elements": [
+  {
+   "from": [
+    0,
+    0,
+    0
+   ],
+   "to": [
+    16,
+    16,
+    16
+   ],
+   "faces": {
+    "north": {
+     "texture": "#front",
+     "cullface": "north"
+    },
+    "south": {
+     "texture": "#side",
+     "cullface": "south"
+    },
+    "east": {
+     "texture": "#side",
+     "cullface": "east"
+    },
+    "west": {
+     "texture": "#side",
+     "cullface": "west"
+    },
+    "up": {
+     "texture": "#top",
+     "cullface": "up"
+    },
+    "down": {
+     "texture": "#top",
+     "cullface": "down"
+    }
+   }
+  }
+ ]
+}

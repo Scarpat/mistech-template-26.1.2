@@ -29,6 +29,9 @@ public final class MistechMenus {
     public static final Supplier<MenuType<CondenserMenu>> CONDENSER =
             MENUS.register("condenser", () -> new MenuType<>(CondenserMenu::new, FeatureFlags.VANILLA_SET));
 
+    public static final Supplier<MenuType<com.mistech.mistechmod.menu.CoffeeMakerMenu>> COFFEE_MAKER =
+            MENUS.register("coffee_maker", () -> new MenuType<>(com.mistech.mistechmod.menu.CoffeeMakerMenu::new, FeatureFlags.VANILLA_SET));
+
     public static final Supplier<MenuType<com.mistech.mistechmod.menu.SpatialStorageMenu>> SPATIAL_STORAGE =
             MENUS.register("spatial_storage", () -> new MenuType<>(com.mistech.mistechmod.menu.SpatialStorageMenu::new, FeatureFlags.VANILLA_SET));
 

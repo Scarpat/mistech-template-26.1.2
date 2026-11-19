@@ -79,7 +79,7 @@ public class ArcaneCrusherBlockEntity extends MachineBlockEntity {
             ItemStack max = recipe.result().create();
             max.setCount(this.baseCount(recipe) + 1);
             int cost = this.energyStep(FE_PER_LANE);
-            if (!this.canOutput(max) || !this.hasEnergy(cost)) {
+            if (!this.canOutputProduct(max) || !this.hasEnergy(cost)) {
                 continue;
             }
             working = true;
@@ -96,7 +96,7 @@ public class ArcaneCrusherBlockEntity extends MachineBlockEntity {
                     this.countRuneOp(RUNE_OPS_PER_USE);
                 }
                 input.shrink(1);
-                this.insertOutput(result);
+                this.insertProduct(level, result);
                 level.playSound(null, pos, SoundEvents.GRINDSTONE_USE, SoundSource.BLOCKS, 0.35F, 1.1F + level.getRandom().nextFloat() * 0.3F);
             }
             shown = Math.max(shown, this.laneProgress[lane]);

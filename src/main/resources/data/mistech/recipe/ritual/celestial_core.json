@@ -1,0 +1,18 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:celestial_block",
+  "ingredients": [
+    "mistech:time_rune",
+    "mistech:space_rune",
+    "mistech:echo_rune",
+    "mistech:star_fragment"
+  ],
+  "essence": 8,
+  "duration": 600,
+  "condition": "night",
+  "min_tier": 3,
+  "result": {
+    "id": "mistech:celestial_core"
+  },
+  "effect": "astral"
+}

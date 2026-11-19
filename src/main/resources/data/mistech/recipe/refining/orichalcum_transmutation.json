@@ -1,0 +1,10 @@
+{
+  "type": "mistech:ore_refining",
+  "stage": "transmutation",
+  "ingredient": "#c:ores/orichalcum",
+  "result": {
+    "id": "mistech:orichalcum_dust",
+    "count": 5
+  },
+  "byproducts": []
+}

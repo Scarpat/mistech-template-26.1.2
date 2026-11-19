@@ -1,0 +1,221 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_core"
+      }
+    },
+    {
+      "when": {
+        "north": "conduit"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_arm"
+      }
+    },
+    {
+      "when": {
+        "north": "link"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_link"
+      }
+    },
+    {
+      "when": {
+        "north": "pull"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_pull"
+      }
+    },
+    {
+      "when": {
+        "north": "off"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_off"
+      }
+    },
+    {
+      "when": {
+        "east": "conduit"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_arm",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "east": "link"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_link",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "east": "pull"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_pull",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "east": "off"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_off",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "south": "conduit"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_arm",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "south": "link"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_link",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "south": "pull"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_pull",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "south": "off"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_off",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "west": "conduit"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_arm",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "west": "link"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_link",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "west": "pull"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_pull",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "west": "off"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_off",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "up": "conduit"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_arm",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "link"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_link",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "pull"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_pull",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "up": "off"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_off",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "down": "conduit"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_arm",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "link"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_link",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "pull"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_pull",
+        "x": 90
+      }
+    },
+    {
+      "when": {
+        "down": "off"
+      },
+      "apply": {
+        "model": "mistech:block/orichalcum_conduit_off",
+        "x": 90
+      }
+    }
+  ]
+}

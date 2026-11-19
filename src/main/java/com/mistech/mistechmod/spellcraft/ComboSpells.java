@@ -36,12 +36,6 @@ final class ComboSpells {
         for (int t = 0; t < 100; t += 5) {
             final int tick = t;
             SpellFx.later(level, t, () -> {
-                for (int i = 1; i <= 12; i++) {
-                    Vec3 p = start.add(flat.scale(i));
-                    level.sendParticles(ParticleTypes.LAVA, p.x, p.y + 0.1, p.z, tick % 10 == 0 ? 1 : 0, 0.3, 0.0, 0.3, 0.0);
-                    level.sendParticles(ParticleTypes.FLAME, p.x, p.y + 0.15, p.z, 2, 0.35, 0.02, 0.35, 0.005);
-                    level.sendParticles(SpellFx.dust(RuneElement.MAGMA, 1.4F), p.x, p.y + 0.1, p.z, 2, 0.35, 0.0, 0.35, 0.0);
-                }
                 Set<LivingEntity> hit = new HashSet<>();
                 for (int i = 1; i <= 12; i += 2) {
                     for (LivingEntity e : Spells.around(level, player, start.add(flat.scale(i)), 1.6)) {
@@ -53,6 +47,7 @@ final class ComboSpells {
                 }
             });
         }
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.LAVA_RIVER, 0, null, 100.0F, start, flat);
         level.playSound(null, player.blockPosition(), SoundEvents.LAVA_POP, SoundSource.PLAYERS, 1.5F, 0.6F);
         return true;
     }
@@ -68,14 +63,9 @@ final class ComboSpells {
             t.push(0, 1.1, 0);
             t.hurtMarked = true;
         });
-        for (int k = 0; k < 10; k++) {
-            final int h = k;
-            SpellFx.later(level, k, () -> {
-                level.sendParticles(ParticleTypes.LAVA, c.x, c.y + h * 0.6, c.z, 6, 0.5, 0.2, 0.5, 0.0);
-                level.sendParticles(ParticleTypes.LARGE_SMOKE, c.x, c.y + h * 0.7, c.z, 4, 0.6, 0.2, 0.6, 0.02);
-            });
-        }
-        SpellFx.expandingRing(level, c, RuneElement.MAGMA, r, 8, ParticleTypes.FLAME);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.ERUPTION, null, (float) r, c);
+        com.mistech.mistechmod.spellcraft.fx.Vfx.shake(level, c, 30, 0.6F, 14);
+        com.mistech.mistechmod.spellcraft.fx.Vfx.flash(level, c, 24, 0xFF7A20, 8);
         level.playSound(null, BlockPos.containing(c), SoundEvents.GENERIC_EXPLODE.value(), SoundSource.PLAYERS, 1.2F, 0.6F);
         return true;
     }
@@ -86,8 +76,7 @@ final class ComboSpells {
         player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, d, 0));
         player.addEffect(new MobEffectInstance(MobEffects.RESISTANCE, d, 0));
         player.addEffect(new MobEffectInstance(MobEffects.STRENGTH, d, 0));
-        SpellFx.helix(level, player, RuneElement.MAGMA, 14, 2.0, ParticleTypes.FLAME);
-        level.sendParticles(ParticleTypes.LAVA, player.getX(), player.getY() + 1.0, player.getZ(), 12, 0.4, 0.6, 0.4, 0.0);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.MAGMA_ARMOR, player, 0.0F, player.position());
         level.playSound(null, player.blockPosition(), SoundEvents.BLAZE_SHOOT, SoundSource.PLAYERS, 1.0F, 0.6F);
         return true;
     }
@@ -98,10 +87,7 @@ final class ComboSpells {
         player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, d, 0));
         Spells.areaEffects(level, player, player.position(), Spells.rad(player, RuneElement.VAPOR, 6.0),
                 t -> t.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, d, 0)));
-        for (int k = 0; k < 8; k++) {
-            SpellFx.later(level, k * 10, () -> level.sendParticles(ParticleTypes.CLOUD, player.getX(), player.getY() + 1.0, player.getZ(),
-                    40, 2.5, 1.0, 2.5, 0.01));
-        }
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.MIST, player, 80.0F, player.position());
         level.playSound(null, player.blockPosition(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, 1.2F, 0.8F);
         return true;
     }
@@ -121,12 +107,7 @@ final class ComboSpells {
             t.hurtMarked = true;
             t.clearFire();
         }
-        for (int i = 1; i <= 8; i++) {
-            Vec3 p = eye.add(look.scale(i));
-            double spread = 0.15 * i;
-            level.sendParticles(ParticleTypes.CLOUD, p.x, p.y, p.z, 8, spread, spread, spread, 0.02);
-            level.sendParticles(ParticleTypes.SPLASH, p.x, p.y, p.z, 4, spread, spread, spread, 0.05);
-        }
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.STEAM_JET, 0, player, 8.0F, eye.subtract(0, 0.2, 0), look);
         level.playSound(null, player.blockPosition(), SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, 1.2F, 1.4F);
         return true;
     }
@@ -141,7 +122,7 @@ final class ComboSpells {
             center = player.blockPosition().below();
         }
         int placed = Clouds.platform(level, center, 2, player);
-        SpellFx.burst(level, Vec3.atCenterOf(center), RuneElement.CLOUD, 0.2, 30, ParticleTypes.CLOUD);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.SHEEP_PLATFORM, null, 2.0F, Vec3.atCenterOf(center).add(0, 0.5, 0));
         level.playSound(null, center, SoundEvents.WOOL_PLACE, SoundSource.PLAYERS, 1.0F, 1.2F);
         if (placed > 0) {
             player.resetFallDistance();
@@ -155,7 +136,7 @@ final class ComboSpells {
         BlockPos start = player.blockPosition().below().relative(dir);
         int length = (int) Math.round(24 * Math.min(1.5, Spells.pw(player, RuneElement.CLOUD)));
         Clouds.bridge(level, start, dir, length, player);
-        SpellFx.burst(level, Vec3.atCenterOf(start), RuneElement.CLOUD, 0.2, 30, ParticleTypes.CLOUD);
+        com.mistech.mistechmod.spellcraft.fx.DreamFx.send(level, com.mistech.mistechmod.spellcraft.fx.DreamFx.SHEEP_BRIDGE, 0, null, length, Vec3.atCenterOf(start).add(0, 0.5, 0), new Vec3(dir.getStepX(), 0, dir.getStepZ()));
         level.playSound(null, player.blockPosition(), SoundEvents.WOOL_PLACE, SoundSource.PLAYERS, 1.0F, 0.9F);
         return true;
     }

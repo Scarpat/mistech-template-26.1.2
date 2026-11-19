@@ -1,0 +1,8 @@
+{
+  "type": "mistech:crushing",
+  "ingredient": "mistech:mithril_clump",
+  "result": {
+    "id": "mistech:mithril_dust",
+    "count": 1
+  }
+}

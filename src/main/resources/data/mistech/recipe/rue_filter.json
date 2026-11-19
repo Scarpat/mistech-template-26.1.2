@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "ASA",
+    "RFR",
+    "ACA"
+  ],
+  "key": {
+    "A": "mistech:rue_leaf",
+    "S": "mistech:coarse_salt",
+    "R": "mistech:air_rune",
+    "F": "minecraft:cauldron",
+    "C": "minecraft:copper_ingot"
+  },
+  "result": {
+    "id": "mistech:rue_filter",
+    "count": 1
+  }
+}

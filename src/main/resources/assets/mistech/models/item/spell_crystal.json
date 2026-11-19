@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "mistech:item/spell_crystal",
+    "layer1": "mistech:item/spell_crystal_glyph"
+  }
+}

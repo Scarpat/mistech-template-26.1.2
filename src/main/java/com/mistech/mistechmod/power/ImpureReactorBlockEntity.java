@@ -73,6 +73,11 @@ public class ImpureReactorBlockEntity extends MachineBlockEntity {
     }
 
     @Override
+    protected float taintPerMinute() {
+        return com.mistech.mistechmod.Config.areaTaintReactor();
+    }
+
+    @Override
     protected void tick(ServerLevel level, BlockPos pos, BlockState state) {
         ItemStack fuel = this.items.get(SLOT_FUEL);
         // frascos/baldes vão para o tanque

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "NBN",
+    "FTF",
+    "KKK"
+  ],
+  "key": {
+    "N": "minecraft:netherite_scrap",
+    "B": "minecraft:bucket",
+    "F": "mistech:fire_rune",
+    "T": "mistech:runic_tank",
+    "K": "minecraft:polished_blackstone_bricks"
+  },
+  "result": {
+    "id": "mistech:boitata_pump",
+    "count": 1
+  }
+}

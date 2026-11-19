@@ -39,6 +39,8 @@ public class IgneousBoilerBlockEntity extends MachineBlockEntity {
 
     private int catalystLeft;
     private int catalystTotal;
+    /** O catalisador queimando é uma Brasa do Boitatá. */
+    private boolean ember;
 
     public IgneousBoilerBlockEntity(BlockPos pos, BlockState state) {
         super(PowerContent.IGNEOUS_BOILER_BE.get(), pos, state, PowerLayouts.IGNEOUS_BOILER, 0, MAX_OUTPUT);
@@ -52,7 +54,13 @@ public class IgneousBoilerBlockEntity extends MachineBlockEntity {
         if (stack.is(Items.BLAZE_ROD)) return 1_200;
         if (stack.is(Items.BLAZE_POWDER)) return 600;
         if (stack.is(PaleNetherContent.IGNEOUS_ESSENCE_BOTTLE.get())) return 2_400;
+        if (stack.is(com.mistech.mistechmod.folklore.FolkloreContent.BOITATA_EMBER.get())) return 4_800;
         return 0;
+    }
+
+    /** Brasa do Boitatá: ×3 e não gasta lava enquanto queima. */
+    public static boolean isEmber(ItemStack stack) {
+        return stack.is(com.mistech.mistechmod.folklore.FolkloreContent.BOITATA_EMBER.get());
     }
 
     @Override
@@ -74,22 +82,25 @@ public class IgneousBoilerBlockEntity extends MachineBlockEntity {
 
         int space = this.layout.capacity - this.storedEnergy();
         int generated = 0;
-        int rate = rate(level, this.catalystLeft > 0);
-        if (space >= rate && this.tank.amount(0) >= LAVA_PER_TICK) {
+        int rate = rate(level, this.catalystLeft > 0 ? (this.ember ? 3 : 2) : 1);
+        if (space >= rate && (this.tank.amount(0) >= LAVA_PER_TICK || (this.ember && this.catalystLeft > 0))) {
             // o catalisador só começa a queimar quando a caldeira está fervendo
             ItemStack catalyst = catalystTicks(this.items.get(SLOT_CATALYST)) > 0 ? this.items.get(SLOT_CATALYST) : this.items.get(SLOT_BUCKET);
             if (this.catalystLeft <= 0 && catalystTicks(catalyst) > 0) {
                 this.catalystLeft = this.catalystTotal = catalystTicks(catalyst);
+                this.ember = isEmber(catalyst);
                 boolean bottle = catalyst.is(PaleNetherContent.IGNEOUS_ESSENCE_BOTTLE.get());
                 catalyst.shrink(1);
                 if (bottle) {
                     ItemStack glass = new ItemStack(Items.GLASS_BOTTLE);
                     if (this.canOutput(glass)) this.insertOutput(glass);
                 }
-                rate = rate(level, true);
+                rate = rate(level, this.ember ? 3 : 2);
                 this.setChanged();
             }
-            this.tank.take(0, LAVA_PER_TICK);
+            if (!(this.ember && this.catalystLeft > 0)) {
+                this.tank.take(0, LAVA_PER_TICK);
+            }
             generated = rate;
             this.addEnergy(generated);
             if (this.catalystLeft > 0) {
@@ -105,8 +116,8 @@ public class IgneousBoilerBlockEntity extends MachineBlockEntity {
         this.setLit(level, pos, state, generated > 0);
     }
 
-    private static int rate(Level level, boolean catalyst) {
-        double rate = BASE_RATE * (catalyst ? 2 : 1);
+    private static int rate(Level level, int multiplier) {
+        double rate = BASE_RATE * multiplier;
         if (level.dimension() == Level.NETHER) {
             rate *= 1.25;
         }
@@ -129,6 +140,7 @@ public class IgneousBoilerBlockEntity extends MachineBlockEntity {
     protected void loadExtra(ValueInput input) {
         this.tank.setAmount(0, input.getIntOr("Lava", 0));
         this.catalystLeft = input.getIntOr("Catalyst", 0);
+        this.ember = input.getBooleanOr("Ember", false);
         this.catalystTotal = input.getIntOr("CatalystTotal", 0);
     }
 
@@ -136,6 +148,7 @@ public class IgneousBoilerBlockEntity extends MachineBlockEntity {
     protected void saveExtra(ValueOutput output) {
         output.putInt("Lava", this.tank.amount(0));
         output.putInt("Catalyst", this.catalystLeft);
+        output.putBoolean("Ember", this.ember);
         output.putInt("CatalystTotal", this.catalystTotal);
     }
 }

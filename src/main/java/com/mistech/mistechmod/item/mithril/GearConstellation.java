@@ -43,7 +43,7 @@ public final class GearConstellation {
     }
 
     public static double share(GearTier tier) {
-        return tier == GearTier.PURE_ORICHALCUM ? PURE_SHARE : ORICHALCUM_SHARE;
+        return tier.atLeast(GearTier.PURE_ORICHALCUM) ? PURE_SHARE : ORICHALCUM_SHARE;
     }
 
     /** Valor do bônus que a peça dá (no atributo da constelação). */

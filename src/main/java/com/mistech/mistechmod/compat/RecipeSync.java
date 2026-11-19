@@ -19,6 +19,7 @@ public final class RecipeSync {
 
     @SubscribeEvent
     static void onDatapackSync(OnDatapackSyncEvent event) {
-        event.sendRecipes(MistechRecipes.WRITING_TYPE.get(), MistechRecipes.CRUSHING_TYPE.get(), RitualContent.RITUAL_TYPE.get());
+        event.sendRecipes(MistechRecipes.WRITING_TYPE.get(), MistechRecipes.CRUSHING_TYPE.get(), RitualContent.RITUAL_TYPE.get(),
+                com.mistech.mistechmod.refining.RefiningContent.TYPE.get());
     }
 }

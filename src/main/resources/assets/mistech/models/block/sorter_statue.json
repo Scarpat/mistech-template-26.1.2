@@ -3,6 +3,7 @@
   "textures": {
     "particle": "minecraft:block/terracotta",
     "clay": "minecraft:block/terracotta",
-    "base": "minecraft:block/polished_blackstone"
+    "base": "minecraft:block/polished_blackstone",
+    "face": "mistech:block/sorter_statue_face"
   }
 }

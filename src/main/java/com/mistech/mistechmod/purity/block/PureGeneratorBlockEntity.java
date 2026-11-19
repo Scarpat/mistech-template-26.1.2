@@ -44,6 +44,11 @@ public class PureGeneratorBlockEntity extends MachineBlockEntity {
     }
 
     @Override
+    protected float taintPerMinute() {
+        return -com.mistech.mistechmod.Config.areaTaintPureGenerator();
+    }
+
+    @Override
     protected void tick(ServerLevel level, BlockPos pos, BlockState state) {
         ItemStack fuel = this.items.get(SLOT_FUEL);
         if (!fuel.isEmpty()) {

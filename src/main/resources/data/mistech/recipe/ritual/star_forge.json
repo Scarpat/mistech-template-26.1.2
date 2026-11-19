@@ -1,0 +1,21 @@
+{
+  "type": "mistech:ritual",
+  "catalyst": "mistech:crusher_forge",
+  "ingredients": [
+    "mistech:astral_prism",
+    "mistech:star_fragment",
+    "mistech:star_fragment",
+    "mistech:star_fragment",
+    "mistech:star_fragment",
+    "mistech:space_rune",
+    "mistech:time_rune"
+  ],
+  "essence": 8,
+  "duration": 600,
+  "condition": "clear_night",
+  "min_tier": 3,
+  "result": {
+    "id": "mistech:star_forge"
+  },
+  "effect": "astral"
+}

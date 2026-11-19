@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "CRC",
+    "GGG",
+    "CRC"
+  ],
+  "key": {
+    "C": "minecraft:copper_ingot",
+    "R": "mistech:arcane_rune",
+    "G": "minecraft:glass_pane"
+  },
+  "result": {
+    "id": "mistech:runic_conduit",
+    "count": 8
+  }
+}

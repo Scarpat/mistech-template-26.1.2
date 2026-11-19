@@ -1,0 +1,179 @@
+{
+  "parent": "minecraft:block/block",
+  "ambientocclusion": false,
+  "textures": {
+    "t0": "mistech:block/rue_tuft_7",
+    "t1": "mistech:block/rue_tuft_3",
+    "particle": "mistech:block/rue_tuft_7"
+  },
+  "elements": [
+    {
+      "from": [
+        1.5,
+        0,
+        9.5
+      ],
+      "to": [
+        11.5,
+        16,
+        9.5
+      ],
+      "rotation": {
+        "origin": [
+          6.5,
+          0,
+          9.5
+        ],
+        "axis": "y",
+        "angle": 45
+      },
+      "shade": false,
+      "faces": {
+        "north": {
+          "uv": [
+            2.5,
+            0,
+            12.5,
+            16
+          ],
+          "texture": "#t0"
+        },
+        "south": {
+          "uv": [
+            2.5,
+            0,
+            12.5,
+            16
+          ],
+          "texture": "#t0"
+        }
+      }
+    },
+    {
+      "from": [
+        6.5,
+        0,
+        4.5
+      ],
+      "to": [
+        6.5,
+        16,
+        14.5
+      ],
+      "rotation": {
+        "origin": [
+          6.5,
+          0,
+          9.5
+        ],
+        "axis": "y",
+        "angle": 45
+      },
+      "shade": false,
+      "faces": {
+        "west": {
+          "uv": [
+            2.5,
+            0,
+            12.5,
+            16
+          ],
+          "texture": "#t0"
+        },
+        "east": {
+          "uv": [
+            2.5,
+            0,
+            12.5,
+            16
+          ],
+          "texture": "#t0"
+        }
+      }
+    },
+    {
+      "from": [
+        6.5,
+        0,
+        5
+      ],
+      "to": [
+        16.5,
+        16,
+        5
+      ],
+      "rotation": {
+        "origin": [
+          11.5,
+          0,
+          5
+        ],
+        "axis": "y",
+        "angle": 22.5
+      },
+      "shade": false,
+      "faces": {
+        "north": {
+          "uv": [
+            2.5,
+            0,
+            12.5,
+            16
+          ],
+          "texture": "#t1"
+        },
+        "south": {
+          "uv": [
+            2.5,
+            0,
+            12.5,
+            16
+          ],
+          "texture": "#t1"
+        }
+      }
+    },
+    {
+      "from": [
+        11.5,
+        0,
+        0
+      ],
+      "to": [
+        11.5,
+        16,
+        10
+      ],
+      "rotation": {
+        "origin": [
+          11.5,
+          0,
+          5
+        ],
+        "axis": "y",
+        "angle": 22.5
+      },
+      "shade": false,
+      "faces": {
+        "west": {
+          "uv": [
+            2.5,
+            0,
+            12.5,
+            16
+          ],
+          "texture": "#t1"
+        },
+        "east": {
+          "uv": [
+            2.5,
+            0,
+            12.5,
+            16
+          ],
+          "texture": "#t1"
+        }
+      }
+    }
+  ]
+}
